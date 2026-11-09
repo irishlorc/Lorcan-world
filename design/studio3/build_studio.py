@@ -29,16 +29,16 @@ P = [
   ind='Maritime robotics', line='Eyes on the water line.',
   intro='A fictional Dutch engineering company whose autonomous robots inspect dikes, flood defences and the water infrastructure that keeps a low country dry.',
   aud='Water boards, infrastructure operators, engineering firms and municipalities.',
-  disc=['Identity','Stationery','Campaign','Brochure','Exhibition','Web'],
+  disc=['Identity','Campaign','Print','Social','Web'],
   pal=['#012653','#1E6BFF','#FEC104','#FFFFFF'],
   feat=[
    ('full','w4','Photography campaign · "The night shift on the sea dike."', ('Photography','Documentary, never staged. Flat North Sea light, wet basalt and real weather, because the people buying this inspect dikes for a living and can spot a set-up shot instantly.')),
    ('split','w1','Identity system', ('Identity','The W reads as two folds of water running down a dike. Yellow means caution on a dike, so it is rationed: the flag in the logo, the bumpers on the machine and very little else.')),
    ('full','w3','Technology campaign · WD-07 launch', None),
-   ('pair',('w5','w7'),('Technical brochure · spread','Exhibition stand'), ('Print and space','The brochure and the stand share one grid and one voice: plain engineering language, big photography, specification in mono. A stand should be legible from the aisle; a brochure should survive being photocopied.')),
+   ('pair',('w5','w2'),('Technical brochure · spread','Business stationery'), ('Print','Brochure and stationery share one grid and one voice: plain engineering language, big photography, specification in mono. Documents that will be photocopied, filed and read on site.')),
    ('full','w8c','Website concept', ('Web','The site behaves like a control room: a live inspection feed, the run explained in three steps and a cross-section of the dike that shows what each sensor finds. It sells the outcome, an engineer who knows the state of every metre.')),
   ],
-  more=[('w2','Business stationery'),('w6','LinkedIn campaign')]),
+  more=[('w6','LinkedIn campaign')]),
  dict(key='kindling', n='02', name='Kindling', logo='kindling-light', acc='#00AE1D', hero='hero-kindling', hpos='50% 40%',
   ind='Small-business software', line='Less administration. More room to run your business.',
   intro='Fictional software that takes invoices, payment reminders, follow-ups and everyday admin off the people running small businesses, without adding another thing to learn.',
@@ -52,7 +52,7 @@ P = [
    ('full','k4','Newsletter · The Weekly Kindling', ('Editorial','The newsletter reads like a small magazine rather than a product update: one lead story, a line to copy, three things to do before Friday. Its readers owe it nothing, so it has to earn the open.')),
    ('full','k6c','Website concept', ('Web','A masthead, a big headline and a collage of real moments. The website is set like the newsletter, so the brand feels the same wherever you meet it.')),
   ],
-  more=[('k2','Product introduction'),('k-onboard','Onboarding · welcome email and guide'),('k-social','Social campaign')]),
+  more=[('k-social','Social campaign')]),
  dict(key='rune', n='03', name='RUNE', logo='rune-light', acc='#5E21F2', hero='hero-rune', hpos='70% 50%',
   ind='Premium audio', line='Sound, without compromise.',
   intro='A fictional premium audio company making wireless headphones and home speakers that feel considered, tactile and effortless, and desirable before they are switched on.',
@@ -60,14 +60,14 @@ P = [
   disc=['Identity','Product imagery','Packaging','Outdoor','Web'],
   pal=['#161618','#EEECE7','#C9CBCF','#5E21F2'],
   feat=[
-   ('pair',('ra','rh'),('Product hero campaign','Launch campaign'), ('Campaign','Two sides of one product: the object on stone in hard light, then in the hand on warm plaster. The type stays quiet so the product is the loudest thing in the frame.')),
+   ('pair',('ra','rb'),('Product hero campaign','Product detail'), ('Campaign','The object first, then the craft: the headphones on stone in one hard light, then the machined yoke up close. The type stays quiet so the product is the loudest thing in the frame.')),
    ('full','rf','Outdoor advertising', None),
    ('split','r1','Identity system', ('Identity','Charcoal, off-white and real metal. Violet appears once per layout, the way the light ring sits on the headphones, and nowhere else.')),
    ('full','rd','Speaker collection', None),
    ('full','rc','Editorial · magazine spread', ('Editorial','The brand earns its place in a magazine by being about listening, not specifications. A concrete room, a slice of winter sun and one record played start to finish.')),
    ('full','rg','Website concept', None),
   ],
-  more=[('rb','Product detail'),('re','Packaging')]),
+  more=[('re','Packaging')]),
  dict(key='fold', n='04', name='FOLD', logo='fold-light', acc='#B4553A', hero='hero-fold', hpos='55% 60%',
   ind='Modular furniture', line='Build the room. Rebuild it later.',
   intro='A fictional Dutch furniture company making modular pieces for modern homes: sofas, shelving and blocks that grow, shrink and move house with you.',
@@ -80,9 +80,8 @@ P = [
    ('split','f1','Identity system', ('Identity','The logo is built the way the furniture is: four letters made of folded, interlocking blocks.')),
    ('pair',('ff','fg'),('Showroom branding','Digital storefront · mobile'), None),
    ('full','fw','Website concept', ('Web','An architectural catalogue: an index down one side, one room at a time, and every piece shown as part of a set you can configure.')),
-   ('full','fh','Social campaign', None),
-  ],
-  more=[('fa','Advertising campaign'),('fd','The pieces · product line-up')]),
+     ],
+  more=[('fh','Social campaign')]),
 ]
 WIDE = '(min-width:1700px) 1600px, 94vw'
 HALF = '(min-width:900px) 48vw, 94vw'
@@ -126,10 +125,11 @@ def project(i, p):
         elif t == 'split':
             side ^= 1
             out.append(f'  <section class="cs-ch wide cs-split{" rev" if side==0 else ""}">{note(*nt)}{fig(k,cap,"(min-width:900px) 62vw, 94vw")}</section>')
-    gal = ''.join(fig(k, c, '(min-width:900px) 46vw, 94vw', 'cs-g') for k, c in p['more'])
+    one = len(p['more']) == 1
+    gal = ''.join(fig(k, c, WIDE if one else '(min-width:900px) 46vw, 94vw', 'cs-g') for k, c in p['more'])
     out.append(f'''  <section class="cs-more wide">
     <h2 class="cs-more-h rv">More applications</h2>
-    <div class="cs-gallery">{gal}</div>
+    <div class="cs-gallery{" one" if one else ""}">{gal}</div>
   </section>
   <nav class="cs-nav wide" aria-label="Projects">
     <a class="cs-nav-p" href="#studio-{prv["key"]}"><span class="cs-k">← Previous</span><img {ld(prv["logo"])} src="img/studio2/logos/{prv["logo"]}.svg" alt="{E(prv["name"])}"></a>
@@ -207,11 +207,13 @@ CSS = r'''
 .sx-d .sx-ind{font-size:clamp(24px,2.2vw,34px);font-family:var(--f-display);letter-spacing:-.02em}
 @media (max-width:899px){
   .sx-row,.sx-d{grid-template-columns:minmax(0,1fr)}
-  .sx-a .sx-img{aspect-ratio:4/3}
+  .sx-a .sx-img{aspect-ratio:16/10}
+  .sx-c .sx-img{aspect-ratio:4/3}
   .sx-meta,.sx-c .sx-meta,.sx-b .sx-meta{grid-template-columns:auto 1fr}
   .sx-disc,.sx-c .sx-disc,.sx-b .sx-disc{grid-column:1/-1;grid-row:auto}
   .sx-go{grid-column:1/-1}
 }
+@media (max-width:599px){.sx-a .sx-img{aspect-ratio:4/3}.sx-c .sx-img{aspect-ratio:4/5}}
 /* ---- Studio: case studies ---- */
 .cs-hero{position:relative;height:clamp(460px,82vh,940px);overflow:hidden;background:#000;margin-top:14px}
 .cs-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -249,6 +251,7 @@ CSS = r'''
 .cs-more{padding-bottom:clamp(64px,8vw,120px);border-top:1px solid var(--line-2);padding-top:clamp(40px,5vw,72px)}
 .cs-more-h{margin:0 0 clamp(24px,3vw,40px);font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);font-weight:600}
 .cs-gallery{columns:2;column-gap:clamp(16px,2vw,32px)}
+.cs-gallery.one{columns:1}
 .cs-gallery .cs-fig{break-inside:avoid;margin-bottom:clamp(24px,3vw,44px)}
 .cs-nav{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch;padding-bottom:clamp(56px,7vw,110px)}
 .cs-nav a{display:grid;gap:18px;align-content:space-between;padding:clamp(22px,2.6vw,36px);border:1px solid var(--line-2);border-radius:var(--r-lg);text-decoration:none;color:var(--ink);transition:border-color .3s,background .3s}
@@ -265,11 +268,11 @@ html.lzon .cs-fig img.ld,html.lzon .sx-img img.ld{opacity:1}
   .cs-intro,.cs-split,.cs-split.rev{grid-template-columns:minmax(0,1fr)}
   .cs-split.rev .cs-note{order:0}
   .cs-note{grid-template-columns:1fr;gap:12px}
-  .cs-pair{grid-template-columns:minmax(0,1fr)!important;gap:clamp(28px,6vw,40px)}
   .cs-gallery{columns:1}
   .cs-facts div{grid-template-columns:100px 1fr}
   .cs-nav{grid-template-columns:1fr 1fr}.cs-nav-o{grid-column:1/-1;grid-row:2}
 }
+@media (max-width:599px){.cs-pair{grid-template-columns:minmax(0,1fr)!important;gap:32px}}
 '''
 
 if __name__ == '__main__':

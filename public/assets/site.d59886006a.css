@@ -12,7 +12,7 @@
    panels (#151515) only where a block must stand apart.
    ===================================================================== */
 :root{
-  --bg:#090909; --bg-2:#151515; --surface:#202020;
+  --bg:#070707; --bg-2:#151515; --surface:#202020;
   --ink:#F8F8F6; --muted:#A3A3A3; --faint:#8A8A8A;
   --line:#242424; --line-2:#333333;
   --accent:#FF6A00; --accent-2:#FF9F1C;
@@ -49,7 +49,16 @@
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
 html{background:var(--bg);overflow-x:clip}
-body{text-wrap:pretty;background:var(--bg);color:var(--ink);font-family:var(--f-sans);font-size:var(--fs-body);line-height:1.6;letter-spacing:-.006em;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body{text-wrap:pretty;background:transparent;color:var(--ink);font-family:var(--f-sans);font-size:var(--fs-body);line-height:1.6;letter-spacing:-.006em;-webkit-font-smoothing:antialiased;overflow-x:clip}
+/* ---------- Paper: matte black stock (static, decorative, behind all content) ---------- */
+html::before,html::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+html::before{background:
+  radial-gradient(90% 60% at 50% -10%,rgba(255,255,255,.028),rgba(255,255,255,0) 70%),
+  radial-gradient(70% 55% at 0% 100%,rgba(255,255,255,.012),rgba(255,255,255,0) 70%),
+  radial-gradient(140% 110% at 50% 45%,rgba(0,0,0,0) 55%,rgba(0,0,0,.42) 100%)}
+html::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:300px 300px;opacity:.035}
+.page>.sec:first-child,.page>.st-hero{background:radial-gradient(55% 75% at 12% 35%,rgba(255,106,0,.028),rgba(255,106,0,0) 72%)}
+@media (max-width:767px){html::after{background-size:220px 220px;opacity:.03}}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
@@ -864,6 +873,8 @@ html.room-on,html.room-on body{overflow:hidden}
   .pj-row{grid-template-columns:minmax(0,1fr)!important}
 }
 
+
+
 /* ---- Studio: overview ---- */
 .wide{max-width:calc(1600px + var(--gutter) + var(--gutter-r));margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
 .sx{display:grid;gap:clamp(56px,7vw,120px);padding-bottom:clamp(40px,6vw,96px)}
@@ -890,11 +901,13 @@ html.room-on,html.room-on body{overflow:hidden}
 .sx-d .sx-ind{font-size:clamp(24px,2.2vw,34px);font-family:var(--f-display);letter-spacing:-.02em}
 @media (max-width:899px){
   .sx-row,.sx-d{grid-template-columns:minmax(0,1fr)}
-  .sx-a .sx-img{aspect-ratio:4/3}
+  .sx-a .sx-img{aspect-ratio:16/10}
+  .sx-c .sx-img{aspect-ratio:4/3}
   .sx-meta,.sx-c .sx-meta,.sx-b .sx-meta{grid-template-columns:auto 1fr}
   .sx-disc,.sx-c .sx-disc,.sx-b .sx-disc{grid-column:1/-1;grid-row:auto}
   .sx-go{grid-column:1/-1}
 }
+@media (max-width:599px){.sx-a .sx-img{aspect-ratio:4/3}.sx-c .sx-img{aspect-ratio:4/5}}
 /* ---- Studio: case studies ---- */
 .cs-hero{position:relative;height:clamp(460px,82vh,940px);overflow:hidden;background:#000;margin-top:14px}
 .cs-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -932,6 +945,7 @@ html.room-on,html.room-on body{overflow:hidden}
 .cs-more{padding-bottom:clamp(64px,8vw,120px);border-top:1px solid var(--line-2);padding-top:clamp(40px,5vw,72px)}
 .cs-more-h{margin:0 0 clamp(24px,3vw,40px);font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);font-weight:600}
 .cs-gallery{columns:2;column-gap:clamp(16px,2vw,32px)}
+.cs-gallery.one{columns:1}
 .cs-gallery .cs-fig{break-inside:avoid;margin-bottom:clamp(24px,3vw,44px)}
 .cs-nav{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch;padding-bottom:clamp(56px,7vw,110px)}
 .cs-nav a{display:grid;gap:18px;align-content:space-between;padding:clamp(22px,2.6vw,36px);border:1px solid var(--line-2);border-radius:var(--r-lg);text-decoration:none;color:var(--ink);transition:border-color .3s,background .3s}
@@ -948,11 +962,11 @@ html.lzon .cs-fig img.ld,html.lzon .sx-img img.ld{opacity:1}
   .cs-intro,.cs-split,.cs-split.rev{grid-template-columns:minmax(0,1fr)}
   .cs-split.rev .cs-note{order:0}
   .cs-note{grid-template-columns:1fr;gap:12px}
-  .cs-pair{grid-template-columns:minmax(0,1fr)!important;gap:clamp(28px,6vw,40px)}
   .cs-gallery{columns:1}
   .cs-facts div{grid-template-columns:100px 1fr}
   .cs-nav{grid-template-columns:1fr 1fr}.cs-nav-o{grid-column:1/-1;grid-row:2}
 }
+@media (max-width:599px){.cs-pair{grid-template-columns:minmax(0,1fr)!important;gap:32px}}
 .st-lb{position:fixed;inset:0;z-index:240;background:rgba(6,6,6,.95);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;grid-template-rows:auto minmax(0,1fr);animation:fadeIn .25s both}
 .st-lb-bar{display:flex;align-items:center;gap:16px;padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
 .st-lb-cap{margin:0;font-size:15px;color:var(--ink);min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
