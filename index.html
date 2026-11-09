@@ -1165,6 +1165,12 @@ html.dim .sig::before{opacity:.15}
 @media (max-width:360px){.crumb{font-size:14px}.brand .bn{font-size:16px}}
 .read-bar{display:none}
 @media (prefers-reduced-motion:reduce){.nav-shell,.nav,.nav-ind{transition:none}.nav-shell.hide{transform:none}}
+
+/* embedded full-height viewers: the header is carried along by script */
+.vp-sent{position:absolute;left:0;top:0;width:1px;pointer-events:none;opacity:0}
+.vp-sent i{position:absolute;left:0;width:1px}
+html.emb .nav-shell{position:absolute;left:0;right:0;top:0;transform:translateY(var(--ey,0px));transition:transform .18s linear}
+html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px));transition:transform .4s var(--e-out)}
 </style>
 </head>
 <body>
@@ -1932,10 +1938,34 @@ let wpT=0;addEventListener("scroll",()=>{if(wpT)return;wpT=requestAnimationFrame
 // ---------- Sticky header ----------
 (function(){
   const shell=$(".nav-shell"),prog=$("#navProg"),ind=$("#navInd"),links=$(".links");
-  let lastY=scrollY,ticking=false,acc=0;
+  let lastY=0,ticking=false,acc=0;
+  // Some app viewers (like Claude on a phone) lay the page out at full height and scroll it from outside,
+  // so the page never scrolls itself and sticky has nothing to stick to. In that case we work out which
+  // part of the page is on screen from intersection data and carry the header along by hand.
+  const de=document.documentElement;let emb=false,vTop=0,vH=innerHeight,sent=null,sio=null;
+  const isEmbedded=()=>window.self!==window.top&&de.scrollHeight-innerHeight<4;
+  const vis=new Map();
+  function buildSentinels(){
+    sio&&sio.disconnect();sent&&sent.remove();vis.clear();
+    const H=de.scrollHeight,step=40;sent=document.createElement("div");sent.className="vp-sent";sent.setAttribute("aria-hidden","true");
+    for(let y=0;y<H;y+=step){const i=document.createElement("i");i.style.top=y+"px";i.style.height=Math.min(step,H-y)+"px";sent.appendChild(i)}
+    document.body.appendChild(sent);
+    const th=[];for(let k=0;k<=20;k++)th.push(k/20);
+    sio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.intersectionRatio>0)vis.set(e.target,[e.intersectionRect.top,e.intersectionRect.bottom]);else vis.delete(e.target)});
+      if(!vis.size)return;let t=1e9,b=-1e9;vis.forEach(([a,z])=>{t=Math.min(t,a);b=Math.max(b,z)});vTop=t;vH=b-t;schedule()},{threshold:th});
+    sent.querySelectorAll("i").forEach(i=>sio.observe(i));
+  }
+  function setMode(){
+    const e=isEmbedded();if(e===emb){if(e)buildSentinels();return}
+    emb=e;de.classList.toggle("emb",e);
+    if(e){$("#main").style.paddingTop=shell.offsetHeight+"px";buildSentinels()}else{$("#main").style.paddingTop="";sio&&sio.disconnect();sent&&sent.remove();shell.style.transform=""}
+  }
+  const curY=()=>emb?vTop:scrollY,curH=()=>emb?vH:innerHeight;
+  function schedule(){if(!ticking){ticking=true;requestAnimationFrame(frame)}}
   function frame(){
-    ticking=false;const y=scrollY,dy=y-lastY;lastY=y;
-    const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+    ticking=false;const y=curY(),dy=y-lastY;lastY=y;
+    if(emb)shell.style.setProperty("--ey",y+"px");
+    const max=Math.max(1,de.scrollHeight-curH());
     prog.style.setProperty("--p",Math.min(1,y/max).toFixed(4));
     shell.classList.toggle("scrolled",y>24);
     const locked=!sheet.hidden||document.documentElement.classList.contains("room-on")||document.activeElement&&shell.contains(document.activeElement);
@@ -1943,7 +1973,10 @@ let wpT=0;addEventListener("scroll",()=>{if(wpT)return;wpT=requestAnimationFrame
     acc=(Math.sign(dy)===Math.sign(acc))?acc+dy:dy;
     if(acc>36)shell.classList.add("hide");else if(acc<-12)shell.classList.remove("hide");
   }
-  addEventListener("scroll",()=>{if(!ticking){ticking=true;requestAnimationFrame(frame)}},{passive:true});
+  addEventListener("scroll",schedule,{passive:true});
+  let rT=0;const reMode=()=>{clearTimeout(rT);rT=setTimeout(()=>{setMode();schedule()},120)};
+  addEventListener("resize",reMode);("ResizeObserver" in window)&&new ResizeObserver(reMode).observe(document.body);
+  setTimeout(setMode,300);
   shell.addEventListener("focusin",()=>shell.classList.remove("hide"));
   // sliding indicator: sits under the current page, follows the pointer, returns on leave
   function moveTo(a){if(!a){ind.classList.remove("on");return}const r=a.getBoundingClientRect(),lr=links.getBoundingClientRect();ind.style.setProperty("--x",(r.left-lr.left+14)+"px");ind.style.setProperty("--w",(r.width-28)+"px");ind.classList.add("on")}
@@ -1957,7 +1990,7 @@ let wpT=0;addEventListener("scroll",()=>{if(wpT)return;wpT=requestAnimationFrame
     requestAnimationFrame(()=>moveTo(cur()));
     const c=$("#crumb"),t=$("#crumbT"),n=names[page];
     if(n){t.textContent=n;t.style.animation="none";void t.offsetWidth;t.style.animation="";c.classList.add("on")}else c.classList.remove("on");
-    shell.classList.remove("hide");frame();
+    shell.classList.remove("hide");setTimeout(()=>{setMode();frame()},350);
   };
 })();
 // ---------- Little world ----------
