@@ -67,7 +67,7 @@
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
 html{background:var(--bg);overflow-x:clip}
-body{text-wrap:pretty;background:var(--bg);color:var(--ink);font-family:var(--f-sans);font-size:var(--fs-body);line-height:1.6;letter-spacing:-.006em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{text-wrap:pretty;background:var(--bg);color:var(--ink);font-family:var(--f-sans);font-size:var(--fs-body);line-height:1.6;letter-spacing:-.006em;-webkit-font-smoothing:antialiased;overflow-x:clip}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
 img{max-width:100%;height:auto;display:block}
 a{color:inherit}
@@ -1134,6 +1134,37 @@ html.dim .sig::before{opacity:.15}
   .sig-meta .or-door i{inset:10px 14px}
   .filter{min-height:44px}
 }
+
+/* =====================================================================
+   Sticky header: settles in, tightens on scroll, steps aside on the way
+   down, comes back the moment you scroll up. A sliding indicator marks the
+   page; a hairline under the bar shows how far through it you are.
+   ===================================================================== */
+.nav-shell{transition:transform .45s var(--e-out),padding .35s var(--e-out)}
+.nav{position:relative;transition:background-color .35s,box-shadow .35s,padding .35s var(--e-out),border-color .35s,max-width .5s var(--e-out)}
+.nav-shell.scrolled{padding-top:8px}
+.nav-shell.scrolled .nav{background:rgba(13,13,13,.86);border-color:var(--line-2);box-shadow:0 16px 40px -22px rgba(0,0,0,.9),0 0 0 1px rgba(255,106,0,.05);padding-block:4px}
+.nav-shell.hide{transform:translateY(calc(-100% - 14px))}
+.brand img{transition:width .35s var(--e-out),height .35s var(--e-out),transform .5s var(--e-out)}
+.nav-shell.scrolled .brand img{width:28px;height:28px}
+.brand:hover img{transform:rotate(-8deg)}
+/* page progress hairline, clipped to the bar's rounded shape */
+.nav-prog{position:absolute;left:14px;right:14px;bottom:-1px;height:2px;border-radius:2px;background:var(--grad);transform:scaleX(var(--p,0));transform-origin:left;opacity:0;transition:opacity .3s;pointer-events:none}
+.nav-shell.scrolled .nav-prog{opacity:1}
+/* sliding indicator */
+.links{position:relative}
+.links a[aria-current="page"]::after,.links a:hover::after{transform:scaleX(0)!important}
+.nav-ind{position:absolute;left:0;bottom:3px;height:2px;width:var(--w,0);border-radius:2px;background:var(--grad);transform:translateX(var(--x,0));transition:transform .45s cubic-bezier(.5,1.4,.4,1),width .45s cubic-bezier(.5,1.4,.4,1),opacity .2s;opacity:0;pointer-events:none}
+.nav-ind.on{opacity:1}
+/* breadcrumb: on phones the bar names the page you're on */
+.crumb{display:none;align-items:baseline;gap:7px;font-family:var(--f-serif);font-style:italic;font-size:16px;color:var(--accent-2);white-space:nowrap;overflow:hidden}
+.crumb i{font-style:normal;color:var(--faint);font-family:var(--f-sans)}
+.crumb b{font-weight:400;display:inline-block;animation:crumbIn .4s var(--e-out)}
+@keyframes crumbIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (max-width:900px){.crumb.on{display:inline-flex}}
+@media (max-width:360px){.crumb{font-size:14px}.brand .bn{font-size:16px}}
+.read-bar{display:none}
+@media (prefers-reduced-motion:reduce){.nav-shell,.nav,.nav-ind{transition:none}.nav-shell.hide{transform:none}}
 </style>
 </head>
 <body>
@@ -1185,14 +1216,15 @@ html.dim .sig::before{opacity:.15}
 <a class="skip" href="#main" id="skipLink">Skip to content</a>
 <div class="nav-shell">
   <nav class="nav" aria-label="Main">
-    <a class="brand" href="#home" aria-label="Lorcan, home"><img src="img/h-avatar.webp" alt="" width="32" height="32"><span>Lorcan</span></a>
+    <a class="brand" href="#home" aria-label="Lorcan, home"><img src="img/h-avatar.webp" alt="" width="32" height="32"><span class="bn">Lorcan</span><span class="crumb" id="crumb" aria-hidden="true"><i>/</i><b id="crumbT"></b></span></a>
+    <span class="nav-prog" id="navProg" aria-hidden="true"></span>
     <ul class="links">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#work">Work</a></li>
       <li><a href="#thoughts">Thoughts</a></li>
-    </ul>
+    <span class="nav-ind" id="navInd" aria-hidden="true"></span></ul>
     <a class="btn btn-primary btn-sm" href="#contact">Let's chat <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="sheet"><span class="mt">Menu</span><svg aria-hidden="true"><use href="#i-menu"/></svg></button>
   </nav>
@@ -1683,6 +1715,7 @@ function onPageShown(page){
   if(page==="experience")countYears();
   if(page==="contact")wave(1000);
   if(page==="lost")onLost();
+  window.headerOnRoute&&headerOnRoute(page);
   $("#readBar").style.transform="scaleX(0)";
   if(typeof armWatches==="function"){armWatches();watched.forEach(placeWatch)}
   if(document.documentElement.classList.contains("wires"))setTimeout(drawWires,700);
@@ -1895,6 +1928,38 @@ let wpT=0;addEventListener("scroll",()=>{if(wpT)return;wpT=requestAnimationFrame
 
 // reading progress on articles
 (function(){const bar=$("#readBar");let t=0;addEventListener("scroll",()=>{if(t)return;t=requestAnimationFrame(()=>{t=0;const art=document.querySelector('[data-page="post"]:not([hidden]) .article');if(!art){bar.style.transform="scaleX(0)";return}const r=art.getBoundingClientRect(),k=Math.min(1,Math.max(0,(innerHeight*.35-r.top)/(r.height-innerHeight*.35)));bar.style.transform=`scaleX(${k.toFixed(4)})`})},{passive:true})})();
+
+// ---------- Sticky header ----------
+(function(){
+  const shell=$(".nav-shell"),prog=$("#navProg"),ind=$("#navInd"),links=$(".links");
+  let lastY=scrollY,ticking=false,acc=0;
+  function frame(){
+    ticking=false;const y=scrollY,dy=y-lastY;lastY=y;
+    const max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+    prog.style.setProperty("--p",Math.min(1,y/max).toFixed(4));
+    shell.classList.toggle("scrolled",y>24);
+    const locked=!sheet.hidden||document.documentElement.classList.contains("room-on")||document.activeElement&&shell.contains(document.activeElement);
+    if(reduced||locked||y<120){shell.classList.remove("hide");acc=0;return}
+    acc=(Math.sign(dy)===Math.sign(acc))?acc+dy:dy;
+    if(acc>36)shell.classList.add("hide");else if(acc<-12)shell.classList.remove("hide");
+  }
+  addEventListener("scroll",()=>{if(!ticking){ticking=true;requestAnimationFrame(frame)}},{passive:true});
+  shell.addEventListener("focusin",()=>shell.classList.remove("hide"));
+  // sliding indicator: sits under the current page, follows the pointer, returns on leave
+  function moveTo(a){if(!a){ind.classList.remove("on");return}const r=a.getBoundingClientRect(),lr=links.getBoundingClientRect();ind.style.setProperty("--x",(r.left-lr.left+14)+"px");ind.style.setProperty("--w",(r.width-28)+"px");ind.classList.add("on")}
+  const cur=()=>links.querySelector('a[aria-current="page"]');
+  links.addEventListener("pointerover",e=>{const a=e.target.closest("a");if(a)moveTo(a)});
+  links.addEventListener("pointerleave",()=>moveTo(cur()));
+  addEventListener("resize",()=>moveTo(cur()));
+  // breadcrumb + indicator follow the route
+  const names={about:"About",experience:"Experience",work:"Work",thoughts:"Thoughts",contact:"Contact",post:"Thoughts",lost:"Lost"};
+  window.headerOnRoute=page=>{
+    requestAnimationFrame(()=>moveTo(cur()));
+    const c=$("#crumb"),t=$("#crumbT"),n=names[page];
+    if(n){t.textContent=n;t.style.animation="none";void t.offsetWidth;t.style.animation="";c.classList.add("on")}else c.classList.remove("on");
+    shell.classList.remove("hide");frame();
+  };
+})();
 // ---------- Little world ----------
 // Work: cursor spotlight + gentle 3D tilt
 if(fine&&!reduced){document.querySelectorAll(".bc").forEach(c=>{
