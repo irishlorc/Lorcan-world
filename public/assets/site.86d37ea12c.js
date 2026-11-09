@@ -516,7 +516,12 @@ document.addEventListener("keydown",e=>{if(!egg.hidden&&e.key==="Escape"){e.prev
 // Fill these in when the media is ready. Nothing here autoplays.
 const SONG=f=>(MPA?"/":"")+"media/songs/"+f;
 const ROOM={
-  videos:[],   // {title:"…", src:"media/video.mp4", poster:"img/poster.webp"}
+  // music videos on YouTube: rename the titles here
+  videos:[
+    {title:"Music video I",yt:"MTVVfzCUF0I"},
+    {title:"Music video II",yt:"AcfxTrcVUkw"},
+    {title:"Music video III",yt:"OJSCrFcbT_U"}
+  ],
   paintings:[],// {title:"…", src:"img/painting.webp"}
   // songs: rename the titles here; files live in media/songs/
   songs:[
@@ -603,8 +608,16 @@ const fmt=t=>isFinite(t)?Math.floor(t/60)+":"+String(Math.floor(t%60)).padStart(
 function empty(title,line){return `<div class="or-empty"><b>${title}</b><span>${line}</span></div>`}
 const bookSrc=(b,w)=>`${MPA?"/":""}img/books/${b.key}-${w}.webp`;
 const toRoman=n=>["","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"][n]||String(n);
+// YouTube: a still and a play button first; the player only loads when someone presses play.
+// The single-file preview can't embed other sites, so it links out instead.
+function ytStage(v,play){
+  const watch=`https://www.youtube.com/watch?v=${v.yt}`;
+  if(!MPA)return `<a class="yt-lite yt-off" href="${watch}" target="_blank" rel="noopener"><span class="yt-play">▶</span><span class="yt-t">${esc(v.title)}</span><span class="yt-s">Watch on YouTube</span></a>`;
+  if(play)return `<iframe src="https://www.youtube-nocookie.com/embed/${v.yt}?autoplay=1&rel=0&playsinline=1" title="${esc(v.title)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  return `<button class="yt-lite" type="button" data-play="1" style="background-image:url(https://i.ytimg.com/vi/${v.yt}/hqdefault.jpg)" aria-label="Play ${esc(v.title)}"><span class="yt-play">▶</span></button>`;
+}
 function panelHTML(kind){
-  if(kind==="videos"){const v=ROOM.videos;return `<span class="or-kick">On the telly</span><h3 class="or-h">Music videos</h3>`+(v.length?(()=>{const L=Math.min(RM.lastVideo||0,v.length-1);return `<div class="or-video"><video id="orVid" controls playsinline preload="metadata" ${v[L].poster?`poster="${v[L].poster}"`:""} src="${v[L].src}"></video></div><div class="or-tracks">${v.map((x,i)=>`<button class="or-track${i===L?" on":""}" data-vid="${i}"><span class="pp">▶</span><span>${esc(x.title)}</span><span></span></button>`).join("")}</div>`})():empty("Nothing on yet.","The music videos are on their way."))}
+  if(kind==="videos"){const v=ROOM.videos;return `<span class="or-kick">On the telly</span><h3 class="or-h">Music videos</h3>`+(v.length?(()=>{const L=Math.min(RM.lastVideo||0,v.length-1);return `<div class="or-video" id="orStage">${ytStage(v[L],false)}</div><p class="yt-cap"><a id="ytOut" href="https://www.youtube.com/watch?v=${v[L].yt}" target="_blank" rel="noopener">Watch on YouTube ↗</a></p><div class="or-tracks">${v.map((x,i)=>`<button class="or-track${i===L?" on":""}" data-vid="${i}"><span class="pp">▶</span><span>${esc(x.title)}</span><span></span></button>`).join("")}</div>`})():empty("Nothing on yet.","The music videos are on their way."))}
   if(kind==="paintings"){const v=ROOM.paintings;return `<span class="or-kick">On the wall</span><h3 class="or-h">Paintings</h3>`+(v.length?`<div class="or-grid">${v.map((x,i)=>`<button data-pt="${i}"><img src="${x.src}" alt="${esc(x.title)}" loading="lazy"></button>`).join("")}</div>`:empty("The frames are waiting.","Paintings will be hung here soon."))}
   if(kind==="drawer"){return `<span class="or-kick">In the drawer</span><h3 class="or-h">Things I probably shouldn't have made.</h3>`+empty("Suspiciously empty.","Unfinished concepts, sketches and strange creations will turn up here.")}
   if(kind&&kind.startsWith("book:")){const n=+kind.slice(5),b=ROOM.books[n];return `<span class="or-kick">The Hidden Library · ${b.num} of ${toRoman(ROOM.books.length)}</span><article class="or-read has-cover"><img class="or-cover" src="${bookSrc(b,800)}" srcset="${bookSrc(b,400)} 400w, ${bookSrc(b,800)} 800w" sizes="(max-width:600px) 40vw, 260px" width="800" height="1200" alt="Cover of ${esc(b.title)} by Lorcán O’Neill"><div><h3 class="or-h">${esc(b.title)}</h3>${b.sub?`<p class="or-sub">${esc(b.sub)}</p>`:""}<p class="or-p">${esc(b.about)}</p></div></article>`+(b.excerpt&&b.excerpt.length?`<div class="or-exc">${b.excerpt.map(x=>`<p>${esc(x).replace(/\*([^*]+)\*/g,"<em>$1</em>")}</p>`).join("")}</div>`:empty("Excerpt coming soon.","A short passage from the book will live here."))+`<div class="or-shelfrow" aria-label="The collection">${ROOM.books.map((x,i)=>`<button type="button" data-goto-book="${i}" class="${i===n?"on":""}" aria-label="${esc(x.title)}"><img src="${bookSrc(x,400)}" alt="" width="400" height="600" loading="lazy"></button>`).join("")}</div>`}
@@ -615,7 +628,9 @@ function panelHTML(kind){
 function openPanel(kind){
   orBody.innerHTML=panelHTML(kind);orPanel.classList.toggle("clear",kind.startsWith("frame:"));orPanel.hidden=false;$("#orX").focus({preventScroll:true});
   orBody.querySelectorAll("[data-goto-book]").forEach(b=>b.addEventListener("click",()=>{const i=+b.dataset.gotoBook;remember("book"+i);openPanel("book:"+i);const pi=orPanel.querySelector(".or-panel-in");if(pi)pi.scrollTo({top:0,behavior:reduced?"auto":"smooth"})}));
-  orBody.querySelectorAll("[data-vid]").forEach(b=>b.addEventListener("click",()=>{remember("lastVideo",+b.dataset.vid);const v=ROOM.videos[+b.dataset.vid];const el=$("#orVid");el.src=v.src;if(v.poster)el.poster=v.poster;orBody.querySelectorAll("[data-vid]").forEach(x=>x.classList.toggle("on",x===b))}));
+  const stage=orBody.querySelector("#orStage"),playAt=i=>{stage.innerHTML=ytStage(ROOM.videos[i],true)};
+  stage&&stage.addEventListener("click",e=>{if(e.target.closest("[data-play]"))playAt(Math.min(RM.lastVideo||0,ROOM.videos.length-1))});
+  orBody.querySelectorAll("[data-vid]").forEach(b=>b.addEventListener("click",e=>{const i=+b.dataset.vid;const o=orBody.querySelector("#ytOut");if(o)o.href="https://www.youtube.com/watch?v="+ROOM.videos[i].yt;remember("lastVideo",i);orBody.querySelectorAll("[data-vid]").forEach(x=>x.classList.toggle("on",x===b));if(MPA)playAt(i);else stage.innerHTML=ytStage(ROOM.videos[i],false)}));
   orBody.querySelectorAll("[data-pt]").forEach(b=>b.addEventListener("click",()=>{const p=ROOM.paintings[+b.dataset.pt];orBody.innerHTML=`<span class="or-kick">Paintings</span><h3 class="or-h">${esc(p.title)}</h3><img src="${p.src}" alt="${esc(p.title)}" style="width:100%;margin-top:18px;border-radius:10px"><button class="btn btn-line btn-sm" style="margin-top:16px" onclick="openPanel('paintings')">All paintings</button>`}));
   orBody.querySelectorAll("[data-song]").forEach(b=>b.addEventListener("click",()=>{
     const i=+b.dataset.song;if(!orAudio){orAudio=new Audio();orAudio.preload="none";orAudio.addEventListener("timeupdate",()=>{const p=$("#orProg");if(p)p.style.width=(orAudio.currentTime/orAudio.duration*100||0)+"%";const on=orBody.querySelector(".or-track.on .tm");if(on)on.textContent=fmt(orAudio.currentTime)});orAudio.addEventListener("ended",()=>{const nx=+orAudio.dataset.i+1;room.classList.remove("playing");if(nx<ROOM.songs.length){const btn=orBody.querySelector('[data-song="'+nx+'"]');if(btn&&!orPanel.hidden)btn.click();else{orAudio.src=ROOM.songs[nx].src;orAudio.dataset.i=nx;orAudio.play().then(()=>room.classList.add("playing")).catch(()=>{})}}})}
@@ -626,7 +641,7 @@ function openPanel(kind){
     orAudio.play().then(()=>{room.classList.add("playing");remember("songs");orBody.querySelectorAll(".or-track").forEach(x=>{x.classList.toggle("on",x===b);x.querySelector(".pp").textContent=x===b?"❚❚":"▶"})}).catch(()=>toast("That track couldn't play."));
   }));
 }
-function closePanel(){orPanel.hidden=true;const v=$("#orVid");v&&v.pause();room.classList.remove("zoom");room.querySelectorAll(".or-fr.focus").forEach(x=>x.classList.remove("focus"));room.querySelectorAll(".bk.out").forEach(b=>{b.classList.remove("out");b.classList.add("read")})}
+function closePanel(){orPanel.hidden=true;const v=$("#orVid");v&&v.pause();orBody.querySelectorAll("iframe").forEach(f=>f.remove());room.classList.remove("zoom");room.querySelectorAll(".or-fr.focus").forEach(x=>x.classList.remove("focus"));room.querySelectorAll(".bk.out").forEach(b=>{b.classList.remove("out");b.classList.add("read")})}
 room.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",()=>{remember(b.dataset.open);openPanel(b.dataset.open)}));
 $("#orX")?.addEventListener("click",closePanel);
 orPanel&&orPanel.addEventListener("click",e=>{if(e.target===orPanel)closePanel()});

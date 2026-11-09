@@ -806,7 +806,14 @@ html.room-on,html.room-on body{overflow:hidden}
 .or-grid button{padding:0;border:0;background:none;cursor:zoom-in;border-radius:8px;overflow:hidden}
 .or-grid img{width:100%;aspect-ratio:4/5;object-fit:cover}
 .or-video{margin-top:22px;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
-.or-video video{width:100%;height:100%}
+.or-video video,.or-video iframe{display:block;width:100%;height:100%;border:0}
+.yt-lite{position:relative;display:grid;place-items:center;align-content:center;gap:6px;width:100%;height:100%;padding:0;border:0;cursor:pointer;background:#000 center/cover no-repeat;color:#fff;text-decoration:none;font:inherit}
+.yt-lite::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.45))}
+.yt-off{background:radial-gradient(70% 90% at 50% 40%,rgba(255,106,0,.22),transparent 70%),#0c0a08}
+.yt-play{position:relative;z-index:1;width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:var(--grad);color:#0A0A0A;font-size:22px;padding-left:4px;box-shadow:0 10px 30px rgba(0,0,0,.5);transition:transform .3s var(--e-out)}
+.yt-lite:hover .yt-play,.yt-lite:focus-visible .yt-play{transform:scale(1.08)}
+.yt-t,.yt-s{position:relative;z-index:1}.yt-t{margin-top:10px;font-weight:600;font-size:18px}.yt-s{font-size:13px;color:rgba(255,255,255,.65)}
+.yt-cap{margin:10px 0 0;text-align:right;font-size:13px}.yt-cap a{color:var(--faint);text-decoration:none}.yt-cap a:hover{color:var(--ink)}
 
 /* ---------- The room on a phone: a tall, stacked corner of the room ---------- */
 @media (max-width:767px),(orientation:portrait) and (max-width:1023px){
