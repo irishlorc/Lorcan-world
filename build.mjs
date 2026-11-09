@@ -54,38 +54,11 @@ const META = {
   },
   studio: {
     path: "/studio",
-    title: "The Possibilities Studio | Creative Concepts by Lorcán O'Neill",
-    desc: "Three independent brand concepts by Lorcán O'Neill: WADDEN (maritime robotics), Kindling (small-business software) and RUNE (premium audio). Identity, campaigns, packaging, product and web design for fictional companies.",
+    title: "The Possibilities Studio | Brand Concepts by Lorcán O'Neill",
+    desc: "Four independent brand concepts by Lorcán O'Neill for fictional companies: WADDEN (maritime robotics), Kindling (small-business software), RUNE (premium audio) and FOLD (modular furniture).",
     og: "studio",
     type: "CollectionPage",
     crumb: "Studio",
-  },
-  "studio-wadden": {
-    path: "/studio/wadden",
-    title: "WADDEN: Maritime Robotics Brand Concept | Lorcán O'Neill",
-    desc: "WADDEN, a fictional Dutch maritime robotics company that inspects dikes and flood defences. Identity, stationery, campaigns, brochure, exhibition stand and website by Lorcán O'Neill.",
-    og: "studio-wadden",
-    type: "WebPage",
-    crumb: "WADDEN",
-    parent: "studio",
-  },
-  "studio-kindling": {
-    path: "/studio/kindling",
-    title: "Kindling: Small-Business Software Brand Concept | Lorcán O'Neill",
-    desc: "Kindling, fictional software that takes admin off small-business owners. Identity, product introduction, newsletter, social and poster campaigns, interface, onboarding and website by Lorcán O'Neill.",
-    og: "studio-kindling",
-    type: "WebPage",
-    crumb: "Kindling",
-    parent: "studio",
-  },
-  "studio-rune": {
-    path: "/studio/rune",
-    title: "RUNE: Premium Audio Brand Concept | Lorcán O'Neill",
-    desc: "RUNE, a fictional premium audio brand. Identity, 3D product renders, packaging, launch campaign, editorial photography, website and billboard by Lorcán O'Neill.",
-    og: "studio-rune",
-    type: "WebPage",
-    crumb: "RUNE",
-    parent: "studio",
   },
   thoughts: {
     path: "/thoughts",
@@ -111,7 +84,7 @@ const META = {
     noindex: true,
   },
 };
-const ORDER = ["home", "about", "experience", "work", "studio", "studio-wadden", "studio-kindling", "studio-rune", "thoughts", "contact"];
+const ORDER = ["home", "about", "experience", "work", "studio", "thoughts", "contact"];
 
 // ---------------------------------------------------------------- source ---
 const src = fs.readFileSync("src/index.html", "utf8");
@@ -425,10 +398,7 @@ fs.writeFileSync(
 - [About](${SITE}/about): his background in his own words
 - [Experience](${SITE}/experience): design, communications, business and technology, and his current role at Arkintel
 - [Work](${SITE}/work): the brands and organisations above
-- [The Possibilities Studio](${SITE}/studio): three independent brand concepts for fictional companies, clearly labelled as concepts, not client commissions:
-  - [WADDEN](${SITE}/studio/wadden): maritime robotics that inspect dikes and flood defences. Identity, stationery, campaigns, brochure, LinkedIn, exhibition stand, website.
-  - [Kindling](${SITE}/studio/kindling): small-business admin software. Identity, product introduction, newsletter, social, interface, posters, onboarding, website.
-  - [RUNE](${SITE}/studio/rune): premium audio. Identity, 3D product renders, packaging, launch campaign, editorial, website, billboard.
+- [The Possibilities Studio](${SITE}/studio): four independent brand concepts for fictional companies, clearly labelled as concepts, not client commissions: WADDEN (maritime robotics that inspect dikes), Kindling (small-business admin software), RUNE (premium audio) and FOLD (Dutch modular furniture). Identity, campaigns, stationery, brochures, social, exhibition and website work.
 - [Thoughts](${SITE}/thoughts): short notes on technology, AI, creativity and business
 - [Contact](${SITE}/contact): email
 

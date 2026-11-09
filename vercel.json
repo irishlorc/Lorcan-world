@@ -36,6 +36,21 @@
       "source": "/blog/:slug",
       "destination": "/thoughts/:slug",
       "permanent": true
+    },
+    {
+      "source": "/studio/wadden",
+      "destination": "/studio",
+      "permanent": true
+    },
+    {
+      "source": "/studio/kindling",
+      "destination": "/studio",
+      "permanent": true
+    },
+    {
+      "source": "/studio/rune",
+      "destination": "/studio",
+      "permanent": true
     }
   ],
   "headers": [

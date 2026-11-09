@@ -853,92 +853,30 @@ html.room-on,html.room-on body{overflow:hidden}
 .st-open img{display:block;width:100%;height:auto;transition:transform 1s var(--e-out)}
 .st-open:hover img,.st-open:focus-visible img{transform:scale(1.025)}
 .st-open:hover,.st-open:focus-visible{box-shadow:0 0 0 1px rgba(255,106,0,.45),0 30px 60px -30px rgba(0,0,0,.8)}
-/* ---- Studio overview previews ---- */
-.st-projects{display:grid;gap:clamp(18px,2.4vw,32px)}
-.spv{position:relative;display:block;overflow:hidden;border-radius:var(--r-lg);text-decoration:none;color:#fff;isolation:isolate;min-height:clamp(380px,46vw,620px);box-shadow:0 0 0 1px var(--line);transition:box-shadow .4s var(--e-out)}
-.spv:hover,.spv:focus-visible{box-shadow:0 0 0 1px rgba(255,255,255,.28),0 40px 80px -40px #000}
-.spv-logo{position:absolute;z-index:3;height:auto}
-.spv-copy{position:absolute;z-index:3;display:grid;gap:6px}
-.spv-n{font-family:var(--f-serif);font-style:italic;font-size:15px;opacity:.75}
-.spv-ind{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
-.spv-line{font-family:var(--f-serif);font-weight:300;font-size:clamp(22px,2.6vw,34px);line-height:1.1;letter-spacing:-.01em}
-.spv-go{position:absolute;z-index:3;right:clamp(18px,3vw,40px);bottom:clamp(18px,3vw,36px);display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.06em;padding:11px 16px;border-radius:999px;border:1px solid currentColor;transition:background .3s,color .3s}
-.spv-go svg{width:14px;height:14px;transition:transform .3s var(--e-out)}
-.spv:hover .spv-go svg{transform:translateX(4px)}
-/* WADDEN: cinematic photograph */
-.spv-wadden{background:#00122B}
-.spv-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--e-out)}
-.spv-wadden:hover .spv-photo{transform:scale(1.03)}
-.spv-grade{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,18,43,.55),rgba(0,18,43,0) 38%,rgba(0,18,43,0) 55%,rgba(0,18,43,.85))}
-.spv-wadden .spv-logo{top:clamp(20px,3.2vw,44px);left:clamp(20px,3.2vw,44px);width:clamp(180px,24vw,330px)}
-.spv-wadden .spv-copy{left:clamp(20px,3.2vw,44px);bottom:clamp(20px,3.2vw,40px);max-width:60%}
-.spv-wadden .spv-ind{color:#FEC104}
-.spv-wadden:hover .spv-go{background:#FEC104;color:#00122B;border-color:#FEC104}
-/* Kindling: paper and type */
-.spv-kindling{background:#F6EFE3;color:#2A1150}
-.spv-k-type{position:absolute;z-index:2;left:clamp(20px,3.2vw,44px);top:38%;font-family:var(--f-display);font-weight:700;font-size:clamp(34px,4.6vw,68px);line-height:.95;letter-spacing:-.035em;max-width:50%}
-.spv-k-type em{display:block;margin-top:10px;font-family:var(--f-serif);font-style:italic;font-weight:300;font-size:.42em;line-height:1.2;letter-spacing:0;color:#5b4a73}
-.spv-k-a,.spv-k-b{position:absolute;z-index:1;width:clamp(240px,34vw,520px);height:auto;border-radius:4px;box-shadow:0 30px 60px -30px rgba(42,17,80,.5);transition:transform 1s var(--e-out)}
-.spv-k-a{right:-3%;top:9%;transform:rotate(3deg)}
-.spv-k-b{right:16%;bottom:-12%;transform:rotate(-4deg);width:clamp(200px,27vw,420px)}
-.spv-kindling:hover .spv-k-a{transform:rotate(1.5deg) translateY(-6px)}
-.spv-kindling:hover .spv-k-b{transform:rotate(-2deg) translateY(-6px)}
-.spv-kindling .spv-logo{top:clamp(20px,3.2vw,44px);left:clamp(20px,3.2vw,44px);width:clamp(150px,18vw,240px)}
-.spv-kindling .spv-copy{left:clamp(20px,3.2vw,44px);bottom:clamp(20px,3.2vw,40px)}
-.spv-kindling .spv-ind{color:#2A1150}
-.spv-kindling .spv-go{background:#F6EFE3}
-.spv-kindling:hover .spv-go{background:#00AE1D;color:#fff;border-color:#00AE1D}
-/* RUNE: object in a spotlight */
-.spv-rune{background:#0d0d0f}
-.spv-spot{position:absolute;inset:0;z-index:0;background:radial-gradient(60% 70% at 66% 46%,#2a2a30 0%,#141416 45%,#0b0b0c 100%)}
-.spv-spot::after{content:"";position:absolute;left:46%;right:8%;bottom:14%;height:10%;border-radius:50%;background:radial-gradient(closest-side,rgba(94,33,242,.35),transparent)}
-.spv-prod{position:absolute;z-index:1;right:6%;top:52%;width:min(48%,620px);height:auto;transform:translateY(-50%);filter:drop-shadow(0 40px 50px rgba(0,0,0,.6));transition:transform 1.2s var(--e-out)}
-.spv-rune:hover .spv-prod{transform:translateY(-52%) rotate(-1.5deg)}
-.spv-rune .spv-logo{top:clamp(20px,3.2vw,44px);left:clamp(20px,3.2vw,44px);width:clamp(130px,14vw,200px)}
-.spv-rune .spv-copy{left:clamp(20px,3.2vw,44px);bottom:clamp(20px,3.2vw,40px);max-width:42%}
-.spv-rune .spv-ind{color:#B9B9C0}
-.spv-rune:hover .spv-go{background:#ECEBE8;color:#121214;border-color:#ECEBE8}
-@media (max-width:760px){
-  .spv{min-height:0;aspect-ratio:4/5}
-  .spv-wadden .spv-copy,.spv-rune .spv-copy{max-width:calc(100% - 40px);bottom:76px}
-  .spv-kindling .spv-copy{bottom:76px}
-  .spv-go{left:clamp(18px,3vw,40px);right:auto;bottom:20px}
-  .spv-k-type{top:19%;max-width:88%;font-size:clamp(30px,9vw,46px)}
-  .spv-kindling{aspect-ratio:3/4}
-  .spv-k-a{width:46%;top:46%;bottom:auto;right:-5%}
-  .spv-k-b{display:none}
-  .spv-prod{width:96%;right:-14%;top:44%}
-  .spv-line{font-size:22px}
 }
 /* ---- Studio project pages ---- */
-.pj-hero .back{display:flex;width:max-content;margin-bottom:clamp(28px,4vw,52px)}
-.pj-top{display:grid;gap:18px}
-.pj-h{margin:0;line-height:0}
-.pj-logo{width:clamp(220px,40vw,560px);height:auto}
-.pj-kindling .pj-logo{width:clamp(200px,32vw,440px)}
-.pj-rune .pj-logo{width:clamp(150px,22vw,300px)}
-.pj-concept{margin:6px 0 0;font-family:var(--f-serif);font-weight:300;font-style:italic;font-size:clamp(24px,3vw,40px);line-height:1.15;color:var(--ink);max-width:30ch;text-wrap:balance}
-.pj-meta{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);margin-top:clamp(36px,5vw,64px);padding-top:clamp(28px,3vw,40px);border-top:1px solid var(--line-2)}
-.pj-intro{margin:0;font-size:clamp(18px,1.6vw,21px);line-height:1.6;color:var(--ink);max-width:36rem}
-.pj-meta dl{margin:0;display:grid;gap:20px}
-.pj-meta dt{font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
-.pj-meta dd{margin:0;color:var(--muted);line-height:1.65}
-.pj .st-note i{background:var(--pj-acc);box-shadow:0 0 0 4px color-mix(in srgb,var(--pj-acc) 22%,transparent)}
-.pj-wide{max-width:min(1480px,100%)}
-.pj-gal .wrap{display:grid;gap:clamp(40px,6vw,96px)}
+.st-index{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
+.st-index button{display:inline-flex;align-items:baseline;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--ink);font:inherit;font-size:15px;cursor:pointer;transition:border-color var(--m-ui),background var(--m-ui)}
+.st-index button b{font-family:var(--f-serif);font-style:italic;font-weight:400;color:var(--accent)}
+.st-index button:hover,.st-index button:focus-visible{border-color:var(--accent);background:rgba(255,106,0,.06)}
+.st-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(16px,2.4vw,32px);align-items:start;margin-bottom:var(--head-gap)}
+.st-n{font-family:var(--f-serif);font-style:italic;font-weight:300;font-size:clamp(44px,5.4vw,76px);line-height:.9;color:var(--accent);background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-right:.08em}
+.st-what{margin:12px 0 0;color:var(--muted);max-width:40rem}
+.st-brand{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);border:1px solid var(--line-2);padding:7px 11px;border-radius:999px;white-space:nowrap;margin-top:8px}
+.st-why{margin:30px 0 0;max-width:46rem;color:var(--muted);display:grid;gap:8px;line-height:1.7}
+.st-why span{font-size:var(--fs-label);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.st-col{border-top:1px solid var(--line)}
+.st-gal{display:grid;gap:clamp(28px,3.4vw,48px)}
+.st-soon{display:flex;gap:10px;align-items:center;margin:26px 0 0;font-size:var(--fs-small);color:var(--muted);max-width:46rem}
+.st-soon i{flex:none;width:7px;height:7px;border-radius:50%;border:1.5px solid var(--accent)}
+@media (max-width:760px){.st-head{grid-template-columns:auto minmax(0,1fr)}.st-brand{grid-column:2;justify-self:start;margin-top:0}}
 .pj-row{display:grid;gap:clamp(16px,2vw,32px);align-items:start}
 .pj-tile{margin:0;min-width:0}
 .pj-tile .st-open{border-radius:4px}
 .pj-tile .st-open img{aspect-ratio:var(--ar)}
 .pj-tile figcaption{display:flex;gap:12px;align-items:baseline;margin-top:14px;font-size:13px;color:var(--faint)}
 .pj-tile figcaption b{font-family:var(--f-serif);font-style:italic;font-weight:400;color:var(--muted)}
-.pj-next{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:18px 24px;padding:clamp(28px,4vw,48px) 0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);text-decoration:none;color:var(--ink)}
-.pj-next .label{grid-column:1/-1}
-.pj-next img{height:clamp(34px,5vw,64px);width:auto;max-width:100%;justify-self:start;transition:transform .5s var(--e-out)}
-.pj-next svg{width:clamp(24px,3vw,36px);height:clamp(24px,3vw,36px);transition:transform .4s var(--e-out)}
-.pj-next:hover img{transform:translateX(8px)}.pj-next:hover svg{transform:translateX(6px)}
 @media (max-width:760px){
-  .pj-meta{grid-template-columns:minmax(0,1fr)}
   .pj-row{grid-template-columns:minmax(0,1fr)!important}
 }
 .st-lb{position:fixed;inset:0;z-index:240;background:rgba(6,6,6,.95);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;grid-template-rows:auto minmax(0,1fr);animation:fadeIn .25s both}
@@ -1708,35 +1646,63 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
       <div class="head rise">
         <span class="label">The Possibilities Studio</span>
         <h1 class="display">Don't imagine what I could make. <em class="acc">Have a look.</em></h1>
-        <p class="lede">Three fictional companies, each given a complete identity and a body of finished work: an industrial engineering firm, a friendly software business and a premium consumer brand.</p>
+        <p class="lede">Four fictional companies, each given its own identity and a body of finished work: an engineering firm, a software business, an audio brand and a furniture maker.</p>
         <p class="st-note"><i aria-hidden="true"></i>These aren't projects I was hired to make. They're examples of what I could bring to the table.</p>
       </div>
+      <nav class="st-index rv" aria-label="Projects">
+        <button type="button" data-jump="st-wadden"><b>01</b>WADDEN</button>
+        <button type="button" data-jump="st-kindling"><b>02</b>Kindling</button>
+        <button type="button" data-jump="st-rune"><b>03</b>RUNE</button>
+        <button type="button" data-jump="st-fold"><b>04</b>FOLD</button>
+      </nav>
     </div>
   </section>
-  <section class="sec st-list">
-    <div class="wrap st-projects">
-      <a class="spv spv-wadden rv" href="#studio-wadden">
-        <img class="spv-photo" src="img/studio2/pv-wadden.webp" alt="" width="1800" height="1012" loading="lazy">
-        <span class="spv-grade" aria-hidden="true"></span>
-        <img width="1742" height="197" class="spv-logo" src="img/studio2/logos/wadden-light.svg" alt="WADDEN">
-        <span class="spv-copy"><span class="spv-n">01</span><span class="spv-ind">Maritime robotics</span><span class="spv-line">Eyes on the water line.</span></span>
-        <span class="spv-go">View project <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
-      </a>
-      <a class="spv spv-kindling rv" href="#studio-kindling">
-        <span class="spv-k-type" aria-hidden="true">Less administration.<br><em>More room to run your business.</em></span>
-        <img class="spv-k-a" src="img/studio2/k-ads-thumb.webp" alt="" width="1000" height="682" loading="lazy">
-        <img class="spv-k-b" src="img/studio2/k-intro-thumb.webp" alt="" width="1000" height="625" loading="lazy">
-        <img width="924" height="271" class="spv-logo" src="img/studio2/logos/kindling-dark.svg" alt="Kindling">
-        <span class="spv-copy"><span class="spv-n">02</span><span class="spv-ind">Small-business software</span></span>
-        <span class="spv-go">View project <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
-      </a>
-      <a class="spv spv-rune rv" href="#studio-rune">
-        <span class="spv-spot" aria-hidden="true"></span>
-        <img class="spv-prod" src="img/studio2/pv-rune.webp" alt="" width="1400" height="1113" loading="lazy">
-        <img width="1580" height="293" class="spv-logo" src="img/studio2/logos/rune-light.svg" alt="RUNE">
-        <span class="spv-copy"><span class="spv-n">03</span><span class="spv-ind">Premium audio</span><span class="spv-line">Sound, without compromise.</span></span>
-        <span class="spv-go">View project <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
-      </a>
+  <section class="sec st-col" id="st-wadden" aria-labelledby="st-h-wadden">
+    <div class="wrap">
+      <header class="st-head rv">
+        <span class="st-n">01</span>
+        <div><h2 class="title" id="st-h-wadden">WADDEN</h2><p class="st-what">A fictional Dutch engineering company whose autonomous robots inspect dikes, flood defences and water infrastructure.</p></div>
+        <span class="st-brand">Maritime robotics</span>
+      </header>
+      <div class="st-gal"><div class="pj-row" style="grid-template-columns:1.6000fr 1.5000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Identity system"><img src="img/studio3/w1-thumb.webp" srcset="img/studio3/w1-thumb.webp 1000w, img/studio3/w1-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1500" alt="Identity system, concept artwork" loading="lazy" decoding="async"></button><figcaption>Identity system</figcaption></figure><figure class="pj-tile" style="--ar:1.5000"><button type="button" class="st-open" aria-label="Enlarge: Business stationery"><img src="img/studio3/w2-thumb.webp" srcset="img/studio3/w2-thumb.webp 1000w, img/studio3/w2-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1600" alt="Business stationery, concept artwork" loading="lazy" decoding="async"></button><figcaption>Business stationery</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.5000fr 1.7778fr"><figure class="pj-tile" style="--ar:1.5000"><button type="button" class="st-open" aria-label="Enlarge: Technology campaign · WD-07 launch"><img src="img/studio3/w3-thumb.webp" srcset="img/studio3/w3-thumb.webp 1000w, img/studio3/w3-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1600" alt="Technology campaign · WD-07 launch, concept artwork" loading="lazy" decoding="async"></button><figcaption>Technology campaign · WD-07 launch</figcaption></figure><figure class="pj-tile" style="--ar:1.7778"><button type="button" class="st-open" aria-label="Enlarge: Photography campaign"><img src="img/studio3/w4-thumb.webp" srcset="img/studio3/w4-thumb.webp 1000w, img/studio3/w4-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1350" alt="Photography campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Photography campaign</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr 2.2642fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Technical brochure · spread"><img src="img/studio3/w5-thumb.webp" srcset="img/studio3/w5-thumb.webp 1000w, img/studio3/w5-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1500" alt="Technical brochure · spread, concept artwork" loading="lazy" decoding="async"></button><figcaption>Technical brochure · spread</figcaption></figure><figure class="pj-tile" style="--ar:2.2642"><button type="button" class="st-open" aria-label="Enlarge: LinkedIn campaign"><img src="img/studio3/w6-thumb.webp" srcset="img/studio3/w6-thumb.webp 1000w, img/studio3/w6-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1060" alt="LinkedIn campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>LinkedIn campaign</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.7778fr 1.6000fr"><figure class="pj-tile" style="--ar:1.7778"><button type="button" class="st-open" aria-label="Enlarge: Exhibition stand"><img src="img/studio3/w7-thumb.webp" srcset="img/studio3/w7-thumb.webp 1000w, img/studio3/w7-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1350" alt="Exhibition stand, concept artwork" loading="lazy" decoding="async"></button><figcaption>Exhibition stand</figcaption></figure><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Website concept"><img src="img/studio3/w8-thumb.webp" srcset="img/studio3/w8-thumb.webp 1000w, img/studio3/w8-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1500" alt="Website concept, concept artwork" loading="lazy" decoding="async"></button><figcaption>Website concept</figcaption></figure></div></div>
+      
+      <p class="st-why rv"><span>The thinking</span>Yellow means caution on a dike, so it's rationed: the flag in the logo, the bumpers on the machine and very little else. The photography stays documentary, with flat North Sea light, wet basalt and real weather, because the people buying this inspect dikes for a living and can spot a staged shot.</p>
+    </div>
+  </section>
+  <section class="sec st-col" id="st-kindling" aria-labelledby="st-h-kindling">
+    <div class="wrap">
+      <header class="st-head rv">
+        <span class="st-n">02</span>
+        <div><h2 class="title" id="st-h-kindling">Kindling</h2><p class="st-what">Fictional software that takes invoices, follow-ups and everyday admin off small-business owners.</p></div>
+        <span class="st-brand">Small-business software</span>
+      </header>
+      <div class="st-gal"><div class="pj-row" style="grid-template-columns:1.6000fr 1.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Identity system"><img src="img/studio2/k-identity-thumb.webp" srcset="img/studio2/k-identity-thumb.webp 1000w, img/studio2/k-identity-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="1000" alt="Identity system, concept artwork" loading="lazy" decoding="async"></button><figcaption>Identity system</figcaption></figure><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Product introduction"><img src="img/studio2/k-intro-thumb.webp" srcset="img/studio2/k-intro-thumb.webp 1000w, img/studio2/k-intro-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="1000" alt="Product introduction, concept artwork" loading="lazy" decoding="async"></button><figcaption>Product introduction</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr 1.4545fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Product interface · payment reminder"><img src="img/studio2/k-ui-thumb.webp" srcset="img/studio2/k-ui-thumb.webp 1000w, img/studio2/k-ui-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="1000" alt="Product interface · payment reminder, concept artwork" loading="lazy" decoding="async"></button><figcaption>Product interface · payment reminder</figcaption></figure><figure class="pj-tile" style="--ar:1.4545"><button type="button" class="st-open" aria-label="Enlarge: Onboarding · welcome email and guide"><img src="img/studio2/k-onboard-thumb.webp" srcset="img/studio2/k-onboard-thumb.webp 1000w, img/studio2/k-onboard-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="1100" alt="Onboarding · welcome email and guide, concept artwork" loading="lazy" decoding="async"></button><figcaption>Onboarding · welcome email and guide</figcaption></figure></div><div class="pj-row" style="grid-template-columns:0.6250fr 0.6545fr"><figure class="pj-tile" style="--ar:0.6250"><button type="button" class="st-open" aria-label="Enlarge: Newsletter · The Weekly Kindling"><img src="img/studio2/k-news-thumb.webp" srcset="img/studio2/k-news-thumb.webp 1000w, img/studio2/k-news-full.webp 1400w" sizes="(min-width:1024px) 50vw, 100vw" width="1400" height="2240" alt="Newsletter · The Weekly Kindling, concept artwork" loading="lazy" decoding="async"></button><figcaption>Newsletter · The Weekly Kindling</figcaption></figure><figure class="pj-tile" style="--ar:0.6545"><button type="button" class="st-open" aria-label="Enlarge: Website concept"><img src="img/studio2/k-web-thumb.webp" srcset="img/studio2/k-web-thumb.webp 1000w, img/studio2/k-web-full.webp 1440w" sizes="(min-width:1024px) 50vw, 100vw" width="1440" height="2200" alt="Website concept, concept artwork" loading="lazy" decoding="async"></button><figcaption>Website concept</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.4667fr 2.4440fr"><figure class="pj-tile" style="--ar:1.4667"><button type="button" class="st-open" aria-label="Enlarge: Advertising campaign · posters"><img src="img/studio2/k-ads-thumb.webp" srcset="img/studio2/k-ads-thumb.webp 1000w, img/studio2/k-ads-full.webp 2200w" sizes="(min-width:1024px) 50vw, 100vw" width="2200" height="1500" alt="Advertising campaign · posters, concept artwork" loading="lazy" decoding="async"></button><figcaption>Advertising campaign · posters</figcaption></figure><figure class="pj-tile" style="--ar:2.4440"><button type="button" class="st-open" aria-label="Enlarge: Social campaign"><img src="img/studio2/k-social-thumb.webp" srcset="img/studio2/k-social-thumb.webp 1000w, img/studio2/k-social-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="982" alt="Social campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Social campaign</figcaption></figure></div></div>
+      
+      <p class="st-why rv"><span>The thinking</span>Small-business owners don't want software, they want their evenings back. So the brand talks like a helpful colleague, sets its headlines like a magazine and shows the actual words a tradesperson would send, never a floating dashboard.</p>
+    </div>
+  </section>
+  <section class="sec st-col" id="st-rune" aria-labelledby="st-h-rune">
+    <div class="wrap">
+      <header class="st-head rv">
+        <span class="st-n">03</span>
+        <div><h2 class="title" id="st-h-rune">RUNE</h2><p class="st-what">A fictional premium audio company making headphones and home speakers that feel considered, tactile and effortless.</p></div>
+        <span class="st-brand">Premium audio</span>
+      </header>
+      <div class="st-gal"><div class="pj-row" style="grid-template-columns:1.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Identity system"><img src="img/studio2/r1-thumb.webp" srcset="img/studio2/r1-thumb.webp 1000w, img/studio2/r1-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="1000" alt="Identity system, concept artwork" loading="lazy" decoding="async"></button><figcaption>Identity system</figcaption></figure></div></div>
+      <p class="st-soon rv"><i aria-hidden="true"></i>The product, packaging and campaign work is being reshot as photography and will join the identity here soon.</p>
+      <p class="st-why rv"><span>The thinking</span>Bold, minimal and architectural: charcoal and off-white, real metal, and violet used once per layout, like the light ring on the headphones.</p>
+    </div>
+  </section>
+  <section class="sec st-col" id="st-fold" aria-labelledby="st-h-fold">
+    <div class="wrap">
+      <header class="st-head rv">
+        <span class="st-n">04</span>
+        <div><h2 class="title" id="st-h-fold">FOLD</h2><p class="st-what">A fictional Dutch furniture company making modular pieces for modern homes.</p></div>
+        <span class="st-brand">Modular furniture</span>
+      </header>
+      <div class="st-gal"><div class="pj-row" style="grid-template-columns:1.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Identity system"><img src="img/studio3/f1-thumb.webp" srcset="img/studio3/f1-thumb.webp 1000w, img/studio3/f1-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1500" alt="Identity system, concept artwork" loading="lazy" decoding="async"></button><figcaption>Identity system</figcaption></figure></div></div>
+      <p class="st-soon rv"><i aria-hidden="true"></i>The collection, catalogue, campaign and showroom work is being shot now and will join the identity here soon.</p>
+      <p class="st-why rv"><span>The thinking</span>The logo is built the way the furniture is: four letters made of folded, interlocking blocks. Terracotta leads and forest green supports, with cream and charcoal holding it together like plaster and steel in a canal house.</p>
     </div>
   </section>
   <section class="sec">
@@ -1745,81 +1711,6 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
         <div><p>Like what you see? Imagine it with your brand.</p></div>
         <a class="btn btn-primary" href="#contact">Let's talk <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
-    </div>
-  </section>
-</div>
-
-<!-- =================== STUDIO WADDEN =================== -->
-<div class="page pj pj-wadden" data-page="studio-wadden" style="--pj-acc:#FEC104;--pj-bg:#00122B" hidden>
-  <section class="sec pj-hero">
-    <div class="wrap">
-      <a class="back" href="#studio"><svg aria-hidden="true"><use href="#i-arrow"/></svg> The Studio</a>
-      <div class="pj-top rise">
-        <p class="label">Project 01 · Independent concept</p>
-        <h1 class="pj-h"><img width="1742" height="197" src="img/studio2/logos/wadden-light.svg" alt="WADDEN" class="pj-logo"><span class="sr">WADDEN: Eyes on the water line.</span></h1>
-        <p class="pj-concept" aria-hidden="true">Eyes on the water line.</p>
-      </div>
-      <div class="pj-meta">
-        <p class="pj-intro">A Dutch engineering company building autonomous robots that inspect dikes, flood defences and critical water infrastructure, so engineers can see the condition of the structures that keep communities dry.</p>
-        <dl><div><dt>Industry</dt><dd>Maritime robotics · Industrial technology</dd></div><div><dt>Audience</dt><dd>Water authorities, infrastructure operators, engineering firms, municipalities</dd></div><div><dt>Direction</dt><dd>Modern Dutch engineering: precise, dependable and quietly innovative. Navy and white carry the authority; electric blue is the technology; safety yellow is kept for the logo and the moments that need attention.</dd></div></dl>
-      </div>
-      <p class="st-note"><i aria-hidden="true"></i>A fictional company, designed as an independent concept. Not a client commission.</p>
-    </div>
-  </section>
-  <section class="sec pj-gal"><div class="wrap pj-wide"><div class="pj-row" style="grid-template-columns:1.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Industrial photography campaign"><img src="img/studio2/w4-thumb.webp" srcset="img/studio2/w4-thumb.webp 1000w, img/studio2/w4-full.webp 2400w" sizes="(min-width:1024px) 80vw, 100vw" width="2400" height="1500" alt="Industrial photography campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>01</b>Industrial photography campaign</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr 1.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Primary brand identity"><img src="img/studio2/w1-thumb.webp" srcset="img/studio2/w1-thumb.webp 1000w, img/studio2/w1-full.webp 1600w" sizes="(min-width:1024px) 80vw, 100vw" width="1600" height="1000" alt="Primary brand identity, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>02</b>Primary brand identity</figcaption></figure><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Corporate stationery"><img src="img/studio2/w2-thumb.webp" srcset="img/studio2/w2-thumb.webp 1000w, img/studio2/w2-full.webp 1600w" sizes="(min-width:1024px) 80vw, 100vw" width="1600" height="1000" alt="Corporate stationery, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>03</b>Corporate stationery</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.7778fr"><figure class="pj-tile" style="--ar:1.7778"><button type="button" class="st-open" aria-label="Enlarge: Technology campaign · WD-07 announcement"><img src="img/studio2/w3-thumb.webp" srcset="img/studio2/w3-thumb.webp 1000w, img/studio2/w3-full.webp 1920w" sizes="(min-width:1024px) 80vw, 100vw" width="1920" height="1080" alt="Technology campaign · WD-07 announcement, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>04</b>Technology campaign · WD-07 announcement</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Product brochure · technical overview spread"><img src="img/studio2/w5-thumb.webp" srcset="img/studio2/w5-thumb.webp 1000w, img/studio2/w5-full.webp 2400w" sizes="(min-width:1024px) 80vw, 100vw" width="2400" height="1500" alt="Product brochure · technical overview spread, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>05</b>Product brochure · technical overview spread</figcaption></figure></div><div class="pj-row" style="grid-template-columns:3.0496fr"><figure class="pj-tile" style="--ar:3.0496"><button type="button" class="st-open" aria-label="Enlarge: LinkedIn campaign · three posts"><img src="img/studio2/w6-thumb.webp" srcset="img/studio2/w6-thumb.webp 1000w, img/studio2/w6-full.webp 2400w" sizes="(min-width:1024px) 80vw, 100vw" width="2400" height="787" alt="LinkedIn campaign · three posts, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>06</b>LinkedIn campaign · three posts</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.7143fr 0.6261fr"><figure class="pj-tile" style="--ar:1.7143"><button type="button" class="st-open" aria-label="Enlarge: Exhibition stand · front elevation"><img src="img/studio2/w7-thumb.webp" srcset="img/studio2/w7-thumb.webp 1000w, img/studio2/w7-full.webp 2400w" sizes="(min-width:1024px) 80vw, 100vw" width="2400" height="1400" alt="Exhibition stand · front elevation, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>07</b>Exhibition stand · front elevation</figcaption></figure><figure class="pj-tile" style="--ar:0.6261"><button type="button" class="st-open" aria-label="Enlarge: Website concept · desktop landing page"><img src="img/studio2/w8-thumb.webp" srcset="img/studio2/w8-thumb.webp 1000w, img/studio2/w8-full.webp 1440w" sizes="(min-width:1024px) 80vw, 100vw" width="1440" height="2300" alt="Website concept · desktop landing page, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>08</b>Website concept · desktop landing page</figcaption></figure></div></div></section>
-  <section class="sec">
-    <div class="wrap">
-      <a class="pj-next" href="#studio-kindling"><span class="label">Next project</span><img width="924" height="271" src="img/studio2/logos/kindling-light.svg" alt="Kindling"><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    </div>
-  </section>
-</div>
-
-<!-- =================== STUDIO KINDLING =================== -->
-<div class="page pj pj-kindling" data-page="studio-kindling" style="--pj-acc:#00AE1D;--pj-bg:#2A1150" hidden>
-  <section class="sec pj-hero">
-    <div class="wrap">
-      <a class="back" href="#studio"><svg aria-hidden="true"><use href="#i-arrow"/></svg> The Studio</a>
-      <div class="pj-top rise">
-        <p class="label">Project 02 · Independent concept</p>
-        <h1 class="pj-h"><img width="924" height="271" src="img/studio2/logos/kindling-light.svg" alt="Kindling" class="pj-logo"><span class="sr">Kindling: Less administration. More room to run your business.</span></h1>
-        <p class="pj-concept" aria-hidden="true">Less administration. More room to run your business.</p>
-      </div>
-      <div class="pj-meta">
-        <p class="pj-intro">Software that takes the repetitive admin off small-business owners: invoices, payment reminders, follow-ups and paperwork, without adding complexity to their day.</p>
-        <dl><div><dt>Industry</dt><dd>Small-business software · Business administration</dd></div><div><dt>Audience</dt><dd>Freelancers, independent professionals, tradespeople and small-business owners</dd></div><div><dt>Direction</dt><dd>Warm, editorial and a little cheeky. No floating dashboards or stock illustrations: the work is built from type, paper and the actual words a tradesperson would send.</dd></div></dl>
-      </div>
-      <p class="st-note"><i aria-hidden="true"></i>A fictional company, designed as an independent concept. Not a client commission.</p>
-    </div>
-  </section>
-  <section class="sec pj-gal"><div class="wrap pj-wide"><div class="pj-row" style="grid-template-columns:1.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Product introduction"><img src="img/studio2/k-intro-thumb.webp" srcset="img/studio2/k-intro-thumb.webp 1000w, img/studio2/k-intro-full.webp 1600w" sizes="(min-width:1024px) 80vw, 100vw" width="1600" height="1000" alt="Product introduction, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>01</b>Product introduction</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr 1.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Primary brand identity"><img src="img/studio2/k-identity-thumb.webp" srcset="img/studio2/k-identity-thumb.webp 1000w, img/studio2/k-identity-full.webp 1600w" sizes="(min-width:1024px) 80vw, 100vw" width="1600" height="1000" alt="Primary brand identity, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>02</b>Primary brand identity</figcaption></figure><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Product interface · payment reminder"><img src="img/studio2/k-ui-thumb.webp" srcset="img/studio2/k-ui-thumb.webp 1000w, img/studio2/k-ui-full.webp 1600w" sizes="(min-width:1024px) 80vw, 100vw" width="1600" height="1000" alt="Product interface · payment reminder, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>03</b>Product interface · payment reminder</figcaption></figure></div><div class="pj-row" style="grid-template-columns:2.4440fr"><figure class="pj-tile" style="--ar:2.4440"><button type="button" class="st-open" aria-label="Enlarge: Social campaign · three posts"><img src="img/studio2/k-social-thumb.webp" srcset="img/studio2/k-social-thumb.webp 1000w, img/studio2/k-social-full.webp 2400w" sizes="(min-width:1024px) 80vw, 100vw" width="2400" height="982" alt="Social campaign · three posts, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>04</b>Social campaign · three posts</figcaption></figure></div><div class="pj-row" style="grid-template-columns:0.6250fr 0.6545fr"><figure class="pj-tile" style="--ar:0.6250"><button type="button" class="st-open" aria-label="Enlarge: Newsletter · The Weekly Kindling"><img src="img/studio2/k-news-thumb.webp" srcset="img/studio2/k-news-thumb.webp 1000w, img/studio2/k-news-full.webp 1400w" sizes="(min-width:1024px) 80vw, 100vw" width="1400" height="2240" alt="Newsletter · The Weekly Kindling, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>05</b>Newsletter · The Weekly Kindling</figcaption></figure><figure class="pj-tile" style="--ar:0.6545"><button type="button" class="st-open" aria-label="Enlarge: Website concept · landing page"><img src="img/studio2/k-web-thumb.webp" srcset="img/studio2/k-web-thumb.webp 1000w, img/studio2/k-web-full.webp 1440w" sizes="(min-width:1024px) 80vw, 100vw" width="1440" height="2200" alt="Website concept · landing page, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>06</b>Website concept · landing page</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.4667fr 1.4545fr"><figure class="pj-tile" style="--ar:1.4667"><button type="button" class="st-open" aria-label="Enlarge: Advertising campaign · two posters"><img src="img/studio2/k-ads-thumb.webp" srcset="img/studio2/k-ads-thumb.webp 1000w, img/studio2/k-ads-full.webp 2200w" sizes="(min-width:1024px) 80vw, 100vw" width="2200" height="1500" alt="Advertising campaign · two posters, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>07</b>Advertising campaign · two posters</figcaption></figure><figure class="pj-tile" style="--ar:1.4545"><button type="button" class="st-open" aria-label="Enlarge: Onboarding · welcome email, guide and client text"><img src="img/studio2/k-onboard-thumb.webp" srcset="img/studio2/k-onboard-thumb.webp 1000w, img/studio2/k-onboard-full.webp 1600w" sizes="(min-width:1024px) 80vw, 100vw" width="1600" height="1100" alt="Onboarding · welcome email, guide and client text, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>08</b>Onboarding · welcome email, guide and client text</figcaption></figure></div></div></section>
-  <section class="sec">
-    <div class="wrap">
-      <a class="pj-next" href="#studio-rune"><span class="label">Next project</span><img width="1580" height="293" src="img/studio2/logos/rune-light.svg" alt="RUNE"><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-    </div>
-  </section>
-</div>
-
-<!-- =================== STUDIO RUNE =================== -->
-<div class="page pj pj-rune" data-page="studio-rune" style="--pj-acc:#5E21F2;--pj-bg:#121214" hidden>
-  <section class="sec pj-hero">
-    <div class="wrap">
-      <a class="back" href="#studio"><svg aria-hidden="true"><use href="#i-arrow"/></svg> The Studio</a>
-      <div class="pj-top rise">
-        <p class="label">Project 03 · Independent concept</p>
-        <h1 class="pj-h"><img width="1580" height="293" src="img/studio2/logos/rune-light.svg" alt="RUNE" class="pj-logo"><span class="sr">RUNE: Sound, without compromise.</span></h1>
-        <p class="pj-concept" aria-hidden="true">Sound, without compromise.</p>
-      </div>
-      <div class="pj-meta">
-        <p class="pj-intro">A premium audio company making wireless headphones and home speakers that feel considered, tactile and effortless, and desirable before they are switched on.</p>
-        <dl><div><dt>Industry</dt><dd>Premium consumer audio · Product technology</dd></div><div><dt>Audience</dt><dd>Music lovers, designers, creative professionals and people who care about product design</dd></div><div><dt>Direction</dt><dd>Bold, minimal and architectural. Every product is modelled, lit and rendered in 3D; violet appears once per layout, like the light ring on the headphones.</dd></div></dl>
-      </div>
-      <p class="st-note"><i aria-hidden="true"></i>A fictional company, designed as an independent concept. Not a client commission.</p>
-    </div>
-  </section>
-  <section class="sec pj-gal"><div class="wrap pj-wide"><div class="pj-row" style="grid-template-columns:3.0000fr"><figure class="pj-tile" style="--ar:3.0000"><button type="button" class="st-open" aria-label="Enlarge: Outdoor · billboard"><img src="img/studio2/r8-thumb.webp" srcset="img/studio2/r8-thumb.webp 1000w, img/studio2/r8-full.webp 2400w" sizes="(min-width:1024px) 80vw, 100vw" width="2400" height="800" alt="Outdoor · billboard, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>01</b>Outdoor · billboard</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr 0.8000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Primary brand identity"><img src="img/studio2/r1-thumb.webp" srcset="img/studio2/r1-thumb.webp 1000w, img/studio2/r1-full.webp 1600w" sizes="(min-width:1024px) 80vw, 100vw" width="1600" height="1000" alt="Primary brand identity, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>02</b>Primary brand identity</figcaption></figure><figure class="pj-tile" style="--ar:0.8000"><button type="button" class="st-open" aria-label="Enlarge: Product hero advertisement · RUNE ONE"><img src="img/studio2/r2-thumb.webp" srcset="img/studio2/r2-thumb.webp 1000w, img/studio2/r2-full.webp 1600w" sizes="(min-width:1024px) 80vw, 100vw" width="1600" height="2000" alt="Product hero advertisement · RUNE ONE, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>03</b>Product hero advertisement · RUNE ONE</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Speaker collection · Column and Stone"><img src="img/studio2/r3-thumb.webp" srcset="img/studio2/r3-thumb.webp 1000w, img/studio2/r3-full.webp 2400w" sizes="(min-width:1024px) 80vw, 100vw" width="2400" height="1500" alt="Speaker collection · Column and Stone, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>04</b>Speaker collection · Column and Stone</figcaption></figure></div><div class="pj-row" style="grid-template-columns:2.1998fr"><figure class="pj-tile" style="--ar:2.1998"><button type="button" class="st-open" aria-label="Enlarge: Launch campaign · three formats"><img src="img/studio2/r5-thumb.webp" srcset="img/studio2/r5-thumb.webp 1000w, img/studio2/r5-full.webp 2400w" sizes="(min-width:1024px) 80vw, 100vw" width="2400" height="1091" alt="Launch campaign · three formats, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>05</b>Launch campaign · three formats</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Editorial photography"><img src="img/studio2/r6-thumb.webp" srcset="img/studio2/r6-thumb.webp 1000w, img/studio2/r6-full.webp 2400w" sizes="(min-width:1024px) 80vw, 100vw" width="2400" height="1500" alt="Editorial photography, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>06</b>Editorial photography</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr 0.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Packaging system · sleeve and rigid box"><img src="img/studio2/r4-thumb.webp" srcset="img/studio2/r4-thumb.webp 1000w, img/studio2/r4-full.webp 2400w" sizes="(min-width:1024px) 80vw, 100vw" width="2400" height="1500" alt="Packaging system · sleeve and rigid box, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>07</b>Packaging system · sleeve and rigid box</figcaption></figure><figure class="pj-tile" style="--ar:0.6000"><button type="button" class="st-open" aria-label="Enlarge: Website concept · product landing page"><img src="img/studio2/r7-thumb.webp" srcset="img/studio2/r7-thumb.webp 1000w, img/studio2/r7-full.webp 1440w" sizes="(min-width:1024px) 80vw, 100vw" width="1440" height="2400" alt="Website concept · product landing page, concept artwork" loading="lazy" decoding="async"></button><figcaption><b>08</b>Website concept · product landing page</figcaption></figure></div></div></section>
-  <section class="sec">
-    <div class="wrap">
-      <a class="pj-next" href="#studio-wadden"><span class="label">Next project</span><img width="1742" height="197" src="img/studio2/logos/wadden-light.svg" alt="WADDEN"><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </section>
 </div>
@@ -2042,13 +1933,13 @@ function renderArticle(slug){
   return true;
 }
 
-const PAGES=["home","about","experience","work","studio","studio-wadden","studio-kindling","studio-rune","thoughts","contact"];
-const TITLES={lost:"Page not found | Lorcán O'Neill",home:"Lorcán O'Neill (Lor) | Creative, Business & AI",about:"About Lorcán O'Neill | Dublin, the Netherlands & Arkintel",experience:"Experience | Lorcán O'Neill: Design, Communications, Business & Tech",work:"Work | Brands Lorcán O'Neill Has Worked For and With",studio:"The Possibilities Studio | Creative Concepts by Lorcán O'Neill","studio-wadden":"WADDEN: Maritime Robotics Brand Concept | Lorcán O'Neill","studio-kindling":"Kindling: Small-Business Software Brand Concept | Lorcán O'Neill","studio-rune":"RUNE: Premium Audio Brand Concept | Lorcán O'Neill",thoughts:"Thoughts | Notes on AI, Creativity & Business by Lorcán O'Neill",contact:"Contact Lorcán O'Neill | Say Hello"};
+const PAGES=["home","about","experience","work","studio","thoughts","contact"];
+const TITLES={lost:"Page not found | Lorcán O'Neill",home:"Lorcán O'Neill (Lor) | Creative, Business & AI",about:"About Lorcán O'Neill | Dublin, the Netherlands & Arkintel",experience:"Experience | Lorcán O'Neill: Design, Communications, Business & Tech",work:"Work | Brands Lorcán O'Neill Has Worked For and With",studio:"The Possibilities Studio | Brand Concepts by Lorcán O'Neill",thoughts:"Thoughts | Notes on AI, Creativity & Business by Lorcán O'Neill",contact:"Contact Lorcán O'Neill | Say Hello"};
 let swapT=null,firstRoute=true;
 function route(){
   const h=routeKey();
   if(h==="main")return;
-  let page=h,nav=h.startsWith("studio-")?"studio":h;
+  let page=h,nav=h;
   if(h.startsWith("post-")){page=renderArticle(h.slice(5))?"post":"lost";nav=page==="post"?"thoughts":""}
   else if(!PAGES.includes(h)){page="lost";nav=""}
   document.querySelectorAll(".links a,.sheet a,.sig-nav a").forEach(a=>{hrefToKey(a.getAttribute("href"))===nav?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
@@ -2450,7 +2341,7 @@ let wpT=0;addEventListener("scroll",()=>{if(wpT)return;wpT=requestAnimationFrame
   links.addEventListener("pointerleave",()=>moveTo(cur()));
   addEventListener("resize",()=>moveTo(cur()));
   // breadcrumb + indicator follow the route
-  const names={about:"About",experience:"Experience",work:"Work",studio:"Studio","studio-wadden":"Studio","studio-kindling":"Studio","studio-rune":"Studio",thoughts:"Thoughts",contact:"Contact",post:"Thoughts",lost:"Lost"};
+  const names={about:"About",experience:"Experience",work:"Work",studio:"Studio",thoughts:"Thoughts",contact:"Contact",post:"Thoughts",lost:"Lost"};
   window.headerOnRoute=page=>{
     requestAnimationFrame(()=>moveTo(cur()));
     const c=$("#crumb"),t=$("#crumbT"),n=names[page];
