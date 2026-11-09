@@ -10,7 +10,11 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Lorcán O'Neill">
 <meta property="og:description" content="Lorcán O'Neill's personal site. Work, writing and whatever's on his mind.">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:image" content="img/og.jpg">
 <meta name="twitter:title" content="Lorcán O'Neill">
 <meta name="twitter:description" content="Lorcán O'Neill's personal site. Work, writing and whatever's on his mind.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23FF4500'/%3E%3Cstop offset='.5' stop-color='%23FF6A00'/%3E%3Cstop offset='1' stop-color='%23FFB347'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%23090909'/%3E%3Cpath d='M22 14v36h22' fill='none' stroke='url(%23g)' stroke-width='8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
@@ -703,18 +707,7 @@ html.dim{--amb:.18}
 .nope{display:inline-flex;align-items:center;gap:7px;border:0;background:none;padding:0;cursor:pointer;font-size:var(--fs-small);color:var(--faint)}
 .nope i{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(255,106,0,.6);animation:ping 2.8s infinite}
 .nope:hover{color:var(--ink)}
-/* the goodbye peek, once per visit, when you reach the footer */
-.peek{position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:0;z-index:90;width:clamp(150px,18vw,220px);height:clamp(101px,12.15vw,149px);pointer-events:none;transform:translateY(105%);transition:transform .6s cubic-bezier(.3,1.25,.5,1)}
-.peek.up{transform:none}
-.peek.down{visibility:visible;transform:translateY(105%);transition:transform .45s var(--e-io)}
-.peek-rig{position:absolute;left:0;top:0;width:100%;aspect-ratio:2/3}
-.peek-rig img{position:absolute;inset:0;width:100%;height:100%}
-.peek.up .rig-arm{animation:wave 1.25s ease-in-out .5s both}
-.peek-say{position:absolute;right:58%;top:4%;margin:0;padding:7px 11px;border-radius:12px 12px 4px 12px;background:var(--grad);color:#0A0A0A;font-weight:600;font-size:13px;white-space:nowrap;opacity:0;transform:scale(.6);transform-origin:100% 100%;transition:opacity .25s,transform .4s cubic-bezier(.3,1.4,.5,1)}
-.peek.up .peek-say{opacity:1;transform:none;transition-delay:.45s}
-.peek-rig{position:absolute;inset:0;overflow:hidden;width:auto;aspect-ratio:auto}
-.peek-rig img{bottom:auto;height:auto;aspect-ratio:2/3}
-@media (prefers-reduced-motion:reduce){.pdoors,.peek{display:none!important}.bc img{transform:none!important}}
+@media (prefers-reduced-motion:reduce){.bc img{transform:none!important}}
 
 /* =====================================================================
    The Other Room — a hidden lounge behind the footer
@@ -1030,7 +1023,7 @@ html.wires body{background-image:radial-gradient(rgba(255,255,255,.035) 1px,tran
 .lost-lor{position:absolute;left:52%;bottom:12%;width:38%;aspect-ratio:2/3}
 .lost-lor img{position:absolute;inset:0;width:100%;height:100%}
 .page[data-page="lost"]:not([hidden]) .lost-lor{animation:popUp .9s cubic-bezier(.3,1.3,.5,1) .3s both}
-.page[data-page="lost"]:not([hidden]) .lost-lor .rig-arm{animation:wave 1.25s ease-in-out 1.3s both}
+.page[data-page="lost"]:not([hidden]) .lost-lor .rig-arm{animation:wave 1.7s ease-in-out 1.3s both}
 .lost-say{position:absolute;right:58%;top:-2%;margin:0;padding:8px 12px;border-radius:12px 12px 4px 12px;background:var(--grad);color:#0A0A0A;font-weight:600;font-size:14px;white-space:nowrap;opacity:0;transform:scale(.6);transform-origin:100% 100%;transition:opacity .25s,transform .4s cubic-bezier(.3,1.4,.5,1)}
 .lost-say.on{opacity:1;transform:none}
 @media (max-width:860px){
@@ -1055,7 +1048,6 @@ html.wires body{background-image:radial-gradient(rgba(255,255,255,.035) 1px,tran
   .sig-play .sp-l{grid-column:1/-1}
   .sig-play button{justify-content:flex-start;text-align:left}
 }
-.peek:not(.up){visibility:hidden}
 
 /* ---------- Don't press this: the lights go out ---------- */
 .egg{position:fixed;inset:0;z-index:170;overflow:hidden}
@@ -1109,6 +1101,39 @@ html.dim .sig::before{opacity:.15}
 .tick-say b{font-variant-numeric:tabular-nums;color:#FFC07A;font-weight:600}
 .tick-say.flip{border-radius:14px 14px 4px 14px;transform-origin:100% 100%}
 @media (prefers-reduced-motion:reduce){.watch::after{animation:none}}
+
+/* =====================================================================
+   Polish pass
+   ===================================================================== */
+.hero-panel{background:radial-gradient(90% 60% at 70% 100%,rgba(255,106,0,.16),transparent 70%),var(--bg-2)}
+.hero-panel::before{opacity:.5}
+.stat{background:radial-gradient(80% 70% at 80% 100%,rgba(255,106,0,.12),transparent 70%),var(--bg-2)}
+.talk-fig::before{opacity:.55}
+.spot::before{background:radial-gradient(closest-side,rgba(255,106,0,.14),rgba(255,106,0,.04) 55%,transparent)}
+@keyframes switchOn{0%{opacity:0}8%{opacity:.7}12%{opacity:.15}18%{opacity:.6}24%{opacity:.3}40%{opacity:.8}100%{opacity:.4}}
+.post.lead{background:radial-gradient(70% 90% at 100% 0%,rgba(255,106,0,.08),transparent 70%),var(--bg-2)}
+.page h2.title .acc,.page h2.title .acc.liquid{font-family:inherit;font-style:normal;font-weight:inherit;font-size:1em;letter-spacing:inherit;font-variation-settings:normal;background:none;-webkit-text-fill-color:currentColor;color:var(--muted);padding:0;animation:none}
+.sheet a{position:relative}
+.sheet a[aria-current="page"]::before{content:"";position:absolute;left:0;top:22%;bottom:22%;width:3px;border-radius:2px;background:var(--grad)}
+.sheet a[aria-current="page"]{padding-left:18px;color:var(--ink)}
+.filter .fc{margin-left:6px;font-size:11px;font-variant-numeric:tabular-nums;color:var(--faint);transition:color var(--m-ui)}
+.filter[aria-pressed="true"] .fc{color:var(--accent-2)}
+.read-bar{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);height:2px;z-index:55;background:var(--grad);transform:scaleX(0);transform-origin:left;pointer-events:none}
+.tick-say{transform-origin:0 50%}
+.tick-say.flip{border-radius:14px 14px 4px 14px;transform-origin:100% 50%}
+@media (max-width:400px){
+  .xp-exp,.xp-thoughts{grid-column:1/-1!important}
+  .xp-exp .xp-t,.xp-thoughts .xp-t{font-size:26px}
+  .xp-hats{display:grid;grid-template-columns:1fr 1fr;font-size:14px;gap:6px 12px}
+  .xp-q{font-size:21px}
+}
+@media (max-width:767px){
+  .sig-play button{min-height:44px}
+  .sig-nav a{display:flex;align-items:center;min-height:40px}
+  .sig-meta .up,.sig-meta .or-door{min-width:44px;min-height:44px}
+  .sig-meta .or-door i{inset:10px 14px}
+  .filter{min-height:44px}
+}
 </style>
 </head>
 <body>
@@ -1152,7 +1177,6 @@ html.dim .sig::before{opacity:.15}
   </div>
   <button class="intro-skip" id="introSkip" type="button">Skip intro</button>
 </div>
-<div class="peek" id="peek" aria-hidden="true"><div class="peek-rig"><img class="rig-arm" src="img/hi-arm.webp" alt="" width="768" height="1152" loading="lazy"><img class="rig-base" src="img/hi-base.webp" alt="" width="768" height="1152" loading="lazy"></div><p class="peek-say">See you soon!</p></div>
 <div class="egg" id="egg" role="dialog" aria-modal="true" aria-label="The lights are off" hidden>
   <div class="egg-dark"></div>
   <div class="egg-who"><div class="egg-fig" aria-hidden="true"><img src="img/hi-base.webp" alt="" width="768" height="1152" loading="lazy"><img class="egg-arm" src="img/hi-arm.webp" alt="" width="768" height="1152" loading="lazy"></div><p class="egg-say" id="eggSay" aria-live="assertive"></p></div>
@@ -1472,6 +1496,7 @@ html.dim .sig::before{opacity:.15}
 </div>
 <div class="wires-grid" id="wiresGrid" aria-hidden="true"><div class="wg-in"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="wires-scan" id="wiresScan" aria-hidden="true"></div><div class="wires-layer" id="wiresLayer" aria-hidden="true"></div>
 <p class="tick-say" id="tickSay" role="status" aria-live="polite"></p>
+<div class="read-bar" id="readBar" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -1525,7 +1550,8 @@ function postCard(p,extra=""){
   return `<a class="post rv${extra}" href="#post-${p.slug}"><span class="tag">${p.tag}</span><h3>${esc(p.title)}</h3><p>${esc(p.dek)}</p><span class="meta"><span>${p.read} min read</span><span class="go">Read ${arrow}</span></span></a>`;
 }
 function renderFilters(){
-  $("#filters").innerHTML=TAGS.map(t=>`<button class="filter" type="button" aria-pressed="${t===activeTag}" data-tag="${t}">${t}</button>`).join("");
+  const cnt=t=>t==="All"?POSTS.length:POSTS.filter(p=>p.tag===t).length;
+  $("#filters").innerHTML=TAGS.map(t=>`<button class="filter" type="button" aria-pressed="${t===activeTag}" data-tag="${t}">${t}<span class="fc">${cnt(t)}</span></button>`).join("");
 }
 function renderPosts(){
   const list=POSTS.filter(p=>activeTag==="All"||p.tag===activeTag);
@@ -1573,7 +1599,7 @@ function showPage(page){
     else if(!on)el.hidden=true;
   });
   if(page!=="post")document.title=TITLES[page];
-  window.scrollTo(0,0);
+  window.scrollTo({top:0,left:0,behavior:"instant"});
   requestAnimationFrame(armReveal);
   requestAnimationFrame(()=>typeof armSpots==="function"&&armSpots());
   if(typeof onPageShown==="function")requestAnimationFrame(()=>onPageShown(page));
@@ -1657,6 +1683,7 @@ function onPageShown(page){
   if(page==="experience")countYears();
   if(page==="contact")wave(1000);
   if(page==="lost")onLost();
+  $("#readBar").style.transform="scaleX(0)";
   if(typeof armWatches==="function"){armWatches();watched.forEach(placeWatch)}
   if(document.documentElement.classList.contains("wires"))setTimeout(drawWires,700);
 }
@@ -1667,7 +1694,7 @@ $("#toTop").addEventListener("click",()=>{const b=$("#toTop");b.classList.remove
 // a little hello when you wander off
 const baseTitle=()=>document.title;let savedTitle="";
 document.addEventListener("visibilitychange",()=>{if(document.hidden){savedTitle=document.title;document.title="Come back soon 👋"}else if(savedTitle){document.title=savedTitle;savedTitle=""}});
-setTimeout(()=>document.querySelectorAll('#peek img,#egg img').forEach(i=>i.loading='eager'),2500);
+setTimeout(()=>document.querySelectorAll('#egg img').forEach(i=>i.loading='eager'),2500);
 console.log("%cHello, curious one. — Lor","color:#FF6A00;font:600 14px sans-serif");
 
 
@@ -1826,9 +1853,14 @@ const tickSay=$("#tickSay");let tickT=null,tickFrom=null;
 function showTick(btn){
   tickFrom=btn;tickY=scrollY;tickSay.innerHTML=watchLine();tickSay.classList.remove("on","flip");
   const r=btn.getBoundingClientRect(),w=Math.min(260,innerWidth-24);tickSay.style.width="auto";
-  const bw=tickSay.offsetWidth||w,bh=tickSay.offsetHeight||40;let x=r.left+r.width*.6,y=r.top-bh-6;
-  if(x+bw>innerWidth-12){x=r.right-r.width*.6-bw;tickSay.classList.add("flip")}
-  x=Math.max(12,x);if(y<12)y=r.bottom+6;
+  const bw=tickSay.offsetWidth||w,bh=tickSay.offsetHeight||40;
+  // open the bubble outward from the watch, level with it, so it stays off his face
+  const host=(btn.parentElement.querySelector("img")||btn.parentElement).getBoundingClientRect(),cx=r.left+r.width/2,outRight=cx>=host.left+host.width/2;
+  let x=outRight?r.right+8:r.left-8-bw,y=r.top+r.height/2-bh*.35;
+  if(x+bw>innerWidth-12){x=r.left-8-bw;tickSay.classList.add("flip")}
+  if(x<12){x=Math.min(innerWidth-12-bw,Math.max(12,cx-bw/2));y=r.bottom+8}
+  else if(!outRight)tickSay.classList.add("flip");
+  y=Math.max(12,Math.min(innerHeight-12-bh,y));
   tickSay.style.left=x+"px";tickSay.style.top=y+"px";void tickSay.offsetWidth;tickSay.classList.add("on");
   clearTimeout(tickT);tickT=setTimeout(()=>tickSay.classList.remove("on"),3200);
 }
@@ -1861,6 +1893,8 @@ function armWatches(root=document){
 }
 let wpT=0;addEventListener("scroll",()=>{if(wpT)return;wpT=requestAnimationFrame(()=>{wpT=0;watched.forEach(i=>{if(i.closest("[data-par],.xp-about")||i.dataset.par)placeWatch(i)})})},{passive:true});
 
+// reading progress on articles
+(function(){const bar=$("#readBar");let t=0;addEventListener("scroll",()=>{if(t)return;t=requestAnimationFrame(()=>{t=0;const art=document.querySelector('[data-page="post"]:not([hidden]) .article');if(!art){bar.style.transform="scaleX(0)";return}const r=art.getBoundingClientRect(),k=Math.min(1,Math.max(0,(innerHeight*.35-r.top)/(r.height-innerHeight*.35)));bar.style.transform=`scaleX(${k.toFixed(4)})`})},{passive:true})})();
 // ---------- Little world ----------
 // Work: cursor spotlight + gentle 3D tilt
 if(fine&&!reduced){document.querySelectorAll(".bc").forEach(c=>{
@@ -1894,15 +1928,7 @@ function lightsBackOn(){
 }
 $("#eggSwitch").addEventListener("click",lightsBackOn);
 document.addEventListener("keydown",e=>{if(!egg.hidden&&e.key==="Escape"){e.preventDefault();lightsBackOn()}});
-// Goodbye peek: once per visit, the first time the footer comes into view
-(function(){
-  const pk=$("#peek");let seen=false;try{seen=!!sessionStorage.getItem("lor-peek")}catch(e){}
-  if(seen||reduced||!("IntersectionObserver" in window))return;
-  const o=new IntersectionObserver(es=>{if(!es.some(e=>e.isIntersecting))return;if(document.documentElement.classList.contains("intro-on"))return;
-    o.disconnect();try{sessionStorage.setItem("lor-peek","1")}catch(e){}
-    pk.classList.add("up");setTimeout(()=>{pk.classList.add("down");setTimeout(()=>pk.className="peek",500)},2600)},{threshold:.35});
-  setTimeout(()=>o.observe($(".sig")),1500);
-})();
+
 
 
 // ---------- The Other Room ----------
