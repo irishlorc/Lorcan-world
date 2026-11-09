@@ -185,8 +185,8 @@ if(!reduced)addEventListener("scroll",()=>{if(!parTick){parTick=true;requestAnim
 // hero leans toward the cursor
 if(fine&&!reduced){
   const hp=$(".hero-panel"),hi=hp&&hp.querySelector("img");
-  hp&&hp.addEventListener("pointermove",e=>{if(hp.classList.contains("dragging"))return;const r=hp.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;hi.style.transform=`translate3d(${((x-.5)*-12).toFixed(1)}px,0,0) rotate(${((x-.5)*2).toFixed(2)}deg)`;hp.style.setProperty("--gx",(x*100).toFixed(0)+"%");hp.style.setProperty("--gy",(y*100).toFixed(0)+"%")});
-  hp&&hp.addEventListener("pointerleave",()=>{if(!hp.classList.contains("dragging"))hi.style.transform=""});
+  hp&&hp.addEventListener("pointermove",e=>{if(hp.classList.contains("dragging"))return;const r=hp.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;hp.style.setProperty("--gx",(x*100).toFixed(0)+"%");hp.style.setProperty("--gy",(y*100).toFixed(0)+"%")});
+  
   // the thinker follows you
   const th=$("#thinker img");
   document.addEventListener("pointermove",e=>{if(!th||th.closest("[hidden]"))return;const r=th.getBoundingClientRect(),dx=(e.clientX-(r.left+r.width/2))/innerWidth,dy=(e.clientY-(r.top+r.height/2))/innerHeight;th.style.transform=`translateX(calc(-50% + ${(dx*10).toFixed(1)}px)) translateY(${(dy*6).toFixed(1)}px) rotate(${(dx*4).toFixed(2)}deg)`},{passive:true});
