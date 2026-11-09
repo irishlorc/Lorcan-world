@@ -1521,3 +1521,12 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
   .hero-panel{aspect-ratio:4/4.8}
   .hero-panel img{height:70%;right:-15%}
 }
+
+/* Work: professional vs independent */
+.wk-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,48px);margin-top:clamp(48px,6vw,88px);padding-top:clamp(28px,3vw,40px);border-top:1px solid var(--line-2)}
+.wk-split p{margin:0;color:var(--muted);line-height:1.65;max-width:46ch}
+.wk-split .wk-k{font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);margin-bottom:12px}
+.wk-studio{display:block;text-decoration:none;padding:clamp(20px,2.4vw,30px);border:1px solid var(--line-2);border-radius:var(--r-lg);transition:border-color .3s,background .3s}
+.wk-studio:hover,.wk-studio:focus-visible{border-color:var(--accent);background:rgba(255,106,0,.05)}
+.wk-go{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-weight:600;color:var(--ink)}.wk-go svg{width:16px;height:16px}
+@media (max-width:767px){.wk-split{grid-template-columns:minmax(0,1fr)}}

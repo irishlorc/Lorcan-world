@@ -82,7 +82,7 @@ function renderArticle(slug){
 }
 
 const PAGES=["home","about","experience","work","studio","studio-wadden","studio-kindling","studio-rune","studio-fold","thoughts","contact"];
-const TITLES={"home":"Lorcan — Creative, Business & AI","about":"About Lorcan | Dublin, the Netherlands & Arkintel","experience":"Experience: Design, Comms, Business & Tech | Lorcan","work":"Work | Brands Lorcan Has Worked For and With","studio":"The Possibilities Studio | Lorcan","studio-wadden":"WADDEN: Maritime Robotics Brand Concept | Lorcan","studio-kindling":"Kindling: Small-Business Software Brand Concept | Lorcan","studio-rune":"RUNE: Premium Audio Brand Concept | Lorcan","studio-fold":"FOLD: Modular Furniture Brand Concept | Lorcan","thoughts":"Thoughts | Lorcan on AI, Creativity & Business","contact":"Contact Lorcan | Say Hello","lost":"Page not found | Lorcan"};
+const TITLES={"home":"Lorcan — Creative, Business & AI","about":"About Lorcan | Dublin, the Netherlands & Arkintel","experience":"Experience: Design, Comms, Business & Tech | Lorcan","work":"Work | Organisations Lorcan Has Worked For and With","studio":"The Possibilities Studio | Lorcan","studio-wadden":"WADDEN: Maritime Robotics Brand Concept | Lorcan","studio-kindling":"Kindling: Small-Business Software Brand Concept | Lorcan","studio-rune":"RUNE: Premium Audio Brand Concept | Lorcan","studio-fold":"FOLD: Modular Furniture Brand Concept | Lorcan","thoughts":"Thoughts | Lorcan on AI, Creativity & Business","contact":"Contact Lorcan | Say Hello","lost":"Page not found | Lorcan"};
 let swapT=null,firstRoute=true;
 function route(){
   const h=routeKey();
@@ -193,7 +193,7 @@ if(fine&&!reduced){
 }
 // experience: count the years up
 let yrsDone=false;
-function countYears(){const el=$("#yrs");if(!el||reduced)return;const t0=performance.now(),D=1100;el.textContent="0";const step=t=>{const k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);el.textContent=Math.round(13*e);if(k<1)requestAnimationFrame(step)};setTimeout(()=>requestAnimationFrame(step),450)}
+function countYears(){const el=$("#yrs");if(!el||reduced)return;const t0=performance.now(),D=1100;el.textContent="0";const step=t=>{const k=Math.min(1,(t-t0)/D),e=1-Math.pow(1-k,3);el.textContent=Math.round(10*e);if(k<1)requestAnimationFrame(step)};setTimeout(()=>requestAnimationFrame(step),450)}
 // contact: Lor waves, and waves back
 const waver=$("#waver");let waveT=null;
 function wave(delay=0){if(reduced||!waver)return;clearTimeout(waveT);waveT=setTimeout(()=>{waver.classList.remove("waving");void waver.offsetWidth;waver.classList.add("waving");setTimeout(()=>waver.classList.remove("waving"),1300)},delay)}

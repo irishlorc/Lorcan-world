@@ -32,7 +32,7 @@ const META = {
   about: {
     path: "/about",
     title: "About Lorcan | Dublin, the Netherlands & Arkintel",
-    desc: "Lorcan is from Dublin, spent nearly nine years living and working in the Netherlands, has written eight books and now works on the commercial side of Arkintel.",
+    desc: "Lorcan grew up in Dublin and spent more than eight years working in the Netherlands, across design, creative direction, communications, business and technology. Now on the commercial side of Arkintel.",
     og: "about",
     type: "ProfilePage",
     crumb: "About",
@@ -40,15 +40,15 @@ const META = {
   experience: {
     path: "/experience",
     title: "Experience: Design, Comms, Business & Tech | Lorcan",
-    desc: "Over 13 years across design, communications, business and technology in Ireland and the Netherlands. Lorcan currently works in a commercial role at Arkintel.",
+    desc: "More than ten years across design, communications, business and technology in Ireland and the Netherlands. Currently in a commercial role at Arkintel.",
     og: "experience",
     type: "WebPage",
     crumb: "Experience",
   },
   work: {
     path: "/work",
-    title: "Work | Brands Lorcan Has Worked For and With",
-    desc: "Some familiar names: Arkintel, Heineken, Formula 1, UEFA, Just Eat, ATPI, Savvy Lab, HTM, Brandit and The Ocean Race. Brands and organisations Lorcan has worked for and with.",
+    title: "Work | Organisations Lorcan Has Worked For and With",
+    desc: "Organisations Lorcan has worked for and with: Arkintel, Heineken, Formula 1, UEFA, Just Eat, ATPI, Savvy Lab, HTM, Brandit and The Ocean Race.",
     og: "work",
     type: "CollectionPage",
     crumb: "Work",
@@ -255,7 +255,7 @@ const person = {
   mainEntityOfPage: SITE + "/about",
   image: { "@type": "ImageObject", url: SITE + "/img/tablet-bust.webp", width: 700, height: 860, caption: "Illustration of Lorcan" },
   email: "mailto:" + EMAIL,
-  description: "Irish creative and commercial professional from Dublin with over 13 years across design, communications, business and technology, including nearly nine years living and working in the Netherlands. Author of eight books. Currently works on the commercial side of Arkintel, a Dutch AI technology company.",
+  description: "Irish creative and commercial professional from Dublin with more than ten years across design, creative direction, communications, business and technology, including more than eight years living and working in the Netherlands. Author of eight books. Currently works on the commercial side of Arkintel, a Dutch AI technology company.",
   nationality: { "@type": "Country", name: "Ireland" },
   homeLocation: { "@type": "Country", name: "Ireland" },
   worksFor: { "@type": "Organization", name: "Arkintel", description: "Dutch technology company working in AI", address: { "@type": "PostalAddress", addressCountry: "NL" } },
@@ -421,10 +421,10 @@ fs.writeFileSync(
   path.join(OUT, "llms.txt"),
   `# ${NAME}
 
-> Personal website of ${NAME} (Lor): an Irish creative and commercial professional from Dublin who spent nearly nine years living and working in the Netherlands.
+> Personal website of ${NAME} (Lor): an Irish creative and commercial professional from Dublin who spent more than eight years living and working in the Netherlands.
 
 - Works on the commercial side of Arkintel, a Dutch technology company in AI.
-- Over 13 years across design, communications, business and technology.
+- More than ten years across design, creative direction, communications, business and technology.
 - Has written eight books, built apps and websites, and made music videos.
 - Brands and organisations he has worked for and with: Arkintel, Heineken, Formula 1, UEFA, Just Eat, ATPI, Savvy Lab, HTM, Brandit, The Ocean Race. The site does not describe individual projects for these brands.
 - Contact: ${EMAIL}
