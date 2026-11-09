@@ -1528,3 +1528,4 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
 .wk-studio:hover,.wk-studio:focus-visible{border-color:var(--accent);background:rgba(255,106,0,.05)}
 .wk-go{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-weight:600;color:var(--ink)}.wk-go svg{width:16px;height:16px}
 @media (max-width:767px){.wk-split{grid-template-columns:minmax(0,1fr)}}
+.bc-link{display:block;border-radius:inherit;cursor:pointer}.bc-link:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
