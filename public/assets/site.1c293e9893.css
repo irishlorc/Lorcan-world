@@ -900,6 +900,11 @@ html.room-on,html.room-on body{overflow:hidden}
 .or-read.has-cover{grid-template-columns:minmax(120px,240px) 1fr;align-items:end;gap:clamp(18px,3vw,32px);margin-top:14px}
 .or-cover{display:block;width:100%;height:auto;border-radius:3px 6px 6px 3px;box-shadow:0 30px 60px -18px rgba(0,0,0,.85),inset 0 0 0 1px rgba(255,255,255,.06);animation:coverIn .7s var(--e-out) both}
 @keyframes coverIn{from{opacity:0;transform:translateY(14px) rotate(-1.5deg)}to{opacity:1;transform:none}}
+.or-exc{margin-top:26px;padding-top:24px;border-top:1px solid rgba(255,255,255,.07);display:grid;gap:14px;max-width:38em}
+.or-exc p{margin:0;color:rgba(248,248,246,.78);font-size:16.5px;line-height:1.75}
+.or-exc p:first-child{font-family:var(--f-serif);font-style:italic;font-size:clamp(19px,2vw,22px);line-height:1.45;color:var(--ink)}
+.or-exc p:last-child{color:var(--ink)}
+.or-exc em{font-family:var(--f-serif);font-style:italic}
 .or-sub{margin:0 0 14px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,220,180,.6);line-height:1.6}
 .or-shelfrow{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.07)}
 .or-shelfrow button{padding:0;border:0;background:none;cursor:pointer;border-radius:3px;opacity:.55;transition:opacity .25s,transform .35s var(--e-out)}
