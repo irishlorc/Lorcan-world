@@ -1169,7 +1169,7 @@ html.dim .sig::before{opacity:.15}
 /* embedded full-height viewers: the header is carried along by script */
 .vp-sent{position:absolute;left:0;top:0;width:1px;pointer-events:none;opacity:0}
 .vp-sent i{position:absolute;left:0;width:1px}
-html.emb .nav-shell{position:absolute;left:0;right:0;top:0;transform:translateY(var(--ey,0px));transition:transform .18s linear}
+html.emb .nav-shell{position:absolute;left:0;right:0;top:0;transform:translateY(var(--ey,0px));transition:transform .12s linear}
 html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px));transition:transform .4s var(--e-out)}
 </style>
 </head>
@@ -1969,9 +1969,8 @@ let wpT=0;addEventListener("scroll",()=>{if(wpT)return;wpT=requestAnimationFrame
     prog.style.setProperty("--p",Math.min(1,y/max).toFixed(4));
     shell.classList.toggle("scrolled",y>24);
     const locked=!sheet.hidden||document.documentElement.classList.contains("room-on")||document.activeElement&&shell.contains(document.activeElement);
-    if(reduced||locked||y<120){shell.classList.remove("hide");acc=0;return}
-    acc=(Math.sign(dy)===Math.sign(acc))?acc+dy:dy;
-    if(acc>36)shell.classList.add("hide");else if(acc<-12)shell.classList.remove("hide");
+    shell.classList.remove("hide");
+    // header always stays visible
   }
   addEventListener("scroll",schedule,{passive:true});
   let rT=0;const reMode=()=>{clearTimeout(rT);rT=setTimeout(()=>{setMode();schedule()},120)};
