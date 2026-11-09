@@ -778,9 +778,10 @@ html.room-on,html.room-on body{overflow:hidden}
 .or-leave svg{width:16px;height:16px;transform:rotate(180deg)}
 .or-title{margin:0;font-family:var(--f-serif);font-style:italic;font-size:clamp(18px,1.8vw,24px);color:rgba(255,190,130,.85);letter-spacing:-.01em}
 /* panel */
-.or-panel{position:absolute;inset:auto 0 0 0;z-index:4;display:flex;justify-content:center;padding:0 max(12px,env(safe-area-inset-left,0px)) calc(12px + env(safe-area-inset-bottom,0px))}
+.or-panel{position:absolute;inset:0;z-index:4;display:flex;align-items:center;justify-content:center;padding:calc(16px + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px))}
+.or-panel.clear{inset:auto 0 0 0;align-items:flex-end;padding-top:0}
 .or-panel::before{content:"";position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);animation:fadeIn .3s both}
-.or-panel-in{position:relative;width:min(760px,100%);max-height:min(78vh,720px);overflow:auto;padding:clamp(22px,3vw,36px);border-radius:20px;background:linear-gradient(180deg,#17120e,#0e0b09);border:1px solid rgba(255,140,50,.18);box-shadow:0 -20px 60px -20px rgba(0,0,0,.8);animation:panelUp .5s var(--e-out) both}
+.or-panel-in{position:relative;width:min(760px,100%);max-height:min(84vh,760px);overflow:auto;overscroll-behavior:contain;padding:clamp(22px,3vw,36px);border-radius:20px;background:linear-gradient(180deg,#17120e,#0e0b09);border:1px solid rgba(255,140,50,.18);box-shadow:0 30px 80px -20px rgba(0,0,0,.85);animation:panelUp .5s var(--e-out) both}
 @keyframes panelUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .or-x{position:absolute;right:14px;top:14px;width:36px;height:36px;display:grid;place-items:center;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:transparent;color:var(--ink);cursor:pointer}
@@ -831,7 +832,7 @@ html.room-on,html.room-on body{overflow:hidden}
   .or-host{left:40%;bottom:3%;width:62%}
   .or-tag{opacity:1;transform:translate(-50%,-100%);font-size:12px;padding:4px 9px;top:-8px}
   .or-hi{left:-8%;top:-12%}
-  .or-panel-in{max-height:82vh;border-radius:18px}
+  .or-panel-in{max-height:86vh;border-radius:18px}
 }
 @media (prefers-reduced-motion:reduce){.room{transition:none}.or-beam,.steam,.or-screen::before{display:none}.or-host img,.or-lamp .shade{animation:none}}
 
