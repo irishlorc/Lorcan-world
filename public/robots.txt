@@ -1,0 +1,7 @@
+# Search engines and AI assistants are welcome.
+User-agent: *
+Allow: /
+# Navigation helper used by the site's own script, not a page
+Disallow: /assets/pages.
+
+Sitemap: https://www.lorcan.space/sitemap.xml

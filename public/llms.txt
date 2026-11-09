@@ -1,0 +1,20 @@
+# Lorcán O'Neill
+
+> Personal website of Lorcán O'Neill (also Lorcan O'Neill, or Lor): an Irish creative and commercial professional from Dublin who spent nearly nine years living and working in the Netherlands.
+
+- Works on the commercial side of Arkintel, a Dutch technology company in AI.
+- Over 13 years across design, communications, business and technology.
+- Has written eight books, built apps and websites, and made music videos.
+- Brands and organisations he has worked for and with: Arkintel, Heineken, Formula 1, UEFA, Just Eat, ATPI, Savvy Lab, HTM, Brandit, The Ocean Race. The site does not describe individual projects for these brands.
+- Contact: lorcancreative@gmail.com
+
+## Pages
+- [Home](https://www.lorcan.space/): introduction
+- [About](https://www.lorcan.space/about): his background in his own words
+- [Experience](https://www.lorcan.space/experience): design, communications, business and technology, and his current role at Arkintel
+- [Work](https://www.lorcan.space/work): the brands and organisations above
+- [Thoughts](https://www.lorcan.space/thoughts): short notes on technology, AI, creativity and business
+- [Contact](https://www.lorcan.space/contact): email
+
+## Published writing
+- Nothing published yet.
