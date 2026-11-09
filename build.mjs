@@ -55,7 +55,7 @@ const META = {
   },
   studio: {
     path: "/studio",
-    title: "Studio: Independent Brand Work | Lorcan",
+    title: "The Possibilities Studio | Lorcan",
     desc: "Independent work by Lorcan: four original brands, each with its own identity, visual language and creative direction. WADDEN, Kindling, RUNE and FOLD.",
     og: "studio",
     type: "CollectionPage",

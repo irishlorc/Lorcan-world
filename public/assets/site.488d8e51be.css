@@ -876,6 +876,7 @@ html.room-on,html.room-on body{overflow:hidden}
 
 
 
+
 /* ---- Studio: overview ---- */
 .page[data-page="studio"] .st-hero{padding-bottom:clamp(28px,3.4vw,52px)}
 .st-sub{margin:18px 0 0;max-width:44rem;color:var(--muted);line-height:1.65}
@@ -1500,3 +1501,23 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
   .dk.c3{--x:-12%;--y:-50%;--r:-8deg}
 }
 @media (prefers-reduced-motion:reduce){.dk{transition:none}}
+
+/* ---------- Mobile home hero: heading and character share one card (<768px only) ---------- */
+@media (max-width:767px){
+  .page[data-page="home"]>.sec:first-child{padding-top:14px}
+  .hero-grid{grid-template-areas:"card" "lede" "act";row-gap:22px}
+  .hero-grid>.kicker{display:none}
+  .hero-grid>.hero-h,.hero-grid>.hero-panel{grid-area:card}
+  .hero-grid>.hero-h{position:relative;z-index:2;align-self:start;margin:0;padding:clamp(22px,6.4vw,30px) 0 0 clamp(20px,6vw,28px);font-size:clamp(44px,12.8vw,56px);line-height:.92;letter-spacing:-.045em;pointer-events:none}
+  .hero-grid>.hero-h .ln{display:block}
+  .hero-grid>.hero-h .acc{font-size:1.12em;letter-spacing:-.02em}
+  .hero-panel{aspect-ratio:4/4.6;max-height:none;width:100%;background:radial-gradient(70% 55% at 78% 100%,rgba(255,106,0,.26),transparent 72%),radial-gradient(60% 50% at 0% 0%,rgba(255,255,255,.035),transparent 70%),var(--bg-2)}
+  .hero-panel img{height:72%;right:-13%;left:auto;bottom:-1px;transform:none}
+  .hero-lede{margin-top:2px}
+  .hero-panel::after{content:"Design \00B7  Business \00B7  AI";position:absolute;left:clamp(20px,6vw,28px);bottom:clamp(20px,6vw,28px);z-index:2;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);max-width:40%;line-height:1.7;pointer-events:none}
+}
+@media (max-width:360px){
+  .hero-grid>.hero-h{font-size:42px}
+  .hero-panel{aspect-ratio:4/4.8}
+  .hero-panel img{height:70%;right:-15%}
+}

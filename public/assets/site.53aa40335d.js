@@ -82,7 +82,7 @@ function renderArticle(slug){
 }
 
 const PAGES=["home","about","experience","work","studio","studio-wadden","studio-kindling","studio-rune","studio-fold","thoughts","contact"];
-const TITLES={"home":"Lorcan — Creative, Business & AI","about":"About Lorcan | Dublin, the Netherlands & Arkintel","experience":"Experience: Design, Comms, Business & Tech | Lorcan","work":"Work | Brands Lorcan Has Worked For and With","studio":"Studio: Independent Brand Work | Lorcan","studio-wadden":"WADDEN: Maritime Robotics Brand Concept | Lorcan","studio-kindling":"Kindling: Small-Business Software Brand Concept | Lorcan","studio-rune":"RUNE: Premium Audio Brand Concept | Lorcan","studio-fold":"FOLD: Modular Furniture Brand Concept | Lorcan","thoughts":"Thoughts | Lorcan on AI, Creativity & Business","contact":"Contact Lorcan | Say Hello","lost":"Page not found | Lorcan"};
+const TITLES={"home":"Lorcan — Creative, Business & AI","about":"About Lorcan | Dublin, the Netherlands & Arkintel","experience":"Experience: Design, Comms, Business & Tech | Lorcan","work":"Work | Brands Lorcan Has Worked For and With","studio":"The Possibilities Studio | Lorcan","studio-wadden":"WADDEN: Maritime Robotics Brand Concept | Lorcan","studio-kindling":"Kindling: Small-Business Software Brand Concept | Lorcan","studio-rune":"RUNE: Premium Audio Brand Concept | Lorcan","studio-fold":"FOLD: Modular Furniture Brand Concept | Lorcan","thoughts":"Thoughts | Lorcan on AI, Creativity & Business","contact":"Contact Lorcan | Say Hello","lost":"Page not found | Lorcan"};
 let swapT=null,firstRoute=true;
 function route(){
   const h=routeKey();

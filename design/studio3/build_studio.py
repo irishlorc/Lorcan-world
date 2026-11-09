@@ -153,11 +153,10 @@ overview = f'''<!-- =================== STUDIO =================== -->
   <section class="sec st-hero">
     <div class="wrap">
       <div class="head rise">
-        <span class="label">Studio / Independent work</span>
-        <h1 class="display">An idea is just <em class="acc">the beginning.</em></h1>
-        <p class="lede">Four original brands, each developed with its own identity, visual language and creative direction.</p>
-        <p class="st-sub">From industrial engineering to software, audio and furniture, these projects explore how a concept becomes something distinctive, coherent and believable.</p>
-        <p class="st-fine">Self-initiated work. Fictional brands, independently conceived and designed.</p>
+        <span class="label">The Possibilities Studio</span>
+        <h1 class="display">Ideas without <em class="acc">a brief.</em></h1>
+        <p class="lede">Most of my professional work has been created for companies and clients, where the finished work belongs.</p>
+        <p class="st-sub">This is a separate space for my own ideas. Original brands, identities and creative projects, developed independently from concept through to execution.</p>
       </div>
     </div>
   </section>
