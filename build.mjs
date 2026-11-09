@@ -172,6 +172,7 @@ fs.mkdirSync(path.join(OUT, "assets/fonts"), { recursive: true });
 fs.mkdirSync(path.join(OUT, "thoughts"), { recursive: true });
 fs.cpSync("img", path.join(OUT, "img"), { recursive: true });
 fs.cpSync("og", path.join(OUT, "og"), { recursive: true });
+if (fs.existsSync("media")) fs.cpSync("media", path.join(OUT, "media"), { recursive: true });
 for (const f of fs.readdirSync("fonts")) fs.copyFileSync(path.join("fonts", f), path.join(OUT, "assets/fonts", f));
 for (const f of ["favicon.svg", "icon-192.png", "apple-touch-icon.png"]) if (fs.existsSync(path.join("static", f))) fs.copyFileSync(path.join("static", f), path.join(OUT, f));
 

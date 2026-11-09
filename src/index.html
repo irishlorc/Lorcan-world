@@ -2189,10 +2189,24 @@ document.addEventListener("keydown",e=>{if(!egg.hidden&&e.key==="Escape"){e.prev
 
 // ---------- The Other Room ----------
 // Fill these in when the media is ready. Nothing here autoplays.
+const SONG=f=>(MPA?"/":"")+"media/songs/"+f;
 const ROOM={
   videos:[],   // {title:"…", src:"media/video.mp4", poster:"img/poster.webp"}
   paintings:[],// {title:"…", src:"img/painting.webp"}
-  songs:[],    // {title:"…", src:"media/song.mp3"}
+  // songs: rename the titles here; files live in media/songs/
+  songs:[
+    {title:"Untitled No. 1",src:SONG("lor-84.mp3"),dur:172},
+    {title:"Untitled No. 2",src:SONG("lor-85.mp3"),dur:182},
+    {title:"Untitled No. 3",src:SONG("lor-86.mp3"),dur:167},
+    {title:"Untitled No. 4",src:SONG("lor-87.mp3"),dur:130},
+    {title:"Untitled No. 5",src:SONG("lor-88.mp3"),dur:158},
+    {title:"Untitled No. 6",src:SONG("lor-89.mp3"),dur:173},
+    {title:"Untitled (Cover)",src:SONG("lor-90.mp3"),dur:114},
+    {title:"Studio Selection (Cover) I",src:SONG("lor-91.mp3"),dur:137},
+    {title:"Studio Selection (Cover) II",src:SONG("lor-92.mp3"),dur:130},
+    {title:"Untitled No. 7",src:SONG("lor-93.mp3"),dur:162},
+    {title:"Untitled No. 8",src:SONG("lor-94.mp3"),dur:151}
+  ],
   // the collection: covers live in img/books/<key>-400|800.webp
   books:[
     {title:"Seers of the North",sub:"Prophecy, Power and the O’Neill Dynasty",num:"I",key:"seers-of-the-north",acc:"#B8473B",bg:"#0b0d0e",about:"The O’Neill dynasty as inheritance rather than history: prophecy, power, and the bloodlines that don’t stay in the past.",excerpt:""},
@@ -2271,7 +2285,7 @@ function panelHTML(kind){
   if(kind&&kind.startsWith("book:")){const n=+kind.slice(5),b=ROOM.books[n];return `<span class="or-kick">Off the shelf · ${b.num} of ${toRoman(ROOM.books.length)}</span><article class="or-read has-cover"><img class="or-cover" src="${bookSrc(b,800)}" srcset="${bookSrc(b,400)} 400w, ${bookSrc(b,800)} 800w" sizes="(max-width:600px) 40vw, 260px" width="800" height="1200" alt="Cover of ${esc(b.title)} by Lorcán O’Neill"><div><h3 class="or-h">${esc(b.title)}</h3>${b.sub?`<p class="or-sub">${esc(b.sub)}</p>`:""}<p class="or-p">${esc(b.about)}</p></div></article><div class="or-shelfrow" aria-label="The collection">${ROOM.books.map((x,i)=>`<button type="button" data-goto-book="${i}" class="${i===n?"on":""}" aria-label="${esc(x.title)}"><img src="${bookSrc(x,400)}" alt="" width="400" height="600" loading="lazy"></button>`).join("")}</div>`+(b.excerpt?`<blockquote class="or-ex">${esc(b.excerpt)}</blockquote>`:empty("Excerpt coming soon.","A short passage from the book will live here."))}
   if(kind&&kind.startsWith("frame:")){const i=+kind.slice(6),p=ROOM.paintings[i];return `<span class="or-kick">Private view</span>`+(p?`<h3 class="or-h">${esc(p.title)}</h3><img src="${p.src}" alt="${esc(p.title)}" style="width:100%;margin-top:18px;border-radius:10px">`:`<h3 class="or-h">An empty frame</h3>`+empty("Nothing hung here yet.","The paintings are coming soon."))}
   if(kind==="books"){return `<span class="or-kick">On the shelf</span><h3 class="or-h">Writing</h3><div class="or-booklist">${ROOM.books.map(b=>`<article class="or-book"><img class="cv" src="${bookSrc(b,400)}" alt="" width="400" height="600" loading="lazy"><div><h4>${esc(b.title)}</h4><p>${esc(b.about)}</p>${b.excerpt?`<p class="ex">${esc(b.excerpt)}</p>`:`<p class="ex">Excerpt coming soon.</p>`}</div></article>`).join("")}</div>`}
-  if(kind==="songs"){const v=ROOM.songs;return `<span class="or-kick">On the record player</span><h3 class="or-h">Songs</h3>`+(v.length?`<div class="or-tracks">${v.map((x,i)=>`<button class="or-track" data-song="${i}"><span class="pp">▶</span><span>${esc(x.title)}</span><span class="tm">–</span></button>`).join("")}</div><div class="or-bar"><i id="orProg"></i></div>`:empty("Still being pressed.","Songs will be playable here soon. Nothing plays until you press play."))}
+  if(kind==="songs"){const v=ROOM.songs;return `<span class="or-kick">On the record player</span><h3 class="or-h">Songs</h3>`+(v.length?`<div class="or-tracks">${v.map((x,i)=>`<button class="or-track" data-song="${i}"><span class="pp">▶</span><span>${esc(x.title)}</span><span class="tm">${x.dur?fmt(x.dur):"–"}</span></button>`).join("")}</div><div class="or-bar"><i id="orProg"></i></div>`:empty("Still being pressed.","Songs will be playable here soon. Nothing plays until you press play."))}
 }
 function openPanel(kind){
   orBody.innerHTML=panelHTML(kind);orPanel.classList.toggle("clear",kind.startsWith("frame:"));orPanel.hidden=false;$("#orX").focus({preventScroll:true});
@@ -2279,9 +2293,10 @@ function openPanel(kind){
   orBody.querySelectorAll("[data-vid]").forEach(b=>b.addEventListener("click",()=>{remember("lastVideo",+b.dataset.vid);const v=ROOM.videos[+b.dataset.vid];const el=$("#orVid");el.src=v.src;if(v.poster)el.poster=v.poster;orBody.querySelectorAll("[data-vid]").forEach(x=>x.classList.toggle("on",x===b))}));
   orBody.querySelectorAll("[data-pt]").forEach(b=>b.addEventListener("click",()=>{const p=ROOM.paintings[+b.dataset.pt];orBody.innerHTML=`<span class="or-kick">Paintings</span><h3 class="or-h">${esc(p.title)}</h3><img src="${p.src}" alt="${esc(p.title)}" style="width:100%;margin-top:18px;border-radius:10px"><button class="btn btn-line btn-sm" style="margin-top:16px" onclick="openPanel('paintings')">All paintings</button>`}));
   orBody.querySelectorAll("[data-song]").forEach(b=>b.addEventListener("click",()=>{
-    const i=+b.dataset.song;if(!orAudio){orAudio=new Audio();orAudio.preload="none";orAudio.addEventListener("timeupdate",()=>{const p=$("#orProg");if(p)p.style.width=(orAudio.currentTime/orAudio.duration*100||0)+"%";const on=orBody.querySelector(".or-track.on .tm");if(on)on.textContent=fmt(orAudio.currentTime)});orAudio.addEventListener("ended",()=>room.classList.remove("playing"))}
+    const i=+b.dataset.song;if(!orAudio){orAudio=new Audio();orAudio.preload="none";orAudio.addEventListener("timeupdate",()=>{const p=$("#orProg");if(p)p.style.width=(orAudio.currentTime/orAudio.duration*100||0)+"%";const on=orBody.querySelector(".or-track.on .tm");if(on)on.textContent=fmt(orAudio.currentTime)});orAudio.addEventListener("ended",()=>{const nx=+orAudio.dataset.i+1;room.classList.remove("playing");if(nx<ROOM.songs.length){const btn=orBody.querySelector('[data-song="'+nx+'"]');if(btn&&!orPanel.hidden)btn.click();else{orAudio.src=ROOM.songs[nx].src;orAudio.dataset.i=nx;orAudio.play().then(()=>room.classList.add("playing")).catch(()=>{})}}})}
     const same=orAudio.dataset.i==String(i);
     if(same&&!orAudio.paused){orAudio.pause();room.classList.remove("playing");b.querySelector(".pp").textContent="▶";return}
+    orBody.querySelectorAll(".or-track .tm").forEach((t,k)=>{const d=ROOM.songs[k].dur;t.textContent=d?fmt(d):"–"});
     if(!same){orAudio.src=ROOM.songs[i].src;orAudio.dataset.i=i}
     orAudio.play().then(()=>{room.classList.add("playing");remember("songs");orBody.querySelectorAll(".or-track").forEach(x=>{x.classList.toggle("on",x===b);x.querySelector(".pp").textContent=x===b?"❚❚":"▶"})}).catch(()=>toast("That track couldn't play."));
   }));
