@@ -758,9 +758,10 @@ html.room-on,html.room-on body{overflow:hidden}
 .or-shelf{left:63%;top:16%;width:16%}
 .or-books{display:flex;align-items:flex-end;gap:3px;height:clamp(80px,13vh,140px);padding:0 6%}
 .bk{display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;transform:rotate(180deg);font-style:normal;font-size:clamp(8px,.8vw,12px);font-weight:600;letter-spacing:.06em;text-transform:uppercase;border-radius:2px;box-shadow:inset -3px 0 0 rgba(0,0,0,.2);overflow:hidden;white-space:nowrap}
-.b1{width:15%;height:96%;background:linear-gradient(180deg,#1a2550,#0f1736);color:#d9dcf0}
-.b2{width:12%;height:84%;background:linear-gradient(180deg,#FF7A1A,#C24A00);color:#1a0d02}
-.b3{width:9%;height:72%;background:#2a221b}.b4{width:11%;height:88%;background:#3a2d22}.b5{width:8%;height:66%;background:#1f1b18;transform:rotate(180deg) translateX(-2px) rotate(-8deg)}.b6{width:10%;height:80%;background:#2c241d}
+.or-books .bk{position:relative;width:var(--w);height:var(--h);flex:none;justify-content:flex-end;background:linear-gradient(90deg,rgba(255,255,255,.05),transparent 30%,rgba(0,0,0,.35)),var(--sp);color:var(--sa);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--sa) 35%,transparent),inset -3px 0 0 rgba(0,0,0,.3)}
+.or-books .bk::before,.or-books .bk::after{content:"";position:absolute;left:18%;right:18%;height:1px;background:var(--sa);opacity:.6}
+.or-books .bk::before{top:9%}.or-books .bk::after{bottom:9%}
+.bk-n{writing-mode:horizontal-tb;transform:rotate(180deg);margin:0 0 16%;font-family:var(--f-serif);font-style:italic;font-weight:400;font-size:clamp(7px,.62vw,10px);letter-spacing:0;text-transform:none}
 .or-plank{display:block;height:8px;border-radius:2px;background:linear-gradient(180deg,#3a2818,#20160d);box-shadow:0 14px 24px -8px #000}
 /* Turntable */
 .or-deck{left:36%;bottom:12%;width:20%}
@@ -807,7 +808,7 @@ html.room-on,html.room-on body{overflow:hidden}
 .or-empty b{font-family:var(--f-serif);font-style:italic;font-weight:400;font-size:22px;color:var(--ink)}
 .or-booklist{display:grid;gap:12px;margin-top:22px}
 .or-book{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;padding:16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06)}
-.or-book .cv{height:72px;border-radius:3px 6px 6px 3px;box-shadow:inset 4px 0 0 rgba(0,0,0,.25)}
+.or-book .cv{width:52px;height:78px;object-fit:cover;border-radius:2px 4px 4px 2px;box-shadow:0 8px 18px -8px #000}
 .or-book h4{margin:0 0 4px;font-size:19px;font-weight:600;letter-spacing:-.02em}
 .or-book p{margin:0;color:var(--muted);font-size:15px}
 .or-book .ex{margin-top:10px;font-family:var(--f-serif);font-style:italic;color:var(--faint);font-size:15px}
@@ -912,6 +913,17 @@ html.room-on,html.room-on body{overflow:hidden}
 
 .or-read{display:grid;grid-template-columns:64px 1fr;gap:18px;align-items:center;margin-top:6px}
 .or-read .cv{height:92px;border-radius:3px 7px 7px 3px;box-shadow:inset 5px 0 0 rgba(0,0,0,.25)}
+.or-read.has-cover{grid-template-columns:minmax(120px,240px) 1fr;align-items:end;gap:clamp(18px,3vw,32px);margin-top:14px}
+.or-cover{display:block;width:100%;height:auto;border-radius:3px 6px 6px 3px;box-shadow:0 30px 60px -18px rgba(0,0,0,.85),inset 0 0 0 1px rgba(255,255,255,.06);animation:coverIn .7s var(--e-out) both}
+@keyframes coverIn{from{opacity:0;transform:translateY(14px) rotate(-1.5deg)}to{opacity:1;transform:none}}
+.or-sub{margin:0 0 14px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,220,180,.6);line-height:1.6}
+.or-shelfrow{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.07)}
+.or-shelfrow button{padding:0;border:0;background:none;cursor:pointer;border-radius:3px;opacity:.55;transition:opacity .25s,transform .35s var(--e-out)}
+.or-shelfrow button:hover,.or-shelfrow button:focus-visible{opacity:1;transform:translateY(-4px)}
+.or-shelfrow button.on{opacity:1;box-shadow:0 0 0 1px rgba(255,190,130,.6)}
+.or-shelfrow img{display:block;width:100%;height:auto;border-radius:3px}
+@media (max-width:600px){.or-read.has-cover{grid-template-columns:38% 1fr;align-items:start}.or-shelfrow{gap:5px}}
+@media (prefers-reduced-motion:reduce){.or-cover{animation:none}}
 .or-ex{margin:22px 0 0;padding-left:18px;border-left:2px solid var(--accent);font-family:var(--f-serif);font-style:italic;font-size:19px;line-height:1.55;color:var(--ink)}
 .or-hi{max-width:min(320px,60vw);white-space:normal}
 .or-panel.clear::before{display:none}
@@ -1641,7 +1653,7 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
     <div class="or-clock" aria-hidden="true"><i class="h"></i><i class="m"></i><i class="s"></i></div>
     <div class="or-gallery"><span class="or-tag">Paintings</span><button class="or-fr f1" type="button" data-frame="0" aria-label="Painting one"><b></b></button><button class="or-fr f2" type="button" data-frame="1" aria-label="Painting two"><b></b></button><button class="or-fr f3" type="button" data-frame="2" aria-label="Painting three"><b></b></button></div>
     <button class="or-obj or-tv" type="button" data-open="videos"><span class="or-screen"><i class="or-play"></i></span><span class="or-console"></span><span class="or-tag">Music videos</span></button>
-    <div class="or-shelf"><span class="or-tag">Writing</span><span class="or-books"><button class="bk b1" type="button" data-book="0">Through The Noise</button><button class="bk b2" type="button" data-book="1">State</button><i class="bk b3"></i><i class="bk b4"></i><i class="bk b5"></i><i class="bk b6"></i></span><span class="or-plank"></span></div>
+    <div class="or-shelf"><span class="or-tag">Writing</span><span class="or-books"><button class="bk" type="button" data-book="0" style="--h:96%;--w:11%;--sp:#0b0d0e;--sa:#B8473B" aria-label="Seers of the North"><span class="bk-n">I</span></button><button class="bk" type="button" data-book="1" style="--h:84%;--w:10%;--sp:#0c0904;--sa:#D9A441" aria-label="Honey & Flies"><span class="bk-n">II</span></button><button class="bk" type="button" data-book="2" style="--h:90%;--w:12%;--sp:#060c10;--sa:#E3D3A0" aria-label="Never Leave Neverland"><span class="bk-n">III</span></button><button class="bk" type="button" data-book="3" style="--h:78%;--w:9%;--sp:#07080a;--sa:#7FD1D8" aria-label="Through the Noise"><span class="bk-n">IV</span></button><button class="bk" type="button" data-book="4" style="--h:100%;--w:13%;--sp:#0c0605;--sa:#FF7A2A" aria-label="State"><span class="bk-n">V</span></button><button class="bk" type="button" data-book="5" style="--h:86%;--w:10%;--sp:#070910;--sa:#8DB8F0" aria-label="Children of the Glow"><span class="bk-n">VI</span></button><button class="bk" type="button" data-book="6" style="--h:92%;--w:11%;--sp:#060a07;--sa:#9DBF86" aria-label="Killing All of the Trees"><span class="bk-n">VII</span></button><button class="bk" type="button" data-book="7" style="--h:74%;--w:9%;--sp:#0b0907;--sa:#C9A27A" aria-label="What’s Mine Is Yours"><span class="bk-n">VIII</span></button></span><span class="or-plank"></span></div>
     <button class="or-obj or-deck" type="button" data-open="songs"><span class="or-tt"><i class="or-plat"></i><i class="or-arm"></i></span><span class="or-side"></span><span class="or-tag">Songs</span></button>
     <span class="or-sleeve" aria-hidden="true"></span>
     <button class="or-drawer" type="button" data-open="drawer" aria-label="A small drawer"><i></i></button>
@@ -2181,9 +2193,16 @@ const ROOM={
   videos:[],   // {title:"…", src:"media/video.mp4", poster:"img/poster.webp"}
   paintings:[],// {title:"…", src:"img/painting.webp"}
   songs:[],    // {title:"…", src:"media/song.mp3"}
+  // the collection: covers live in img/books/<key>-400|800.webp
   books:[
-    {title:"Through The Noise",about:"On attention, institutional decay and crowd psychology.",excerpt:"",c:"linear-gradient(180deg,#1a2550,#0f1736)"},
-    {title:"State",about:"On human performance and nervous system regulation.",excerpt:"",c:"linear-gradient(180deg,#FF7A1A,#C24A00)"}
+    {title:"Seers of the North",sub:"Prophecy, Power and the O’Neill Dynasty",num:"I",key:"seers-of-the-north",acc:"#B8473B",bg:"#0b0d0e",about:"The O’Neill dynasty as inheritance rather than history: prophecy, power, and the bloodlines that don’t stay in the past.",excerpt:""},
+    {title:"Honey & Flies",sub:"The Art of Not Explaining Yourself",num:"II",key:"honey-and-flies",acc:"#D9A441",bg:"#0c0904",about:"On being misunderstood, trusting yourself, and the quiet freedom of no longer explaining yourself to people who were never going to understand.",excerpt:""},
+    {title:"Never Leave Neverland",sub:"The Boy Within and the Man Who Forgot His Face",num:"III",key:"never-leave-neverland",acc:"#E3D3A0",bg:"#060c10",about:"On the wild, wondering boy buried under adulthood, and what happens when the man survives but forgets the child.",excerpt:""},
+    {title:"Through the Noise",sub:"Seeing Clearly in an Age of Infinite Distraction",num:"IV",key:"through-the-noise",acc:"#7FD1D8",bg:"#07080a",about:"Signal and noise in modern life, and how to think clearly in a world built to fragment attention.",excerpt:""},
+    {title:"State",sub:"",num:"V",key:"state",acc:"#FF7A2A",bg:"#0c0605",about:"People aren’t character-based, they’re state-based. On the nervous system, regulation, and what becomes possible.",excerpt:""},
+    {title:"Children of the Glow",sub:"",num:"VI",key:"children-of-the-glow",acc:"#8DB8F0",bg:"#070910",about:"A story of Irish childhood, family and place, growing up under an increasingly artificial glow.",excerpt:""},
+    {title:"Killing All of the Trees",sub:"",num:"VII",key:"killing-all-of-the-trees",acc:"#9DBF86",bg:"#060a07",about:"On what a person is versus what the systems around them demand, told through the garden and the forest.",excerpt:""},
+    {title:"What’s Mine Is Yours",sub:"",num:"VIII",key:"whats-mine-is-yours",acc:"#C9A27A",bg:"#0b0907",about:"On the quiet theft of time, peace, attention and energy, and the moment you start taking it back.",excerpt:""}
   ]
 };
 const room=$("#room")||document.createElement("div"),orPanel=$("#orPanel"),orBody=$("#orBody");let roomFrom=null,orAudio=null;
@@ -2243,17 +2262,20 @@ $("#orDoor")?.addEventListener("click",openRoom);
 $("#orLeave")?.addEventListener("click",closeRoom);
 const fmt=t=>isFinite(t)?Math.floor(t/60)+":"+String(Math.floor(t%60)).padStart(2,"0"):"0:00";
 function empty(title,line){return `<div class="or-empty"><b>${title}</b><span>${line}</span></div>`}
+const bookSrc=(b,w)=>`${MPA?"/":""}img/books/${b.key}-${w}.webp`;
+const toRoman=n=>["","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"][n]||String(n);
 function panelHTML(kind){
   if(kind==="videos"){const v=ROOM.videos;return `<span class="or-kick">On the telly</span><h3 class="or-h">Music videos</h3>`+(v.length?(()=>{const L=Math.min(RM.lastVideo||0,v.length-1);return `<div class="or-video"><video id="orVid" controls playsinline preload="metadata" ${v[L].poster?`poster="${v[L].poster}"`:""} src="${v[L].src}"></video></div><div class="or-tracks">${v.map((x,i)=>`<button class="or-track${i===L?" on":""}" data-vid="${i}"><span class="pp">▶</span><span>${esc(x.title)}</span><span></span></button>`).join("")}</div>`})():empty("Nothing on yet.","The music videos are on their way."))}
   if(kind==="paintings"){const v=ROOM.paintings;return `<span class="or-kick">On the wall</span><h3 class="or-h">Paintings</h3>`+(v.length?`<div class="or-grid">${v.map((x,i)=>`<button data-pt="${i}"><img src="${x.src}" alt="${esc(x.title)}" loading="lazy"></button>`).join("")}</div>`:empty("The frames are waiting.","Paintings will be hung here soon."))}
   if(kind==="drawer"){return `<span class="or-kick">In the drawer</span><h3 class="or-h">Things I probably shouldn't have made.</h3>`+empty("Suspiciously empty.","Unfinished concepts, sketches and strange creations will turn up here.")}
-  if(kind&&kind.startsWith("book:")){const b=ROOM.books[+kind.slice(5)];return `<span class="or-kick">Off the shelf</span><article class="or-read"><span class="cv" style="background:${b.c}"></span><div><h3 class="or-h">${esc(b.title)}</h3><p class="or-p">${esc(b.about)}</p></div></article>`+(b.excerpt?`<blockquote class="or-ex">${esc(b.excerpt)}</blockquote>`:empty("Excerpt coming soon.","A short passage from the book will live here."))}
+  if(kind&&kind.startsWith("book:")){const n=+kind.slice(5),b=ROOM.books[n];return `<span class="or-kick">Off the shelf · ${b.num} of ${toRoman(ROOM.books.length)}</span><article class="or-read has-cover"><img class="or-cover" src="${bookSrc(b,800)}" srcset="${bookSrc(b,400)} 400w, ${bookSrc(b,800)} 800w" sizes="(max-width:600px) 40vw, 260px" width="800" height="1200" alt="Cover of ${esc(b.title)} by Lorcán O’Neill"><div><h3 class="or-h">${esc(b.title)}</h3>${b.sub?`<p class="or-sub">${esc(b.sub)}</p>`:""}<p class="or-p">${esc(b.about)}</p></div></article><div class="or-shelfrow" aria-label="The collection">${ROOM.books.map((x,i)=>`<button type="button" data-goto-book="${i}" class="${i===n?"on":""}" aria-label="${esc(x.title)}"><img src="${bookSrc(x,400)}" alt="" width="400" height="600" loading="lazy"></button>`).join("")}</div>`+(b.excerpt?`<blockquote class="or-ex">${esc(b.excerpt)}</blockquote>`:empty("Excerpt coming soon.","A short passage from the book will live here."))}
   if(kind&&kind.startsWith("frame:")){const i=+kind.slice(6),p=ROOM.paintings[i];return `<span class="or-kick">Private view</span>`+(p?`<h3 class="or-h">${esc(p.title)}</h3><img src="${p.src}" alt="${esc(p.title)}" style="width:100%;margin-top:18px;border-radius:10px">`:`<h3 class="or-h">An empty frame</h3>`+empty("Nothing hung here yet.","The paintings are coming soon."))}
-  if(kind==="books"){return `<span class="or-kick">On the shelf</span><h3 class="or-h">Writing</h3><div class="or-booklist">${ROOM.books.map(b=>`<article class="or-book"><span class="cv" style="background:${b.c}"></span><div><h4>${esc(b.title)}</h4><p>${esc(b.about)}</p>${b.excerpt?`<p class="ex">${esc(b.excerpt)}</p>`:`<p class="ex">Excerpt coming soon.</p>`}</div></article>`).join("")}</div>`}
+  if(kind==="books"){return `<span class="or-kick">On the shelf</span><h3 class="or-h">Writing</h3><div class="or-booklist">${ROOM.books.map(b=>`<article class="or-book"><img class="cv" src="${bookSrc(b,400)}" alt="" width="400" height="600" loading="lazy"><div><h4>${esc(b.title)}</h4><p>${esc(b.about)}</p>${b.excerpt?`<p class="ex">${esc(b.excerpt)}</p>`:`<p class="ex">Excerpt coming soon.</p>`}</div></article>`).join("")}</div>`}
   if(kind==="songs"){const v=ROOM.songs;return `<span class="or-kick">On the record player</span><h3 class="or-h">Songs</h3>`+(v.length?`<div class="or-tracks">${v.map((x,i)=>`<button class="or-track" data-song="${i}"><span class="pp">▶</span><span>${esc(x.title)}</span><span class="tm">–</span></button>`).join("")}</div><div class="or-bar"><i id="orProg"></i></div>`:empty("Still being pressed.","Songs will be playable here soon. Nothing plays until you press play."))}
 }
 function openPanel(kind){
   orBody.innerHTML=panelHTML(kind);orPanel.classList.toggle("clear",kind.startsWith("frame:"));orPanel.hidden=false;$("#orX").focus({preventScroll:true});
+  orBody.querySelectorAll("[data-goto-book]").forEach(b=>b.addEventListener("click",()=>{const i=+b.dataset.gotoBook;remember("book"+i);openPanel("book:"+i)}));
   orBody.querySelectorAll("[data-vid]").forEach(b=>b.addEventListener("click",()=>{remember("lastVideo",+b.dataset.vid);const v=ROOM.videos[+b.dataset.vid];const el=$("#orVid");el.src=v.src;if(v.poster)el.poster=v.poster;orBody.querySelectorAll("[data-vid]").forEach(x=>x.classList.toggle("on",x===b))}));
   orBody.querySelectorAll("[data-pt]").forEach(b=>b.addEventListener("click",()=>{const p=ROOM.paintings[+b.dataset.pt];orBody.innerHTML=`<span class="or-kick">Paintings</span><h3 class="or-h">${esc(p.title)}</h3><img src="${p.src}" alt="${esc(p.title)}" style="width:100%;margin-top:18px;border-radius:10px"><button class="btn btn-line btn-sm" style="margin-top:16px" onclick="openPanel('paintings')">All paintings</button>`}));
   orBody.querySelectorAll("[data-song]").forEach(b=>b.addEventListener("click",()=>{
