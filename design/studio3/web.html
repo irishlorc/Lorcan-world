@@ -3,56 +3,104 @@
 @font-face{font-family:Archivo;src:url(archivo.woff2);font-weight:100 900;font-stretch:62% 125%}
 @font-face{font-family:Plex;src:url(mono5.woff2);font-weight:500}
 @font-face{font-family:Man;src:url(manrope.woff2);font-weight:200 800}
+@font-face{font-family:News;src:url(news.woff2);font-weight:200 800}
 @font-face{font-family:News;font-style:italic;src:url(news-i.woff2);font-weight:200 800}
 *{margin:0;box-sizing:border-box}
 body{background:#444;padding:40px;display:grid;gap:40px;justify-content:start}
 .ab{position:relative;overflow:hidden}.abs{position:absolute}
 .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.win{position:absolute;left:200px;top:110px;width:2000px;height:1390px;border-radius:18px 18px 0 0;overflow:hidden;box-shadow:0 60px 120px -50px #000}
+.win{position:absolute;left:200px;top:110px;width:2000px;height:1390px;border-radius:18px 18px 0 0;overflow:hidden;box-shadow:0 60px 120px -50px rgba(0,0,0,.8)}
 .bar{height:54px;display:flex;align-items:center;gap:10px;padding:0 22px}.bar i{width:13px;height:13px;border-radius:50%;display:block}.bar span{margin:0 auto;width:520px;height:30px;border-radius:8px;display:block}
-.tiles{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;height:456px}
-.tiles>div{position:relative;overflow:hidden}
-.tiles .shade{position:absolute;left:0;right:0;bottom:0;height:55%;background:linear-gradient(180deg,transparent,rgba(0,0,0,.6))}
+.page{position:relative;height:1336px}
+.w{font-family:Archivo,sans-serif;color:#fff}
+.w .mono{font-family:Plex,monospace;letter-spacing:.12em;text-transform:uppercase}
+.w .x{font-weight:700;font-stretch:112%;letter-spacing:-.025em;line-height:.96}
+.grid{background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:60px 60px}
+.crn{position:absolute;width:34px;height:34px;border-color:#FEC104;border-style:solid}
+.k{font-family:Man,sans-serif;color:#2A1150}
+.k .ed{font-family:News,serif;font-style:italic;font-weight:400}
+.k .h{font-weight:800;letter-spacing:-.04em;line-height:.92}
 </style>
 
-<!-- WADDEN website -->
-<section class="ab" id="w8" style="width:2400px;height:1500px;background:#0b1f3a;font-family:Archivo,sans-serif">
+<!-- WADDEN website: technical, grid-based, data-forward -->
+<section class="ab" id="w8" style="width:2400px;height:1500px;background:#dfe5ee">
  <div class="win" style="background:#00122B">
-  <div class="bar" style="background:#0a1a33"><i style="background:#22365a"></i><i style="background:#22365a"></i><i style="background:#22365a"></i><span style="background:#13284a"></span></div>
-  <div style="position:relative;height:880px">
-   <img class="ph" src="img/W-01.jpg" style="object-position:60% 50%">
-   <div class="abs" style="inset:0;background:linear-gradient(90deg,rgba(0,18,43,.9),rgba(0,18,43,.35) 55%,rgba(0,18,43,0))"></div>
-   <div class="abs" style="left:0;right:0;top:0;height:150px;background:linear-gradient(180deg,rgba(0,18,43,.8),rgba(0,18,43,0))"></div>
-   <div class="abs" style="left:90px;right:90px;top:44px;display:flex;align-items:center;gap:46px;color:#d9e2ef;font-size:20px"><img src="logos/wadden-light.svg" style="width:220px"><span style="margin-left:auto">Technology</span><span>Inspections</span><span>Water boards</span><span>About</span><span style="background:#FEC104;color:#00122B;padding:14px 24px;font-weight:700">Book a pilot</span></div>
-   <p class="abs" style="left:90px;top:290px;font-family:Plex,monospace;letter-spacing:.12em;font-size:16px;color:#FEC104;display:flex;align-items:center;gap:12px"><i style="width:12px;height:12px;background:#FEC104;display:block"></i>WD-07 · DIKE INSPECTOR</p>
-   <h1 class="abs" style="left:86px;top:340px;font-size:120px;font-weight:700;font-stretch:112%;letter-spacing:-.025em;line-height:.96;color:#fff">Know the state<br>of every metre.</h1>
-   <p class="abs" style="left:90px;top:610px;width:640px;font-size:24px;line-height:1.5;color:#c3d0e2">Autonomous inspection for dikes and flood defences, with reports your engineers can act on.</p>
-   <div class="abs" style="left:90px;top:720px;display:flex;gap:16px"><span style="background:#fff;color:#00122B;padding:20px 32px;font-size:21px;font-weight:700">See how it works</span><span style="border:1px solid rgba(255,255,255,.5);color:#fff;padding:20px 32px;font-size:21px">Read a sample report</span></div>
-  </div>
-  <div class="tiles" style="background:#000">
-   <div><img class="ph" src="img/W-02.jpg" style="object-position:60% 60%"><div class="shade"></div><p class="abs" style="left:40px;bottom:36px;font-size:34px;font-weight:700;font-stretch:112%;letter-spacing:-.02em;color:#fff">Sees beneath the stone.</p></div>
-   <div><img class="ph" src="img/W-03.jpg" style="object-position:30% 50%"><div class="shade"></div><p class="abs" style="left:40px;bottom:36px;font-size:34px;font-weight:700;font-stretch:112%;letter-spacing:-.02em;color:#fff">The engineer decides.</p></div>
-   <div><img class="ph" src="img/W-04.jpg" style="object-position:58% 50%"><div class="shade"></div><p class="abs" style="left:40px;bottom:36px;font-size:34px;font-weight:700;font-stretch:112%;letter-spacing:-.02em;color:#fff">Every metre. Every tide.</p></div>
+  <div class="bar" style="background:#f3f5f8"><i style="background:#d3d9e2"></i><i style="background:#d3d9e2"></i><i style="background:#d3d9e2"></i><span style="background:#e4e8ee"></span></div>
+  <div class="page w grid">
+   <div class="abs" style="left:0;right:0;top:0;height:96px;border-bottom:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:44px;padding:0 70px">
+    <img src="logos/wadden-light.svg" style="width:210px">
+    <span class="mono" style="margin-left:60px;font-size:14px;color:#9fb1cc">Technology</span><span class="mono" style="font-size:14px;color:#9fb1cc">Inspections</span><span class="mono" style="font-size:14px;color:#9fb1cc">Water boards</span><span class="mono" style="font-size:14px;color:#9fb1cc">Reports</span>
+    <span class="mono" style="margin-left:auto;font-size:14px;color:#9fb1cc">NL · EN</span>
+    <span style="background:#FEC104;color:#00122B;padding:14px 24px;font-weight:700;font-size:17px">Book a pilot</span>
+   </div>
+   <p class="mono abs" style="left:70px;top:170px;font-size:14px;color:#FEC104">Autonomous dike inspection</p>
+   <h1 class="x abs" style="left:66px;top:212px;font-size:92px;width:800px">Know the state<br>of every metre.</h1>
+   <p class="abs" style="left:70px;top:420px;width:640px;font-size:22px;line-height:1.55;color:#b9c7dc">WD-07 walks the revetment at low tide, looks beneath the stone, and hands your engineers a report they can act on.</p>
+   <div class="abs" style="left:70px;top:550px;display:flex;gap:14px"><span style="background:#fff;color:#00122B;padding:18px 28px;font-weight:700;font-size:18px">See how it works</span><span style="border:1px solid rgba(255,255,255,.45);padding:18px 28px;font-size:18px">Read a sample report</span></div>
+   <div class="abs" style="left:900px;top:150px;width:1030px;height:560px;overflow:hidden">
+    <img class="ph" src="img/W-01.jpg" style="object-position:72% 55%">
+    <div class="abs" style="inset:0;background:linear-gradient(180deg,rgba(0,18,43,.25),rgba(0,18,43,0) 30%,rgba(0,18,43,0) 70%,rgba(0,18,43,.7))"></div>
+    <p class="mono abs" style="left:24px;top:22px;font-size:13px;color:#fff">● Live · Section 14 · km 3.2</p>
+    <div class="abs" style="left:630px;top:150px;width:290px;height:300px">
+     <i class="crn" style="left:0;top:0;border-width:3px 0 0 3px"></i><i class="crn" style="right:0;top:0;border-width:3px 3px 0 0"></i><i class="crn" style="left:0;bottom:0;border-width:0 0 3px 3px"></i><i class="crn" style="right:0;bottom:0;border-width:0 3px 3px 0"></i>
+     <p class="mono abs" style="left:0;top:-30px;font-size:12px;color:#FEC104">WD-07 · scanning</p>
+    </div>
+    <div class="abs mono" style="left:0;right:0;bottom:0;height:52px;display:flex;align-items:center;gap:44px;padding:0 24px;font-size:13px;color:#c3d0e2;border-top:1px solid rgba(255,255,255,.18)"><span>Tide −0.8 m</span><span>Wind 6 m/s NW</span><span>05:40</span><span style="margin-left:auto;color:#FEC104">Run in progress</span></div>
+   </div>
+   <div class="abs" style="left:70px;right:70px;top:780px;height:1px;background:rgba(255,255,255,.14)"></div>
+   <p class="mono abs" style="left:70px;top:812px;font-size:14px;color:#7f94b5">How a run works</p>
+   <div class="abs" style="left:70px;top:860px;width:600px;display:grid;gap:34px">
+    <div style="display:grid;grid-template-columns:70px 1fr"><span class="x" style="font-size:40px;color:#FEC104">01</span><div><p class="x" style="font-size:28px">Walk</p><p style="font-size:18px;line-height:1.5;color:#9fb1cc;margin-top:6px">It follows the revetment block by block, day or night.</p></div></div>
+    <div style="display:grid;grid-template-columns:70px 1fr"><span class="x" style="font-size:40px;color:#FEC104">02</span><div><p class="x" style="font-size:28px">Sense</p><p style="font-size:18px;line-height:1.5;color:#9fb1cc;margin-top:6px">Thermal, lidar and ground radar read the stone and what's behind it.</p></div></div>
+    <div style="display:grid;grid-template-columns:70px 1fr"><span class="x" style="font-size:40px;color:#FEC104">03</span><div><p class="x" style="font-size:28px">Report</p><p style="font-size:18px;line-height:1.5;color:#9fb1cc;margin-top:6px">Findings arrive by section, with photos and positions.</p></div></div>
+   </div>
+   <svg class="abs" style="left:780px;top:830px" width="1150" height="460" viewBox="0 0 1150 460">
+    <defs><pattern id="bs" width="34" height="20" patternUnits="userSpaceOnUse" patternTransform="rotate(-27)"><rect width="34" height="20" fill="#16304f"/><path d="M0 0H34M0 10H17M17 10V20M0 0V10" stroke="#2a4a72" stroke-width="2"/></pattern></defs>
+    <path d="M0 360 L120 360 L460 120 L620 120 L1000 360 L1150 360 L1150 460 L0 460Z" fill="#0b2546"/>
+    <path d="M620 120 L1000 360 L1000 380 L600 128Z" fill="url(#bs)"/>
+    <path d="M600 128 L1000 380" stroke="#4d6d96" stroke-width="2"/>
+    <path d="M120 360 L460 120 L620 120" stroke="#3f8a4a" stroke-width="6" fill="none"/>
+    <path d="M1000 330 L1150 330" stroke="#1E6BFF" stroke-width="2" stroke-dasharray="8 8"/>
+    <text x="1150" y="318" text-anchor="end" font-family="Plex" font-size="13" fill="#5f8ff0" letter-spacing="1.5">MEAN HIGH WATER</text>
+    <g transform="translate(790 245) rotate(32)"><rect x="-34" y="-20" width="68" height="22" fill="#e9edf2"/><rect x="-38" y="2" width="76" height="12" rx="6" fill="#0b1b33"/><rect x="-38" y="-8" width="6" height="10" fill="#FEC104"/><rect x="32" y="-8" width="6" height="10" fill="#FEC104"/><rect x="-2" y="-46" width="4" height="26" fill="#FEC104"/></g>
+    <g fill="none" stroke="#FEC104" stroke-width="2" opacity=".9"><path d="M760 300 q20 30 60 36"/><path d="M745 318 q30 46 92 54"/><path d="M730 336 q40 62 124 72" opacity=".6"/></g>
+    <circle cx="700" cy="250" r="7" fill="#FEC104"/><path d="M700 250 L640 40 L470 40" stroke="#FEC104" stroke-width="1.5" fill="none"/>
+    <text x="470" y="30" font-family="Plex" font-size="14" fill="#fff" letter-spacing="1.2">LIDAR · DISPLACED BLOCK</text>
+    <circle cx="850" cy="370" r="7" fill="#FEC104"/><path d="M850 370 L900 420 L1100 420" stroke="#FEC104" stroke-width="1.5" fill="none"/>
+    <text x="1100" y="410" text-anchor="end" font-family="Plex" font-size="14" fill="#fff" letter-spacing="1.2">RADAR · VOID IN THE CORE</text>
+    <circle cx="560" cy="200" r="7" fill="#1E6BFF"/><path d="M560 200 L330 200" stroke="#1E6BFF" stroke-width="1.5" fill="none"/>
+    <text x="320" y="205" text-anchor="end" font-family="Plex" font-size="14" fill="#fff" letter-spacing="1.2">THERMAL · WET PATCH</text>
+   </svg>
   </div>
  </div>
 </section>
 
-<!-- Kindling website -->
-<section class="ab" id="k6" style="width:2400px;height:1500px;background:#d9cff2;font-family:Man,sans-serif">
+<!-- Kindling website: editorial, centred masthead, magazine collage -->
+<section class="ab" id="k6" style="width:2400px;height:1500px;background:#2A1150">
  <div class="win" style="background:#FBF4E6">
   <div class="bar" style="background:#efe6d3"><i style="background:#d8ccb6"></i><i style="background:#d8ccb6"></i><i style="background:#d8ccb6"></i><span style="background:#e4d9c4"></span></div>
-  <div style="position:relative;height:880px">
-   <img class="ph" src="img/K-02.jpg" style="object-position:50% 40%;top:130px;height:750px"><div class="abs" style="left:0;right:0;top:130px;bottom:0;background:linear-gradient(90deg,rgba(214,196,236,.75),rgba(214,196,236,.35) 45%,rgba(214,196,236,0) 60%)"></div><div class="abs" style="left:0;right:0;top:0;height:130px;background:#FBF4E6;border-bottom:1px solid #eadfca"></div>
-   <div class="abs" style="left:90px;right:90px;top:44px;display:flex;align-items:center;gap:46px;color:#2A1150;font-size:20px;font-weight:600"><img src="logos/kindling-dark.svg" style="width:190px;filter:brightness(0) saturate(100%) invert(9%) sepia(55%) saturate(5000%) hue-rotate(262deg)"><span style="margin-left:auto">How it works</span><span>Pricing</span><span>The Weekly</span><span>Log in</span><span style="background:#00AE1D;color:#fff;padding:14px 26px;border-radius:14px;font-weight:800">Try it free</span></div>
-   <p class="abs" style="left:90px;top:220px;font-size:16px;font-weight:700;letter-spacing:.16em;color:#2A1150;opacity:.75">FOR PEOPLE WHO'D RATHER BE WORKING</p>
-   <h1 class="abs" style="left:86px;top:265px;font-size:100px;font-weight:800;letter-spacing:-.035em;line-height:.95;color:#2A1150;width:900px">Less admin.<br><span style="font-family:News,serif;font-style:italic;font-weight:400;letter-spacing:-.01em">More room to run your business.</span></h1>
-   <p class="abs" style="left:90px;top:600px;width:700px;font-size:24px;line-height:1.55;color:#3b2a5a">Kindling sends the invoices, chases the late ones and keeps the receipts in order. You approve, it does the rest.</p>
-   <div class="abs" style="left:90px;top:735px;display:flex;gap:16px"><span style="background:#2A1150;color:#fff;padding:20px 32px;border-radius:14px;font-size:21px;font-weight:800">Start free for 30 days</span><span style="border:2px solid #2A1150;color:#2A1150;padding:20px 32px;border-radius:14px;font-size:21px;font-weight:800">See how it works</span></div>
-  </div>
-  <div class="tiles" style="background:#FBF4E6">
-   <div><img class="ph" src="img/K-01.jpg" style="object-position:50% 62%"><div class="shade"></div><p class="abs" style="left:40px;bottom:36px;font-size:34px;font-weight:800;letter-spacing:-.03em;color:#fff">Invoices from the van.</p></div>
-   <div><img class="ph" src="out/k4.png" style="object-position:50% 45%"><div class="shade"></div><p class="abs" style="left:40px;bottom:36px;font-size:34px;font-weight:800;letter-spacing:-.03em;color:#fff">Read The Weekly.</p></div>
-   <div><img class="ph" src="out/k3.png" style="object-position:50% 35%"><div class="shade"></div><p class="abs" style="left:40px;bottom:36px;font-size:34px;font-weight:800;letter-spacing:-.03em;color:#fff">Reminders that sound like you.</p></div>
+  <div class="page k">
+   <div class="abs" style="left:80px;right:80px;top:0;height:110px;display:flex;align-items:center;font-size:18px;font-weight:600">
+    <div style="display:flex;gap:36px;flex:1"><span>How it works</span><span>Pricing</span><span>The Weekly</span></div>
+    <img src="logos/kindling-dark.svg" style="width:200px;filter:brightness(0) saturate(100%) invert(9%) sepia(55%) saturate(5000%) hue-rotate(262deg)">
+    <div style="display:flex;gap:30px;flex:1;justify-content:flex-end;align-items:center"><span>Log in</span><span style="background:#00AE1D;color:#fff;padding:14px 26px;border-radius:999px;font-weight:800">Try it free</span></div>
+   </div>
+   <div class="abs" style="left:80px;right:80px;top:110px;height:2px;background:#2A1150"></div>
+   <div class="abs" style="left:80px;right:80px;top:118px;height:1px;background:#2A1150"></div>
+   <p class="abs" style="left:0;right:0;top:160px;text-align:center;font-size:15px;font-weight:700;letter-spacing:.2em">INVOICES · REMINDERS · FOLLOW-UPS · RECEIPTS</p>
+   <h1 class="h abs" style="left:0;right:0;top:205px;text-align:center;font-size:170px">Less admin.</h1>
+   <p class="ed abs" style="left:0;right:0;top:370px;text-align:center;font-size:84px;line-height:1">More room to run your business.</p>
+   <div class="abs" style="left:0;right:0;top:500px;display:flex;justify-content:center;gap:14px"><span style="background:#2A1150;color:#fff;padding:20px 34px;border-radius:999px;font-size:20px;font-weight:800">Start free for 30 days</span><span style="border:2px solid #2A1150;padding:20px 34px;border-radius:999px;font-size:20px;font-weight:800">See how it works</span></div>
+   <figure class="abs" style="left:80px;top:640px;width:470px;margin:0"><div style="position:relative;height:520px;overflow:hidden;border-radius:6px"><img class="ph" src="img/K-01.jpg" style="object-position:55% 70%"></div><figcaption class="ed" style="font-size:22px;margin-top:14px;color:#5b4a73">Invoices from the van, before the drive home.</figcaption></figure>
+   <div class="abs" style="left:600px;top:640px;width:560px;height:520px;background:#CDBEF5;border-radius:6px;padding:46px 48px">
+    <p style="font-size:14px;font-weight:700;letter-spacing:.16em">WHAT KINDLING SENDS</p>
+    <p class="ed" style="font-size:36px;line-height:1.3;margin-top:24px">"Hi Ciarán, hope the new bathroom's treating you well. Just a quick reminder that invoice 0139 for €640 was due on 28 October."</p>
+    <p style="font-size:18px;line-height:1.5;margin-top:26px;color:#3b2a5a">Written in your voice. Sent when you say so. Nothing goes out without your yes.</p>
+    <div class="abs" style="left:48px;bottom:44px;display:flex;gap:10px"><span style="background:#2A1150;color:#fff;padding:9px 16px;border-radius:999px;font-size:15px;font-weight:700">Friendly</span><span style="background:#fff;padding:9px 16px;border-radius:999px;font-size:15px;font-weight:700">Clear</span><span style="background:#fff;padding:9px 16px;border-radius:999px;font-size:15px;font-weight:700">Firm</span></div>
+   </div>
+   <figure class="abs" style="left:1210px;top:640px;width:710px;margin:0"><div style="position:relative;height:400px;overflow:hidden;border-radius:6px"><img class="ph" src="img/K-02.jpg" style="object-position:62% 45%"></div><figcaption class="ed" style="font-size:22px;margin-top:14px;color:#5b4a73">After close, the books take ten minutes, not the evening.</figcaption></figure>
+   <div class="abs" style="left:1210px;top:1110px;width:710px;height:50px;display:flex;align-items:center;gap:16px;font-size:18px;font-weight:700"><span style="width:12px;height:12px;border-radius:50%;background:#00AE1D;display:block"></span>The Weekly Kindling · No. 31 · How to ask for a deposit</div>
+   <div class="abs" style="left:0;right:0;bottom:0;height:130px;background:#00AE1D;display:flex;align-items:center;justify-content:center;gap:40px;color:#2A1150"><span class="h" style="font-size:56px">Get your evenings back.</span><span class="ed" style="font-size:30px">30 days free, no card needed.</span></div>
   </div>
  </div>
 </section>
