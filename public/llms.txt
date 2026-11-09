@@ -13,7 +13,7 @@
 - [About](https://www.lorcan.space/about): his background in his own words
 - [Experience](https://www.lorcan.space/experience): design, communications, business and technology, and his current role at Arkintel
 - [Work](https://www.lorcan.space/work): the brands and organisations above
-- [The Possibilities Studio](https://www.lorcan.space/studio): four independent brand concepts for fictional companies, clearly labelled as concepts, not client commissions: WADDEN (maritime robotics that inspect dikes), Kindling (small-business admin software), RUNE (premium audio) and FOLD (Dutch modular furniture). Identity, campaigns, stationery, brochures, social, exhibition and website work.
+- [The Possibilities Studio](https://www.lorcan.space/studio): four independent brand concepts for fictional companies, clearly labelled as concepts, not client commissions: WADDEN (maritime robotics that inspect dikes, https://www.lorcan.space/studio/wadden), Kindling (small-business admin software, https://www.lorcan.space/studio/kindling), RUNE (premium audio, https://www.lorcan.space/studio/rune) and FOLD (Dutch modular furniture, https://www.lorcan.space/studio/fold). Identity, campaigns, stationery, brochures, social, exhibition and website work.
 - [Thoughts](https://www.lorcan.space/thoughts): short notes on technology, AI, creativity and business
 - [Contact](https://www.lorcan.space/contact): email
 

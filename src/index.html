@@ -879,6 +879,96 @@ html.room-on,html.room-on body{overflow:hidden}
 @media (max-width:760px){
   .pj-row{grid-template-columns:minmax(0,1fr)!important}
 }
+
+/* ---- Studio: overview ---- */
+.wide{max-width:calc(1600px + var(--gutter) + var(--gutter-r));margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+.sx{display:grid;gap:clamp(56px,7vw,120px);padding-bottom:clamp(40px,6vw,96px)}
+.sx-row{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,3vw,48px);align-items:start}
+.sx-pv{display:grid;gap:22px;text-decoration:none;color:var(--ink)}
+.sx-img{position:relative;display:block;aspect-ratio:var(--ar);overflow:hidden;border-radius:6px;background:var(--bg-2)}
+.sx-img img:first-child{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--e-out)}
+.sx-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.55));pointer-events:none}
+.sx-pv:hover .sx-img img:first-child,.sx-pv:focus-visible .sx-img img:first-child{transform:scale(1.025)}
+.sx-logo{position:absolute;z-index:1;left:clamp(20px,3vw,44px);bottom:clamp(20px,3vw,40px);height:auto;width:clamp(150px,22vw,360px)}
+.sx-logo-kindling{width:clamp(130px,16vw,250px)}.sx-logo-rune{width:clamp(120px,14vw,220px)}.sx-logo-fold{width:clamp(140px,18vw,300px)}
+.sx-meta{display:grid;grid-template-columns:auto auto 1fr auto;gap:8px 26px;align-items:baseline;padding-bottom:18px;border-bottom:1px solid var(--line-2)}
+.sx-n{font-family:var(--f-serif);font-style:italic;color:var(--accent);font-size:20px}
+.sx-ind{font-size:clamp(18px,1.5vw,22px);font-weight:500;color:var(--ink)}
+.sx-disc{font-size:var(--fs-small);color:var(--muted)}
+.sx-go{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--ink);white-space:nowrap}
+.sx-go svg{width:16px;height:16px;transition:transform .35s var(--e-out)}
+.sx-pv:hover .sx-go svg,.sx-pv:focus-visible .sx-go svg{transform:translateX(5px)}
+.sx-pv:hover .sx-go,.sx-pv:focus-visible .sx-go{color:var(--accent)}
+.sx-c .sx-meta,.sx-b .sx-meta{grid-template-columns:auto 1fr auto}
+.sx-c .sx-disc,.sx-b .sx-disc{grid-column:2/-1;grid-row:2}
+.sx-d{grid-template-columns:8fr 4fr;align-items:end;gap:clamp(24px,3vw,48px)}
+.sx-d .sx-meta{grid-template-columns:1fr;border-bottom:0;border-top:1px solid var(--line-2);padding:22px 0 0;gap:12px}
+.sx-d .sx-ind{font-size:clamp(24px,2.2vw,34px);font-family:var(--f-display);letter-spacing:-.02em}
+@media (max-width:899px){
+  .sx-row,.sx-d{grid-template-columns:minmax(0,1fr)}
+  .sx-a .sx-img{aspect-ratio:4/3}
+  .sx-meta,.sx-c .sx-meta,.sx-b .sx-meta{grid-template-columns:auto 1fr}
+  .sx-disc,.sx-c .sx-disc,.sx-b .sx-disc{grid-column:1/-1;grid-row:auto}
+  .sx-go{grid-column:1/-1}
+}
+/* ---- Studio: case studies ---- */
+.cs-hero{position:relative;height:clamp(460px,82vh,940px);overflow:hidden;background:#000;margin-top:14px}
+.cs-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cs-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 45%,rgba(0,0,0,.72) 100%)}
+.cs-hero-in{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:space-between;padding-top:clamp(20px,3vw,40px);padding-bottom:clamp(32px,5vw,72px)}
+.cs-back{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-size:15px;font-weight:500;padding:10px 16px;border-radius:999px;background:rgba(0,0,0,.35);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.cs-back svg{width:16px;height:16px;transform:rotate(180deg)}
+.cs-back:hover{background:rgba(0,0,0,.55)}
+.cs-k{font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+.cs-h{margin:18px 0 0;line-height:0}
+.cs-logo{width:clamp(220px,34vw,560px);height:auto}
+.cs-logo-kindling{width:clamp(190px,24vw,380px)}.cs-logo-rune{width:clamp(160px,18vw,300px)}.cs-logo-fold{width:clamp(200px,26vw,440px)}
+.cs-line{margin:22px 0 0;color:#fff;font-family:var(--f-serif);font-style:italic;font-weight:300;font-size:clamp(22px,2.4vw,36px);line-height:1.2;max-width:30ch}
+.cs-intro{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(32px,6vw,120px);padding-top:clamp(56px,7vw,112px);padding-bottom:clamp(56px,7vw,112px)}
+.cs-lede{margin:0;font-size:clamp(22px,2vw,30px);line-height:1.45;color:var(--ink);max-width:34ch;text-wrap:pretty}
+.cs-facts{margin:0;display:grid;gap:22px;align-content:start}
+.cs-facts div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding-bottom:18px;border-bottom:1px solid var(--line-2)}
+.cs-facts dt{font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);padding-top:4px}
+.cs-facts dd{margin:0;color:var(--muted);line-height:1.6}
+.cs-pal{display:flex;gap:8px}.cs-pal i{width:30px;height:30px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.cs-ch{padding-bottom:clamp(64px,8vw,140px)}
+.cs-fig{margin:0;min-width:0}
+.cs-fig .st-open{border-radius:4px}
+.cs-fig .st-open img{aspect-ratio:var(--ar);width:100%;height:auto}
+.cs-fig figcaption{margin-top:14px;font-size:14px;color:var(--faint)}
+.cs-pair{display:grid;gap:clamp(16px,2vw,32px);align-items:start}
+.cs-note{margin-top:clamp(28px,3vw,44px);display:grid;grid-template-columns:minmax(0,3fr) minmax(0,7fr);gap:clamp(16px,4vw,80px);max-width:1180px}
+.cs-note p{margin:0}
+.cs-note p:last-child{font-size:clamp(18px,1.4vw,21px);line-height:1.6;color:var(--muted);max-width:60ch}
+.cs-note-k{font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);padding-top:5px;display:flex;gap:12px;align-items:center}
+.cs-note-k::before{content:"";width:22px;height:2px;background:var(--cs-acc,var(--accent))}
+.cs-split{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(28px,5vw,96px);align-items:center}
+.cs-split.rev{grid-template-columns:minmax(0,8fr) minmax(0,4fr)}.cs-split.rev .cs-note{order:2}
+.cs-split .cs-note{margin:0;grid-template-columns:1fr;gap:16px}
+.cs-more{padding-bottom:clamp(64px,8vw,120px);border-top:1px solid var(--line-2);padding-top:clamp(40px,5vw,72px)}
+.cs-more-h{margin:0 0 clamp(24px,3vw,40px);font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:var(--ink);font-weight:600}
+.cs-gallery{columns:2;column-gap:clamp(16px,2vw,32px)}
+.cs-gallery .cs-fig{break-inside:avoid;margin-bottom:clamp(24px,3vw,44px)}
+.cs-nav{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:stretch;padding-bottom:clamp(56px,7vw,110px)}
+.cs-nav a{display:grid;gap:18px;align-content:space-between;padding:clamp(22px,2.6vw,36px);border:1px solid var(--line-2);border-radius:var(--r-lg);text-decoration:none;color:var(--ink);transition:border-color .3s,background .3s}
+.cs-nav a:hover,.cs-nav a:focus-visible{border-color:var(--accent);background:rgba(255,106,0,.05)}
+.cs-nav .cs-k{color:var(--faint)}
+.cs-nav img{height:clamp(22px,2.6vw,36px);width:auto;max-width:100%}
+.cs-nav-n{justify-items:end;text-align:right}
+.cs-nav-o{justify-items:center;text-align:center}
+.cs-nav-grid{display:grid;grid-template-columns:repeat(2,12px);gap:5px}.cs-nav-grid i{width:12px;height:12px;border-radius:2px;background:var(--ink);opacity:.8}
+html.lzon .cs-fig img,html.lzon .sx-img img:first-child{opacity:0;transition:opacity .6s var(--e-out),transform 1.2s var(--e-out)}
+html.lzon .cs-fig img.ld,html.lzon .sx-img img.ld{opacity:1}
+@media (max-width:899px){
+  .cs-hero{height:clamp(420px,72vh,640px)}
+  .cs-intro,.cs-split,.cs-split.rev{grid-template-columns:minmax(0,1fr)}
+  .cs-split.rev .cs-note{order:0}
+  .cs-note{grid-template-columns:1fr;gap:12px}
+  .cs-pair{grid-template-columns:minmax(0,1fr)!important;gap:clamp(28px,6vw,40px)}
+  .cs-gallery{columns:1}
+  .cs-facts div{grid-template-columns:100px 1fr}
+  .cs-nav{grid-template-columns:1fr 1fr}.cs-nav-o{grid-column:1/-1;grid-row:2}
+}
 .st-lb{position:fixed;inset:0;z-index:240;background:rgba(6,6,6,.95);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;grid-template-rows:auto minmax(0,1fr);animation:fadeIn .25s both}
 .st-lb-bar{display:flex;align-items:center;gap:16px;padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
 .st-lb-cap{margin:0;font-size:15px;color:var(--ink);min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -1649,58 +1739,28 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
         <p class="lede">Four fictional companies, each given its own identity and a body of finished work: an engineering firm, a software business, an audio brand and a furniture maker.</p>
         <p class="st-note"><i aria-hidden="true"></i>These aren't projects I was hired to make. They're examples of what I could bring to the table.</p>
       </div>
-      <nav class="st-index rv" aria-label="Projects">
-        <button type="button" data-jump="st-wadden"><b>01</b>WADDEN</button>
-        <button type="button" data-jump="st-kindling"><b>02</b>Kindling</button>
-        <button type="button" data-jump="st-rune"><b>03</b>RUNE</button>
-        <button type="button" data-jump="st-fold"><b>04</b>FOLD</button>
-      </nav>
     </div>
   </section>
-  <section class="sec st-col" id="st-wadden" aria-labelledby="st-h-wadden">
-    <div class="wrap">
-      <header class="st-head rv">
-        <span class="st-n">01</span>
-        <div><h2 class="title" id="st-h-wadden">WADDEN</h2><p class="st-what">A fictional Dutch engineering company whose autonomous robots inspect dikes, flood defences and water infrastructure.</p></div>
-        <span class="st-brand">Maritime robotics</span>
-      </header>
-      <div class="st-gal"><div class="pj-row" style="grid-template-columns:1.6000fr 1.5000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Identity system"><img src="img/studio3/w1-thumb.webp" srcset="img/studio3/w1-thumb.webp 1000w, img/studio3/w1-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1500" alt="Identity system, concept artwork" loading="lazy" decoding="async"></button><figcaption>Identity system</figcaption></figure><figure class="pj-tile" style="--ar:1.5000"><button type="button" class="st-open" aria-label="Enlarge: Business stationery"><img src="img/studio3/w2-thumb.webp" srcset="img/studio3/w2-thumb.webp 1000w, img/studio3/w2-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1600" alt="Business stationery, concept artwork" loading="lazy" decoding="async"></button><figcaption>Business stationery</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.5000fr 1.7778fr"><figure class="pj-tile" style="--ar:1.5000"><button type="button" class="st-open" aria-label="Enlarge: Technology campaign · WD-07 launch"><img src="img/studio3/w3-thumb.webp" srcset="img/studio3/w3-thumb.webp 1000w, img/studio3/w3-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1600" alt="Technology campaign · WD-07 launch, concept artwork" loading="lazy" decoding="async"></button><figcaption>Technology campaign · WD-07 launch</figcaption></figure><figure class="pj-tile" style="--ar:1.7778"><button type="button" class="st-open" aria-label="Enlarge: Photography campaign"><img src="img/studio3/w4-thumb.webp" srcset="img/studio3/w4-thumb.webp 1000w, img/studio3/w4-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1350" alt="Photography campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Photography campaign</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr 2.2642fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Technical brochure · spread"><img src="img/studio3/w5-thumb.webp" srcset="img/studio3/w5-thumb.webp 1000w, img/studio3/w5-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1500" alt="Technical brochure · spread, concept artwork" loading="lazy" decoding="async"></button><figcaption>Technical brochure · spread</figcaption></figure><figure class="pj-tile" style="--ar:2.2642"><button type="button" class="st-open" aria-label="Enlarge: LinkedIn campaign"><img src="img/studio3/w6-thumb.webp" srcset="img/studio3/w6-thumb.webp 1000w, img/studio3/w6-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1060" alt="LinkedIn campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>LinkedIn campaign</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.7778fr 1.6000fr"><figure class="pj-tile" style="--ar:1.7778"><button type="button" class="st-open" aria-label="Enlarge: Exhibition stand"><img src="img/studio3/w7-thumb.webp" srcset="img/studio3/w7-thumb.webp 1000w, img/studio3/w7-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1350" alt="Exhibition stand, concept artwork" loading="lazy" decoding="async"></button><figcaption>Exhibition stand</figcaption></figure><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Website concept"><img src="img/studio3/w8c-thumb.webp" srcset="img/studio3/w8c-thumb.webp 1000w, img/studio3/w8c-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1500" alt="Website concept, concept artwork" loading="lazy" decoding="async"></button><figcaption>Website concept</figcaption></figure></div></div>
-      
-      <p class="st-why rv"><span>The thinking</span>Yellow means caution on a dike, so it's rationed: the flag in the logo, the bumpers on the machine and very little else. The photography stays documentary, with flat North Sea light, wet basalt and real weather, because the people buying this inspect dikes for a living and can spot a staged shot.</p>
+  <section class="sx wide" aria-label="Projects">
+      <a class="sx-pv rv sx-a" href="#studio-wadden">
+        <span class="sx-img" style="--ar:21/9"><img width="2400" height="1350" src="img/studio3/hero-wadden-sm.webp" srcset="img/studio3/hero-wadden-sm.webp 1200w, img/studio3/hero-wadden.webp 2400w" sizes="(min-width:900px) 70vw, 100vw" alt="" loading="lazy" style="object-position:60% 55%"><img width="1742" height="197" class="sx-logo sx-logo-wadden" src="img/studio2/logos/wadden-light.svg" alt="WADDEN"></span>
+        <span class="sx-meta"><span class="sx-n">01</span><span class="sx-ind">Maritime robotics</span><span class="sx-disc">Identity · Stationery · Campaign · Brochure · Exhibition · Web</span><span class="sx-go">View project <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></span>
+      </a>
+    <div class="sx-row">
+      <a class="sx-pv rv sx-b" href="#studio-kindling">
+        <span class="sx-img" style="--ar:4/3"><img width="2400" height="1600" src="img/studio3/hero-kindling-sm.webp" srcset="img/studio3/hero-kindling-sm.webp 1200w, img/studio3/hero-kindling.webp 2400w" sizes="(min-width:900px) 70vw, 100vw" alt="" loading="lazy" style="object-position:50% 40%"><img width="924" height="271" class="sx-logo sx-logo-kindling" src="img/studio2/logos/kindling-light.svg" alt="Kindling"></span>
+        <span class="sx-meta"><span class="sx-n">02</span><span class="sx-ind">Small-business software</span><span class="sx-disc">Identity · Editorial · Advertising · Product UI · Web</span><span class="sx-go">View project <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></span>
+      </a>
+      <a class="sx-pv rv sx-c" href="#studio-rune">
+        <span class="sx-img" style="--ar:4/5"><img width="2061" height="2576" src="img/studio3/pv-rune-sm.webp" srcset="img/studio3/pv-rune-sm.webp 1200w, img/studio3/pv-rune.webp 2400w" sizes="(min-width:900px) 70vw, 100vw" alt="" loading="lazy" style="object-position:50% 55%"><img width="1580" height="293" class="sx-logo sx-logo-rune" src="img/studio2/logos/rune-light.svg" alt="RUNE"></span>
+        <span class="sx-meta"><span class="sx-n">03</span><span class="sx-ind">Premium audio</span><span class="sx-disc">Identity · Product imagery · Packaging · Outdoor · Web</span><span class="sx-go">View project <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></span>
+      </a>
     </div>
-  </section>
-  <section class="sec st-col" id="st-kindling" aria-labelledby="st-h-kindling">
-    <div class="wrap">
-      <header class="st-head rv">
-        <span class="st-n">02</span>
-        <div><h2 class="title" id="st-h-kindling">Kindling</h2><p class="st-what">Fictional software that takes invoices, follow-ups and everyday admin off small-business owners.</p></div>
-        <span class="st-brand">Small-business software</span>
-      </header>
-      <div class="st-gal"><div class="pj-row" style="grid-template-columns:1.6000fr 1.5000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Identity system"><img src="img/studio2/k-identity-thumb.webp" srcset="img/studio2/k-identity-thumb.webp 1000w, img/studio2/k-identity-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="1000" alt="Identity system, concept artwork" loading="lazy" decoding="async"></button><figcaption>Identity system</figcaption></figure><figure class="pj-tile" style="--ar:1.5000"><button type="button" class="st-open" aria-label="Enlarge: Product introduction"><img src="img/studio3/k2-thumb.webp" srcset="img/studio3/k2-thumb.webp 1000w, img/studio3/k2-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1600" alt="Product introduction, concept artwork" loading="lazy" decoding="async"></button><figcaption>Product introduction</figcaption></figure></div><div class="pj-row" style="grid-template-columns:0.8000fr 0.8000fr"><figure class="pj-tile" style="--ar:0.8000"><button type="button" class="st-open" aria-label="Enlarge: Advertising campaign"><img src="img/studio3/k1-thumb.webp" srcset="img/studio3/k1-thumb.webp 1000w, img/studio3/k1-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="2000" alt="Advertising campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Advertising campaign</figcaption></figure><figure class="pj-tile" style="--ar:0.8000"><button type="button" class="st-open" aria-label="Enlarge: Product interface · payment reminder"><img src="img/studio3/k3-thumb.webp" srcset="img/studio3/k3-thumb.webp 1000w, img/studio3/k3-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="2000" alt="Product interface · payment reminder, concept artwork" loading="lazy" decoding="async"></button><figcaption>Product interface · payment reminder</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.5000fr 1.5000fr"><figure class="pj-tile" style="--ar:1.5000"><button type="button" class="st-open" aria-label="Enlarge: Newsletter · The Weekly Kindling"><img src="img/studio3/k4-thumb.webp" srcset="img/studio3/k4-thumb.webp 1000w, img/studio3/k4-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1600" alt="Newsletter · The Weekly Kindling, concept artwork" loading="lazy" decoding="async"></button><figcaption>Newsletter · The Weekly Kindling</figcaption></figure><figure class="pj-tile" style="--ar:1.5000"><button type="button" class="st-open" aria-label="Enlarge: Poster campaign"><img src="img/studio3/k5-thumb.webp" srcset="img/studio3/k5-thumb.webp 1000w, img/studio3/k5-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1600" alt="Poster campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Poster campaign</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr 1.4545fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Website concept"><img src="img/studio3/k6c-thumb.webp" srcset="img/studio3/k6c-thumb.webp 1000w, img/studio3/k6c-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1500" alt="Website concept, concept artwork" loading="lazy" decoding="async"></button><figcaption>Website concept</figcaption></figure><figure class="pj-tile" style="--ar:1.4545"><button type="button" class="st-open" aria-label="Enlarge: Onboarding · welcome email and guide"><img src="img/studio2/k-onboard-thumb.webp" srcset="img/studio2/k-onboard-thumb.webp 1000w, img/studio2/k-onboard-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="1100" alt="Onboarding · welcome email and guide, concept artwork" loading="lazy" decoding="async"></button><figcaption>Onboarding · welcome email and guide</figcaption></figure></div><div class="pj-row" style="grid-template-columns:2.4440fr"><figure class="pj-tile" style="--ar:2.4440"><button type="button" class="st-open" aria-label="Enlarge: Social campaign"><img src="img/studio2/k-social-thumb.webp" srcset="img/studio2/k-social-thumb.webp 1000w, img/studio2/k-social-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="982" alt="Social campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Social campaign</figcaption></figure></div></div>
-      
-      <p class="st-why rv"><span>The thinking</span>Small-business owners don't want software, they want their evenings back. So the brand talks like a helpful colleague, sets its headlines like a magazine and shows the actual words a tradesperson would send, never a floating dashboard.</p>
-    </div>
-  </section>
-  <section class="sec st-col" id="st-rune" aria-labelledby="st-h-rune">
-    <div class="wrap">
-      <header class="st-head rv">
-        <span class="st-n">03</span>
-        <div><h2 class="title" id="st-h-rune">RUNE</h2><p class="st-what">A fictional premium audio company making headphones and home speakers that feel considered, tactile and effortless.</p></div>
-        <span class="st-brand">Premium audio</span>
-      </header>
-      <div class="st-gal"><div class="pj-row" style="grid-template-columns:1.6000fr 1.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Identity system"><img src="img/studio2/r1-thumb.webp" srcset="img/studio2/r1-thumb.webp 1000w, img/studio2/r1-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="1000" alt="Identity system, concept artwork" loading="lazy" decoding="async"></button><figcaption>Identity system</figcaption></figure><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Speaker collection"><img src="img/studio3/rd-thumb.webp" srcset="img/studio3/rd-thumb.webp 1000w, img/studio3/rd-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1500" alt="Speaker collection, concept artwork" loading="lazy" decoding="async"></button><figcaption>Speaker collection</figcaption></figure></div><div class="pj-row" style="grid-template-columns:0.8000fr 0.7500fr"><figure class="pj-tile" style="--ar:0.8000"><button type="button" class="st-open" aria-label="Enlarge: Product hero campaign"><img src="img/studio3/ra-thumb.webp" srcset="img/studio3/ra-thumb.webp 1000w, img/studio3/ra-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="2000" alt="Product hero campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Product hero campaign</figcaption></figure><figure class="pj-tile" style="--ar:0.7500"><button type="button" class="st-open" aria-label="Enlarge: Launch campaign"><img src="img/studio3/rh-thumb.webp" srcset="img/studio3/rh-thumb.webp 1000w, img/studio3/rh-full.webp 1500w" sizes="(min-width:1024px) 50vw, 100vw" width="1500" height="2000" alt="Launch campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Launch campaign</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr 1.0000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Editorial photography · magazine spread"><img src="img/studio3/rc-thumb.webp" srcset="img/studio3/rc-thumb.webp 1000w, img/studio3/rc-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1500" alt="Editorial photography · magazine spread, concept artwork" loading="lazy" decoding="async"></button><figcaption>Editorial photography · magazine spread</figcaption></figure><figure class="pj-tile" style="--ar:1.0000"><button type="button" class="st-open" aria-label="Enlarge: Product detail"><img src="img/studio3/rb-thumb.webp" srcset="img/studio3/rb-thumb.webp 1000w, img/studio3/rb-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="1600" alt="Product detail, concept artwork" loading="lazy" decoding="async"></button><figcaption>Product detail</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.7778fr 1.5000fr"><figure class="pj-tile" style="--ar:1.7778"><button type="button" class="st-open" aria-label="Enlarge: Outdoor advertising"><img src="img/studio3/rf-thumb.webp" srcset="img/studio3/rf-thumb.webp 1000w, img/studio3/rf-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1350" alt="Outdoor advertising, concept artwork" loading="lazy" decoding="async"></button><figcaption>Outdoor advertising</figcaption></figure><figure class="pj-tile" style="--ar:1.5000"><button type="button" class="st-open" aria-label="Enlarge: Packaging"><img src="img/studio3/re-thumb.webp" srcset="img/studio3/re-thumb.webp 1000w, img/studio3/re-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1600" alt="Packaging, concept artwork" loading="lazy" decoding="async"></button><figcaption>Packaging</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Website concept"><img src="img/studio3/rg-thumb.webp" srcset="img/studio3/rg-thumb.webp 1000w, img/studio3/rg-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1500" alt="Website concept, concept artwork" loading="lazy" decoding="async"></button><figcaption>Website concept</figcaption></figure></div></div>
-      <p class="st-why rv"><span>The thinking</span>Bold, minimal and architectural. Stone, metal and one hard light do the talking, and violet appears once per layout, the way the light ring sits on the headphones. The type stays quiet so the product can be the loudest thing in the frame.</p>
-    </div>
-  </section>
-  <section class="sec st-col" id="st-fold" aria-labelledby="st-h-fold">
-    <div class="wrap">
-      <header class="st-head rv">
-        <span class="st-n">04</span>
-        <div><h2 class="title" id="st-h-fold">FOLD</h2><p class="st-what">A fictional Dutch furniture company making modular pieces for modern homes.</p></div>
-        <span class="st-brand">Modular furniture</span>
-      </header>
-      <div class="st-gal"><div class="pj-row" style="grid-template-columns:1.6000fr 1.7778fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Identity system"><img src="img/studio3/f1-thumb.webp" srcset="img/studio3/f1-thumb.webp 1000w, img/studio3/f1-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1500" alt="Identity system, concept artwork" loading="lazy" decoding="async"></button><figcaption>Identity system</figcaption></figure><figure class="pj-tile" style="--ar:1.7778"><button type="button" class="st-open" aria-label="Enlarge: Advertising campaign"><img src="img/studio3/fa-thumb.webp" srcset="img/studio3/fa-thumb.webp 1000w, img/studio3/fa-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1350" alt="Advertising campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Advertising campaign</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Product catalogue · seating spread"><img src="img/studio3/fb-thumb.webp" srcset="img/studio3/fb-thumb.webp 1000w, img/studio3/fb-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1500" alt="Product catalogue · seating spread, concept artwork" loading="lazy" decoding="async"></button><figcaption>Product catalogue · seating spread</figcaption></figure></div><div class="pj-row" style="grid-template-columns:0.7692fr 0.6573fr"><figure class="pj-tile" style="--ar:0.7692"><button type="button" class="st-open" aria-label="Enlarge: Furniture collection · The Stack"><img src="img/studio3/fc-thumb.webp" srcset="img/studio3/fc-thumb.webp 1000w, img/studio3/fc-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="2080" alt="Furniture collection · The Stack, concept artwork" loading="lazy" decoding="async"></button><figcaption>Furniture collection · The Stack</figcaption></figure><figure class="pj-tile" style="--ar:0.6573"><button type="button" class="st-open" aria-label="Enlarge: Packaging"><img src="img/studio3/fe-thumb.webp" srcset="img/studio3/fe-thumb.webp 1000w, img/studio3/fe-full.webp 1680w" sizes="(min-width:1024px) 50vw, 100vw" width="1680" height="2556" alt="Packaging, concept artwork" loading="lazy" decoding="async"></button><figcaption>Packaging</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.0777fr 0.6710fr"><figure class="pj-tile" style="--ar:1.0777"><button type="button" class="st-open" aria-label="Enlarge: Showroom branding"><img src="img/studio3/ff-thumb.webp" srcset="img/studio3/ff-thumb.webp 1000w, img/studio3/ff-full.webp 1540w" sizes="(min-width:1024px) 50vw, 100vw" width="1540" height="1429" alt="Showroom branding, concept artwork" loading="lazy" decoding="async"></button><figcaption>Showroom branding</figcaption></figure><figure class="pj-tile" style="--ar:0.6710"><button type="button" class="st-open" aria-label="Enlarge: Digital storefront · mobile"><img src="img/studio3/fg-thumb.webp" srcset="img/studio3/fg-thumb.webp 1000w, img/studio3/fg-full.webp 1715w" sizes="(min-width:1024px) 50vw, 100vw" width="1715" height="2556" alt="Digital storefront · mobile, concept artwork" loading="lazy" decoding="async"></button><figcaption>Digital storefront · mobile</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.7143fr"><figure class="pj-tile" style="--ar:1.7143"><button type="button" class="st-open" aria-label="Enlarge: The pieces · product photography"><img src="img/studio3/fd-thumb.webp" srcset="img/studio3/fd-thumb.webp 1000w, img/studio3/fd-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1400" alt="The pieces · product photography, concept artwork" loading="lazy" decoding="async"></button><figcaption>The pieces · product photography</figcaption></figure></div><div class="pj-row" style="grid-template-columns:2.8235fr"><figure class="pj-tile" style="--ar:2.8235"><button type="button" class="st-open" aria-label="Enlarge: Social campaign"><img src="img/studio3/fh-thumb.webp" srcset="img/studio3/fh-thumb.webp 1000w, img/studio3/fh-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="850" alt="Social campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Social campaign</figcaption></figure></div><div class="pj-row" style="grid-template-columns:1.6000fr"><figure class="pj-tile" style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Website concept"><img src="img/studio3/fw-thumb.webp" srcset="img/studio3/fw-thumb.webp 1000w, img/studio3/fw-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="1500" alt="Website concept, concept artwork" loading="lazy" decoding="async"></button><figcaption>Website concept</figcaption></figure></div></div>
-      <p class="st-why rv"><span>The thinking</span>The logo is built the way the furniture is: four letters made of folded, interlocking blocks. The photography stays in real Dutch rooms with low sun and lived-in props, so the pieces read as furniture you\'d actually keep, and terracotta and forest green carry from the sofa to the box tape.</p>
+    <div class="sx-d-wrap">
+      <a class="sx-pv rv sx-d" href="#studio-fold">
+        <span class="sx-img" style="--ar:16/10"><img width="2400" height="1350" src="img/studio3/hero-fold-sm.webp" srcset="img/studio3/hero-fold-sm.webp 1200w, img/studio3/hero-fold.webp 2400w" sizes="(min-width:900px) 70vw, 100vw" alt="" loading="lazy" style="object-position:55% 60%"><img width="1593" height="307" class="sx-logo sx-logo-fold" src="img/studio2/logos/fold-light.svg" alt="FOLD"></span>
+        <span class="sx-meta"><span class="sx-n">04</span><span class="sx-ind">Modular furniture</span><span class="sx-disc">Identity · Catalogue · Retail · Packaging · E-commerce</span><span class="sx-go">View project <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></span>
+      </a>
     </div>
   </section>
   <section class="sec">
@@ -1711,6 +1771,172 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
       </div>
     </div>
   </section>
+</div>
+
+<!-- =================== STUDIO WADDEN =================== -->
+<div class="page cs cs-wadden" data-page="studio-wadden" style="--cs-acc:#FEC104" hidden>
+  <section class="cs-hero">
+    <img class="cs-hero-img" width="2400" height="1350" src="img/studio3/hero-wadden.webp" srcset="img/studio3/hero-wadden-sm.webp 1200w, img/studio3/hero-wadden.webp 2400w" sizes="100vw" alt="" style="object-position:60% 55%" fetchpriority="high">
+    <div class="cs-hero-in wide">
+      <a class="cs-back" href="#studio"><svg aria-hidden="true"><use href="#i-arrow"/></svg> The Studio</a>
+      <div class="cs-hero-b">
+        <p class="cs-k">Project 01 · Maritime robotics</p>
+        <h1 class="cs-h"><img width="1742" height="197" src="img/studio2/logos/wadden-light.svg" alt="WADDEN" class="cs-logo cs-logo-wadden"></h1>
+        <p class="cs-line">Eyes on the water line.</p>
+      </div>
+    </div>
+  </section>
+  <section class="cs-intro wide">
+    <div class="cs-intro-t rv">
+      <p class="cs-lede">A fictional Dutch engineering company whose autonomous robots inspect dikes, flood defences and the water infrastructure that keeps a low country dry.</p>
+      <p class="st-note"><i aria-hidden="true"></i>A fictional company, designed as an independent concept. Not a client commission.</p>
+    </div>
+    <dl class="cs-facts rv">
+      <div><dt>Industry</dt><dd>Maritime robotics</dd></div>
+      <div><dt>Audience</dt><dd>Water boards, infrastructure operators, engineering firms and municipalities.</dd></div>
+      <div><dt>Disciplines</dt><dd>Identity · Stationery · Campaign · Brochure · Exhibition · Web</dd></div>
+      <div><dt>Palette</dt><dd class="cs-pal"><i style="background:#012653" title="#012653"></i><i style="background:#1E6BFF" title="#1E6BFF"></i><i style="background:#FEC104" title="#FEC104"></i><i style="background:#FFFFFF" title="#FFFFFF"></i></dd></div>
+    </dl>
+  </section>
+  <section class="cs-ch wide"><figure class="cs-fig rv " style="--ar:1.7778"><button type="button" class="st-open" aria-label="Enlarge: Photography campaign · &quot;The night shift on the sea dike.&quot;"><img src="img/studio3/w4-thumb.webp" srcset="img/studio3/w4-thumb.webp 1000w, img/studio3/w4-md.webp 1600w, img/studio3/w4-full.webp 2400w" sizes="(min-width:1700px) 1600px, 94vw" width="2400" height="1350" alt="Photography campaign · &quot;The night shift on the sea dike.&quot;, concept artwork" loading="lazy" decoding="async"></button><figcaption>Photography campaign · &quot;The night shift on the sea dike.&quot;</figcaption></figure><div class="cs-note rv"><p class="cs-note-k">Photography</p><p>Documentary, never staged. Flat North Sea light, wet basalt and real weather, because the people buying this inspect dikes for a living and can spot a set-up shot instantly.</p></div></section>
+  <section class="cs-ch wide cs-split"><div class="cs-note rv"><p class="cs-note-k">Identity</p><p>The W reads as two folds of water running down a dike. Yellow means caution on a dike, so it is rationed: the flag in the logo, the bumpers on the machine and very little else.</p></div><figure class="cs-fig rv " style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Identity system"><img src="img/studio3/w1-thumb.webp" srcset="img/studio3/w1-thumb.webp 1000w, img/studio3/w1-md.webp 1600w, img/studio3/w1-full.webp 2400w" sizes="(min-width:900px) 62vw, 94vw" width="2400" height="1500" alt="Identity system, concept artwork" loading="lazy" decoding="async"></button><figcaption>Identity system</figcaption></figure></section>
+  <section class="cs-ch wide"><figure class="cs-fig rv " style="--ar:1.5000"><button type="button" class="st-open" aria-label="Enlarge: Technology campaign · WD-07 launch"><img src="img/studio3/w3-thumb.webp" srcset="img/studio3/w3-thumb.webp 1000w, img/studio3/w3-md.webp 1600w, img/studio3/w3-full.webp 2400w" sizes="(min-width:1700px) 1600px, 94vw" width="2400" height="1600" alt="Technology campaign · WD-07 launch, concept artwork" loading="lazy" decoding="async"></button><figcaption>Technology campaign · WD-07 launch</figcaption></figure></section>
+  <section class="cs-ch wide"><div class="cs-pair" style="grid-template-columns:1.6000fr 1.7778fr"><figure class="cs-fig rv " style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Technical brochure · spread"><img src="img/studio3/w5-thumb.webp" srcset="img/studio3/w5-thumb.webp 1000w, img/studio3/w5-md.webp 1600w, img/studio3/w5-full.webp 2400w" sizes="(min-width:900px) 48vw, 94vw" width="2400" height="1500" alt="Technical brochure · spread, concept artwork" loading="lazy" decoding="async"></button><figcaption>Technical brochure · spread</figcaption></figure><figure class="cs-fig rv " style="--ar:1.7778"><button type="button" class="st-open" aria-label="Enlarge: Exhibition stand"><img src="img/studio3/w7-thumb.webp" srcset="img/studio3/w7-thumb.webp 1000w, img/studio3/w7-md.webp 1600w, img/studio3/w7-full.webp 2400w" sizes="(min-width:900px) 48vw, 94vw" width="2400" height="1350" alt="Exhibition stand, concept artwork" loading="lazy" decoding="async"></button><figcaption>Exhibition stand</figcaption></figure></div><div class="cs-note rv"><p class="cs-note-k">Print and space</p><p>The brochure and the stand share one grid and one voice: plain engineering language, big photography, specification in mono. A stand should be legible from the aisle; a brochure should survive being photocopied.</p></div></section>
+  <section class="cs-ch wide"><figure class="cs-fig rv " style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Website concept"><img src="img/studio3/w8c-thumb.webp" srcset="img/studio3/w8c-thumb.webp 1000w, img/studio3/w8c-md.webp 1600w, img/studio3/w8c-full.webp 2400w" sizes="(min-width:1700px) 1600px, 94vw" width="2400" height="1500" alt="Website concept, concept artwork" loading="lazy" decoding="async"></button><figcaption>Website concept</figcaption></figure><div class="cs-note rv"><p class="cs-note-k">Web</p><p>The site behaves like a control room: a live inspection feed, the run explained in three steps and a cross-section of the dike that shows what each sensor finds. It sells the outcome, an engineer who knows the state of every metre.</p></div></section>
+  <section class="cs-more wide">
+    <h2 class="cs-more-h rv">More applications</h2>
+    <div class="cs-gallery"><figure class="cs-fig rv cs-g" style="--ar:1.5000"><button type="button" class="st-open" aria-label="Enlarge: Business stationery"><img src="img/studio3/w2-thumb.webp" srcset="img/studio3/w2-thumb.webp 1000w, img/studio3/w2-md.webp 1600w, img/studio3/w2-full.webp 2400w" sizes="(min-width:900px) 46vw, 94vw" width="2400" height="1600" alt="Business stationery, concept artwork" loading="lazy" decoding="async"></button><figcaption>Business stationery</figcaption></figure><figure class="cs-fig rv cs-g" style="--ar:2.2642"><button type="button" class="st-open" aria-label="Enlarge: LinkedIn campaign"><img src="img/studio3/w6-thumb.webp" srcset="img/studio3/w6-thumb.webp 1000w, img/studio3/w6-md.webp 1600w, img/studio3/w6-full.webp 2400w" sizes="(min-width:900px) 46vw, 94vw" width="2400" height="1060" alt="LinkedIn campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>LinkedIn campaign</figcaption></figure></div>
+  </section>
+  <nav class="cs-nav wide" aria-label="Projects">
+    <a class="cs-nav-p" href="#studio-fold"><span class="cs-k">← Previous</span><img width="1593" height="307" src="img/studio2/logos/fold-light.svg" alt="FOLD"></a>
+    <a class="cs-nav-o" href="#studio"><span class="cs-k">All projects</span><span class="cs-nav-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span></a>
+    <a class="cs-nav-n" href="#studio-kindling"><span class="cs-k">Next →</span><img width="924" height="271" src="img/studio2/logos/kindling-light.svg" alt="Kindling"></a>
+  </nav>
+</div>
+
+<!-- =================== STUDIO KINDLING =================== -->
+<div class="page cs cs-kindling" data-page="studio-kindling" style="--cs-acc:#00AE1D" hidden>
+  <section class="cs-hero">
+    <img class="cs-hero-img" width="2400" height="1600" src="img/studio3/hero-kindling.webp" srcset="img/studio3/hero-kindling-sm.webp 1200w, img/studio3/hero-kindling.webp 2400w" sizes="100vw" alt="" style="object-position:50% 40%" fetchpriority="high">
+    <div class="cs-hero-in wide">
+      <a class="cs-back" href="#studio"><svg aria-hidden="true"><use href="#i-arrow"/></svg> The Studio</a>
+      <div class="cs-hero-b">
+        <p class="cs-k">Project 02 · Small-business software</p>
+        <h1 class="cs-h"><img width="924" height="271" src="img/studio2/logos/kindling-light.svg" alt="Kindling" class="cs-logo cs-logo-kindling"></h1>
+        <p class="cs-line">Less administration. More room to run your business.</p>
+      </div>
+    </div>
+  </section>
+  <section class="cs-intro wide">
+    <div class="cs-intro-t rv">
+      <p class="cs-lede">Fictional software that takes invoices, payment reminders, follow-ups and everyday admin off the people running small businesses, without adding another thing to learn.</p>
+      <p class="st-note"><i aria-hidden="true"></i>A fictional company, designed as an independent concept. Not a client commission.</p>
+    </div>
+    <dl class="cs-facts rv">
+      <div><dt>Industry</dt><dd>Small-business software</dd></div>
+      <div><dt>Audience</dt><dd>Freelancers, tradespeople, café owners and independent professionals.</dd></div>
+      <div><dt>Disciplines</dt><dd>Identity · Editorial · Advertising · Product UI · Web</dd></div>
+      <div><dt>Palette</dt><dd class="cs-pal"><i style="background:#2A1150" title="#2A1150"></i><i style="background:#00AE1D" title="#00AE1D"></i><i style="background:#CDBEF5" title="#CDBEF5"></i><i style="background:#FBF4E6" title="#FBF4E6"></i></dd></div>
+    </dl>
+  </section>
+  <section class="cs-ch wide"><div class="cs-pair" style="grid-template-columns:0.8000fr 0.8000fr"><figure class="cs-fig rv " style="--ar:0.8000"><button type="button" class="st-open" aria-label="Enlarge: Advertising campaign"><img src="img/studio3/k1-thumb.webp" srcset="img/studio3/k1-thumb.webp 1000w, img/studio3/k1-full.webp 1600w" sizes="(min-width:900px) 48vw, 94vw" width="1600" height="2000" alt="Advertising campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Advertising campaign</figcaption></figure><figure class="cs-fig rv " style="--ar:0.8000"><button type="button" class="st-open" aria-label="Enlarge: Product interface · payment reminder"><img src="img/studio3/k3-thumb.webp" srcset="img/studio3/k3-thumb.webp 1000w, img/studio3/k3-full.webp 1600w" sizes="(min-width:900px) 48vw, 94vw" width="1600" height="2000" alt="Product interface · payment reminder, concept artwork" loading="lazy" decoding="async"></button><figcaption>Product interface · payment reminder</figcaption></figure></div><div class="cs-note rv"><p class="cs-note-k">Voice</p><p>Small-business owners don&#x27;t want software, they want their evenings back. So the brand shows real people at the end of a working day and the actual words a reminder would say, never a floating dashboard.</p></div></section>
+  <section class="cs-ch wide"><figure class="cs-fig rv " style="--ar:1.5000"><button type="button" class="st-open" aria-label="Enlarge: Poster campaign"><img src="img/studio3/k5-thumb.webp" srcset="img/studio3/k5-thumb.webp 1000w, img/studio3/k5-md.webp 1600w, img/studio3/k5-full.webp 2400w" sizes="(min-width:1700px) 1600px, 94vw" width="2400" height="1600" alt="Poster campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Poster campaign</figcaption></figure></section>
+  <section class="cs-ch wide cs-split"><div class="cs-note rv"><p class="cs-note-k">Identity</p><p>A bold sans for the plain facts and an italic serif for the human aside. Purple and cream are the paper; green only ever means something got done.</p></div><figure class="cs-fig rv " style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Identity system"><img src="img/studio2/k-identity-thumb.webp" srcset="img/studio2/k-identity-thumb.webp 1000w, img/studio2/k-identity-full.webp 1600w" sizes="(min-width:900px) 62vw, 94vw" width="1600" height="1000" alt="Identity system, concept artwork" loading="lazy" decoding="async"></button><figcaption>Identity system</figcaption></figure></section>
+  <section class="cs-ch wide"><figure class="cs-fig rv " style="--ar:1.5000"><button type="button" class="st-open" aria-label="Enlarge: Newsletter · The Weekly Kindling"><img src="img/studio3/k4-thumb.webp" srcset="img/studio3/k4-thumb.webp 1000w, img/studio3/k4-md.webp 1600w, img/studio3/k4-full.webp 2400w" sizes="(min-width:1700px) 1600px, 94vw" width="2400" height="1600" alt="Newsletter · The Weekly Kindling, concept artwork" loading="lazy" decoding="async"></button><figcaption>Newsletter · The Weekly Kindling</figcaption></figure><div class="cs-note rv"><p class="cs-note-k">Editorial</p><p>The newsletter reads like a small magazine rather than a product update: one lead story, a line to copy, three things to do before Friday. Its readers owe it nothing, so it has to earn the open.</p></div></section>
+  <section class="cs-ch wide"><figure class="cs-fig rv " style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Website concept"><img src="img/studio3/k6c-thumb.webp" srcset="img/studio3/k6c-thumb.webp 1000w, img/studio3/k6c-md.webp 1600w, img/studio3/k6c-full.webp 2400w" sizes="(min-width:1700px) 1600px, 94vw" width="2400" height="1500" alt="Website concept, concept artwork" loading="lazy" decoding="async"></button><figcaption>Website concept</figcaption></figure><div class="cs-note rv"><p class="cs-note-k">Web</p><p>A masthead, a big headline and a collage of real moments. The website is set like the newsletter, so the brand feels the same wherever you meet it.</p></div></section>
+  <section class="cs-more wide">
+    <h2 class="cs-more-h rv">More applications</h2>
+    <div class="cs-gallery"><figure class="cs-fig rv cs-g" style="--ar:1.5000"><button type="button" class="st-open" aria-label="Enlarge: Product introduction"><img src="img/studio3/k2-thumb.webp" srcset="img/studio3/k2-thumb.webp 1000w, img/studio3/k2-md.webp 1600w, img/studio3/k2-full.webp 2400w" sizes="(min-width:900px) 46vw, 94vw" width="2400" height="1600" alt="Product introduction, concept artwork" loading="lazy" decoding="async"></button><figcaption>Product introduction</figcaption></figure><figure class="cs-fig rv cs-g" style="--ar:1.4545"><button type="button" class="st-open" aria-label="Enlarge: Onboarding · welcome email and guide"><img src="img/studio2/k-onboard-thumb.webp" srcset="img/studio2/k-onboard-thumb.webp 1000w, img/studio2/k-onboard-full.webp 1600w" sizes="(min-width:900px) 46vw, 94vw" width="1600" height="1100" alt="Onboarding · welcome email and guide, concept artwork" loading="lazy" decoding="async"></button><figcaption>Onboarding · welcome email and guide</figcaption></figure><figure class="cs-fig rv cs-g" style="--ar:2.4440"><button type="button" class="st-open" aria-label="Enlarge: Social campaign"><img src="img/studio2/k-social-thumb.webp" srcset="img/studio2/k-social-thumb.webp 1000w, img/studio2/k-social-md.webp 1600w, img/studio2/k-social-full.webp 2400w" sizes="(min-width:900px) 46vw, 94vw" width="2400" height="982" alt="Social campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Social campaign</figcaption></figure></div>
+  </section>
+  <nav class="cs-nav wide" aria-label="Projects">
+    <a class="cs-nav-p" href="#studio-wadden"><span class="cs-k">← Previous</span><img width="1742" height="197" src="img/studio2/logos/wadden-light.svg" alt="WADDEN"></a>
+    <a class="cs-nav-o" href="#studio"><span class="cs-k">All projects</span><span class="cs-nav-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span></a>
+    <a class="cs-nav-n" href="#studio-rune"><span class="cs-k">Next →</span><img width="1580" height="293" src="img/studio2/logos/rune-light.svg" alt="RUNE"></a>
+  </nav>
+</div>
+
+<!-- =================== STUDIO RUNE =================== -->
+<div class="page cs cs-rune" data-page="studio-rune" style="--cs-acc:#5E21F2" hidden>
+  <section class="cs-hero">
+    <img class="cs-hero-img" width="2400" height="1350" src="img/studio3/hero-rune.webp" srcset="img/studio3/hero-rune-sm.webp 1200w, img/studio3/hero-rune.webp 2400w" sizes="100vw" alt="" style="object-position:70% 50%" fetchpriority="high">
+    <div class="cs-hero-in wide">
+      <a class="cs-back" href="#studio"><svg aria-hidden="true"><use href="#i-arrow"/></svg> The Studio</a>
+      <div class="cs-hero-b">
+        <p class="cs-k">Project 03 · Premium audio</p>
+        <h1 class="cs-h"><img width="1580" height="293" src="img/studio2/logos/rune-light.svg" alt="RUNE" class="cs-logo cs-logo-rune"></h1>
+        <p class="cs-line">Sound, without compromise.</p>
+      </div>
+    </div>
+  </section>
+  <section class="cs-intro wide">
+    <div class="cs-intro-t rv">
+      <p class="cs-lede">A fictional premium audio company making wireless headphones and home speakers that feel considered, tactile and effortless, and desirable before they are switched on.</p>
+      <p class="st-note"><i aria-hidden="true"></i>A fictional company, designed as an independent concept. Not a client commission.</p>
+    </div>
+    <dl class="cs-facts rv">
+      <div><dt>Industry</dt><dd>Premium audio</dd></div>
+      <div><dt>Audience</dt><dd>Music lovers, designers and people who care how their things are made.</dd></div>
+      <div><dt>Disciplines</dt><dd>Identity · Product imagery · Packaging · Outdoor · Web</dd></div>
+      <div><dt>Palette</dt><dd class="cs-pal"><i style="background:#161618" title="#161618"></i><i style="background:#EEECE7" title="#EEECE7"></i><i style="background:#C9CBCF" title="#C9CBCF"></i><i style="background:#5E21F2" title="#5E21F2"></i></dd></div>
+    </dl>
+  </section>
+  <section class="cs-ch wide"><div class="cs-pair" style="grid-template-columns:0.8000fr 0.7500fr"><figure class="cs-fig rv " style="--ar:0.8000"><button type="button" class="st-open" aria-label="Enlarge: Product hero campaign"><img src="img/studio3/ra-thumb.webp" srcset="img/studio3/ra-thumb.webp 1000w, img/studio3/ra-full.webp 1600w" sizes="(min-width:900px) 48vw, 94vw" width="1600" height="2000" alt="Product hero campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Product hero campaign</figcaption></figure><figure class="cs-fig rv " style="--ar:0.7500"><button type="button" class="st-open" aria-label="Enlarge: Launch campaign"><img src="img/studio3/rh-thumb.webp" srcset="img/studio3/rh-thumb.webp 1000w, img/studio3/rh-full.webp 1500w" sizes="(min-width:900px) 48vw, 94vw" width="1500" height="2000" alt="Launch campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Launch campaign</figcaption></figure></div><div class="cs-note rv"><p class="cs-note-k">Campaign</p><p>Two sides of one product: the object on stone in hard light, then in the hand on warm plaster. The type stays quiet so the product is the loudest thing in the frame.</p></div></section>
+  <section class="cs-ch wide"><figure class="cs-fig rv " style="--ar:1.7778"><button type="button" class="st-open" aria-label="Enlarge: Outdoor advertising"><img src="img/studio3/rf-thumb.webp" srcset="img/studio3/rf-thumb.webp 1000w, img/studio3/rf-md.webp 1600w, img/studio3/rf-full.webp 2400w" sizes="(min-width:1700px) 1600px, 94vw" width="2400" height="1350" alt="Outdoor advertising, concept artwork" loading="lazy" decoding="async"></button><figcaption>Outdoor advertising</figcaption></figure></section>
+  <section class="cs-ch wide cs-split"><div class="cs-note rv"><p class="cs-note-k">Identity</p><p>Charcoal, off-white and real metal. Violet appears once per layout, the way the light ring sits on the headphones, and nowhere else.</p></div><figure class="cs-fig rv " style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Identity system"><img src="img/studio2/r1-thumb.webp" srcset="img/studio2/r1-thumb.webp 1000w, img/studio2/r1-full.webp 1600w" sizes="(min-width:900px) 62vw, 94vw" width="1600" height="1000" alt="Identity system, concept artwork" loading="lazy" decoding="async"></button><figcaption>Identity system</figcaption></figure></section>
+  <section class="cs-ch wide"><figure class="cs-fig rv " style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Speaker collection"><img src="img/studio3/rd-thumb.webp" srcset="img/studio3/rd-thumb.webp 1000w, img/studio3/rd-md.webp 1600w, img/studio3/rd-full.webp 2400w" sizes="(min-width:1700px) 1600px, 94vw" width="2400" height="1500" alt="Speaker collection, concept artwork" loading="lazy" decoding="async"></button><figcaption>Speaker collection</figcaption></figure></section>
+  <section class="cs-ch wide"><figure class="cs-fig rv " style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Editorial · magazine spread"><img src="img/studio3/rc-thumb.webp" srcset="img/studio3/rc-thumb.webp 1000w, img/studio3/rc-md.webp 1600w, img/studio3/rc-full.webp 2400w" sizes="(min-width:1700px) 1600px, 94vw" width="2400" height="1500" alt="Editorial · magazine spread, concept artwork" loading="lazy" decoding="async"></button><figcaption>Editorial · magazine spread</figcaption></figure><div class="cs-note rv"><p class="cs-note-k">Editorial</p><p>The brand earns its place in a magazine by being about listening, not specifications. A concrete room, a slice of winter sun and one record played start to finish.</p></div></section>
+  <section class="cs-ch wide"><figure class="cs-fig rv " style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Website concept"><img src="img/studio3/rg-thumb.webp" srcset="img/studio3/rg-thumb.webp 1000w, img/studio3/rg-md.webp 1600w, img/studio3/rg-full.webp 2400w" sizes="(min-width:1700px) 1600px, 94vw" width="2400" height="1500" alt="Website concept, concept artwork" loading="lazy" decoding="async"></button><figcaption>Website concept</figcaption></figure></section>
+  <section class="cs-more wide">
+    <h2 class="cs-more-h rv">More applications</h2>
+    <div class="cs-gallery"><figure class="cs-fig rv cs-g" style="--ar:1.0000"><button type="button" class="st-open" aria-label="Enlarge: Product detail"><img src="img/studio3/rb-thumb.webp" srcset="img/studio3/rb-thumb.webp 1000w, img/studio3/rb-full.webp 1600w" sizes="(min-width:900px) 46vw, 94vw" width="1600" height="1600" alt="Product detail, concept artwork" loading="lazy" decoding="async"></button><figcaption>Product detail</figcaption></figure><figure class="cs-fig rv cs-g" style="--ar:1.5000"><button type="button" class="st-open" aria-label="Enlarge: Packaging"><img src="img/studio3/re-thumb.webp" srcset="img/studio3/re-thumb.webp 1000w, img/studio3/re-md.webp 1600w, img/studio3/re-full.webp 2400w" sizes="(min-width:900px) 46vw, 94vw" width="2400" height="1600" alt="Packaging, concept artwork" loading="lazy" decoding="async"></button><figcaption>Packaging</figcaption></figure></div>
+  </section>
+  <nav class="cs-nav wide" aria-label="Projects">
+    <a class="cs-nav-p" href="#studio-kindling"><span class="cs-k">← Previous</span><img width="924" height="271" src="img/studio2/logos/kindling-light.svg" alt="Kindling"></a>
+    <a class="cs-nav-o" href="#studio"><span class="cs-k">All projects</span><span class="cs-nav-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span></a>
+    <a class="cs-nav-n" href="#studio-fold"><span class="cs-k">Next →</span><img width="1593" height="307" src="img/studio2/logos/fold-light.svg" alt="FOLD"></a>
+  </nav>
+</div>
+
+<!-- =================== STUDIO FOLD =================== -->
+<div class="page cs cs-fold" data-page="studio-fold" style="--cs-acc:#B4553A" hidden>
+  <section class="cs-hero">
+    <img class="cs-hero-img" width="2400" height="1350" src="img/studio3/hero-fold.webp" srcset="img/studio3/hero-fold-sm.webp 1200w, img/studio3/hero-fold.webp 2400w" sizes="100vw" alt="" style="object-position:55% 60%" fetchpriority="high">
+    <div class="cs-hero-in wide">
+      <a class="cs-back" href="#studio"><svg aria-hidden="true"><use href="#i-arrow"/></svg> The Studio</a>
+      <div class="cs-hero-b">
+        <p class="cs-k">Project 04 · Modular furniture</p>
+        <h1 class="cs-h"><img width="1593" height="307" src="img/studio2/logos/fold-light.svg" alt="FOLD" class="cs-logo cs-logo-fold"></h1>
+        <p class="cs-line">Build the room. Rebuild it later.</p>
+      </div>
+    </div>
+  </section>
+  <section class="cs-intro wide">
+    <div class="cs-intro-t rv">
+      <p class="cs-lede">A fictional Dutch furniture company making modular pieces for modern homes: sofas, shelving and blocks that grow, shrink and move house with you.</p>
+      <p class="st-note"><i aria-hidden="true"></i>A fictional company, designed as an independent concept. Not a client commission.</p>
+    </div>
+    <dl class="cs-facts rv">
+      <div><dt>Industry</dt><dd>Modular furniture</dd></div>
+      <div><dt>Audience</dt><dd>Design-conscious renters and homeowners in city apartments.</dd></div>
+      <div><dt>Disciplines</dt><dd>Identity · Catalogue · Retail · Packaging · E-commerce</dd></div>
+      <div><dt>Palette</dt><dd class="cs-pal"><i style="background:#B4553A" title="#B4553A"></i><i style="background:#2E4A3B" title="#2E4A3B"></i><i style="background:#8C6239" title="#8C6239"></i><i style="background:#2A2724" title="#2A2724"></i><i style="background:#F3ECDF" title="#F3ECDF"></i></dd></div>
+    </dl>
+  </section>
+  <section class="cs-ch wide"><figure class="cs-fig rv " style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Product catalogue · seating spread"><img src="img/studio3/fb-thumb.webp" srcset="img/studio3/fb-thumb.webp 1000w, img/studio3/fb-md.webp 1600w, img/studio3/fb-full.webp 2400w" sizes="(min-width:1700px) 1600px, 94vw" width="2400" height="1500" alt="Product catalogue · seating spread, concept artwork" loading="lazy" decoding="async"></button><figcaption>Product catalogue · seating spread</figcaption></figure><div class="cs-note rv"><p class="cs-note-k">Catalogue</p><p>Every sofa starts as a single seat. The catalogue sells the system rather than the sofa, so the language is about planning a room in blocks.</p></div></section>
+  <section class="cs-ch wide"><div class="cs-pair" style="grid-template-columns:0.7692fr 0.6573fr"><figure class="cs-fig rv " style="--ar:0.7692"><button type="button" class="st-open" aria-label="Enlarge: Furniture collection · The Stack"><img src="img/studio3/fc-thumb.webp" srcset="img/studio3/fc-thumb.webp 1000w, img/studio3/fc-full.webp 1600w" sizes="(min-width:900px) 48vw, 94vw" width="1600" height="2080" alt="Furniture collection · The Stack, concept artwork" loading="lazy" decoding="async"></button><figcaption>Furniture collection · The Stack</figcaption></figure><figure class="cs-fig rv " style="--ar:0.6573"><button type="button" class="st-open" aria-label="Enlarge: Packaging"><img src="img/studio3/fe-thumb.webp" srcset="img/studio3/fe-thumb.webp 1000w, img/studio3/fe-full.webp 1680w" sizes="(min-width:900px) 48vw, 94vw" width="1680" height="2556" alt="Packaging, concept artwork" loading="lazy" decoding="async"></button><figcaption>Packaging</figcaption></figure></div><div class="cs-note rv"><p class="cs-note-k">Retail and packaging</p><p>Terracotta and forest green carry from the bouclé to the box tape. The flat-pack boxes are numbered like the modules inside, so delivery day is part of the brand.</p></div></section>
+  <section class="cs-ch wide cs-split"><div class="cs-note rv"><p class="cs-note-k">Identity</p><p>The logo is built the way the furniture is: four letters made of folded, interlocking blocks.</p></div><figure class="cs-fig rv " style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Identity system"><img src="img/studio3/f1-thumb.webp" srcset="img/studio3/f1-thumb.webp 1000w, img/studio3/f1-md.webp 1600w, img/studio3/f1-full.webp 2400w" sizes="(min-width:900px) 62vw, 94vw" width="2400" height="1500" alt="Identity system, concept artwork" loading="lazy" decoding="async"></button><figcaption>Identity system</figcaption></figure></section>
+  <section class="cs-ch wide"><div class="cs-pair" style="grid-template-columns:1.0777fr 0.6710fr"><figure class="cs-fig rv " style="--ar:1.0777"><button type="button" class="st-open" aria-label="Enlarge: Showroom branding"><img src="img/studio3/ff-thumb.webp" srcset="img/studio3/ff-thumb.webp 1000w, img/studio3/ff-full.webp 1540w" sizes="(min-width:900px) 48vw, 94vw" width="1540" height="1429" alt="Showroom branding, concept artwork" loading="lazy" decoding="async"></button><figcaption>Showroom branding</figcaption></figure><figure class="cs-fig rv " style="--ar:0.6710"><button type="button" class="st-open" aria-label="Enlarge: Digital storefront · mobile"><img src="img/studio3/fg-thumb.webp" srcset="img/studio3/fg-thumb.webp 1000w, img/studio3/fg-md.webp 1600w, img/studio3/fg-full.webp 1715w" sizes="(min-width:900px) 48vw, 94vw" width="1715" height="2556" alt="Digital storefront · mobile, concept artwork" loading="lazy" decoding="async"></button><figcaption>Digital storefront · mobile</figcaption></figure></div></section>
+  <section class="cs-ch wide"><figure class="cs-fig rv " style="--ar:1.6000"><button type="button" class="st-open" aria-label="Enlarge: Website concept"><img src="img/studio3/fw-thumb.webp" srcset="img/studio3/fw-thumb.webp 1000w, img/studio3/fw-md.webp 1600w, img/studio3/fw-full.webp 2400w" sizes="(min-width:1700px) 1600px, 94vw" width="2400" height="1500" alt="Website concept, concept artwork" loading="lazy" decoding="async"></button><figcaption>Website concept</figcaption></figure><div class="cs-note rv"><p class="cs-note-k">Web</p><p>An architectural catalogue: an index down one side, one room at a time, and every piece shown as part of a set you can configure.</p></div></section>
+  <section class="cs-ch wide"><figure class="cs-fig rv " style="--ar:2.8235"><button type="button" class="st-open" aria-label="Enlarge: Social campaign"><img src="img/studio3/fh-thumb.webp" srcset="img/studio3/fh-thumb.webp 1000w, img/studio3/fh-md.webp 1600w, img/studio3/fh-full.webp 2400w" sizes="(min-width:1700px) 1600px, 94vw" width="2400" height="850" alt="Social campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Social campaign</figcaption></figure></section>
+  <section class="cs-more wide">
+    <h2 class="cs-more-h rv">More applications</h2>
+    <div class="cs-gallery"><figure class="cs-fig rv cs-g" style="--ar:1.7778"><button type="button" class="st-open" aria-label="Enlarge: Advertising campaign"><img src="img/studio3/fa-thumb.webp" srcset="img/studio3/fa-thumb.webp 1000w, img/studio3/fa-md.webp 1600w, img/studio3/fa-full.webp 2400w" sizes="(min-width:900px) 46vw, 94vw" width="2400" height="1350" alt="Advertising campaign, concept artwork" loading="lazy" decoding="async"></button><figcaption>Advertising campaign</figcaption></figure><figure class="cs-fig rv cs-g" style="--ar:1.7143"><button type="button" class="st-open" aria-label="Enlarge: The pieces · product line-up"><img src="img/studio3/fd-thumb.webp" srcset="img/studio3/fd-thumb.webp 1000w, img/studio3/fd-md.webp 1600w, img/studio3/fd-full.webp 2400w" sizes="(min-width:900px) 46vw, 94vw" width="2400" height="1400" alt="The pieces · product line-up, concept artwork" loading="lazy" decoding="async"></button><figcaption>The pieces · product line-up</figcaption></figure></div>
+  </section>
+  <nav class="cs-nav wide" aria-label="Projects">
+    <a class="cs-nav-p" href="#studio-rune"><span class="cs-k">← Previous</span><img width="1580" height="293" src="img/studio2/logos/rune-light.svg" alt="RUNE"></a>
+    <a class="cs-nav-o" href="#studio"><span class="cs-k">All projects</span><span class="cs-nav-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span></a>
+    <a class="cs-nav-n" href="#studio-wadden"><span class="cs-k">Next →</span><img width="1742" height="197" src="img/studio2/logos/wadden-light.svg" alt="WADDEN"></a>
+  </nav>
 </div>
 
 <!-- =================== THOUGHTS =================== -->
@@ -1931,13 +2157,13 @@ function renderArticle(slug){
   return true;
 }
 
-const PAGES=["home","about","experience","work","studio","thoughts","contact"];
-const TITLES={lost:"Page not found | Lorcán O'Neill",home:"Lorcán O'Neill (Lor) | Creative, Business & AI",about:"About Lorcán O'Neill | Dublin, the Netherlands & Arkintel",experience:"Experience | Lorcán O'Neill: Design, Communications, Business & Tech",work:"Work | Brands Lorcán O'Neill Has Worked For and With",studio:"The Possibilities Studio | Brand Concepts by Lorcán O'Neill",thoughts:"Thoughts | Notes on AI, Creativity & Business by Lorcán O'Neill",contact:"Contact Lorcán O'Neill | Say Hello"};
+const PAGES=["home","about","experience","work","studio","studio-wadden","studio-kindling","studio-rune","studio-fold","thoughts","contact"];
+const TITLES={lost:"Page not found | Lorcán O'Neill",home:"Lorcán O'Neill (Lor) | Creative, Business & AI",about:"About Lorcán O'Neill | Dublin, the Netherlands & Arkintel",experience:"Experience | Lorcán O'Neill: Design, Communications, Business & Tech",work:"Work | Brands Lorcán O'Neill Has Worked For and With","studio-wadden":"WADDEN: Maritime Robotics Brand Concept | Lorcán O'Neill","studio-kindling":"Kindling: Small-Business Software Brand Concept | Lorcán O'Neill","studio-rune":"RUNE: Premium Audio Brand Concept | Lorcán O'Neill","studio-fold":"FOLD: Modular Furniture Brand Concept | Lorcán O'Neill",studio:"The Possibilities Studio | Brand Concepts by Lorcán O'Neill",thoughts:"Thoughts | Notes on AI, Creativity & Business by Lorcán O'Neill",contact:"Contact Lorcán O'Neill | Say Hello"};
 let swapT=null,firstRoute=true;
 function route(){
   const h=routeKey();
   if(h==="main")return;
-  let page=h,nav=h;
+  let page=h,nav=h.startsWith("studio-")?"studio":h;
   if(h.startsWith("post-")){page=renderArticle(h.slice(5))?"post":"lost";nav=page==="post"?"thoughts":""}
   else if(!PAGES.includes(h)){page="lost";nav=""}
   document.querySelectorAll(".links a,.sheet a,.sig-nav a").forEach(a=>{hrefToKey(a.getAttribute("href"))===nav?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
@@ -2339,7 +2565,7 @@ let wpT=0;addEventListener("scroll",()=>{if(wpT)return;wpT=requestAnimationFrame
   links.addEventListener("pointerleave",()=>moveTo(cur()));
   addEventListener("resize",()=>moveTo(cur()));
   // breadcrumb + indicator follow the route
-  const names={about:"About",experience:"Experience",work:"Work",studio:"Studio",thoughts:"Thoughts",contact:"Contact",post:"Thoughts",lost:"Lost"};
+  const names={about:"About",experience:"Experience",work:"Work",studio:"Studio","studio-wadden":"WADDEN","studio-kindling":"Kindling","studio-rune":"RUNE","studio-fold":"FOLD",thoughts:"Thoughts",contact:"Contact",post:"Thoughts",lost:"Lost"};
   window.headerOnRoute=page=>{
     requestAnimationFrame(()=>moveTo(cur()));
     const c=$("#crumb"),t=$("#crumbT"),n=names[page];
@@ -2574,5 +2800,6 @@ function armReveal(){
   document.querySelectorAll(".page:not([hidden]) .rv,.page:not([hidden]) .bc").forEach(el=>{el.classList.add("pre");io.observe(el)});
 }
 maskHeads();renderFilters();renderPosts();route();widont();
+(function(){const d=document.documentElement;d.classList.add('lzon');const mark=i=>i.classList.add('ld');document.addEventListener('load',e=>{const t=e.target;if(t.tagName==='IMG')mark(t)},true);document.addEventListener('error',e=>{const t=e.target;if(t.tagName==='IMG')mark(t)},true);document.querySelectorAll('img').forEach(i=>{if(i.complete)mark(i)})})();
 if(document.documentElement.classList.contains("intro-on"))runIntro();
 </script>

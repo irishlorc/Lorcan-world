@@ -60,6 +60,42 @@ const META = {
     type: "CollectionPage",
     crumb: "Studio",
   },
+  "studio-wadden": {
+    path: "/studio/wadden",
+    title: "WADDEN: Maritime Robotics Brand Concept | Lorcán O'Neill",
+    desc: "WADDEN, a fictional Dutch maritime robotics company that inspects dikes and flood defences. Identity, campaigns, brochure, exhibition stand and website by Lorcán O'Neill.",
+    og: "studio-wadden",
+    type: "WebPage",
+    crumb: "WADDEN",
+    parent: "studio",
+  },
+  "studio-kindling": {
+    path: "/studio/kindling",
+    title: "Kindling: Small-Business Software Brand Concept | Lorcán O'Neill",
+    desc: "Kindling, fictional software that takes admin off small-business owners. Identity, advertising, newsletter, product interface and website by Lorcán O'Neill.",
+    og: "studio-kindling",
+    type: "WebPage",
+    crumb: "Kindling",
+    parent: "studio",
+  },
+  "studio-rune": {
+    path: "/studio/rune",
+    title: "RUNE: Premium Audio Brand Concept | Lorcán O'Neill",
+    desc: "RUNE, a fictional premium audio brand. Identity, product campaigns, outdoor, packaging, editorial and website by Lorcán O'Neill.",
+    og: "studio-rune",
+    type: "WebPage",
+    crumb: "RUNE",
+    parent: "studio",
+  },
+  "studio-fold": {
+    path: "/studio/fold",
+    title: "FOLD: Modular Furniture Brand Concept | Lorcán O'Neill",
+    desc: "FOLD, a fictional Dutch modular furniture company. Identity, catalogue, packaging, showroom, e-commerce and website by Lorcán O'Neill.",
+    og: "studio-fold",
+    type: "WebPage",
+    crumb: "FOLD",
+    parent: "studio",
+  },
   thoughts: {
     path: "/thoughts",
     title: "Thoughts | Lorcán O'Neill on AI, Creativity & Business",
@@ -84,7 +120,7 @@ const META = {
     noindex: true,
   },
 };
-const ORDER = ["home", "about", "experience", "work", "studio", "thoughts", "contact"];
+const ORDER = ["home", "about", "experience", "work", "studio", "studio-wadden", "studio-kindling", "studio-rune", "studio-fold", "thoughts", "contact"];
 
 // ---------------------------------------------------------------- source ---
 const src = fs.readFileSync("src/index.html", "utf8");
@@ -125,7 +161,7 @@ const PAGES = {};
 for (const c of chunks) PAGES[c.match(/data-page="([a-z-]+)"/)[1]] = c.trim();
 
 const hrefFor = (k) => (k === "home" ? "/" : k.startsWith("post-") ? "/thoughts/" + k.slice(5) : k.startsWith("studio-") ? "/studio/" + k.slice(7) : "/" + k);
-const linkify = (s) => s.replace(/href="#(home|about|experience|work|studio-wadden|studio-kindling|studio-rune|studio|thoughts|contact)"/g, (_, k) => `href="${hrefFor(k)}"`);
+const linkify = (s) => s.replace(/href="#(home|about|experience|work|studio-wadden|studio-kindling|studio-rune|studio-fold|studio|thoughts|contact)"/g, (_, k) => `href="${hrefFor(k)}"`);
 const show = (s) => s.replace(/(<div class="page[^"]*" data-page="[a-z-]+"(?: style="[^"]*")?) hidden>/, "$1>");
 const hide = (s) => s.replace(/(<div class="page[^"]*" data-page="[a-z-]+"(?: style="[^"]*")?)>/, "$1 hidden>");
 const lazy = (s) => s.replace(/ fetchpriority="high"/g, "").replace(/<img (?![^>]*loading=)/g, '<img loading="lazy" ');
@@ -398,7 +434,7 @@ fs.writeFileSync(
 - [About](${SITE}/about): his background in his own words
 - [Experience](${SITE}/experience): design, communications, business and technology, and his current role at Arkintel
 - [Work](${SITE}/work): the brands and organisations above
-- [The Possibilities Studio](${SITE}/studio): four independent brand concepts for fictional companies, clearly labelled as concepts, not client commissions: WADDEN (maritime robotics that inspect dikes), Kindling (small-business admin software), RUNE (premium audio) and FOLD (Dutch modular furniture). Identity, campaigns, stationery, brochures, social, exhibition and website work.
+- [The Possibilities Studio](${SITE}/studio): four independent brand concepts for fictional companies, clearly labelled as concepts, not client commissions: WADDEN (maritime robotics that inspect dikes, ${SITE}/studio/wadden), Kindling (small-business admin software, ${SITE}/studio/kindling), RUNE (premium audio, ${SITE}/studio/rune) and FOLD (Dutch modular furniture, ${SITE}/studio/fold). Identity, campaigns, stationery, brochures, social, exhibition and website work.
 - [Thoughts](${SITE}/thoughts): short notes on technology, AI, creativity and business
 - [Contact](${SITE}/contact): email
 

@@ -20,19 +20,23 @@
     "date": "2026-11-09"
   },
   "studio": {
-    "hash": "b286b2c699",
+    "hash": "596a140cd1",
     "date": "2026-11-09"
   },
   "studio-wadden": {
-    "hash": "1a753c94e4",
+    "hash": "8c3c420cd0",
     "date": "2026-11-09"
   },
   "studio-kindling": {
-    "hash": "8015e5bb9a",
+    "hash": "12796bd96a",
     "date": "2026-11-09"
   },
   "studio-rune": {
-    "hash": "1321d0d511",
+    "hash": "0ef1060bf4",
+    "date": "2026-11-09"
+  },
+  "studio-fold": {
+    "hash": "0827696907",
     "date": "2026-11-09"
   }
 }

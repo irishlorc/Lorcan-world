@@ -81,13 +81,13 @@ function renderArticle(slug){
   return true;
 }
 
-const PAGES=["home","about","experience","work","studio","thoughts","contact"];
-const TITLES={"home":"Lorcán O'Neill (Lor) | Creative, Business & AI","about":"About Lorcán O'Neill | Dublin, the Netherlands & Arkintel","experience":"Experience: Design, Comms, Business & Tech | Lorcán O'Neill","work":"Work | Brands Lorcán O'Neill Has Worked For and With","studio":"The Possibilities Studio | Brand Concepts by Lorcán O'Neill","thoughts":"Thoughts | Lorcán O'Neill on AI, Creativity & Business","contact":"Contact Lorcán O'Neill | Say Hello","lost":"Page not found | Lorcán O'Neill"};
+const PAGES=["home","about","experience","work","studio","studio-wadden","studio-kindling","studio-rune","studio-fold","thoughts","contact"];
+const TITLES={"home":"Lorcán O'Neill (Lor) | Creative, Business & AI","about":"About Lorcán O'Neill | Dublin, the Netherlands & Arkintel","experience":"Experience: Design, Comms, Business & Tech | Lorcán O'Neill","work":"Work | Brands Lorcán O'Neill Has Worked For and With","studio":"The Possibilities Studio | Brand Concepts by Lorcán O'Neill","studio-wadden":"WADDEN: Maritime Robotics Brand Concept | Lorcán O'Neill","studio-kindling":"Kindling: Small-Business Software Brand Concept | Lorcán O'Neill","studio-rune":"RUNE: Premium Audio Brand Concept | Lorcán O'Neill","studio-fold":"FOLD: Modular Furniture Brand Concept | Lorcán O'Neill","thoughts":"Thoughts | Lorcán O'Neill on AI, Creativity & Business","contact":"Contact Lorcán O'Neill | Say Hello","lost":"Page not found | Lorcán O'Neill"};
 let swapT=null,firstRoute=true;
 function route(){
   const h=routeKey();
   if(h==="main")return;
-  let page=h,nav=h;
+  let page=h,nav=h.startsWith("studio-")?"studio":h;
   if(h.startsWith("post-")){page=renderArticle(h.slice(5))?"post":"lost";nav=page==="post"?"thoughts":""}
   else if(!PAGES.includes(h)){page="lost";nav=""}
   document.querySelectorAll(".links a,.sheet a,.sig-nav a").forEach(a=>{hrefToKey(a.getAttribute("href"))===nav?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
@@ -489,7 +489,7 @@ let wpT=0;addEventListener("scroll",()=>{if(wpT)return;wpT=requestAnimationFrame
   links.addEventListener("pointerleave",()=>moveTo(cur()));
   addEventListener("resize",()=>moveTo(cur()));
   // breadcrumb + indicator follow the route
-  const names={about:"About",experience:"Experience",work:"Work",studio:"Studio",thoughts:"Thoughts",contact:"Contact",post:"Thoughts",lost:"Lost"};
+  const names={about:"About",experience:"Experience",work:"Work",studio:"Studio","studio-wadden":"WADDEN","studio-kindling":"Kindling","studio-rune":"RUNE","studio-fold":"FOLD",thoughts:"Thoughts",contact:"Contact",post:"Thoughts",lost:"Lost"};
   window.headerOnRoute=page=>{
     requestAnimationFrame(()=>moveTo(cur()));
     const c=$("#crumb"),t=$("#crumbT"),n=names[page];
@@ -724,4 +724,5 @@ function armReveal(){
   document.querySelectorAll(".page:not([hidden]) .rv,.page:not([hidden]) .bc").forEach(el=>{el.classList.add("pre");io.observe(el)});
 }
 maskHeads();renderFilters();renderPosts();route();widont();
+(function(){const d=document.documentElement;d.classList.add('lzon');const mark=i=>i.classList.add('ld');document.addEventListener('load',e=>{const t=e.target;if(t.tagName==='IMG')mark(t)},true);document.addEventListener('error',e=>{const t=e.target;if(t.tagName==='IMG')mark(t)},true);document.querySelectorAll('img').forEach(i=>{if(i.complete)mark(i)})})();
 if(document.documentElement.classList.contains("intro-on"))runIntro();
