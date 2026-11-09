@@ -522,7 +522,16 @@ const ROOM={
     {title:"Music video II",yt:"AcfxTrcVUkw"},
     {title:"Music video III",yt:"OJSCrFcbT_U"}
   ],
-  paintings:[],// {title:"…", src:"img/painting.webp"}
+  // paintings: rename the titles here; files live in img/paintings/<key>-400|1000.webp
+  paintings:[
+    {title:"Painting I",key:"p1",w:1000,h:1111},
+    {title:"Painting II",key:"p2",w:1000,h:1327},
+    {title:"Painting III",key:"p3",w:1000,h:1000},
+    {title:"Painting IV",key:"p4",w:1000,h:1000},
+    {title:"Painting V",key:"p5",w:1000,h:1000},
+    {title:"Painting VI",key:"p6",w:1000,h:1000},
+    {title:"Painting VII",key:"p7",w:1000,h:1045}
+  ],
   // songs: rename the titles here; files live in media/songs/
   songs:[
     {title:"Untitled No. 1",src:SONG("lor-84.mp3"),dur:172},
@@ -606,6 +615,7 @@ $("#orDoor")?.addEventListener("click",openRoom);
 $("#orLeave")?.addEventListener("click",closeRoom);
 const fmt=t=>isFinite(t)?Math.floor(t/60)+":"+String(Math.floor(t%60)).padStart(2,"0"):"0:00";
 function empty(title,line){return `<div class="or-empty"><b>${title}</b><span>${line}</span></div>`}
+const ptSrc=(p,w)=>`${MPA?"/":""}img/paintings/${p.key}-${w}.webp`;
 const bookSrc=(b,w)=>`${MPA?"/":""}img/books/${b.key}-${w}.webp`;
 const toRoman=n=>["","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"][n]||String(n);
 // YouTube: a still and a play button first; the player only loads when someone presses play.
@@ -618,15 +628,16 @@ function ytStage(v,play){
 }
 function panelHTML(kind){
   if(kind==="videos"){const v=ROOM.videos;return `<span class="or-kick">On the telly</span><h3 class="or-h">Music videos</h3>`+(v.length?(()=>{const L=Math.min(RM.lastVideo||0,v.length-1);return `<div class="or-video" id="orStage">${ytStage(v[L],false)}</div><p class="yt-cap"><a id="ytOut" href="https://www.youtube.com/watch?v=${v[L].yt}" target="_blank" rel="noopener">Watch on YouTube ↗</a></p><div class="or-tracks">${v.map((x,i)=>`<button class="or-track${i===L?" on":""}" data-vid="${i}"><span class="pp">▶</span><span>${esc(x.title)}</span><span></span></button>`).join("")}</div>`})():empty("Nothing on yet.","The music videos are on their way."))}
-  if(kind==="paintings"){const v=ROOM.paintings;return `<span class="or-kick">On the wall</span><h3 class="or-h">Paintings</h3>`+(v.length?`<div class="or-grid">${v.map((x,i)=>`<button data-pt="${i}"><img src="${x.src}" alt="${esc(x.title)}" loading="lazy"></button>`).join("")}</div>`:empty("The frames are waiting.","Paintings will be hung here soon."))}
+  if(kind==="paintings"){const v=ROOM.paintings;return `<span class="or-kick">On the wall</span><h3 class="or-h">Paintings</h3>`+(v.length?`<div class="or-grid">${v.map((x,i)=>`<button data-goto-pt="${i}" class="gold"><img src="${ptSrc(x,400)}" alt="${esc(x.title)}" loading="lazy"></button>`).join("")}</div>`:empty("The frames are waiting.","Paintings will be hung here soon."))}
   if(kind==="drawer"){return `<span class="or-kick">In the drawer</span><h3 class="or-h">Things I probably shouldn't have made.</h3>`+empty("Suspiciously empty.","Unfinished concepts, sketches and strange creations will turn up here.")}
   if(kind&&kind.startsWith("book:")){const n=+kind.slice(5),b=ROOM.books[n];return `<span class="or-kick">The Hidden Library · ${b.num} of ${toRoman(ROOM.books.length)}</span><article class="or-read has-cover"><img class="or-cover" src="${bookSrc(b,800)}" srcset="${bookSrc(b,400)} 400w, ${bookSrc(b,800)} 800w" sizes="(max-width:600px) 40vw, 260px" width="800" height="1200" alt="Cover of ${esc(b.title)} by Lorcán O’Neill"><div><h3 class="or-h">${esc(b.title)}</h3>${b.sub?`<p class="or-sub">${esc(b.sub)}</p>`:""}<p class="or-p">${esc(b.about)}</p></div></article>`+(b.excerpt&&b.excerpt.length?`<div class="or-exc">${b.excerpt.map(x=>`<p>${esc(x).replace(/\*([^*]+)\*/g,"<em>$1</em>")}</p>`).join("")}</div>`:empty("Excerpt coming soon.","A short passage from the book will live here."))+`<div class="or-shelfrow" aria-label="The collection">${ROOM.books.map((x,i)=>`<button type="button" data-goto-book="${i}" class="${i===n?"on":""}" aria-label="${esc(x.title)}"><img src="${bookSrc(x,400)}" alt="" width="400" height="600" loading="lazy"></button>`).join("")}</div>`}
-  if(kind&&kind.startsWith("frame:")){const i=+kind.slice(6),p=ROOM.paintings[i];return `<span class="or-kick">Private view</span>`+(p?`<h3 class="or-h">${esc(p.title)}</h3><img src="${p.src}" alt="${esc(p.title)}" style="width:100%;margin-top:18px;border-radius:10px">`:`<h3 class="or-h">An empty frame</h3>`+empty("Nothing hung here yet.","The paintings are coming soon."))}
+  if(kind&&kind.startsWith("frame:")){const i=+kind.slice(6),p=ROOM.paintings[i],n=ROOM.paintings.length;return `<span class="or-kick">Private view · ${toRoman(i+1)} of ${toRoman(n)}</span>`+(p?`<h3 class="or-h">${esc(p.title)}</h3><p class="or-p">By Lorcán O’Neill.</p><div class="pv"><button class="pv-nav" type="button" data-goto-pt="${(i+n-1)%n}" aria-label="Previous painting">‹</button><figure class="gold pv-art" style="--ar:${p.w}/${p.h}"><img src="${ptSrc(p,1000)}" srcset="${ptSrc(p,400)} 400w, ${ptSrc(p,1000)} 1000w" sizes="(max-width:600px) 80vw, 560px" width="${p.w}" height="${p.h}" alt="${esc(p.title)}, a painting by Lorcán O’Neill"></figure><button class="pv-nav" type="button" data-goto-pt="${(i+1)%n}" aria-label="Next painting">›</button></div><div class="or-shelfrow pv-row" aria-label="All paintings">${ROOM.paintings.map((x,k)=>`<button type="button" data-goto-pt="${k}" class="gold${k===i?" on":""}" aria-label="${esc(x.title)}"><img src="${ptSrc(x,400)}" alt="" loading="lazy"></button>`).join("")}</div>`:`<h3 class="or-h">An empty frame</h3>`+empty("Nothing hung here yet.","The paintings are coming soon."))}
   if(kind==="books"){return `<span class="or-kick">On the shelf</span><h3 class="or-h">Writing</h3><div class="or-booklist">${ROOM.books.map(b=>`<article class="or-book"><img class="cv" src="${bookSrc(b,400)}" alt="" width="400" height="600" loading="lazy"><div><h4>${esc(b.title)}</h4><p>${esc(b.about)}</p>${b.excerpt&&b.excerpt.length?`<p class="ex">${esc(b.excerpt[0])}</p>`:`<p class="ex">Excerpt coming soon.</p>`}</div></article>`).join("")}</div>`}
   if(kind==="songs"){const v=ROOM.songs;return `<span class="or-kick">On the record player</span><h3 class="or-h">Songs</h3>`+(v.length?`<div class="or-tracks">${v.map((x,i)=>`<button class="or-track" data-song="${i}"><span class="pp">▶</span><span>${esc(x.title)}</span><span class="tm">${x.dur?fmt(x.dur):"–"}</span></button>`).join("")}</div><div class="or-bar"><i id="orProg"></i></div>`:empty("Still being pressed.","Songs will be playable here soon. Nothing plays until you press play."))}
 }
 function openPanel(kind){
-  orBody.innerHTML=panelHTML(kind);orPanel.classList.toggle("clear",kind.startsWith("frame:"));orPanel.hidden=false;$("#orX").focus({preventScroll:true});
+  orBody.innerHTML=panelHTML(kind);orPanel.classList.remove("clear");orPanel.hidden=false;$("#orX").focus({preventScroll:true});
+  orBody.querySelectorAll("[data-goto-pt]").forEach(b=>b.addEventListener("click",()=>{const i=+b.dataset.gotoPt;remember("frame"+i);openPanel("frame:"+i);const pi=orPanel.querySelector(".or-panel-in");if(pi)pi.scrollTo({top:0})}));
   orBody.querySelectorAll("[data-goto-book]").forEach(b=>b.addEventListener("click",()=>{const i=+b.dataset.gotoBook;remember("book"+i);openPanel("book:"+i);const pi=orPanel.querySelector(".or-panel-in");if(pi)pi.scrollTo({top:0,behavior:reduced?"auto":"smooth"})}));
   const stage=orBody.querySelector("#orStage"),playAt=i=>{stage.innerHTML=ytStage(ROOM.videos[i],true)};
   stage&&stage.addEventListener("click",e=>{if(e.target.closest("[data-play]"))playAt(Math.min(RM.lastVideo||0,ROOM.videos.length-1))});
