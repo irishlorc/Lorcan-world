@@ -25,7 +25,7 @@ def note(title, text):
     return f'<div class="cs-note rv"><p class="cs-note-k">{E(title)}</p><p>{E(text)}</p></div>'
 
 P = [
- dict(key='wadden', n='01', name='WADDEN', logo='wadden-light', acc='#FEC104', hero='hero-wadden', hpos='60% 55%',
+ dict(key='wadden', dirn='WADDEN is built to be trusted by people who inspect dikes for a living. The identity borrows from engineering drawings and safety signage: a navy field, a single warning yellow, mono type for anything measured. Photography stays documentary, shot in the flat light of the Wadden coast, so the robot reads as working equipment rather than a gadget.', n='01', name='WADDEN', logo='wadden-light', acc='#FEC104', hero='hero-wadden', hpos='60% 55%',
   ind='Maritime robotics', line='Eyes on the water line.',
   intro='A fictional Dutch engineering company whose autonomous robots inspect dikes, flood defences and the water infrastructure that keeps a low country dry.',
   aud='Water boards, infrastructure operators, engineering firms and municipalities.',
@@ -39,7 +39,7 @@ P = [
    ('full','w8c','Website concept', ('Web','The site behaves like a control room: a live inspection feed, the run explained in three steps and a cross-section of the dike that shows what each sensor finds. It sells the outcome, an engineer who knows the state of every metre.')),
   ],
   more=[('w6','LinkedIn campaign')]),
- dict(key='kindling', n='02', name='Kindling', logo='kindling-light', acc='#00AE1D', hero='hero-kindling', hpos='50% 40%',
+ dict(key='kindling', dirn='Kindling had to feel like a helpful colleague, not another dashboard. The brand pairs a confident sans with an italic serif for the human aside, and speaks in the words a tradesperson would actually send. Photography shows the end of a working day, warm and unposed, so the product is always about the person it gives time back to.', n='02', name='Kindling', logo='kindling-light', acc='#00AE1D', hero='hero-kindling', hpos='50% 40%',
   ind='Small-business software', line='Less administration. More room to run your business.',
   intro='Fictional software that takes invoices, payment reminders, follow-ups and everyday admin off the people running small businesses, without adding another thing to learn.',
   aud='Freelancers, tradespeople, café owners and independent professionals.',
@@ -53,7 +53,7 @@ P = [
    ('full','k6c','Website concept', ('Web','A masthead, a big headline and a collage of real moments. The website is set like the newsletter, so the brand feels the same wherever you meet it.')),
   ],
   more=[('k-social','Social campaign')]),
- dict(key='rune', n='03', name='RUNE', logo='rune-light', acc='#5E21F2', hero='hero-rune', hpos='70% 50%',
+ dict(key='rune', dirn='RUNE is about restraint. Charcoal, off-white and real metal carry the brand, and violet is allowed once per layout, the way the light ring sits on the headphones. Every image is lit with one hard source on stone, plaster or fabric, so materials do the persuading and the typography stays quiet.', n='03', name='RUNE', logo='rune-light', acc='#5E21F2', hero='hero-rune', hpos='70% 50%',
   ind='Premium audio', line='Sound, without compromise.',
   intro='A fictional premium audio company making wireless headphones and home speakers that feel considered, tactile and effortless, and desirable before they are switched on.',
   aud='Music lovers, designers and people who care how their things are made.',
@@ -68,7 +68,7 @@ P = [
    ('full','rg','Website concept', None),
   ],
   more=[('re','Packaging')]),
- dict(key='fold', n='04', name='FOLD', logo='fold-light', acc='#B4553A', hero='hero-fold', hpos='55% 60%',
+ dict(key='fold', dirn='FOLD sells a system, not a sofa. The logo is drawn from the same folded blocks as the furniture, and the language is about planning a room rather than buying a product. The photography lives in real Dutch rooms with low sun and lived-in props, and terracotta carries from the bouclé through to the box tape.', n='04', name='FOLD', logo='fold-light', acc='#B4553A', hero='hero-fold', hpos='55% 60%',
   ind='Modular furniture', line='Build the room. Rebuild it later.',
   intro='A fictional Dutch furniture company making modular pieces for modern homes: sofas, shelving and blocks that grow, shrink and move house with you.',
   aud='Design-conscious renters and homeowners in city apartments.',
@@ -96,7 +96,7 @@ def project(i, p):
     <div class="cs-hero-in wide">
       <a class="cs-back" href="#studio"><svg aria-hidden="true"><use href="#i-arrow"/></svg> The Studio</a>
       <div class="cs-hero-b">
-        <p class="cs-k">Project {p["n"]} · {E(p["ind"])}</p>
+        <p class="cs-k">{p["n"]} · {E(p["ind"])} · Independent work</p>
         <h1 class="cs-h"><img {ld(p["logo"])} src="img/studio2/logos/{p["logo"]}.svg" alt="{E(p["name"])}" class="cs-logo cs-logo-{p["key"]}"></h1>
         <p class="cs-line">{E(p["line"])}</p>
       </div>
@@ -105,11 +105,12 @@ def project(i, p):
   <section class="cs-intro wide">
     <div class="cs-intro-t rv">
       <p class="cs-lede">{E(p["intro"])}</p>
-      <p class="st-note"><i aria-hidden="true"></i>A fictional company, designed as an independent concept. Not a client commission.</p>
+      <p class="cs-dir">{E(p["dirn"])}</p>
     </div>
     <dl class="cs-facts rv">
       <div><dt>Industry</dt><dd>{E(p["ind"])}</dd></div>
       <div><dt>Audience</dt><dd>{E(p["aud"])}</dd></div>
+      <div><dt>Status</dt><dd>Self-initiated, fictional brand</dd></div>
       <div><dt>Disciplines</dt><dd>{" · ".join(p["disc"])}</dd></div>
       <div><dt>Palette</dt><dd class="cs-pal">{"".join(f'<i style="background:{c}" title="{c}"></i>' for c in p["pal"])}</dd></div>
     </dl>
@@ -152,10 +153,11 @@ overview = f'''<!-- =================== STUDIO =================== -->
   <section class="sec st-hero">
     <div class="wrap">
       <div class="head rise">
-        <span class="label">The Possibilities Studio</span>
-        <h1 class="display">Don't imagine what I could make. <em class="acc">Have a look.</em></h1>
-        <p class="lede">Four fictional companies, each given its own identity and a body of finished work: an engineering firm, a software business, an audio brand and a furniture maker.</p>
-        <p class="st-note"><i aria-hidden="true"></i>These aren't projects I was hired to make. They're examples of what I could bring to the table.</p>
+        <span class="label">Studio / Independent work</span>
+        <h1 class="display">An idea is just <em class="acc">the beginning.</em></h1>
+        <p class="lede">Four original brands, each developed with its own identity, visual language and creative direction.</p>
+        <p class="st-sub">From industrial engineering to software, audio and furniture, these projects explore how a concept becomes something distinctive, coherent and believable.</p>
+        <p class="st-fine">Self-initiated work. Fictional brands, independently conceived and designed.</p>
       </div>
     </div>
   </section>
@@ -172,7 +174,7 @@ overview = f'''<!-- =================== STUDIO =================== -->
   <section class="sec">
     <div class="wrap">
       <div class="hello-row rv">
-        <div><p>Like what you see? Imagine it with your brand.</p></div>
+        <div><p>Have something that needs building?</p></div>
         <a class="btn btn-primary" href="#contact">Let's talk <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
@@ -182,6 +184,10 @@ overview = f'''<!-- =================== STUDIO =================== -->
 
 CSS = r'''
 /* ---- Studio: overview ---- */
+.page[data-page="studio"] .st-hero{padding-bottom:clamp(28px,3.4vw,52px)}
+.st-sub{margin:18px 0 0;max-width:44rem;color:var(--muted);line-height:1.65}
+.st-fine{margin:26px 0 0;font-family:var(--f-serif);font-style:italic;font-size:var(--fs-small);color:var(--faint)}
+.cs-dir{margin:28px 0 0;max-width:62ch;color:var(--muted);font-size:clamp(17px,1.25vw,19px);line-height:1.7}
 .wide{max-width:calc(1600px + var(--gutter) + var(--gutter-r));margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
 .sx{display:grid;gap:clamp(56px,7vw,120px);padding-bottom:clamp(40px,6vw,96px)}
 .sx-row{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,3vw,48px);align-items:start}

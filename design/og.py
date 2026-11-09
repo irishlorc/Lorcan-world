@@ -8,7 +8,7 @@ CARDS=[('home','Hello,','I&rsquo;m <em>Lor.</em>','Creative, business &amp; AI. 
 ('experience','A few','<em>different hats.</em>','13+ years across design, communications, business and technology.','<img class="fig" src="%s/backpack-bust.webp" style="height:640px;right:30px;bottom:-60px">'%I),
 ('work','Some','<em>familiar names.</em>','Brands and organisations I&rsquo;ve worked for and with.',''.join('<img class="card" src="%s/work-%s-800.webp" style="%s">'%(I,n,st) for n,st in [('uefa','right:-30px;top:60px;width:340px;transform:rotate(9deg);filter:brightness(.7)'),('heineken','right:120px;top:150px;width:340px;transform:rotate(-7deg);filter:brightness(.82)'),('f1','right:10px;top:290px;width:360px;transform:rotate(-2deg)')])),
 ('thoughts','Things on','<em>my mind.</em>','Notes on AI, creativity, business and everyday life.','<img class="fig" src="%s/notebook-bust.webp" style="height:600px;right:40px;bottom:-30px">'%I),
-('studio','Have a','<em>look.</em>','Four brand concepts: robotics, software, audio and furniture.',''.join('<img class="card" src="%s/%s" style="%s">'%(I,n,st) for n,st in [('studio3/k5-thumb.webp','right:250px;top:60px;width:380px;transform:rotate(-7deg);filter:brightness(.8)'),('studio3/w4-thumb.webp','right:-40px;top:40px;width:430px;transform:rotate(5deg)'),('studio3/w2-thumb.webp','right:80px;top:290px;width:360px;transform:rotate(-2deg)')])),
+('studio','An idea is just','<em>the beginning.</em>','Four original brands. Independent work.',''.join('<img class="card" src="%s/%s" style="%s">'%(I,n,st) for n,st in [('studio3/k5-thumb.webp','right:250px;top:60px;width:380px;transform:rotate(-7deg);filter:brightness(.8)'),('studio3/w4-thumb.webp','right:-40px;top:40px;width:430px;transform:rotate(5deg)'),('studio3/w2-thumb.webp','right:80px;top:290px;width:360px;transform:rotate(-2deg)')])),
 ('contact','Let&rsquo;s','<em>talk.</em>','lorcancreative@gmail.com','<div class="fig" style="height:640px;width:427px;right:60px;bottom:-110px"><img src="%s/hi-arm.webp" style="position:absolute;inset:0;height:100%%;width:100%%"><img src="%s/hi-base.webp" style="position:absolute;inset:0;height:100%%;width:100%%"></div>'%(I,I)),
 ]
 CSS=f'''@font-face{{font-family:B;src:url({F}/bricolage-latin.woff2);font-weight:200 800}}
@@ -33,7 +33,11 @@ async def m():
     async with async_playwright() as p:
         b=await p.chromium.launch();pg=await b.new_page(viewport={'width':1200,'height':630})
         for key,a,c,sub,art in CARDS:
-            open('/tmp/claude-0/og/t.html','w').write(f'<meta charset=utf-8><style>{CSS}</style><div class="glow"></div><div class="grain"></div>{art}<div class="txt"><div class="k"><i></i>Lorcán O&rsquo;Neill</div><h1><span>{a}</span><span>{c}</span></h1><p>{sub}</p></div><div class="url">lorcan<b>.space</b></div><div class="rule"></div>')
+            if key=='home':
+                open('/tmp/claude-0/og/t.html','w').write(f'<meta charset=utf-8><style>{CSS}</style><div class="glow"></div><div class="grain"></div><img class="fig" src="{I}/tablet-bust.webp" style="height:640px;right:90px;bottom:-40px"><div class="txt"><h1 style="font-size:150px"><span>Lorcan</span></h1><p style="margin-top:22px">Creative, business &amp; AI</p></div><div class="url">lorcan<b>.space</b></div><div class="rule"></div>')
+                await pg.goto('file:///tmp/claude-0/og/t.html');await pg.evaluate("document.fonts.ready");await pg.wait_for_timeout(400)
+                await pg.screenshot(path=f'{R}/og/{key}.jpg',type='jpeg',quality=88);continue
+            open('/tmp/claude-0/og/t.html','w').write(f'<meta charset=utf-8><style>{CSS}</style><div class="glow"></div><div class="grain"></div>{art}<div class="txt"><div class="k"><i></i>Lorcan</div><h1><span>{a}</span><span>{c}</span></h1><p>{sub}</p></div><div class="url">lorcan<b>.space</b></div><div class="rule"></div>')
             await pg.goto('file:///tmp/claude-0/og/t.html')
             await pg.evaluate("document.fonts.ready");await pg.wait_for_timeout(400)
             await pg.screenshot(path=f'{R}/og/{key}.jpg',type='jpeg',quality=86)

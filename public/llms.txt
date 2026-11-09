@@ -1,6 +1,6 @@
-# Lorcán O'Neill
+# Lorcan
 
-> Personal website of Lorcán O'Neill (also Lorcan O'Neill, or Lor): an Irish creative and commercial professional from Dublin who spent nearly nine years living and working in the Netherlands.
+> Personal website of Lorcan (Lor): an Irish creative and commercial professional from Dublin who spent nearly nine years living and working in the Netherlands.
 
 - Works on the commercial side of Arkintel, a Dutch technology company in AI.
 - Over 13 years across design, communications, business and technology.
@@ -13,7 +13,7 @@
 - [About](https://www.lorcan.space/about): his background in his own words
 - [Experience](https://www.lorcan.space/experience): design, communications, business and technology, and his current role at Arkintel
 - [Work](https://www.lorcan.space/work): the brands and organisations above
-- [The Possibilities Studio](https://www.lorcan.space/studio): four independent brand concepts for fictional companies, clearly labelled as concepts, not client commissions: WADDEN (maritime robotics that inspect dikes, https://www.lorcan.space/studio/wadden), Kindling (small-business admin software, https://www.lorcan.space/studio/kindling), RUNE (premium audio, https://www.lorcan.space/studio/rune) and FOLD (Dutch modular furniture, https://www.lorcan.space/studio/fold). Identity, campaigns, stationery, brochures, social, exhibition and website work.
+- [Studio](https://www.lorcan.space/studio): self-initiated work, four original fictional brands independently conceived and designed: WADDEN (maritime robotics that inspect dikes, https://www.lorcan.space/studio/wadden), Kindling (small-business admin software, https://www.lorcan.space/studio/kindling), RUNE (premium audio, https://www.lorcan.space/studio/rune) and FOLD (Dutch modular furniture, https://www.lorcan.space/studio/fold). Identity, campaigns, stationery, brochures, social, exhibition and website work.
 - [Thoughts](https://www.lorcan.space/thoughts): short notes on technology, AI, creativity and business
 - [Contact](https://www.lorcan.space/contact): email
 

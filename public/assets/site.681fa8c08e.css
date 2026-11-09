@@ -875,7 +875,12 @@ html.room-on,html.room-on body{overflow:hidden}
 
 
 
+
 /* ---- Studio: overview ---- */
+.page[data-page="studio"] .st-hero{padding-bottom:clamp(28px,3.4vw,52px)}
+.st-sub{margin:18px 0 0;max-width:44rem;color:var(--muted);line-height:1.65}
+.st-fine{margin:26px 0 0;font-family:var(--f-serif);font-style:italic;font-size:var(--fs-small);color:var(--faint)}
+.cs-dir{margin:28px 0 0;max-width:62ch;color:var(--muted);font-size:clamp(17px,1.25vw,19px);line-height:1.7}
 .wide{max-width:calc(1600px + var(--gutter) + var(--gutter-r));margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
 .sx{display:grid;gap:clamp(56px,7vw,120px);padding-bottom:clamp(40px,6vw,96px)}
 .sx-row{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,3vw,48px);align-items:start}

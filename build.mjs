@@ -17,53 +17,54 @@ import crypto from "node:crypto";
 
 const SITE = "https://www.lorcan.space";
 const OUT = "public";
-const NAME = "Lorcán O'Neill";
+const NAME = "Lorcan";
+const BYLINE = "Lorcán O'Neill";
 const EMAIL = "lorcancreative@gmail.com";
 
 const META = {
   home: {
     path: "/",
-    title: "Lorcán O'Neill (Lor) | Creative, Business & AI",
-    desc: "Meet Lorcán O'Neill, an Irish creative and commercial professional working across design, communications, business and AI. Explore his experience, work and writing.",
+    title: "Lorcan — Creative, Business & AI",
+    desc: "A collection of work, ideas and experiments.",
     og: "home",
     type: "WebPage",
   },
   about: {
     path: "/about",
-    title: "About Lorcán O'Neill | Dublin, the Netherlands & Arkintel",
-    desc: "Lorcán O'Neill (Lor) is from Dublin, spent nearly nine years living and working in the Netherlands, has written eight books and now works on the commercial side of Arkintel.",
+    title: "About Lorcan | Dublin, the Netherlands & Arkintel",
+    desc: "Lorcan is from Dublin, spent nearly nine years living and working in the Netherlands, has written eight books and now works on the commercial side of Arkintel.",
     og: "about",
     type: "ProfilePage",
     crumb: "About",
   },
   experience: {
     path: "/experience",
-    title: "Experience: Design, Comms, Business & Tech | Lorcán O'Neill",
-    desc: "Over 13 years across design, communications, business and technology in Ireland and the Netherlands. Lorcán O'Neill currently works in a commercial role at Arkintel.",
+    title: "Experience: Design, Comms, Business & Tech | Lorcan",
+    desc: "Over 13 years across design, communications, business and technology in Ireland and the Netherlands. Lorcan currently works in a commercial role at Arkintel.",
     og: "experience",
     type: "WebPage",
     crumb: "Experience",
   },
   work: {
     path: "/work",
-    title: "Work | Brands Lorcán O'Neill Has Worked For and With",
-    desc: "Some familiar names: Arkintel, Heineken, Formula 1, UEFA, Just Eat, ATPI, Savvy Lab, HTM, Brandit and The Ocean Race. Brands and organisations Lorcán O'Neill has worked for and with.",
+    title: "Work | Brands Lorcan Has Worked For and With",
+    desc: "Some familiar names: Arkintel, Heineken, Formula 1, UEFA, Just Eat, ATPI, Savvy Lab, HTM, Brandit and The Ocean Race. Brands and organisations Lorcan has worked for and with.",
     og: "work",
     type: "CollectionPage",
     crumb: "Work",
   },
   studio: {
     path: "/studio",
-    title: "The Possibilities Studio | Brand Concepts by Lorcán O'Neill",
-    desc: "Four independent brand concepts by Lorcán O'Neill for fictional companies: WADDEN (maritime robotics), Kindling (small-business software), RUNE (premium audio) and FOLD (modular furniture).",
+    title: "Studio: Independent Brand Work | Lorcan",
+    desc: "Independent work by Lorcan: four original brands, each with its own identity, visual language and creative direction. WADDEN, Kindling, RUNE and FOLD.",
     og: "studio",
     type: "CollectionPage",
     crumb: "Studio",
   },
   "studio-wadden": {
     path: "/studio/wadden",
-    title: "WADDEN: Maritime Robotics Brand Concept | Lorcán O'Neill",
-    desc: "WADDEN, a fictional Dutch maritime robotics company that inspects dikes and flood defences. Identity, campaigns, brochure, exhibition stand and website by Lorcán O'Neill.",
+    title: "WADDEN: Maritime Robotics Brand Concept | Lorcan",
+    desc: "WADDEN, a fictional Dutch maritime robotics company that inspects dikes and flood defences. Identity, campaigns, brochure, exhibition stand and website by Lorcan.",
     og: "studio-wadden",
     type: "WebPage",
     crumb: "WADDEN",
@@ -71,8 +72,8 @@ const META = {
   },
   "studio-kindling": {
     path: "/studio/kindling",
-    title: "Kindling: Small-Business Software Brand Concept | Lorcán O'Neill",
-    desc: "Kindling, fictional software that takes admin off small-business owners. Identity, advertising, newsletter, product interface and website by Lorcán O'Neill.",
+    title: "Kindling: Small-Business Software Brand Concept | Lorcan",
+    desc: "Kindling, fictional software that takes admin off small-business owners. Identity, advertising, newsletter, product interface and website by Lorcan.",
     og: "studio-kindling",
     type: "WebPage",
     crumb: "Kindling",
@@ -80,8 +81,8 @@ const META = {
   },
   "studio-rune": {
     path: "/studio/rune",
-    title: "RUNE: Premium Audio Brand Concept | Lorcán O'Neill",
-    desc: "RUNE, a fictional premium audio brand. Identity, product campaigns, outdoor, packaging, editorial and website by Lorcán O'Neill.",
+    title: "RUNE: Premium Audio Brand Concept | Lorcan",
+    desc: "RUNE, a fictional premium audio brand. Identity, product campaigns, outdoor, packaging, editorial and website by Lorcan.",
     og: "studio-rune",
     type: "WebPage",
     crumb: "RUNE",
@@ -89,8 +90,8 @@ const META = {
   },
   "studio-fold": {
     path: "/studio/fold",
-    title: "FOLD: Modular Furniture Brand Concept | Lorcán O'Neill",
-    desc: "FOLD, a fictional Dutch modular furniture company. Identity, catalogue, packaging, showroom, e-commerce and website by Lorcán O'Neill.",
+    title: "FOLD: Modular Furniture Brand Concept | Lorcan",
+    desc: "FOLD, a fictional Dutch modular furniture company. Identity, catalogue, packaging, showroom, e-commerce and website by Lorcan.",
     og: "studio-fold",
     type: "WebPage",
     crumb: "FOLD",
@@ -98,24 +99,24 @@ const META = {
   },
   thoughts: {
     path: "/thoughts",
-    title: "Thoughts | Lorcán O'Neill on AI, Creativity & Business",
-    desc: "Short notes from Lorcán O'Neill on technology, AI, creativity, business and everyday life, written the way he'd say them.",
+    title: "Thoughts | Lorcan on AI, Creativity & Business",
+    desc: "Short notes from Lorcan on technology, AI, creativity, business and everyday life, written the way he'd say them.",
     og: "thoughts",
     type: "CollectionPage",
     crumb: "Thoughts",
   },
   contact: {
     path: "/contact",
-    title: "Contact Lorcán O'Neill | Say Hello",
-    desc: "Got an idea, a project or just fancy saying hello? Email Lorcán O'Neill at lorcancreative@gmail.com. The inbox is open.",
+    title: "Contact Lorcan | Say Hello",
+    desc: "Got an idea, a project or just fancy saying hello? Email Lorcan at lorcancreative@gmail.com. The inbox is open.",
     og: "contact",
     type: "ContactPage",
     crumb: "Contact",
   },
   lost: {
     path: "/404",
-    title: "Page not found | Lorcán O'Neill",
-    desc: "This page has wandered off. Head back to Lorcán O'Neill's homepage.",
+    title: "Page not found | Lorcan",
+    desc: "This page has wandered off. Head back to Lorcan's homepage.",
     og: "home",
     noindex: true,
   },
@@ -189,7 +190,7 @@ function articleHTML(p) {
   const i = POSTS.indexOf(p), n = POSTS[(i + 1) % POSTS.length];
   return `<a class="back" href="/thoughts">${arrow} All thoughts</a>
    <h1>${esc(p.title)}</h1><p class="stand">${esc(p.dek)}</p>
-   <p class="byline"><b>${NAME}</b>${p.date ? `<time datetime="${p.date}">${fmtDate(p.date)}</time>` : ""}<span>${p.tag}</span><span>${p.read} min read</span></p>
+   <p class="byline"><b>${BYLINE}</b>${p.date ? `<time datetime="${p.date}">${fmtDate(p.date)}</time>` : ""}<span>${p.tag}</span><span>${p.read} min read</span></p>
    <div class="body-copy">${p.body.map((x) => `<p>${esc(x)}</p>`).join("")}</div>
    <div class="next"><span class="label" style="margin-top:28px">Up next</span>${postCard(n)}</div>`;
 }
@@ -248,12 +249,11 @@ const person = {
   "@type": "Person",
   "@id": PERSON_ID,
   name: NAME,
-  alternateName: ["Lorcan O'Neill", "Lor"],
-  givenName: "Lorcán",
-  familyName: "O'Neill",
+  alternateName: ["Lor"],
+  givenName: "Lorcan",
   url: SITE + "/",
   mainEntityOfPage: SITE + "/about",
-  image: { "@type": "ImageObject", url: SITE + "/img/tablet-bust.webp", width: 700, height: 860, caption: "Illustration of Lorcán O'Neill" },
+  image: { "@type": "ImageObject", url: SITE + "/img/tablet-bust.webp", width: 700, height: 860, caption: "Illustration of Lorcan" },
   email: "mailto:" + EMAIL,
   description: "Irish creative and commercial professional from Dublin with over 13 years across design, communications, business and technology, including nearly nine years living and working in the Netherlands. Author of eight books. Currently works on the commercial side of Arkintel, a Dutch AI technology company.",
   nationality: { "@type": "Country", name: "Ireland" },
@@ -280,7 +280,7 @@ function graph(key, url, extra = {}, crumbs = []) {
   if (key === "work") {
     page.mainEntity = {
       "@type": "ItemList",
-      name: "Brands and organisations Lorcán O'Neill has worked for and with",
+      name: "Brands and organisations Lorcan has worked for and with",
       itemListElement: ["Arkintel", "Heineken", "Formula 1", "UEFA", "Just Eat", "ATPI", "Savvy Lab", "HTM", "Brandit", "The Ocean Race"].map((n, i) => ({ "@type": "ListItem", position: i + 1, item: { "@type": "Organization", name: n } })),
     };
   }
@@ -421,7 +421,7 @@ fs.writeFileSync(
   path.join(OUT, "llms.txt"),
   `# ${NAME}
 
-> Personal website of ${NAME} (also Lorcan O'Neill, or Lor): an Irish creative and commercial professional from Dublin who spent nearly nine years living and working in the Netherlands.
+> Personal website of ${NAME} (Lor): an Irish creative and commercial professional from Dublin who spent nearly nine years living and working in the Netherlands.
 
 - Works on the commercial side of Arkintel, a Dutch technology company in AI.
 - Over 13 years across design, communications, business and technology.
@@ -434,7 +434,7 @@ fs.writeFileSync(
 - [About](${SITE}/about): his background in his own words
 - [Experience](${SITE}/experience): design, communications, business and technology, and his current role at Arkintel
 - [Work](${SITE}/work): the brands and organisations above
-- [The Possibilities Studio](${SITE}/studio): four independent brand concepts for fictional companies, clearly labelled as concepts, not client commissions: WADDEN (maritime robotics that inspect dikes, ${SITE}/studio/wadden), Kindling (small-business admin software, ${SITE}/studio/kindling), RUNE (premium audio, ${SITE}/studio/rune) and FOLD (Dutch modular furniture, ${SITE}/studio/fold). Identity, campaigns, stationery, brochures, social, exhibition and website work.
+- [Studio](${SITE}/studio): self-initiated work, four original fictional brands independently conceived and designed: WADDEN (maritime robotics that inspect dikes, ${SITE}/studio/wadden), Kindling (small-business admin software, ${SITE}/studio/kindling), RUNE (premium audio, ${SITE}/studio/rune) and FOLD (Dutch modular furniture, ${SITE}/studio/fold). Identity, campaigns, stationery, brochures, social, exhibition and website work.
 - [Thoughts](${SITE}/thoughts): short notes on technology, AI, creativity and business
 - [Contact](${SITE}/contact): email
 
