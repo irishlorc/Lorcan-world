@@ -208,7 +208,7 @@ function onPageShown(page){
   window.headerOnRoute&&headerOnRoute(page);
   $("#readBar").style.transform="scaleX(0)";
   if(typeof armWatches==="function"){armWatches();watched.forEach(placeWatch)}
-  if(document.documentElement.classList.contains("wires"))setTimeout(drawWires,700);
+  if(document.documentElement.classList.contains("wires")){wiresLayer.style.height="0px";setTimeout(drawWires,700)}else{wiresLayer.innerHTML="";wiresLayer.style.height="0px"}
 }
 // close the sheet when tapping outside it
 document.addEventListener("click",e=>{if(sheet.hidden)return;const path=e.composedPath();if(!path.includes(sheet)&&!path.includes(menuBtn))closeMenu()});
@@ -287,7 +287,7 @@ const NOTES={
 };
 function px(n){return Math.round(parseFloat(n))}
 function drawWires(){
-  wiresLayer.innerHTML="";wiresLayer.style.height=document.documentElement.scrollHeight+"px";
+  wiresLayer.innerHTML="";wiresLayer.style.height="0px";const ft=document.querySelector("footer");wiresLayer.style.height=Math.ceil(ft?ft.getBoundingClientRect().bottom+scrollY:document.body.offsetHeight)+"px";
   const page=document.querySelector(".page:not([hidden])");if(!page)return;
   const sy=scrollY,add=(el,txt,cls,d,dx=0,dy=-6)=>{const r=el.getBoundingClientRect();if(!r.width)return;const l=document.createElement("span");l.className="wl"+(cls?" "+cls:"");l.textContent=txt;l.style.left=Math.max(8,Math.min(innerWidth-240,r.left+dx))+"px";l.style.top=(r.top+sy+dy)+"px";l.style.setProperty("--d",d+"s");wiresLayer.appendChild(l);return l};
   let d=.25;
@@ -300,7 +300,7 @@ function drawWires(){
 }
 function setWires(on){
   const sc=$("#wiresScan");sc.className="wires-scan";void sc.offsetWidth;if(!reduced)sc.classList.add(on?"run":"back");
-  if(on){drawWires();document.documentElement.classList.add("wires")}else document.documentElement.classList.remove("wires");
+  if(on){drawWires();document.documentElement.classList.add("wires")}else{document.documentElement.classList.remove("wires");clearTimeout(setWires.t);setWires.t=setTimeout(()=>{if(!document.documentElement.classList.contains("wires")){wiresLayer.innerHTML="";wiresLayer.style.height="0px"}},950)}
   wiresT.setAttribute("aria-checked",String(on));
 }
 wiresT.addEventListener("click",()=>setWires(!document.documentElement.classList.contains("wires")));

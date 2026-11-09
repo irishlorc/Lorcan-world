@@ -1164,7 +1164,7 @@ html.wires .wires-grid,html.wires .wires-layer{clip-path:inset(0 0 0 0)}
 .wg-in{max-width:var(--max);height:100%;margin:0 auto;display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(12px,2vw,24px)}
 .wg-in i{background:rgba(255,106,0,.05);border-inline:1px solid rgba(255,106,0,.18)}
 @media (max-width:767px){.wg-in{grid-template-columns:repeat(4,1fr)}.wg-in i:nth-child(n+5){display:none}}
-.wires-layer{position:absolute;left:0;top:0;width:100%;z-index:41}
+.wires-layer{position:absolute;left:0;top:0;width:100%;height:0;overflow:hidden;z-index:41}
 .wires-scan{position:fixed;left:0;right:0;top:0;height:2px;z-index:42;pointer-events:none;background:var(--grad);box-shadow:0 0 30px 6px rgba(255,106,0,.55);opacity:0;transform:translateY(-10px)}
 .wires-scan.run{animation:scanDown .9s cubic-bezier(.65,0,.35,1) forwards}
 .wires-scan.back{animation:scanUp .9s cubic-bezier(.65,0,.35,1) forwards}
