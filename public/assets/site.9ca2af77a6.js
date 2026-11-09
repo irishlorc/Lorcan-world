@@ -81,8 +81,8 @@ function renderArticle(slug){
   return true;
 }
 
-const PAGES=["home","about","experience","work","thoughts","contact"];
-const TITLES={"home":"Lorcán O'Neill (Lor) | Creative, Business & AI","about":"About Lorcán O'Neill | Dublin, the Netherlands & Arkintel","experience":"Experience: Design, Comms, Business & Tech | Lorcán O'Neill","work":"Work | Brands Lorcán O'Neill Has Worked For and With","thoughts":"Thoughts | Lorcán O'Neill on AI, Creativity & Business","contact":"Contact Lorcán O'Neill | Say Hello","lost":"Page not found | Lorcán O'Neill"};
+const PAGES=["home","about","experience","work","studio","thoughts","contact"];
+const TITLES={"home":"Lorcán O'Neill (Lor) | Creative, Business & AI","about":"About Lorcán O'Neill | Dublin, the Netherlands & Arkintel","experience":"Experience: Design, Comms, Business & Tech | Lorcán O'Neill","work":"Work | Brands Lorcán O'Neill Has Worked For and With","studio":"The Possibilities Studio | Creative Concepts by Lorcán O'Neill","thoughts":"Thoughts | Lorcán O'Neill on AI, Creativity & Business","contact":"Contact Lorcán O'Neill | Say Hello","lost":"Page not found | Lorcán O'Neill"};
 let swapT=null,firstRoute=true;
 function route(){
   const h=routeKey();
@@ -344,6 +344,27 @@ function onLost(){const say=$("#lostSay");if(!say)return;$(".lost-scene").classL
 $("#skipLink")?.addEventListener("click",e=>{e.preventDefault();$("#main").focus()});
 
 
+// ---------- The Possibilities Studio: jump links and the artwork viewer ----------
+(function(){
+  let list=[],at=0,from=null;
+  const lb=()=>document.getElementById("stLb");
+  function show(i){const L=lb();if(!L)return;at=(i+list.length)%list.length;const b=list[at],img=document.getElementById("stImg"),full=b.querySelector("img").getAttribute("srcset").split(",").pop().trim().split(" ")[0];
+    img.src=full;img.alt=b.querySelector("img").alt;img.style.animation="none";void img.offsetWidth;img.style.animation="";
+    document.getElementById("stCap").textContent=b.closest("figure").querySelector("figcaption").textContent;document.getElementById("stN").textContent=(at+1)+" / "+list.length;}
+  function open(b){const L=lb();if(!L)return;list=[...document.querySelectorAll('[data-page="studio"] .st-open')];from=b;L.hidden=false;document.documentElement.classList.add("st-open-lb");show(list.indexOf(b));document.getElementById("stX").focus({preventScroll:true})}
+  function close(){const L=lb();if(!L||L.hidden)return;L.hidden=true;document.documentElement.classList.remove("st-open-lb");from&&from.focus({preventScroll:true})}
+  document.addEventListener("click",e=>{
+    const o=e.target.closest(".st-open");if(o){open(o);return}
+    const j=e.target.closest("[data-jump]");if(j){const t=document.getElementById(j.dataset.jump);if(t)t.scrollIntoView({behavior:reduced?"auto":"smooth",block:"start"});return}
+    if(e.target.closest("#stX")||e.target.id==="stStage"){close();return}
+    if(e.target.closest("#stPrev"))show(at-1);else if(e.target.closest("#stNext"))show(at+1);
+  });
+  document.addEventListener("keydown",e=>{const L=lb();if(!L||L.hidden)return;if(e.key==="Escape"){e.preventDefault();close()}else if(e.key==="ArrowLeft")show(at-1);else if(e.key==="ArrowRight")show(at+1)});
+  let sx=null;document.addEventListener("touchstart",e=>{const L=lb();if(L&&!L.hidden)sx=e.touches[0].clientX},{passive:true});
+  document.addEventListener("touchend",e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50)show(at+(dx<0?1:-1))},{passive:true});
+  addEventListener("hashchange",close);addEventListener("popstate",close);
+})();
+
 // ---------- The greeting knows when you're visiting ----------
 (function(){
   const h=new Date().getHours(),H=$("#heroH");if(!H)return;
@@ -468,7 +489,7 @@ let wpT=0;addEventListener("scroll",()=>{if(wpT)return;wpT=requestAnimationFrame
   links.addEventListener("pointerleave",()=>moveTo(cur()));
   addEventListener("resize",()=>moveTo(cur()));
   // breadcrumb + indicator follow the route
-  const names={about:"About",experience:"Experience",work:"Work",thoughts:"Thoughts",contact:"Contact",post:"Thoughts",lost:"Lost"};
+  const names={about:"About",experience:"Experience",work:"Work",studio:"Studio",thoughts:"Thoughts",contact:"Contact",post:"Thoughts",lost:"Lost"};
   window.headerOnRoute=page=>{
     requestAnimationFrame(()=>moveTo(cur()));
     const c=$("#crumb"),t=$("#crumbT"),n=names[page];

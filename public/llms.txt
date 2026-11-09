@@ -13,6 +13,7 @@
 - [About](https://www.lorcan.space/about): his background in his own words
 - [Experience](https://www.lorcan.space/experience): design, communications, business and technology, and his current role at Arkintel
 - [Work](https://www.lorcan.space/work): the brands and organisations above
+- [The Possibilities Studio](https://www.lorcan.space/studio): self-initiated concept work for two fictional companies (WADDEN, a Dutch dike-inspection robotics start-up, and HEARTH, an AI assistant for small businesses): identity, newsletter, campaign, pitch deck and web design. Clearly labelled as concepts, not client commissions.
 - [Thoughts](https://www.lorcan.space/thoughts): short notes on technology, AI, creativity and business
 - [Contact](https://www.lorcan.space/contact): email
 

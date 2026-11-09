@@ -846,6 +846,57 @@ html.room-on,html.room-on body{overflow:hidden}
 .yt-t,.yt-s{position:relative;z-index:1}.yt-t{margin-top:10px;font-weight:600;font-size:18px}.yt-s{font-size:13px;color:rgba(255,255,255,.65)}
 .yt-cap{margin:10px 0 0;text-align:right;font-size:13px}.yt-cap a{color:var(--faint);text-decoration:none}.yt-cap a:hover{color:var(--ink)}
 
+/* ---------- The Possibilities Studio ---------- */
+.st-note{display:flex;gap:10px;align-items:center;margin:22px 0 0;font-size:var(--fs-small);color:var(--muted);max-width:44rem}
+.st-note i{flex:none;width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(255,106,0,.15)}
+.st-index{display:flex;flex-wrap:wrap;gap:8px;margin-top:40px}
+.st-index button{display:inline-flex;align-items:baseline;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--ink);font:inherit;font-size:15px;cursor:pointer;transition:border-color var(--m-ui),background var(--m-ui)}
+.st-index button b{font-family:var(--f-serif);font-style:italic;font-weight:400;color:var(--accent)}
+.st-index button:hover,.st-index button:focus-visible{border-color:var(--accent);background:rgba(255,106,0,.06)}
+.st-thread{margin-top:28px;max-width:52rem;padding:22px 26px;border:1px solid var(--line-2);border-radius:var(--r-lg);background:var(--bg-2)}
+.st-thread p{margin:0;color:var(--muted);line-height:1.7}.st-thread b{color:var(--ink);font-weight:500}
+.st-chip{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.14em;padding:2px 8px;border-radius:5px;background:#0E2A33;color:#E9ECE6;vertical-align:2px}
+.st-chip.h{background:#231A24;color:#F2B33D}
+.st-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(16px,2.4vw,32px);align-items:start;margin-bottom:var(--head-gap)}
+.st-n{font-family:var(--f-serif);font-style:italic;font-weight:300;font-size:clamp(44px,5.4vw,76px);line-height:.9;color:var(--accent);background:var(--grad-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-right:.08em}
+.st-what{margin:12px 0 0;color:var(--muted);max-width:40rem}
+.st-brand{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);border:1px solid var(--line-2);padding:7px 11px;border-radius:999px;white-space:nowrap;margin-top:8px}
+.st-grid{display:grid;gap:clamp(12px,1.6vw,22px);align-items:start}
+.g-2x2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g-tall{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}
+.g-camp{grid-template-columns:minmax(0,4fr) minmax(0,5fr)}
+.g-camp .st-tile:nth-child(n+3){grid-column:1/-1}
+.g-web{grid-template-columns:minmax(0,1.07fr) minmax(0,1fr)}
+.g-web .st-tile:first-child{grid-row:span 2}
+.st-tile{margin:0;min-width:0}
+.st-open{display:block;width:100%;padding:0;border:0;background:var(--bg-2);border-radius:var(--r);overflow:hidden;cursor:zoom-in;box-shadow:0 0 0 1px var(--line);transition:box-shadow var(--m-ui)}
+.st-open img{display:block;width:100%;height:auto;transition:transform 1s var(--e-out)}
+.st-open:hover img,.st-open:focus-visible img{transform:scale(1.025)}
+.st-open:hover,.st-open:focus-visible{box-shadow:0 0 0 1px rgba(255,106,0,.45),0 30px 60px -30px rgba(0,0,0,.8)}
+.st-tile figcaption{margin-top:10px;font-size:13px;color:var(--faint)}
+.st-why{margin:30px 0 0;max-width:46rem;color:var(--muted);display:grid;gap:8px;line-height:1.7}
+.st-why span{font-size:var(--fs-label);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+.st-lb{position:fixed;inset:0;z-index:240;background:rgba(6,6,6,.95);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;grid-template-rows:auto minmax(0,1fr);animation:fadeIn .25s both}
+.st-lb-bar{display:flex;align-items:center;gap:16px;padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
+.st-lb-cap{margin:0;font-size:15px;color:var(--ink);min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.st-lb-n{font-size:13px;color:var(--faint);font-variant-numeric:tabular-nums}
+.st-lb-x{width:42px;height:42px;border-radius:12px;border:1px solid var(--line-2);background:var(--bg-2);color:var(--ink);display:grid;place-items:center;cursor:pointer}
+.st-lb-x svg{width:18px;height:18px}
+.st-lb-stage{display:grid;place-items:center;padding:8px clamp(16px,6vw,84px) calc(20px + env(safe-area-inset-bottom,0px));min-height:0;overflow:auto}
+.st-lb-stage img{max-width:100%;max-height:calc(100vh - 110px);width:auto;height:auto;border-radius:6px;box-shadow:0 40px 100px -30px #000;animation:coverIn .45s var(--e-out) both}
+.st-lb-nav{position:fixed;top:50%;width:48px;height:48px;margin-top:-24px;border-radius:50%;border:1px solid var(--line-2);background:rgba(21,21,21,.85);color:var(--ink);font-size:26px;line-height:1;cursor:pointer;z-index:2}
+.st-lb-nav.p{left:max(14px,env(safe-area-inset-left,0px))}.st-lb-nav.n{right:max(14px,env(safe-area-inset-right,0px))}
+.st-lb-nav:hover,.st-lb-x:hover{border-color:var(--accent)}
+html.st-open-lb,html.st-open-lb body{overflow:hidden}
+@media (max-width:767px){
+  .st-head{grid-template-columns:auto minmax(0,1fr)}.st-brand{grid-column:2;justify-self:start;margin-top:0}
+  .g-2x2,.g-tall,.g-camp,.g-web{grid-template-columns:minmax(0,1fr)}
+  .g-camp .st-tile:nth-child(n+3),.g-web .st-tile:first-child{grid-column:auto;grid-row:auto}
+  .st-lb-nav{top:auto;bottom:calc(16px + env(safe-area-inset-bottom,0px));margin-top:0}
+  .st-lb-stage{padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}
+  .st-lb-stage img{max-height:calc(100vh - 170px)}
+}
+@media (prefers-reduced-motion:reduce){.st-open img,.st-lb,.st-lb-stage img{transition:none;animation:none}}
 /* ---------- Squarer landscape screens (4:3 tablets, 16:10 laptops): fit the room to the screen instead of cropping its sides ---------- */
 @media (orientation:landscape) and (max-aspect-ratio:16/10) and (min-width:768px){
   .or-stage{width:100vw;height:100vh}
@@ -1411,6 +1462,7 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#work">Work</a></li>
+      <li><a href="#studio">Studio</a></li>
       <li><a href="#thoughts">Thoughts</a></li>
     <span class="nav-ind" id="navInd" aria-hidden="true"></span></ul>
     <a class="btn btn-primary btn-sm" href="#contact">Let's chat <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -1421,6 +1473,7 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
     <a href="#about">About <small>A little about me</small></a>
     <a href="#experience">Experience <small>A few different hats</small></a>
     <a href="#work">Work <small>Some familiar names</small></a>
+    <a href="#studio">Studio <small>What I could make</small></a>
     <a href="#thoughts">Thoughts <small>Things on my mind</small></a>
     <a href="#contact">Contact <small>Let's have a chat</small></a>
   </div>
@@ -1586,6 +1639,94 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
   </section>
 </div>
 
+<!-- =================== STUDIO =================== -->
+<div class="page" data-page="studio" hidden>
+  <section class="sec st-hero">
+    <div class="wrap">
+      <div class="head rise">
+        <span class="label">The Possibilities Studio</span>
+        <h1 class="display">Don't imagine what I could make. <em class="acc">Have a look.</em></h1>
+        <p class="lede">A collection of self-initiated creative concepts. No client briefs, no committees, no twelve rounds of feedback. Just ideas brought to life.</p>
+        <p class="st-note"><i aria-hidden="true"></i>These aren't projects I was hired to make. They're examples of what I could bring to the table.</p>
+      </div>
+      <nav class="st-index rv" aria-label="Collections">
+        <button type="button" data-jump="st-01"><b>01</b>Brand Worlds</button>
+        <button type="button" data-jump="st-02"><b>02</b>Editorial</button>
+        <button type="button" data-jump="st-03"><b>03</b>Campaigns</button>
+        <button type="button" data-jump="st-04"><b>04</b>Presentations</button>
+        <button type="button" data-jump="st-05"><b>05</b>Digital</button>
+      </nav>
+      <div class="st-thread rv">
+        <p><b>Two fictional companies.</b> <span class="st-chip">WADDEN</span> is a Dutch robotics start-up whose robots inspect the dikes that keep the country dry. It runs through three collections: the identity, the launch and the pitch, the way a real brand would. <span class="st-chip h">HEARTH</span> is a calm AI assistant for small businesses, shown in its newsletter, website and product.</p>
+      </div>
+    </div>
+  </section>
+  <section class="sec st-col" id="st-01" aria-labelledby="st-h-01">
+    <div class="wrap">
+      <header class="st-head rv">
+        <span class="st-n">01</span>
+        <div><h2 class="title" id="st-h-01">Brand Worlds</h2><p class="st-what">A complete identity for a fictional Dutch robotics company that builds dike-inspection robots.</p></div>
+        <span class="st-brand">Concept · WADDEN</span>
+      </header>
+      <div class="st-grid g-2x2"><figure class="st-tile "><button type="button" class="st-open" data-st="w-logo" aria-label="Enlarge: Primary identity"><img src="img/studio/w-logo-thumb.webp" srcset="img/studio/w-logo-thumb.webp 900w, img/studio/w-logo-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="1000" alt="Primary identity, concept artwork" loading="lazy" decoding="async"></button><figcaption>Primary identity</figcaption></figure><figure class="st-tile "><button type="button" class="st-open" data-st="w-system" aria-label="Enlarge: Colour and type"><img src="img/studio/w-system-thumb.webp" srcset="img/studio/w-system-thumb.webp 900w, img/studio/w-system-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="1000" alt="Colour and type, concept artwork" loading="lazy" decoding="async"></button><figcaption>Colour and type</figcaption></figure><figure class="st-tile "><button type="button" class="st-open" data-st="w-cards" aria-label="Enlarge: Business cards"><img src="img/studio/w-cards-thumb.webp" srcset="img/studio/w-cards-thumb.webp 900w, img/studio/w-cards-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="1000" alt="Business cards, concept artwork" loading="lazy" decoding="async"></button><figcaption>Business cards</figcaption></figure><figure class="st-tile "><button type="button" class="st-open" data-st="w-merch" aria-label="Enlarge: Field kit"><img src="img/studio/w-merch-thumb.webp" srcset="img/studio/w-merch-thumb.webp 900w, img/studio/w-merch-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="1000" alt="Field kit, concept artwork" loading="lazy" decoding="async"></button><figcaption>Field kit</figcaption></figure></div>
+      <p class="st-why rv"><span>The thinking</span>The mark is a dike in cross-section with the water line drawn through it. Everything else, from the orange that's only used for alerts to the field notebook, comes from the place the robots work.</p>
+    </div>
+  </section>
+  <section class="sec st-col" id="st-02" aria-labelledby="st-h-02">
+    <div class="wrap">
+      <header class="st-head rv">
+        <span class="st-n">02</span>
+        <div><h2 class="title" id="st-h-02">Editorial &amp; Newsletters</h2><p class="st-what">Kindling, the weekly newsletter for a fictional AI assistant that looks after small-business admin.</p></div>
+        <span class="st-brand">Concept · HEARTH</span>
+      </header>
+      <div class="st-grid g-tall"><figure class="st-tile "><button type="button" class="st-open" data-st="e-kindling" aria-label="Enlarge: Weekly newsletter, email"><img src="img/studio/e-kindling-thumb.webp" srcset="img/studio/e-kindling-thumb.webp 900w, img/studio/e-kindling-full.webp 1400w" sizes="(min-width:1024px) 50vw, 100vw" width="1400" height="2000" alt="Weekly newsletter, email, concept artwork" loading="lazy" decoding="async"></button><figcaption>Weekly newsletter, email · 600px email</figcaption></figure><figure class="st-tile "><button type="button" class="st-open" data-st="e-kindling-mobile" aria-label="Enlarge: Newsletter on a phone"><img src="img/studio/e-kindling-mobile-thumb.webp" srcset="img/studio/e-kindling-mobile-thumb.webp 900w, img/studio/e-kindling-mobile-full.webp 1400w" sizes="(min-width:1024px) 50vw, 100vw" width="1400" height="1000" alt="Newsletter on a phone, concept artwork" loading="lazy" decoding="async"></button><figcaption>Newsletter on a phone · Mobile email</figcaption></figure></div>
+      <p class="st-why rv"><span>The thinking</span>One lead story, two short items and one number. It reads like a small magazine rather than a product update, because its readers are busy people who owe it nothing.</p>
+    </div>
+  </section>
+  <section class="sec st-col" id="st-03" aria-labelledby="st-h-03">
+    <div class="wrap">
+      <header class="st-head rv">
+        <span class="st-n">03</span>
+        <div><h2 class="title" id="st-h-03">Campaigns &amp; Social</h2><p class="st-what">The launch of Kwelder, Wadden's first robot, across social, recruitment and outdoor.</p></div>
+        <span class="st-brand">Concept · WADDEN</span>
+      </header>
+      <div class="st-grid g-camp"><figure class="st-tile "><button type="button" class="st-open" data-st="c-launch" aria-label="Enlarge: Launch post"><img src="img/studio/c-launch-thumb.webp" srcset="img/studio/c-launch-thumb.webp 900w, img/studio/c-launch-full.webp 1080w" sizes="(min-width:1024px) 50vw, 100vw" width="1080" height="1350" alt="Launch post, concept artwork" loading="lazy" decoding="async"></button><figcaption>Launch post · 1080 × 1350</figcaption></figure><figure class="st-tile "><button type="button" class="st-open" data-st="c-hiring" aria-label="Enlarge: Recruitment post"><img src="img/studio/c-hiring-thumb.webp" srcset="img/studio/c-hiring-thumb.webp 900w, img/studio/c-hiring-full.webp 1080w" sizes="(min-width:1024px) 50vw, 100vw" width="1080" height="1080" alt="Recruitment post, concept artwork" loading="lazy" decoding="async"></button><figcaption>Recruitment post · 1080 × 1080</figcaption></figure><figure class="st-tile "><button type="button" class="st-open" data-st="c-carousel" aria-label="Enlarge: LinkedIn carousel, three slides"><img src="img/studio/c-carousel-thumb.webp" srcset="img/studio/c-carousel-thumb.webp 900w, img/studio/c-carousel-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="982" alt="LinkedIn carousel, three slides, concept artwork" loading="lazy" decoding="async"></button><figcaption>LinkedIn carousel, three slides · 3 × 1080 × 1350</figcaption></figure><figure class="st-tile "><button type="button" class="st-open" data-st="c-billboard" aria-label="Enlarge: Billboard"><img src="img/studio/c-billboard-thumb.webp" srcset="img/studio/c-billboard-thumb.webp 900w, img/studio/c-billboard-full.webp 2400w" sizes="(min-width:1024px) 50vw, 100vw" width="2400" height="800" alt="Billboard, concept artwork" loading="lazy" decoding="async"></button><figcaption>Billboard · 48-sheet, 3:1</figcaption></figure></div>
+      <p class="st-why rv"><span>The thinking</span>Every piece makes one point and hands over to the next: what it is, why it matters, who it's for. The billboard is the one you'd remember on the drive home.</p>
+    </div>
+  </section>
+  <section class="sec st-col" id="st-04" aria-labelledby="st-h-04">
+    <div class="wrap">
+      <header class="st-head rv">
+        <span class="st-n">04</span>
+        <div><h2 class="title" id="st-h-04">Presentations &amp; Pitch Decks</h2><p class="st-what">A pilot proposal for Dutch water boards, the people who'd actually buy Kwelder.</p></div>
+        <span class="st-brand">Concept · WADDEN</span>
+      </header>
+      <div class="st-grid g-2x2"><figure class="st-tile "><button type="button" class="st-open" data-st="d-title" aria-label="Enlarge: Title slide"><img src="img/studio/d-title-thumb.webp" srcset="img/studio/d-title-thumb.webp 900w, img/studio/d-title-full.webp 1920w" sizes="(min-width:1024px) 50vw, 100vw" width="1920" height="1080" alt="Title slide, concept artwork" loading="lazy" decoding="async"></button><figcaption>Title slide · 16:9</figcaption></figure><figure class="st-tile "><button type="button" class="st-open" data-st="d-problem" aria-label="Enlarge: The gap"><img src="img/studio/d-problem-thumb.webp" srcset="img/studio/d-problem-thumb.webp 900w, img/studio/d-problem-full.webp 1920w" sizes="(min-width:1024px) 50vw, 100vw" width="1920" height="1080" alt="The gap, concept artwork" loading="lazy" decoding="async"></button><figcaption>The gap · 16:9</figcaption></figure><figure class="st-tile "><button type="button" class="st-open" data-st="d-how" aria-label="Enlarge: How it works"><img src="img/studio/d-how-thumb.webp" srcset="img/studio/d-how-thumb.webp 900w, img/studio/d-how-full.webp 1920w" sizes="(min-width:1024px) 50vw, 100vw" width="1920" height="1080" alt="How it works, concept artwork" loading="lazy" decoding="async"></button><figcaption>How it works · 16:9</figcaption></figure><figure class="st-tile "><button type="button" class="st-open" data-st="d-plan" aria-label="Enlarge: Pilot to network"><img src="img/studio/d-plan-thumb.webp" srcset="img/studio/d-plan-thumb.webp 900w, img/studio/d-plan-full.webp 1920w" sizes="(min-width:1024px) 50vw, 100vw" width="1920" height="1080" alt="Pilot to network, concept artwork" loading="lazy" decoding="async"></button><figcaption>Pilot to network · 16:9</figcaption></figure></div>
+      <p class="st-why rv"><span>The thinking</span>A deck for an engineer's room: one idea per slide, a timeline instead of a wall of bullets, and a first step small enough to say yes to.</p>
+    </div>
+  </section>
+  <section class="sec st-col" id="st-05" aria-labelledby="st-h-05">
+    <div class="wrap">
+      <header class="st-head rv">
+        <span class="st-n">05</span>
+        <div><h2 class="title" id="st-h-05">Digital Experiences</h2><p class="st-what">Hearth's website, mobile view and the product's morning dashboard.</p></div>
+        <span class="st-brand">Concept · HEARTH</span>
+      </header>
+      <div class="st-grid g-web"><figure class="st-tile "><button type="button" class="st-open" data-st="h-landing" aria-label="Enlarge: Landing page"><img src="img/studio/h-landing-thumb.webp" srcset="img/studio/h-landing-thumb.webp 900w, img/studio/h-landing-full.webp 1440w" sizes="(min-width:1024px) 50vw, 100vw" width="1440" height="1660" alt="Landing page, concept artwork" loading="lazy" decoding="async"></button><figcaption>Landing page · 1440 desktop</figcaption></figure><figure class="st-tile "><button type="button" class="st-open" data-st="h-app" aria-label="Enlarge: Product dashboard"><img src="img/studio/h-app-thumb.webp" srcset="img/studio/h-app-thumb.webp 900w, img/studio/h-app-full.webp 1600w" sizes="(min-width:1024px) 50vw, 100vw" width="1600" height="840" alt="Product dashboard, concept artwork" loading="lazy" decoding="async"></button><figcaption>Product dashboard · Web app</figcaption></figure><figure class="st-tile "><button type="button" class="st-open" data-st="h-mobile" aria-label="Enlarge: Landing page on a phone"><img src="img/studio/h-mobile-thumb.webp" srcset="img/studio/h-mobile-thumb.webp 900w, img/studio/h-mobile-full.webp 1400w" sizes="(min-width:1024px) 50vw, 100vw" width="1400" height="1000" alt="Landing page on a phone, concept artwork" loading="lazy" decoding="async"></button><figcaption>Landing page on a phone · 390 mobile</figcaption></figure></div>
+      <p class="st-why rv"><span>The thinking</span>The promise on the homepage is the first screen of the product: the morning's to-do, already done, waiting for a nod.</p>
+    </div>
+  </section>
+  <section class="sec">
+    <div class="wrap">
+      <div class="hello-row rv">
+        <div><p>Like what you see? Imagine it with your brand.</p></div>
+        <a class="btn btn-primary" href="#contact">Let's talk <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
 <!-- =================== THOUGHTS =================== -->
 <div class="page" data-page="thoughts" hidden>
   <section class="sec">
@@ -1670,7 +1811,7 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
     </div>
     <div class="sig-bar">
       <nav class="sig-nav" aria-label="Footer">
-        <a href="#home">Home</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#thoughts">Thoughts</a><a href="#contact">Contact</a>
+        <a href="#home">Home</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#studio">Studio</a><a href="#thoughts">Thoughts</a><a href="#contact">Contact</a>
       </nav>
       <div class="sig-meta">
         <span class="copy-r">© 2026 Lorcán O'Neill</span>
@@ -1708,6 +1849,12 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
     <div class="or-right"><button class="or-dn" id="orDN" type="button" aria-label="Switch between day and night"><span class="d">Day</span><span class="n">Night</span></button><p class="or-title">The Other Room</p></div>
   </header>
   <section class="or-panel" id="orPanel" hidden aria-live="polite"><div class="or-panel-in"><button class="or-x" id="orX" type="button" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button><div id="orBody"></div></div></section>
+</div>
+<div class="st-lb" id="stLb" role="dialog" aria-modal="true" aria-label="Artwork viewer" hidden>
+  <div class="st-lb-bar"><p class="st-lb-cap" id="stCap"></p><span class="st-lb-n" id="stN"></span><button type="button" class="st-lb-x" id="stX" aria-label="Close viewer"><svg aria-hidden="true"><use href="#i-close"/></svg></button></div>
+  <div class="st-lb-stage" id="stStage"><img id="stImg" alt=""></div>
+  <button type="button" class="st-lb-nav p" id="stPrev" aria-label="Previous artwork">‹</button>
+  <button type="button" class="st-lb-nav n" id="stNext" aria-label="Next artwork">›</button>
 </div>
 <div class="wires-grid" id="wiresGrid" aria-hidden="true"><div class="wg-in"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="wires-scan" id="wiresScan" aria-hidden="true"></div><div class="wires-layer" id="wiresLayer" aria-hidden="true"></div>
 <p class="tick-say" id="tickSay" role="status" aria-live="polite"></p>
@@ -1798,8 +1945,8 @@ function renderArticle(slug){
   return true;
 }
 
-const PAGES=["home","about","experience","work","thoughts","contact"];
-const TITLES={lost:"Page not found | Lorcán O'Neill",home:"Lorcán O'Neill (Lor) | Creative, Business & AI",about:"About Lorcán O'Neill | Dublin, the Netherlands & Arkintel",experience:"Experience | Lorcán O'Neill: Design, Communications, Business & Tech",work:"Work | Brands Lorcán O'Neill Has Worked For and With",thoughts:"Thoughts | Notes on AI, Creativity & Business by Lorcán O'Neill",contact:"Contact Lorcán O'Neill | Say Hello"};
+const PAGES=["home","about","experience","work","studio","thoughts","contact"];
+const TITLES={lost:"Page not found | Lorcán O'Neill",home:"Lorcán O'Neill (Lor) | Creative, Business & AI",about:"About Lorcán O'Neill | Dublin, the Netherlands & Arkintel",experience:"Experience | Lorcán O'Neill: Design, Communications, Business & Tech",work:"Work | Brands Lorcán O'Neill Has Worked For and With",studio:"The Possibilities Studio | Creative Concepts by Lorcán O'Neill",thoughts:"Thoughts | Notes on AI, Creativity & Business by Lorcán O'Neill",contact:"Contact Lorcán O'Neill | Say Hello"};
 let swapT=null,firstRoute=true;
 function route(){
   const h=routeKey();
@@ -2061,6 +2208,27 @@ function onLost(){const say=$("#lostSay");if(!say)return;$(".lost-scene").classL
 $("#skipLink")?.addEventListener("click",e=>{e.preventDefault();$("#main").focus()});
 
 
+// ---------- The Possibilities Studio: jump links and the artwork viewer ----------
+(function(){
+  let list=[],at=0,from=null;
+  const lb=()=>document.getElementById("stLb");
+  function show(i){const L=lb();if(!L)return;at=(i+list.length)%list.length;const b=list[at],img=document.getElementById("stImg"),full=b.querySelector("img").getAttribute("srcset").split(",").pop().trim().split(" ")[0];
+    img.src=full;img.alt=b.querySelector("img").alt;img.style.animation="none";void img.offsetWidth;img.style.animation="";
+    document.getElementById("stCap").textContent=b.closest("figure").querySelector("figcaption").textContent;document.getElementById("stN").textContent=(at+1)+" / "+list.length;}
+  function open(b){const L=lb();if(!L)return;list=[...document.querySelectorAll('[data-page="studio"] .st-open')];from=b;L.hidden=false;document.documentElement.classList.add("st-open-lb");show(list.indexOf(b));document.getElementById("stX").focus({preventScroll:true})}
+  function close(){const L=lb();if(!L||L.hidden)return;L.hidden=true;document.documentElement.classList.remove("st-open-lb");from&&from.focus({preventScroll:true})}
+  document.addEventListener("click",e=>{
+    const o=e.target.closest(".st-open");if(o){open(o);return}
+    const j=e.target.closest("[data-jump]");if(j){const t=document.getElementById(j.dataset.jump);if(t)t.scrollIntoView({behavior:reduced?"auto":"smooth",block:"start"});return}
+    if(e.target.closest("#stX")||e.target.id==="stStage"){close();return}
+    if(e.target.closest("#stPrev"))show(at-1);else if(e.target.closest("#stNext"))show(at+1);
+  });
+  document.addEventListener("keydown",e=>{const L=lb();if(!L||L.hidden)return;if(e.key==="Escape"){e.preventDefault();close()}else if(e.key==="ArrowLeft")show(at-1);else if(e.key==="ArrowRight")show(at+1)});
+  let sx=null;document.addEventListener("touchstart",e=>{const L=lb();if(L&&!L.hidden)sx=e.touches[0].clientX},{passive:true});
+  document.addEventListener("touchend",e=>{if(sx===null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>50)show(at+(dx<0?1:-1))},{passive:true});
+  addEventListener("hashchange",close);addEventListener("popstate",close);
+})();
+
 // ---------- The greeting knows when you're visiting ----------
 (function(){
   const h=new Date().getHours(),H=$("#heroH");if(!H)return;
@@ -2185,7 +2353,7 @@ let wpT=0;addEventListener("scroll",()=>{if(wpT)return;wpT=requestAnimationFrame
   links.addEventListener("pointerleave",()=>moveTo(cur()));
   addEventListener("resize",()=>moveTo(cur()));
   // breadcrumb + indicator follow the route
-  const names={about:"About",experience:"Experience",work:"Work",thoughts:"Thoughts",contact:"Contact",post:"Thoughts",lost:"Lost"};
+  const names={about:"About",experience:"Experience",work:"Work",studio:"Studio",thoughts:"Thoughts",contact:"Contact",post:"Thoughts",lost:"Lost"};
   window.headerOnRoute=page=>{
     requestAnimationFrame(()=>moveTo(cur()));
     const c=$("#crumb"),t=$("#crumbT"),n=names[page];

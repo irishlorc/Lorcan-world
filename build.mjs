@@ -52,6 +52,14 @@ const META = {
     type: "CollectionPage",
     crumb: "Work",
   },
+  studio: {
+    path: "/studio",
+    title: "The Possibilities Studio | Creative Concepts by Lorcán O'Neill",
+    desc: "Self-initiated creative concepts by Lorcán O'Neill: brand identity, newsletters, campaigns, pitch decks and digital design for two fictional companies. Not client work, just what he could bring to the table.",
+    og: "studio",
+    type: "CollectionPage",
+    crumb: "Studio",
+  },
   thoughts: {
     path: "/thoughts",
     title: "Thoughts | Lorcán O'Neill on AI, Creativity & Business",
@@ -76,7 +84,7 @@ const META = {
     noindex: true,
   },
 };
-const ORDER = ["home", "about", "experience", "work", "thoughts", "contact"];
+const ORDER = ["home", "about", "experience", "work", "studio", "thoughts", "contact"];
 
 // ---------------------------------------------------------------- source ---
 const src = fs.readFileSync("src/index.html", "utf8");
@@ -117,7 +125,7 @@ const PAGES = {};
 for (const c of chunks) PAGES[c.match(/data-page="([a-z]+)"/)[1]] = c.trim();
 
 const hrefFor = (k) => (k === "home" ? "/" : k.startsWith("post-") ? "/thoughts/" + k.slice(5) : "/" + k);
-const linkify = (s) => s.replace(/href="#(home|about|experience|work|thoughts|contact)"/g, (_, k) => `href="${hrefFor(k)}"`);
+const linkify = (s) => s.replace(/href="#(home|about|experience|work|studio|thoughts|contact)"/g, (_, k) => `href="${hrefFor(k)}"`);
 const show = (s) => s.replace(/(<div class="page" data-page="[a-z]+") hidden>/, "$1>");
 const hide = (s) => s.replace(/(<div class="page" data-page="[a-z]+")>/, "$1 hidden>");
 const lazy = (s) => s.replace(/ fetchpriority="high"/g, "").replace(/<img (?![^>]*loading=)/g, '<img loading="lazy" ');
@@ -389,6 +397,7 @@ fs.writeFileSync(
 - [About](${SITE}/about): his background in his own words
 - [Experience](${SITE}/experience): design, communications, business and technology, and his current role at Arkintel
 - [Work](${SITE}/work): the brands and organisations above
+- [The Possibilities Studio](${SITE}/studio): self-initiated concept work for two fictional companies (WADDEN, a Dutch dike-inspection robotics start-up, and HEARTH, an AI assistant for small businesses): identity, newsletter, campaign, pitch deck and web design. Clearly labelled as concepts, not client commissions.
 - [Thoughts](${SITE}/thoughts): short notes on technology, AI, creativity and business
 - [Contact](${SITE}/contact): email
 
