@@ -1,0 +1,77 @@
+<!doctype html><meta charset=utf-8><style>body{margin:0;background:#000}</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js"}}</script>
+<script type="module">
+import {THREE,P,setup,done,noiseTex,roundRect} from './rig.js';
+import {RoundedBoxGeometry} from './node_modules/three/examples/jsm/geometries/RoundedBoxGeometry.js';
+const W=+P.get('w')||1600,H=+P.get('h')||1000,shot=P.get('shot')||'hero',finish=P.get('finish')||'charcoal';
+const bgc=P.get('bg');const {r,scene}=setup({w:W,h:H,bg:bgc?('#'+bgc):null,exposure:+(P.get('exp')||1)});
+scene.environmentIntensity=+(P.get('env')||0.7);
+const FIN={charcoal:{shell:'#2b2b2e',plate:'#c9cacd',cush:'#1b1b1d',band:'#bfc1c4'},silver:{shell:'#d7d6d2',plate:'#e9e8e4',cush:'#3a3a3c',band:'#cfd0d2'},violet:{shell:'#2a2238',plate:'#bdb6cf',cush:'#1d1a24',band:'#bfc1c4'}}[finish];
+const brushed=noiseTex(512,{streak:.97,contrast:.12,scale:1});
+const fabric=noiseTex(256,{contrast:.6,scale:6});
+const M={
+ shell:new THREE.MeshPhysicalMaterial({color:FIN.shell,metalness:.75,roughness:.42,clearcoat:.35,clearcoatRoughness:.4}),
+ plate:new THREE.MeshPhysicalMaterial({color:FIN.plate,metalness:1,roughness:.3,roughnessMap:brushed}),
+ band:new THREE.MeshPhysicalMaterial({color:FIN.band,metalness:1,roughness:.26,roughnessMap:brushed}),
+ cush:new THREE.MeshPhysicalMaterial({color:FIN.cush,metalness:0,roughness:.92,roughnessMap:fabric,bumpMap:fabric,bumpScale:.02,sheen:.6,sheenColor:new THREE.Color('#34343a'),sheenRoughness:.7}),
+ mesh:new THREE.MeshStandardMaterial({color:'#0e0e10',roughness:1}),
+ violet:new THREE.MeshStandardMaterial({color:'#5E21F2',emissive:'#6b2cff',emissiveIntensity:2.2,roughness:.3}),
+};
+function ringShape(w,h,rr,iw,ih,ir){const s=roundRect(w,h,rr);s.holes.push(roundRect(iw,ih,ir));return s}
+const HP=new THREE.Group();scene.add(HP);
+function radialTex(){const c=document.createElement('canvas');c.width=c.height=1024;const g=c.getContext('2d');g.fillStyle='#777';g.fillRect(0,0,1024,1024);for(let r=2;r<512;r+=1.5){g.strokeStyle=`rgba(${Math.random()<.5?255:0},${Math.random()<.5?255:0},${Math.random()<.5?255:0},${Math.random()*.10})`;g.lineWidth=1;g.beginPath();g.arc(512,512,r,0,Math.PI*2);g.stroke()}const t=new THREE.CanvasTexture(c);return t}
+M.disc=new THREE.MeshPhysicalMaterial({color:FIN.plate,metalness:1,roughness:.32,roughnessMap:radialTex(),clearcoat:.2});
+function lathe(pts,seg=128){return new THREE.LatheGeometry(pts.map(([x,y])=>new THREE.Vector2(x,y)),seg)}
+// profiles (x = radius, y = along cup axis, outward = +y)
+const shellP=[[0,2.95],[3.2,2.95],[3.55,2.9],[3.85,2.7],[4.05,2.35],[4.15,1.9],[4.18,1.2],[4.18,.2],[4.1,0],[0,0]];
+const cushP=[[3.0,0],[3.2,-.05],[3.9,-.1],[4.25,-.35],[4.4,-.8],[4.4,-1.5],[4.2,-1.95],[3.8,-2.15],[3.3,-2.15],[2.9,-1.95],[2.7,-1.5],[2.65,-.8],[2.75,-.3],[3.0,0]];
+for(const s of [-1,1]){
+  const cup=new THREE.Group();cup.position.set(s*8.7,0,0);HP.add(cup);
+  const axis=new THREE.Group();axis.rotation.z=-s*Math.PI/2;cup.add(axis); // lathe Y axis -> world ±X
+  const shell=new THREE.Mesh(lathe(shellP),M.shell);axis.add(shell);
+  const disc=new THREE.Mesh(new THREE.CylinderGeometry(3.15,3.15,.08,128),M.disc);disc.position.y=2.98;axis.add(disc);
+  const glow=new THREE.Mesh(new THREE.TorusGeometry(3.32,.045,16,200),M.violet);glow.rotation.x=Math.PI/2;glow.position.y=2.97;axis.add(glow);
+  const cush=new THREE.Mesh(lathe(cushP),M.cush);axis.add(cush);
+  const mesh=new THREE.Mesh(new THREE.CircleGeometry(2.75,96),M.mesh);mesh.rotation.x=Math.PI/2;mesh.position.y=-1.4;axis.add(mesh);
+  // forked yoke: half ring around the cup
+  const yoke=new THREE.Mesh(new THREE.TorusGeometry(4.75,.2,24,160,Math.PI),M.band);yoke.rotation.y=Math.PI/2;yoke.position.x=s*1.2;cup.add(yoke);
+  [-1,1].forEach(z=>{const pin=new THREE.Mesh(new THREE.CylinderGeometry(.32,.32,.5,32),M.shell);pin.rotation.x=Math.PI/2;pin.position.set(s*1.2,0,z*4.62);pin.rotation.z=0;cup.add(pin)});
+  const rod=new THREE.Mesh(new THREE.CylinderGeometry(.19,.19,3.0,32),M.band);rod.position.set(s*1.2,6.15,0);cup.add(rod);
+  const hinge=new THREE.Mesh(new RoundedBoxGeometry(.9,.8,1.3,4,.25),M.shell);hinge.position.set(s*1.2,4.95,0);cup.add(hinge);
+  cup.traverse(o=>{o.castShadow=true;o.receiveShadow=true});
+}
+// headband: steel ribbon + padded inner band, swept along an arch
+function arch(rx,ry,cy){return new THREE.CatmullRomCurve3(Array.from({length:41},(_,i)=>{const t=Math.PI*(i/40);return new THREE.Vector3(Math.cos(t)*rx,cy+Math.sin(t)*ry,0)}))}
+const steel=new THREE.Mesh(new THREE.ExtrudeGeometry(roundRect(.3,2.2,.14),{steps:220,bevelEnabled:false,extrudePath:arch(9.95,8.6,7.4)}),M.band);HP.add(steel);
+const pad=new THREE.Mesh(new THREE.ExtrudeGeometry(roundRect(.72,1.45,.34),{steps:220,bevelEnabled:false,extrudePath:arch(9.42,8.05,7.4)}),M.cush);HP.add(pad);
+[steel,pad].forEach(o=>{o.castShadow=true;o.receiveShadow=true});
+// ground + lights
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.ShadowMaterial({opacity:+(P.get('shadow')||.38)}));ground.rotation.x=-Math.PI/2;ground.position.y=-5.4;ground.receiveShadow=true;scene.add(ground);
+const key=new THREE.DirectionalLight('#ffffff',+(P.get('key')||2.0));key.position.set(-14,30,18);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.radius=8;Object.assign(key.shadow.camera,{left:-30,right:30,top:30,bottom:-30});scene.add(key);
+const rim=new THREE.SpotLight('#d6ccff',900,160,.45,.7);rim.position.set(30,22,-30);scene.add(rim);
+const rim2=new THREE.SpotLight('#ffffff',700,160,.45,.7);rim2.position.set(-34,16,-20);scene.add(rim2);
+scene.add(new THREE.HemisphereLight('#ffffff','#101012',.15));
+
+const SET=P.get('set');
+if(SET==='plinth'){
+  const conc=noiseTex(512,{contrast:.35,scale:3,base:150});
+  const cm=new THREE.MeshStandardMaterial({color:'#8d8a86',roughness:.95,roughnessMap:conc,bumpMap:conc,bumpScale:.04});
+  const plinth=new THREE.Mesh(new THREE.BoxGeometry(34,20,22),cm);plinth.position.set(0,-5.4-10,0);plinth.receiveShadow=true;plinth.castShadow=true;scene.add(plinth);
+  const wall=new THREE.Mesh(new THREE.PlaneGeometry(400,200),new THREE.MeshStandardMaterial({color:'#6f6c69',roughness:1,roughnessMap:conc}));wall.position.set(0,20,-20);wall.receiveShadow=true;scene.add(wall);
+  const fl=new THREE.Mesh(new THREE.PlaneGeometry(400,400),new THREE.MeshStandardMaterial({color:'#4a4846',roughness:1}));fl.rotation.x=-Math.PI/2;fl.position.y=-25.4;fl.receiveShadow=true;scene.add(fl);
+  ground.visible=false;
+  // a window frame out of shot casts long bars of light
+  key.intensity=4.2;key.color.set('#fff1dc');key.position.set(40,34,40);Object.assign(key.shadow.camera,{left:-60,right:60,top:60,bottom:-60});key.shadow.camera.updateProjectionMatrix();key.shadow.radius=3;
+  const fr=new THREE.Group();scene.add(fr);const fm=new THREE.MeshBasicMaterial({color:'#000'});
+  for(let i=-3;i<=3;i++){const b=new THREE.Mesh(new THREE.BoxGeometry(1.6,60,1.6),fm);b.position.set(26+i*7,20,26);b.castShadow=true;b.material.colorWrite=false;b.material.depthWrite=false;fr.add(b)}
+  const hb=new THREE.Mesh(new THREE.BoxGeometry(60,1.6,1.6),fm);hb.position.set(26,26,26);hb.castShadow=true;fr.add(hb);
+  scene.environmentIntensity=.22;rim.intensity=300;rim2.intensity=120;HP.position.y=-1.0;wall.material.color.set('#4d4a47');cm.color.set('#7a7773');
+}
+if(SET==='flat'){HP.rotation.set(-Math.PI/2+.0,0,0);HP.position.set(0,-5.4+4.4,-6);}
+
+const cam=new THREE.PerspectiveCamera(+(P.get('fov')||28),W/H,.1,400);
+const shots={hero:[[34,13,52],[0,4.2,0]],side:[[70,6,0.01],[0,4.6,0]],front:[[0,8,66],[0,4.6,0]],macro:[[26,2,14],[9.6,0,0]],top:[[0.01,74,10],[0,2,0]],low:[[30,-2,50],[0,5.4,0]]};
+const [cp,ct]=shots[shot];cam.position.set(...cp);cam.lookAt(...ct);
+if(P.get('rotx'))HP.rotation.x=+P.get('rotx');if(P.get('roty'))HP.rotation.y=+P.get('roty');if(P.get('rotz'))HP.rotation.z=+P.get('rotz');
+done(r,scene,cam);
+</script>

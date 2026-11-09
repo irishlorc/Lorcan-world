@@ -55,10 +55,37 @@ const META = {
   studio: {
     path: "/studio",
     title: "The Possibilities Studio | Creative Concepts by Lorcán O'Neill",
-    desc: "Self-initiated creative concepts by Lorcán O'Neill: brand identity, newsletters, campaigns, pitch decks and digital design for two fictional companies. Not client work, just what he could bring to the table.",
+    desc: "Three independent brand concepts by Lorcán O'Neill: WADDEN (maritime robotics), Kindling (small-business software) and RUNE (premium audio). Identity, campaigns, packaging, product and web design for fictional companies.",
     og: "studio",
     type: "CollectionPage",
     crumb: "Studio",
+  },
+  "studio-wadden": {
+    path: "/studio/wadden",
+    title: "WADDEN: Maritime Robotics Brand Concept | Lorcán O'Neill",
+    desc: "WADDEN, a fictional Dutch maritime robotics company that inspects dikes and flood defences. Identity, stationery, campaigns, brochure, exhibition stand and website by Lorcán O'Neill.",
+    og: "studio-wadden",
+    type: "WebPage",
+    crumb: "WADDEN",
+    parent: "studio",
+  },
+  "studio-kindling": {
+    path: "/studio/kindling",
+    title: "Kindling: Small-Business Software Brand Concept | Lorcán O'Neill",
+    desc: "Kindling, fictional software that takes admin off small-business owners. Identity, product introduction, newsletter, social and poster campaigns, interface, onboarding and website by Lorcán O'Neill.",
+    og: "studio-kindling",
+    type: "WebPage",
+    crumb: "Kindling",
+    parent: "studio",
+  },
+  "studio-rune": {
+    path: "/studio/rune",
+    title: "RUNE: Premium Audio Brand Concept | Lorcán O'Neill",
+    desc: "RUNE, a fictional premium audio brand. Identity, 3D product renders, packaging, launch campaign, editorial photography, website and billboard by Lorcán O'Neill.",
+    og: "studio-rune",
+    type: "WebPage",
+    crumb: "RUNE",
+    parent: "studio",
   },
   thoughts: {
     path: "/thoughts",
@@ -84,7 +111,7 @@ const META = {
     noindex: true,
   },
 };
-const ORDER = ["home", "about", "experience", "work", "studio", "thoughts", "contact"];
+const ORDER = ["home", "about", "experience", "work", "studio", "studio-wadden", "studio-kindling", "studio-rune", "thoughts", "contact"];
 
 // ---------------------------------------------------------------- source ---
 const src = fs.readFileSync("src/index.html", "utf8");
@@ -122,12 +149,12 @@ const mainOpen = '<main id="main" tabindex="-1">';
 const m = cut(body, mainOpen, "</main>");
 const chunks = m.inner.split(/(?=<!-- =+ [A-Z0-9 ]+ =+ -->)/).filter((c) => c.includes("data-page="));
 const PAGES = {};
-for (const c of chunks) PAGES[c.match(/data-page="([a-z]+)"/)[1]] = c.trim();
+for (const c of chunks) PAGES[c.match(/data-page="([a-z-]+)"/)[1]] = c.trim();
 
-const hrefFor = (k) => (k === "home" ? "/" : k.startsWith("post-") ? "/thoughts/" + k.slice(5) : "/" + k);
-const linkify = (s) => s.replace(/href="#(home|about|experience|work|studio|thoughts|contact)"/g, (_, k) => `href="${hrefFor(k)}"`);
-const show = (s) => s.replace(/(<div class="page" data-page="[a-z]+") hidden>/, "$1>");
-const hide = (s) => s.replace(/(<div class="page" data-page="[a-z]+")>/, "$1 hidden>");
+const hrefFor = (k) => (k === "home" ? "/" : k.startsWith("post-") ? "/thoughts/" + k.slice(5) : k.startsWith("studio-") ? "/studio/" + k.slice(7) : "/" + k);
+const linkify = (s) => s.replace(/href="#(home|about|experience|work|studio-wadden|studio-kindling|studio-rune|studio|thoughts|contact)"/g, (_, k) => `href="${hrefFor(k)}"`);
+const show = (s) => s.replace(/(<div class="page[^"]*" data-page="[a-z-]+"(?: style="[^"]*")?) hidden>/, "$1>");
+const hide = (s) => s.replace(/(<div class="page[^"]*" data-page="[a-z-]+"(?: style="[^"]*")?)>/, "$1 hidden>");
 const lazy = (s) => s.replace(/ fetchpriority="high"/g, "").replace(/<img (?![^>]*loading=)/g, '<img loading="lazy" ');
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -313,9 +340,10 @@ for (const key of ORDER) {
   const M = META[key];
   const url = SITE + M.path;
   const noindex = key === "thoughts" && !anyPublished; // drafts only: keep it out of search for now
-  const crumbs = M.crumb ? [{ name: M.crumb, url }] : [];
+  const crumbs = M.crumb ? [...(M.parent ? [{ name: META[M.parent].crumb, url: SITE + META[M.parent].path }] : []), { name: M.crumb, url }] : [];
   let html = show(PAGES[key]);
-  const out = key === "home" ? "index.html" : key + ".html";
+  const out = key === "home" ? "index.html" : M.path.slice(1) + ".html";
+  fs.mkdirSync(path.dirname(path.join(OUT, out)), { recursive: true });
   fs.writeFileSync(path.join(OUT, out), page(key, html, { title: M.title, desc: M.desc, url, og: M.og, noindex, type: key === "about" ? "profile" : "website", jsonld: graph(key, url, {}, crumbs), preloadImg: key === "home" ? "/img/tablet-bust.webp" : null }));
   written[key] = { url, noindex, html };
 }
@@ -397,7 +425,10 @@ fs.writeFileSync(
 - [About](${SITE}/about): his background in his own words
 - [Experience](${SITE}/experience): design, communications, business and technology, and his current role at Arkintel
 - [Work](${SITE}/work): the brands and organisations above
-- [The Possibilities Studio](${SITE}/studio): self-initiated concept work for two fictional companies (WADDEN, a Dutch dike-inspection robotics start-up, and HEARTH, an AI assistant for small businesses): identity, newsletter, campaign, pitch deck and web design. Clearly labelled as concepts, not client commissions.
+- [The Possibilities Studio](${SITE}/studio): three independent brand concepts for fictional companies, clearly labelled as concepts, not client commissions:
+  - [WADDEN](${SITE}/studio/wadden): maritime robotics that inspect dikes and flood defences. Identity, stationery, campaigns, brochure, LinkedIn, exhibition stand, website.
+  - [Kindling](${SITE}/studio/kindling): small-business admin software. Identity, product introduction, newsletter, social, interface, posters, onboarding, website.
+  - [RUNE](${SITE}/studio/rune): premium audio. Identity, 3D product renders, packaging, launch campaign, editorial, website, billboard.
 - [Thoughts](${SITE}/thoughts): short notes on technology, AI, creativity and business
 - [Contact](${SITE}/contact): email
 

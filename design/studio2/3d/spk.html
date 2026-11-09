@@ -1,0 +1,55 @@
+<!doctype html><meta charset=utf-8><style>body{margin:0;background:#000}</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js"}}</script>
+<script type="module">
+import {THREE,P,setup,done,noiseTex} from './rig.js';
+import {RoundedBoxGeometry} from './node_modules/three/examples/jsm/geometries/RoundedBoxGeometry.js';
+const W=+P.get('w')||1600,H=+P.get('h')||1000,what=P.get('what')||'speakers';
+const {r,scene}=setup({w:W,h:H,bg:P.get('bg')?'#'+P.get('bg'):null,exposure:1});scene.environmentIntensity=+(P.get('env')||.5);
+const knit=(()=>{const c=document.createElement('canvas');c.width=c.height=512;const g=c.getContext('2d');g.fillStyle='#808080';g.fillRect(0,0,512,512);for(let y=0;y<512;y+=4)for(let x=0;x<512;x+=4){const v=110+Math.random()*60;g.fillStyle=`rgb(${v},${v},${v})`;g.fillRect(x+((y/4)%2?2:0),y,3,3)}const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(14,14);return t})();
+const brushed=noiseTex(512,{streak:.97,contrast:.12});
+const M={
+ fabricD:new THREE.MeshPhysicalMaterial({color:'#2a2a2d',roughness:.95,bumpMap:knit,bumpScale:.35,roughnessMap:knit,sheen:.5,sheenColor:new THREE.Color('#3a3a40')}),
+ fabricL:new THREE.MeshPhysicalMaterial({color:'#9e9a93',roughness:.95,bumpMap:knit,bumpScale:.35,roughnessMap:knit,sheen:.4,sheenColor:new THREE.Color('#ffffff')}),
+ alu:new THREE.MeshPhysicalMaterial({color:'#c8c9cc',metalness:1,roughness:.3,roughnessMap:brushed}),
+ dark:new THREE.MeshPhysicalMaterial({color:'#2b2b2e',metalness:.7,roughness:.42,clearcoat:.3}),
+ violet:new THREE.MeshStandardMaterial({color:'#5E21F2',emissive:'#6b2cff',emissiveIntensity:2.4}),
+ box:new THREE.MeshPhysicalMaterial({color:'#1e1e21',roughness:.6,metalness:0,clearcoat:.15}),
+};
+function lathe(pts,seg=160){return new THREE.LatheGeometry(pts.map(([x,y])=>new THREE.Vector2(x,y)),seg)}
+const G=new THREE.Group();scene.add(G);
+function column(x,z,fab){const g=new THREE.Group();g.position.set(x,0,z);
+  g.add(new THREE.Mesh(lathe([[0,0],[3.5,0],[3.7,.2],[3.7,30],[3.55,30.3],[0,30.3]]),fab));
+  const cap=new THREE.Mesh(lathe([[0,30.2],[3.75,30.2],[3.75,31.0],[3.5,31.4],[0,31.4]]),M.alu);g.add(cap);
+  const ring=new THREE.Mesh(new THREE.TorusGeometry(1.9,.06,16,160),M.violet);ring.rotation.x=Math.PI/2;ring.position.y=31.42;g.add(ring);
+  const base=new THREE.Mesh(lathe([[0,-.6],[3.3,-.6],[3.6,-.3],[3.6,0],[0,0]]),M.dark);g.add(base);
+  g.traverse(o=>{o.castShadow=o.receiveShadow=true});G.add(g);return g}
+function stone(x,z,fab,s=1){const g=new THREE.Group();g.position.set(x,0,z);g.scale.setScalar(s);
+  const body=new THREE.Mesh(new RoundedBoxGeometry(12,7.2,7.2,16,3.2),fab);body.position.y=3.6;g.add(body);
+  const top=new THREE.Mesh(new RoundedBoxGeometry(8.5,.25,3.6,6,.12),M.alu);top.position.y=7.22;g.add(top);
+  const dot=new THREE.Mesh(new THREE.CircleGeometry(.22,32),M.violet);dot.rotation.x=-Math.PI/2;dot.position.set(3.5,7.36,0);g.add(dot);
+  g.traverse(o=>{o.castShadow=o.receiveShadow=true});G.add(g);return g}
+let cam=new THREE.PerspectiveCamera(26,W/H,.1,500);
+if(what==='speakers'){column(-11,-3,M.fabricD);column(15,-8,M.fabricL).scale.setScalar(.8);stone(2,6,M.fabricL);cam.position.set(16,30,104);cam.lookAt(1,13,0)}
+if(what==='column'){column(0,0,M.fabricD);cam.position.set(18,22,46);cam.lookAt(0,12,0)}
+if(what==='stone'){stone(0,0,M.fabricL);cam.position.set(16,12,30);cam.lookAt(0,3.5,0)}
+if(what==='box'){ // packaging: lidded box + sleeve, printed from the logo svg
+  const img=new Image();img.src='logos/'+(P.get('logo')||'rune-dark')+'.svg';await img.decode();
+  const c=document.createElement('canvas');c.width=2048;c.height=2048;const g=c.getContext('2d');g.fillStyle=P.get('sleeve')||'#e8e5df';g.fillRect(0,0,2048,2048);
+  const lw=1100,lh=lw*292.8/1580.4;g.drawImage(img,(2048-lw)/2,(2048-lh)/2,lw,lh);
+  g.fillStyle='rgba(30,30,33,.55)';g.font='500 46px sans-serif';g.textAlign='center';g.fillText('ONE  ·  WIRELESS OVER-EAR',1024,1500);
+  const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;
+  const sleeveM=new THREE.MeshPhysicalMaterial({map:t,roughness:.75});const plain=new THREE.MeshPhysicalMaterial({color:P.get('sleeve')||'#e8e5df',roughness:.75});
+  const box=new THREE.Mesh(new RoundedBoxGeometry(24,24,9,4,.25),M.box);box.position.set(4,12,-3);box.rotation.y=-.35;box.castShadow=box.receiveShadow=true;G.add(box);
+  const sl=new THREE.Mesh(new THREE.BoxGeometry(24.3,24.3,9.3),[plain,plain,plain,plain,sleeveM,plain]);sl.position.set(-11,12.15,6);sl.rotation.y=.28;sl.scale.set(1,1,1);sl.castShadow=sl.receiveShadow=true;
+  // sleeve pulled half off the box: show a separate open box beside
+  G.add(sl);
+  const lid=new THREE.Mesh(new RoundedBoxGeometry(24,1.2,9,4,.25),M.box);G.add(lid);lid.visible=false;
+  cam.position.set(10,30,92);cam.lookAt(-3,10,0);
+}
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(300,300),new THREE.ShadowMaterial({opacity:+(P.get('shadow')||.35)}));ground.rotation.x=-Math.PI/2;ground.position.y=-.6;ground.receiveShadow=true;scene.add(ground);
+const key=new THREE.DirectionalLight('#ffffff',2.2);key.position.set(-30,50,30);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.radius=10;Object.assign(key.shadow.camera,{left:-50,right:50,top:50,bottom:-50});scene.add(key);
+const rim=new THREE.SpotLight('#d6ccff',900,200,.5,.7);rim.position.set(40,30,-40);scene.add(rim);
+const rim2=new THREE.SpotLight('#ffffff',500,200,.5,.7);rim2.position.set(-40,20,-30);scene.add(rim2);
+scene.add(new THREE.HemisphereLight('#ffffff','#111',.2));
+done(r,scene,cam);
+</script>

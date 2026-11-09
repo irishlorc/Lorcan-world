@@ -1,0 +1,103 @@
+<!doctype html><meta charset=utf-8><style>body{margin:0;background:#000}</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js"}}</script>
+<script type="module">
+import {THREE,P,done,noiseTex} from './rig.js';
+import {RoundedBoxGeometry} from './node_modules/three/examples/jsm/geometries/RoundedBoxGeometry.js';
+import {RoomEnvironment} from './node_modules/three/examples/jsm/environments/RoomEnvironment.js';
+const W=+P.get('w')||1600,H=+P.get('h')||1000,shot=P.get('shot')||'wide';const studio=shot==='product'||shot==='product-side'||shot==='product-top';
+const r=new THREE.WebGLRenderer({antialias:true,alpha:studio,preserveDrawingBuffer:true});r.setSize(W,H);r.toneMapping=THREE.ACESFilmicToneMapping;r.toneMappingExposure=+(P.get('exp')||1);r.outputColorSpace=THREE.SRGBColorSpace;r.shadowMap.enabled=true;r.shadowMap.type=THREE.PCFSoftShadowMap;document.body.appendChild(r.domElement);
+const scene=new THREE.Scene();const pm=new THREE.PMREMGenerator(r);
+const NAVY='#012653',BLUE='#1E6BFF',YEL='#FEC104';
+// dusk sky
+function skyTex(top,mid,bot){const c=document.createElement('canvas');c.width=16;c.height=512;const g=c.getContext('2d');const gr=g.createLinearGradient(0,0,0,512);gr.addColorStop(0,top);gr.addColorStop(.55,mid);gr.addColorStop(1,bot);g.fillStyle=gr;g.fillRect(0,0,16,512);const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;return t}
+if(!studio){
+  const sky=skyTex('#071a33','#27466b','#9fb3c8');scene.background=sky;
+  const skyScene=new THREE.Scene();const sph=new THREE.Mesh(new THREE.SphereGeometry(100,32,16),new THREE.MeshBasicMaterial({map:skyTex('#0a1f3b','#3a5a80','#c9d5e0'),side:THREE.BackSide}));skyScene.add(sph);
+  scene.environment=pm.fromScene(skyScene,0).texture;scene.environmentIntensity=.9;
+  scene.fog=new THREE.Fog('#7e93ab',60,330);
+}else{scene.environment=pm.fromScene(new RoomEnvironment(r),.04).texture;scene.environmentIntensity=.6}
+const rock=noiseTex(256,{contrast:.6,scale:1,base:120});
+// ---- robot ----
+const M={navy:new THREE.MeshPhysicalMaterial({color:NAVY,metalness:.35,roughness:.38,clearcoat:.6,clearcoatRoughness:.25}),
+ white:new THREE.MeshPhysicalMaterial({color:'#e9edf2',metalness:.1,roughness:.35,clearcoat:.5}),
+ yel:new THREE.MeshPhysicalMaterial({color:YEL,metalness:.1,roughness:.4,clearcoat:.4}),
+ rubber:new THREE.MeshStandardMaterial({color:'#121418',roughness:.85}),
+ steel:new THREE.MeshPhysicalMaterial({color:'#9aa3ad',metalness:1,roughness:.35}),
+ glass:new THREE.MeshPhysicalMaterial({color:'#0a0f18',metalness:.2,roughness:.05,clearcoat:1}),
+ blue:new THREE.MeshStandardMaterial({color:BLUE,emissive:BLUE,emissiveIntensity:3}),
+ lamp:new THREE.MeshStandardMaterial({color:'#fff',emissive:'#eaf2ff',emissiveIntensity:4})};
+const R=new THREE.Group();
+function add(m,geo,x,y,z,o={}){const ms=new THREE.Mesh(geo,m);ms.position.set(x,y,z);if(o.rx)ms.rotation.x=o.rx;if(o.ry)ms.rotation.y=o.ry;if(o.rz)ms.rotation.z=o.rz;ms.castShadow=ms.receiveShadow=true;R.add(ms);return ms}
+// tracks: continuous rubber belts with tread
+const tread=(()=>{const c=document.createElement('canvas');c.width=64;c.height=512;const g=c.getContext('2d');g.fillStyle='#888';g.fillRect(0,0,64,512);g.fillStyle='#222';for(let y=0;y<512;y+=24)g.fillRect(0,y,64,10);const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(1,3);return t})();
+M.track=new THREE.MeshStandardMaterial({color:'#15171b',roughness:.9,bumpMap:tread,bumpScale:.25});
+for(const z of [-2.55,2.55]){const t=add(M.track,new RoundedBoxGeometry(8.4,1.6,1.25,8,.78),0,.8,z);t.material.bumpMap.rotation=Math.PI/2;
+  for(const x of [-3.5,3.5])add(M.steel,new THREE.CylinderGeometry(.55,.55,1.3,32),x,.8,z,{rx:Math.PI/2});}
+// chassis: navy skirt, white shell
+add(M.navy,new RoundedBoxGeometry(7.4,1.1,3.9,6,.3),0,1.9,0);
+add(M.white,new RoundedBoxGeometry(7.8,1.0,4.4,8,.42),-.1,2.75,0);
+add(M.navy,new RoundedBoxGeometry(5.2,.12,3.2,4,.06),-.5,3.27,0);
+// safety yellow: corner bumpers + side stripe
+for(const x of [-3.95,3.95])for(const z of [-2.0,2.0])add(M.yel,new RoundedBoxGeometry(.4,.6,.5,4,.18),x,2.3,z);
+for(const z of [-2.21,2.21])add(M.yel,new THREE.BoxGeometry(6.6,.07,.02),-.1,2.35,z);
+// front radar sled
+add(M.navy,new RoundedBoxGeometry(1.0,.55,3.4,4,.2),4.35,.75,0);
+add(M.lamp,new THREE.PlaneGeometry(.9,.08),4.11,2.75,-1.4,{ry:Math.PI/2});add(M.lamp,new THREE.PlaneGeometry(.9,.08),4.11,2.75,1.4,{ry:Math.PI/2});
+// mast + sensor head
+add(M.steel,new THREE.CylinderGeometry(.13,.13,2.4,24),-2.6,4.45,0);
+const head=add(M.white,new RoundedBoxGeometry(.9,.62,2.3,6,.28),-2.45,5.9,0);
+add(M.glass,new RoundedBoxGeometry(.06,.34,1.5,2,.03),-1.99,5.92,0);
+add(M.blue,new THREE.PlaneGeometry(1.7,.05),-1.95,5.66,0,{ry:Math.PI/2});
+// lidar puck
+add(M.navy,new THREE.CylinderGeometry(.5,.55,.45,48),1.2,3.55,0);add(M.blue,new THREE.CylinderGeometry(.52,.52,.06,48),1.2,3.6,0);
+// side decals: the supplied WADDEN logo
+const logo=new Image();logo.src='logos/wadden-dark.svg';await logo.decode();
+const lc=document.createElement('canvas');lc.width=1742;lc.height=260;const lg=lc.getContext('2d');lg.drawImage(logo,0,30,1742,196.6);const lt=new THREE.CanvasTexture(lc);lt.colorSpace=THREE.SRGBColorSpace;
+const decalM=new THREE.MeshStandardMaterial({map:lt,transparent:true,roughness:.4});
+for(const z of [-1,1]){const d=new THREE.Mesh(new THREE.PlaneGeometry(3.6,.54),decalM);d.position.set(.2,2.75,z*2.215);if(z<0)d.rotation.y=Math.PI;R.add(d)}
+const idC=document.createElement('canvas');idC.width=256;idC.height=64;const ig=idC.getContext('2d');ig.fillStyle='#E9EDF2';ig.fillRect(0,0,256,64);ig.fillStyle=NAVY;ig.font='600 40px monospace';ig.fillText('WD-07',20,46);const idT=new THREE.CanvasTexture(idC);idT.colorSpace=THREE.SRGBColorSpace;
+const idm=new THREE.Mesh(new THREE.PlaneGeometry(1.0,.25),new THREE.MeshStandardMaterial({map:idT}));idm.position.set(3.2,2.75,2.215);R.add(idm);
+const robotLight=new THREE.PointLight(BLUE,20,10,2);robotLight.position.set(-1.6,6,0);R.add(robotLight);
+scene.add(R);
+// scan beam
+if(P.get('beam')!=='0'&&!studio){const cone=new THREE.Mesh(new THREE.ConeGeometry(6,14,48,1,true),new THREE.MeshBasicMaterial({color:BLUE,transparent:true,opacity:.07,side:THREE.DoubleSide,depthWrite:false,blending:THREE.AdditiveBlending}));cone.position.set(5.2,4.2,0);cone.rotation.z=Math.PI/2+.35;cone.scale.set(.7,.8,.7);R.add(cone)}
+// ---- dike ----
+let cam=new THREE.PerspectiveCamera(+(P.get('fov')||32),W/H,.1,2000);
+if(!studio){
+  const slope=Math.atan(1/3); // 1:3
+  const D=new THREE.Group();scene.add(D);
+  const basalt=new THREE.MeshStandardMaterial({color:'#2b2f35',roughness:.82,roughnessMap:rock,bumpMap:rock,bumpScale:.15,metalness:.05});
+  const geo=new THREE.CylinderGeometry(1,1,1.4,6);const N=5200;const inst=new THREE.InstancedMesh(geo,basalt,N);inst.castShadow=inst.receiveShadow=true;
+  const m4=new THREE.Matrix4(),q=new THREE.Quaternion(),e=new THREE.Euler(),v=new THREE.Vector3(),sc=new THREE.Vector3();let i=0;
+  const col=new THREE.Color();
+  for(let a=0;a<26&&i<N;a++)for(let b=-100;b<100&&i<N;b++){ // a: up-slope rows, b: along dike
+    const u=a*1.72,w=b*1.98+(a%2)*0.99; const h=.15*Math.random();
+    v.set(w,0,0);const along=u; // position on slope plane
+    const x=w, y=Math.sin(slope)*along+h*Math.cos(slope), z=-Math.cos(slope)*along;
+    e.set(slope,0,0);q.setFromEuler(e);
+    const s=0.97+Math.random()*.05;sc.set(s,1,s);m4.compose(new THREE.Vector3(x,y,z),q,sc);
+    // rotate prism so it stands normal to slope: cylinder axis Y -> normal of slope
+    inst.setMatrixAt(i,m4);col.setHSL(.6,.06,.12+Math.random()*.08);inst.setColorAt(i,col);i++}
+  inst.count=i;D.add(inst);
+  const L=26*1.72;const crestY=Math.sin(slope)*L,crestZ=-Math.cos(slope)*L;
+  const crest=new THREE.Mesh(new THREE.BoxGeometry(400,1,16),new THREE.MeshStandardMaterial({color:'#3b4048',roughness:.9,roughnessMap:rock}));crest.position.set(0,crestY+.2,crestZ-8);crest.receiveShadow=true;D.add(crest);
+  const grassBack=new THREE.Mesh(new THREE.PlaneGeometry(400,200),new THREE.MeshStandardMaterial({color:'#24332c',roughness:1}));grassBack.rotation.x=-Math.PI/2;grassBack.position.set(0,crestY-6,crestZ-90);D.add(grassBack);
+  // the sea
+  const wn=noiseTex(512,{contrast:.9,scale:24,base:128});
+  const sea=new THREE.Mesh(new THREE.PlaneGeometry(2000,2000),new THREE.MeshPhysicalMaterial({color:'#0d2741',roughness:.12,metalness:.1,bumpMap:wn,bumpScale:.6,clearcoat:.4}));sea.rotation.x=-Math.PI/2;sea.position.y=+(P.get('tide')||3.2);sea.receiveShadow=true;scene.add(sea);
+  // robot on the slope, oriented along it
+  const along=+(P.get('along')||18);R.position.set(+(P.get('rx')||0),Math.sin(slope)*along+Math.cos(slope)*.72,-Math.cos(slope)*along+Math.sin(slope)*.72);R.rotation.x=slope;R.rotation.y=+(P.get('ry')||Math.PI*.5);
+  // light: low cold sun behind, soft key
+  const sun=new THREE.DirectionalLight('#dfe8ff',+(P.get('sun')||2.2));sun.position.set(-80,40,-120);sun.castShadow=true;sun.shadow.mapSize.set(4096,4096);Object.assign(sun.shadow.camera,{left:-80,right:80,top:80,bottom:-80,far:600});sun.shadow.radius=4;scene.add(sun);
+  const fill=new THREE.DirectionalLight('#9fb6d6',.8);fill.position.set(60,30,80);scene.add(fill);
+  const shots={wide:[[60,18,70],[0,12,-20]],hero:[[14,7,16],[0,9,-26]],low:[[9,4.6,4],[0,8.5,-20]],top:[[0,90,-10],[0,8,-22]],crest:[[-34,24,-20],[0,10,-24]]};
+  const [cp,ct]=shots[shot]||shots.wide;cam.position.set(...cp);cam.lookAt(...ct);
+}else{
+  const g=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.ShadowMaterial({opacity:.3}));g.rotation.x=-Math.PI/2;g.receiveShadow=true;scene.add(g);
+  const key=new THREE.DirectionalLight('#fff',2.2);key.position.set(-20,30,25);key.castShadow=true;key.shadow.mapSize.set(2048,2048);key.shadow.radius=8;Object.assign(key.shadow.camera,{left:-20,right:20,top:20,bottom:-20});scene.add(key);
+  const rim=new THREE.SpotLight('#cfe0ff',500,120,.5,.7);rim.position.set(20,16,-24);scene.add(rim);
+  R.rotation.y=shot==='product-side'?0:-.6;
+  const shots={product:[[15,8,17],[0,2.6,0]],'product-side':[[0,5,22],[0,3.4,0]],'product-top':[[0.01,24,4],[0,2,0]]};const [cp,ct]=shots[shot];cam.position.set(...cp);cam.lookAt(...ct);
+}
+done(r,scene,cam);
+</script>

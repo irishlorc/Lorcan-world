@@ -1,0 +1,219 @@
+<!doctype html><meta charset="utf-8">
+<style>
+@font-face{font-family:Man;src:url(manrope.woff2);font-weight:200 800}
+@font-face{font-family:News;src:url(news.woff2);font-weight:200 800}
+@font-face{font-family:News;font-style:italic;src:url(news-i.woff2);font-weight:200 800}
+:root{--plum:#2A1150;--plum2:#3A1C6B;--green:#00AE1D;--green2:#19C93A;--lav:#CDBEF5;--lav2:#E6DDFB;--cream:#FBF4E6;--cream2:#F3E8D2;--ink:#1B0D33}
+*{margin:0;box-sizing:border-box}
+body{background:#444;font-family:Man,sans-serif;color:var(--ink);padding:40px;display:grid;gap:40px;justify-content:start}
+.ab{position:relative;overflow:hidden}
+.ed{font-family:News,serif;font-style:italic;font-weight:400;letter-spacing:-.01em}
+.h{font-weight:800;letter-spacing:-.035em;line-height:.95}
+.lbl{font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.logo{display:block;height:auto}
+.paper{background:#fff;border-radius:6px;box-shadow:0 2px 0 rgba(27,13,51,.06),0 30px 60px -30px rgba(27,13,51,.45)}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font-weight:700;font-size:15px}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:54px;padding:0 26px;border-radius:14px;font-weight:800;font-size:18px}
+.mark{background:linear-gradient(transparent 58%,var(--green) 58%,var(--green) 92%,transparent 92%)}
+.stamp{display:inline-block;border:4px solid var(--green);color:var(--green);font-weight:800;letter-spacing:.12em;padding:6px 14px;border-radius:8px;transform:rotate(-8deg)}
+</style>
+
+<!-- K1 · Identity -->
+<section class="ab" id="k-identity" style="width:1600px;height:1000px;background:var(--cream)">
+ <div style="position:absolute;left:0;top:0;width:1000px;height:600px;background:var(--plum);display:grid;place-items:center">
+  <img class="logo" src="logos/kindling-dark.svg" style="width:560px">
+  <p class="lbl" style="position:absolute;left:56px;top:50px;color:var(--lav)">Primary wordmark</p>
+  <p style="position:absolute;left:56px;bottom:50px;color:var(--lav);font-size:19px;max-width:520px;line-height:1.5">Less administration. More room to run your business.</p>
+ </div>
+ <div style="position:absolute;left:1000px;top:0;right:0;height:300px;background:var(--green);display:grid;place-items:center"><img src="logos/kindling-light.svg" style="width:330px"></div>
+ <div style="position:absolute;left:1000px;top:300px;right:0;height:300px;background:var(--lav);display:grid;place-items:center"><img src="logos/kindling-dark.svg" style="width:330px;filter:brightness(0) saturate(100%) invert(9%) sepia(55%) saturate(5000%) hue-rotate(262deg)"></div>
+ <div style="position:absolute;left:56px;top:650px;display:flex;gap:14px">
+  <div style="width:150px"><div style="height:120px;border-radius:14px;background:var(--plum)"></div><p style="font-weight:800;margin-top:12px">Night Plum</p><p style="font-size:14px;color:#6b5d82">#2A1150</p></div>
+  <div style="width:150px"><div style="height:120px;border-radius:14px;background:var(--green)"></div><p style="font-weight:800;margin-top:12px">Ledger Green</p><p style="font-size:14px;color:#6b5d82">#00AE1D</p></div>
+  <div style="width:150px"><div style="height:120px;border-radius:14px;background:var(--lav)"></div><p style="font-weight:800;margin-top:12px">Lavender</p><p style="font-size:14px;color:#6b5d82">#CDBEF5</p></div>
+  <div style="width:150px"><div style="height:120px;border-radius:14px;background:var(--cream);border:2px solid #e3d6bb"></div><p style="font-weight:800;margin-top:12px">Paper Cream</p><p style="font-size:14px;color:#6b5d82">#FBF4E6</p></div>
+ </div>
+ <div style="position:absolute;left:1000px;top:650px;right:56px">
+  <p class="lbl" style="color:#6b5d82">Type</p>
+  <p class="h" style="font-size:64px;margin-top:14px;color:var(--plum)">Manrope Extra Bold</p>
+  <p class="ed" style="font-size:44px;margin-top:8px;color:var(--plum)">and Newsreader, for the human bits.</p>
+  <p style="font-size:17px;line-height:1.55;margin-top:16px;color:#4b3d63">Headlines are short and plain. The italic serif is the voice of a person, never a robot.</p>
+ </div>
+</section>
+
+<!-- K2 · Product introduction -->
+<section class="ab" id="k-intro" style="width:1600px;height:1000px;background:var(--lav)">
+ <img src="logos/kindling-dark.svg" style="position:absolute;left:70px;top:60px;width:190px;filter:brightness(0) saturate(100%) invert(9%) sepia(55%) saturate(5000%) hue-rotate(262deg)">
+ <h2 class="h" style="position:absolute;left:70px;top:150px;font-size:104px;color:var(--plum);max-width:820px">Kindling does the bit <span class="ed" style="font-weight:400;letter-spacing:-.02em">after</span> the work.</h2>
+ <p style="position:absolute;left:70px;top:520px;width:600px;font-size:24px;line-height:1.5;color:#2f1f4f">Invoices, reminders, follow-ups and the paperwork in between, handled quietly, so your evenings stay yours.</p>
+ <span class="btn" style="position:absolute;left:70px;top:680px;background:var(--plum);color:var(--cream)">See how it works</span>
+ <!-- four paper objects -->
+ <div class="paper" style="position:absolute;left:860px;top:110px;width:330px;height:390px;padding:28px;transform:rotate(-4deg)">
+  <p class="lbl" style="color:#8b7da3;font-size:12px">Invoice · 0142</p><p class="h" style="font-size:30px;margin-top:10px">Doyle Kitchens</p>
+  <div style="margin-top:22px;border-top:1px solid #eee;padding-top:14px;display:grid;gap:10px;font-size:15px;color:#4b3d63"><p style="display:flex;justify-content:space-between">Worktop fitting<b>€860</b></p><p style="display:flex;justify-content:space-between">Materials<b>€380</b></p></div>
+  <p class="h" style="font-size:44px;margin-top:30px">€1,240</p><span class="stamp" style="position:absolute;right:26px;bottom:34px;font-size:22px">Paid</span>
+ </div>
+ <div class="paper" style="position:absolute;left:1220px;top:150px;width:300px;height:250px;padding:26px;background:var(--cream);transform:rotate(5deg)">
+  <p class="lbl" style="color:var(--green);font-size:12px">Reminder · sent 09:00</p><p class="ed" style="font-size:25px;line-height:1.3;margin-top:14px">"Hi Aoife, a quick nudge on invoice 0139. No rush if it's already on its way."</p>
+ </div>
+ <div class="paper" style="position:absolute;left:900px;top:560px;width:300px;height:260px;padding:26px;transform:rotate(3deg);background:var(--plum);color:var(--cream)">
+  <p class="lbl" style="color:var(--lav);font-size:12px">Follow-up</p><p class="h" style="font-size:30px;margin-top:12px;line-height:1.05">Quote sent to Murphy's on Monday.</p><p style="font-size:16px;margin-top:14px;color:var(--lav)">Kindling will check in on Thursday.</p>
+ </div>
+ <div class="paper" style="position:absolute;left:1240px;top:470px;width:270px;height:330px;padding:24px;transform:rotate(-6deg)">
+  <p class="lbl" style="color:#8b7da3;font-size:12px">Documents</p>
+  <div style="margin-top:16px;display:grid;gap:10px">
+   <p style="display:flex;gap:10px;align-items:center;font-weight:700;font-size:16px"><i style="width:30px;height:36px;border-radius:4px;background:var(--lav2)"></i>Insurance 2026.pdf</p>
+   <p style="display:flex;gap:10px;align-items:center;font-weight:700;font-size:16px"><i style="width:30px;height:36px;border-radius:4px;background:var(--lav2)"></i>VAT · Q3.pdf</p>
+   <p style="display:flex;gap:10px;align-items:center;font-weight:700;font-size:16px"><i style="width:30px;height:36px;border-radius:4px;background:#d6f5dc"></i>Receipts · Oct</p></div>
+  <p style="font-size:14px;color:#6b5d82;margin-top:20px">Filed by client, by month, by itself.</p>
+ </div>
+ <p class="lbl" style="position:absolute;left:70px;bottom:56px;color:#4b3d63">Kindling · Product introduction</p>
+</section>
+
+<!-- K3 · The Weekly Kindling newsletter -->
+<section class="ab" id="k-news" style="width:1400px;height:2240px;background:#e9e0cf">
+ <div style="position:absolute;left:220px;top:70px;width:960px;background:var(--cream);border-radius:6px;box-shadow:0 40px 90px -40px rgba(27,13,51,.4);overflow:hidden">
+  <div style="padding:56px 70px 40px;border-bottom:2px solid var(--plum);display:flex;justify-content:space-between;align-items:end">
+   <div><p class="ed" style="font-size:40px;color:var(--plum);line-height:1">The Weekly</p><img src="logos/kindling-dark.svg" style="width:430px;margin-top:6px;filter:brightness(0) saturate(100%) invert(9%) sepia(55%) saturate(5000%) hue-rotate(262deg)"></div>
+   <p class="lbl" style="color:#6b5d82;text-align:right;line-height:1.8">No. 31<br>Thursday</p></div>
+  <div style="padding:52px 70px 0">
+   <p class="lbl" style="color:var(--green)">This week</p>
+   <h2 class="ed" style="font-size:64px;line-height:1.02;margin-top:14px;color:var(--plum)">How to ask for a deposit without it feeling awkward.</h2>
+   <p style="font-size:21px;line-height:1.7;margin-top:28px;color:#33244d">A deposit isn't a sign you don't trust someone. It's how you book the time, order the materials and turn down other work for them. Said like that, most clients agree before you've finished the sentence.</p>
+   <p style="font-size:21px;line-height:1.7;margin-top:18px;color:#33244d">The awkward part is usually timing. Ask on the quote, not after the yes. It reads as how you work, not a condition you thought of later.</p>
+   <div style="margin-top:34px;padding:30px 34px;border-radius:14px;background:var(--plum);color:var(--cream)">
+    <p class="lbl" style="color:var(--lav)">Copy this line</p>
+    <p class="ed" style="font-size:30px;line-height:1.35;margin-top:12px">"To lock in your dates, I take 30% when you accept the quote. The rest is due when the job's done."</p>
+   </div>
+   <h3 class="h" style="font-size:36px;margin-top:50px;color:var(--plum)">Three things to do before Friday</h3>
+   <div style="margin-top:20px;display:grid;gap:0;border-top:2px solid var(--plum)">
+    <p style="display:grid;grid-template-columns:60px 1fr;padding:20px 0;border-bottom:1px solid #e2d6bf;font-size:20px;line-height:1.5"><b class="h" style="color:var(--green);font-size:28px">1</b>Send the invoices for anything finished this week, while it's fresh for you and them.</p>
+    <p style="display:grid;grid-template-columns:60px 1fr;padding:20px 0;border-bottom:1px solid #e2d6bf;font-size:20px;line-height:1.5"><b class="h" style="color:var(--green);font-size:28px">2</b>Photograph every receipt in your van door pocket. Yes, that one too.</p>
+    <p style="display:grid;grid-template-columns:60px 1fr;padding:20px 0;border-bottom:1px solid #e2d6bf;font-size:20px;line-height:1.5"><b class="h" style="color:var(--green);font-size:28px">3</b>Reply to the quote you've been avoiding. A short no is kinder than a long silence.</p>
+   </div>
+   <div style="margin-top:46px;display:grid;grid-template-columns:1fr 1fr;gap:24px">
+    <div style="padding:26px;border-radius:14px;background:var(--lav)"><p class="lbl" style="color:var(--plum)">From a reader</p><p class="ed" style="font-size:24px;line-height:1.35;margin-top:10px;color:var(--plum)">"Do I chase on a Monday or a Friday?"</p><p style="font-size:17px;line-height:1.55;margin-top:10px;color:#33244d">Tuesday morning. Mondays are full and Fridays are half-empty.</p></div>
+    <div style="padding:26px;border-radius:14px;background:#d9f3dd"><p class="lbl" style="color:#06701a">New in Kindling</p><p class="h" style="font-size:26px;margin-top:10px;color:var(--plum);line-height:1.1">Deposits on quotes</p><p style="font-size:17px;line-height:1.55;margin-top:10px;color:#33244d">Add a deposit line to any quote. Kindling sends the payment link when it's accepted.</p></div>
+   </div>
+  </div>
+  <div style="margin-top:56px;padding:40px 70px;background:var(--plum);color:var(--lav);display:flex;justify-content:space-between;align-items:center;font-size:15px"><span>You're getting this because you signed up for it. One email a week, unsubscribe any time.</span><img src="logos/kindling-light.svg" style="width:130px"></div>
+ </div>
+</section>
+
+<!-- K4 · Social campaign, three posts -->
+<section class="ab" id="k-social" style="width:3300px;height:1350px;background:#3a3a3a;display:flex;gap:30px">
+ <div style="position:relative;width:1080px;height:1350px;background:var(--cream);padding:90px 80px">
+  <p class="lbl" style="color:var(--green)">Small business, honestly · 1</p>
+  <h2 class="h" style="font-size:108px;margin-top:60px;color:var(--plum)">Chasing an invoice shouldn't feel like asking for a <span class="ed" style="font-weight:400">favour.</span></h2>
+  <div class="paper" style="position:absolute;left:80px;bottom:150px;width:520px;padding:26px 30px;transform:rotate(-3deg)"><p class="lbl" style="font-size:12px;color:#8b7da3">Sent by Kindling · Tue 09:00</p><p style="font-size:22px;margin-top:10px;line-height:1.45">Hi Ciarán, invoice 0139 for €640 was due last week. Here's the link to pay when you get a sec.</p></div>
+  <img src="logos/kindling-dark.svg" style="position:absolute;right:80px;bottom:80px;width:200px">
+ </div>
+ <div style="position:relative;width:1080px;height:1350px;background:var(--plum);padding:90px 80px;color:var(--cream)">
+  <p class="lbl" style="color:var(--green)">Small business, honestly · 2</p>
+  <h2 class="h" style="font-size:118px;margin-top:60px">Your best work happens on site.</h2>
+  <h2 class="ed" style="font-size:84px;margin-top:30px;color:var(--lav);line-height:1.05">Not in a spreadsheet at 11pm.</h2>
+  <p style="position:absolute;left:80px;bottom:150px;font-size:110px;font-weight:800;letter-spacing:-.04em;color:#4d2d85">23:04</p>
+  <img src="logos/kindling-light.svg" style="position:absolute;right:80px;bottom:80px;width:200px">
+ </div>
+ <div style="position:relative;width:1080px;height:1350px;background:var(--green);padding:90px 80px;color:var(--plum)">
+  <p class="lbl">Small business, honestly · 3</p>
+  <h2 class="ed" style="font-size:96px;margin-top:60px;line-height:1.05">"Just following up on my last email…"</h2>
+  <h2 class="h" style="font-size:108px;margin-top:50px">Kindling can send that one.</h2>
+  <img src="logos/kindling-dark.svg" style="position:absolute;right:80px;bottom:80px;width:200px;filter:brightness(0) saturate(100%) invert(9%) sepia(55%) saturate(5000%) hue-rotate(262deg)">
+ </div>
+</section>
+
+<!-- K5 · Product interface: payment reminder -->
+<section class="ab" id="k-ui" style="width:1600px;height:1000px;background:var(--lav2)">
+ <div style="position:absolute;left:90px;top:70px;right:90px;bottom:70px;border-radius:24px;background:#fff;box-shadow:0 50px 100px -50px rgba(27,13,51,.5);overflow:hidden;display:grid;grid-template-columns:1fr 1fr">
+  <div style="padding:46px 48px;border-right:1px solid #eee7f7">
+   <p style="font-size:15px;color:#7b6e93;font-weight:600">Invoices / 0139</p>
+   <div style="display:flex;justify-content:space-between;align-items:start;margin-top:14px"><div><p class="h" style="font-size:44px;color:var(--plum)">Ciarán Walsh</p><p style="font-size:17px;color:#6b5d82;margin-top:6px">Bathroom tiling · 3 days</p></div><span class="pill" style="background:#FFF2D6;color:#8a5a00">9 days overdue</span></div>
+   <p class="h" style="font-size:76px;margin-top:34px;color:var(--plum)">€640<span style="font-size:30px;color:#9a8db0">.00</span></p>
+   <div style="margin-top:34px;display:grid;gap:12px">
+    <div style="display:flex;justify-content:space-between;padding:16px 18px;border-radius:12px;background:#f7f3fe;font-size:16px"><span>Sent</span><b>14 Oct</b></div>
+    <div style="display:flex;justify-content:space-between;padding:16px 18px;border-radius:12px;background:#f7f3fe;font-size:16px"><span>Due</span><b>28 Oct</b></div>
+    <div style="display:flex;justify-content:space-between;padding:16px 18px;border-radius:12px;background:#f7f3fe;font-size:16px"><span>Opened by client</span><b>Twice, last on 2 Nov</b></div>
+   </div>
+   <p class="lbl" style="margin-top:34px;color:#7b6e93;font-size:12px">Tone of the reminder</p>
+   <div style="display:flex;gap:10px;margin-top:12px"><span class="pill" style="background:var(--plum);color:#fff">Friendly</span><span class="pill" style="background:#f2edfb;color:var(--plum)">Clear</span><span class="pill" style="background:#f2edfb;color:var(--plum)">Firm</span></div>
+  </div>
+  <div style="padding:46px 48px;background:var(--cream)">
+   <p class="lbl" style="color:var(--green)">Kindling drafted this</p>
+   <div style="margin-top:18px;padding:30px;border-radius:16px;background:#fff;box-shadow:0 1px 0 #eadfca">
+    <p style="font-size:15px;color:#7b6e93">To: ciaran@… · Subject: Invoice 0139</p>
+    <p style="font-size:20px;line-height:1.6;margin-top:18px;color:#2b1d45">Hi Ciarán,<br><br>Hope the new bathroom's treating you well. Just a quick reminder that invoice 0139 for €640 was due on 28 October.<br><br>You can pay by card or bank transfer here. Thanks again for having me.<br><br>Niamh</p>
+   </div>
+   <div style="display:flex;gap:12px;margin-top:26px"><span class="btn" style="background:var(--green);color:#fff">Send now</span><span class="btn" style="background:#fff;color:var(--plum);border:2px solid var(--plum)">Send Tuesday, 9am</span></div>
+   <p style="font-size:15px;color:#7b6e93;margin-top:16px">Nothing goes out without your say-so.</p>
+  </div>
+ </div>
+</section>
+
+<!-- K6 · Advertising campaign: two posters -->
+<section class="ab" id="k-ads" style="width:2200px;height:1500px;background:#3a3a3a;display:flex;gap:40px;padding:0">
+ <div style="position:relative;width:1080px;height:1500px;background:var(--plum);overflow:hidden">
+  <p class="h" style="position:absolute;left:70px;top:90px;font-size:200px;line-height:.86;color:var(--cream)">Paper&shy;work</p>
+  <p class="h" style="position:absolute;left:70px;top:300px;font-size:200px;line-height:.86;color:var(--green)">is not a</p>
+  <p class="ed" style="position:absolute;left:70px;top:500px;font-size:176px;line-height:.9;color:var(--lav)">personality</p>
+  <p class="h" style="position:absolute;left:70px;top:700px;font-size:200px;line-height:.86;color:var(--cream)">trait.</p>
+  <img src="logos/kindling-dark.svg" style="position:absolute;left:70px;bottom:80px;width:260px">
+  <p style="position:absolute;right:70px;bottom:92px;color:var(--lav);font-size:22px;font-weight:600">Invoices and reminders, handled.</p>
+ </div>
+ <div style="position:relative;width:1080px;height:1500px;background:var(--cream);overflow:hidden">
+  <p class="h" style="position:absolute;left:70px;top:90px;font-size:150px;line-height:.9;color:var(--plum)">You didn't start a business to become a</p>
+  <p class="ed" style="position:absolute;left:70px;top:720px;font-size:190px;line-height:.92;color:var(--plum)"><span class="mark">filing</span><br>cabinet.</p>
+  <div style="position:absolute;right:70px;top:740px;display:grid;gap:12px;transform:rotate(-4deg)">
+   <span style="width:300px;height:70px;border-radius:10px;background:var(--lav)"></span><span style="width:300px;height:70px;border-radius:10px;background:var(--lav2)"></span><span style="width:300px;height:70px;border-radius:10px;background:var(--green)"></span></div>
+  <img src="logos/kindling-dark.svg" style="position:absolute;left:70px;bottom:80px;width:260px">
+  <p style="position:absolute;right:70px;bottom:92px;color:#4b3d63;font-size:22px;font-weight:600">Less admin. More business.</p>
+ </div>
+</section>
+
+<!-- K7 · Onboarding -->
+<section class="ab" id="k-onboard" style="width:1600px;height:1100px;background:var(--green)">
+ <div style="position:absolute;left:90px;top:90px;width:520px;height:920px;border-radius:56px;background:#140a26;padding:16px;box-shadow:0 60px 120px -40px rgba(27,13,51,.6)">
+  <div style="height:100%;border-radius:42px;overflow:hidden;background:var(--cream)">
+   <div style="background:var(--plum);padding:70px 36px 34px"><img src="logos/kindling-dark.svg" style="width:170px"><p class="h" style="font-size:44px;color:var(--cream);margin-top:30px">Welcome in, Niamh.</p></div>
+   <div style="padding:30px 36px;font-size:18px;line-height:1.6;color:#2b1d45"><p>You're set up. Here's the only thing to do today:</p>
+    <div style="margin-top:20px;padding:20px;border-radius:14px;background:#fff;box-shadow:0 1px 0 #eadfca"><p class="lbl" style="color:var(--green);font-size:12px">Step 1 of 3</p><p class="h" style="font-size:24px;margin-top:8px;color:var(--plum)">Add your last unpaid invoice</p><p style="font-size:15px;color:#6b5d82;margin-top:6px">Kindling will draft the reminder. You decide if it goes.</p></div>
+    <span class="btn" style="margin-top:20px;width:100%;background:var(--plum);color:var(--cream)">Add an invoice</span>
+    <p class="ed" style="font-size:20px;margin-top:22px;color:var(--plum)">Talk soon, the Kindling team</p></div>
+  </div>
+ </div>
+ <div class="paper" style="position:absolute;left:700px;top:110px;width:800px;height:520px;padding:50px;background:var(--cream);transform:rotate(2deg)">
+  <p class="lbl" style="color:var(--green)">The getting-started guide</p>
+  <h3 class="h" style="font-size:58px;margin-top:14px;color:var(--plum)">Your first week, in three steps.</h3>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:34px">
+   <div><p class="h" style="font-size:54px;color:var(--green)">1</p><p class="h" style="font-size:22px;margin-top:6px">Bring your clients</p><p style="font-size:15px;line-height:1.5;margin-top:6px;color:#4b3d63">Import a spreadsheet or add them as you go.</p></div>
+   <div><p class="h" style="font-size:54px;color:var(--green)">2</p><p class="h" style="font-size:22px;margin-top:6px">Send one invoice</p><p style="font-size:15px;line-height:1.5;margin-top:6px;color:#4b3d63">Your logo, your terms, a payment link.</p></div>
+   <div><p class="h" style="font-size:54px;color:var(--green)">3</p><p class="h" style="font-size:22px;margin-top:6px">Pick your tone</p><p style="font-size:15px;line-height:1.5;margin-top:6px;color:#4b3d63">Friendly, clear or firm. Change it any time.</p></div>
+  </div>
+ </div>
+ <div class="paper" style="position:absolute;left:760px;top:700px;width:660px;padding:34px 38px;background:var(--plum);color:var(--cream);transform:rotate(-2deg)">
+  <p class="lbl" style="color:var(--lav)">Text to your client · sent from your number</p>
+  <p style="font-size:24px;line-height:1.5;margin-top:14px">Hi Ciarán, it's Niamh. Your invoice for the bathroom is in your inbox. Any questions, just reply here.</p>
+ </div>
+</section>
+
+<!-- K8 · Website -->
+<section class="ab" id="k-web" style="width:1440px;height:2200px;background:var(--cream)">
+ <div style="display:flex;justify-content:space-between;align-items:center;padding:34px 80px"><img src="logos/kindling-dark.svg" style="width:170px;filter:brightness(0) saturate(100%) invert(9%) sepia(55%) saturate(5000%) hue-rotate(262deg)">
+  <div style="display:flex;gap:40px;font-weight:700;font-size:17px;color:#4b3d63"><span>How it works</span><span>Pricing</span><span>The Weekly</span><span>Log in</span></div><span class="btn" style="height:48px;font-size:16px;background:var(--plum);color:var(--cream)">Try it free</span></div>
+ <div style="padding:90px 80px 0;text-align:center">
+  <p class="pill" style="background:var(--lav);color:var(--plum)">For tradespeople, freelancers and small teams</p>
+  <h1 class="h" style="font-size:132px;margin-top:30px;color:var(--plum)">Less admin.<br><span class="ed" style="font-weight:400;color:var(--green)">More room to run your business.</span></h1>
+  <p style="font-size:24px;line-height:1.55;margin:34px auto 0;max-width:760px;color:#33244d">Kindling sends the invoices, nudges the late payers and keeps your paperwork in order, in your voice and only with your say-so.</p>
+  <div style="display:flex;gap:16px;justify-content:center;margin-top:40px"><span class="btn" style="background:var(--green);color:#fff">Start free for 30 days</span><span class="btn" style="background:#fff;color:var(--plum);border:2px solid var(--plum)">Watch a 2-minute tour</span></div>
+ </div>
+ <div style="position:relative;margin:90px 80px 0;height:640px;border-radius:32px;background:var(--plum);overflow:hidden">
+  <div class="paper" style="position:absolute;left:90px;top:80px;width:420px;height:520px;padding:34px;transform:rotate(-4deg)"><p class="lbl" style="color:#8b7da3;font-size:12px">Invoice · 0142</p><p class="h" style="font-size:34px;margin-top:10px">Doyle Kitchens</p><p class="h" style="font-size:60px;margin-top:150px">€1,240</p><span class="stamp" style="position:absolute;right:34px;bottom:40px;font-size:26px">Paid</span></div>
+  <div style="position:absolute;left:560px;top:110px;right:80px;color:var(--cream)"><p class="ed" style="font-size:64px;line-height:1.05">Reminders that sound like you, sent when you'd have meant to.</p><p style="font-size:18px;color:var(--lav);margin-top:20px">Friendly at seven days, clear at fourteen, firm at twenty-one. You can change any of it.</p></div>
+ </div>
+ <div style="margin:110px 80px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+  <div style="padding:38px;border-radius:24px;background:var(--lav)"><p class="lbl" style="color:var(--plum)">Invoices</p><p class="h" style="font-size:38px;margin-top:14px;color:var(--plum)">Sent before you've left the driveway.</p></div>
+  <div style="padding:38px;border-radius:24px;background:#d9f3dd"><p class="lbl" style="color:#06701a">Reminders</p><p class="h" style="font-size:38px;margin-top:14px;color:var(--plum)">Polite, then clear, then firm.</p></div>
+  <div style="padding:38px;border-radius:24px;background:#fff"><p class="lbl" style="color:var(--plum)">Paperwork</p><p class="h" style="font-size:38px;margin-top:14px;color:var(--plum)">Filed by client and month.</p></div>
+ </div>
+ <div style="margin:100px 80px 0;padding:60px 70px;border-radius:32px;background:var(--green);display:flex;justify-content:space-between;align-items:center"><p class="h" style="font-size:64px;color:var(--plum);max-width:800px">Get your evenings back.</p><span class="btn" style="background:var(--plum);color:var(--cream)">Try it free</span></div>
+</section>
