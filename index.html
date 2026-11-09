@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lorcán O'Neill</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Lorcán O'Neill's personal site. Work, writing and whatever's on his mind.">
 <meta name="theme-color" content="#090909">
 <meta name="author" content="Lorcán O'Neill">
@@ -1259,10 +1260,52 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
   .xp-art img.d2{left:0;right:auto;bottom:0;top:auto;width:72%;transform:rotate(-6deg)}
   .xp-count{display:none}
 }
-</style>
-</head>
-<body>
 
+/* ---------- Work tile: an art-directed fan of brand cards ----------
+   Five real cards fan from a pivot below the deck. Formula 1 leads; four brands emerge behind it,
+   alternating left and right, each a little higher, smaller and darker. Hover opens the fan. */
+.deck{position:relative;display:block;width:100%;min-width:0}
+.deck-in{position:relative;display:block;width:100%;aspect-ratio:1/1.02}
+.dk{position:absolute;left:50%;top:50%;width:var(--w,66%);height:auto;margin:0;border-radius:6%/9%;
+  transform-origin:50% 50%;
+  transform:translate(-50%,-50%) translate(var(--x,0%),var(--y,0%)) rotate(var(--r,0deg)) scale(var(--s,1));
+  filter:brightness(var(--b,1)) saturate(var(--sa,1)) drop-shadow(0 22px 26px rgba(0,0,0,.6));
+  transition:transform .9s cubic-bezier(.22,1.2,.36,1),filter .6s var(--e-out);transition-delay:var(--dl,0s);will-change:transform}
+/* resting fan: F1 low and front, brands rising behind it, alternating sides */
+.dk.c1{--x:0%;--y:44%;--r:-3deg;--s:1;--w:70%;z-index:5}
+.dk.c2{--x:20%;--y:-4%;--r:7deg;--s:.9;--b:.86;z-index:4;--dl:.02s}
+.dk.c3{--x:-21%;--y:-22%;--r:-8deg;--s:.86;--b:.78;z-index:3;--dl:.04s}
+.dk.c4{--x:24%;--y:-58%;--r:11deg;--s:.8;--b:.66;--sa:.9;z-index:2;--dl:.06s}
+.dk.c5{--x:-22%;--y:-86%;--r:-6deg;--s:.74;--b:.55;--sa:.85;z-index:1;--dl:.08s}
+@media (hover:hover) and (pointer:fine){
+  .xp-work:hover .dk.c1{--y:50%;--r:0deg;--s:1.02}
+  .xp-work:hover .dk.c2{--x:30%;--y:-2%;--r:10deg;--b:1}
+  .xp-work:hover .dk.c3{--x:-31%;--y:-26%;--r:-11deg;--b:.96}
+  .xp-work:hover .dk.c4{--x:33%;--y:-62%;--r:14deg;--b:.9;--sa:1}
+  .xp-work:hover .dk.c5{--x:-31%;--y:-90%;--r:-10deg;--b:.86;--sa:1}
+}
+.xp-work{overflow:hidden}
+@media (min-width:1024px){
+  .xp-work{gap:0}
+  .xp-work .deck{flex:1;display:flex;align-items:center;margin:0 -6px -10px}
+  .xp-count{z-index:6}
+}
+@media (min-width:768px) and (max-width:1023px){
+  .deck-in{aspect-ratio:1.25/1}
+  .dk{--w:54%}.dk.c1{--w:58%}
+}
+@media (max-width:767px){
+  .xp-work{align-items:center}
+  .xp-work .deck{align-self:center}
+  .deck-in{aspect-ratio:.86/1}
+  .dk.c4,.dk.c5{display:none}
+  .dk{--w:72%}
+  .dk.c1{--w:80%;--y:30%;--r:-3deg}
+  .dk.c2{--x:12%;--y:-12%;--r:8deg}
+  .dk.c3{--x:-12%;--y:-50%;--r:-8deg}
+}
+@media (prefers-reduced-motion:reduce){.dk{transition:none}}
+</style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
@@ -1364,7 +1407,7 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
         </a>
         <a class="xp-work rv" style="--i:1" href="#work">
           <span class="xp-cap"><span class="xp-t">Work <svg class="xp-ar" aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="xp-s">Some familiar names.</span></span>
-          <span class="xp-art" aria-hidden="true"><img class="d3" src="img/work-uefa-800.webp" alt="" width="800" height="533" loading="lazy"><img class="d2" src="img/work-heineken-800.webp" alt="" width="800" height="533" loading="lazy"><img class="d1" src="img/work-f1-800.webp" alt="" width="800" height="533" loading="lazy"></span><span class="xp-count" aria-hidden="true">10 brands</span>
+          <span class="deck" aria-hidden="true"><span class="deck-in"><img class="dk c5" src="img/work-arkintel-800.webp" alt="" width="800" height="533" loading="lazy" decoding="async"><img class="dk c4" src="img/work-justeat-800.webp" alt="" width="800" height="533" loading="lazy" decoding="async"><img class="dk c3" src="img/work-heineken-800.webp" alt="" width="800" height="533" loading="lazy" decoding="async"><img class="dk c2" src="img/work-uefa-800.webp" alt="" width="800" height="533" loading="lazy" decoding="async"><img class="dk c1" src="img/work-f1-800.webp" alt="" width="800" height="533" loading="lazy" decoding="async"></span></span><span class="xp-count" aria-hidden="true">10 brands</span>
         </a>
         <a class="xp-exp rv" style="--i:1" href="#experience">
           <span class="xp-t">Experience <svg class="xp-ar" aria-hidden="true"><use href="#i-arrow"/></svg></span>
@@ -2253,5 +2296,4 @@ maskHeads();renderFilters();renderPosts();route();widont();
 if(document.documentElement.classList.contains("intro-on"))runIntro();
 </script>
 
-</body>
 </html>
