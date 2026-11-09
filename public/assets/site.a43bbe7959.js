@@ -534,17 +534,17 @@ const ROOM={
   ],
   // songs: rename the titles here; files live in media/songs/
   songs:[
-    {title:"Untitled No. 1",src:SONG("lor-84.mp3"),dur:172},
-    {title:"Untitled No. 2",src:SONG("lor-85.mp3"),dur:182},
-    {title:"Untitled No. 3",src:SONG("lor-86.mp3"),dur:167},
-    {title:"Untitled No. 4",src:SONG("lor-87.mp3"),dur:130},
-    {title:"Untitled No. 5",src:SONG("lor-88.mp3"),dur:158},
-    {title:"Untitled No. 6",src:SONG("lor-89.mp3"),dur:173},
-    {title:"Untitled (Cover)",src:SONG("lor-90.mp3"),dur:114},
-    {title:"Studio Selection (Cover) I",src:SONG("lor-91.mp3"),dur:137},
-    {title:"Studio Selection (Cover) II",src:SONG("lor-92.mp3"),dur:130},
-    {title:"Untitled No. 7",src:SONG("lor-93.mp3"),dur:162},
-    {title:"Untitled No. 8",src:SONG("lor-94.mp3"),dur:151}
+    {title:"Beat 01",src:SONG("lor-84.mp3"),dur:172},
+    {title:"Beat 02",src:SONG("lor-85.mp3"),dur:182},
+    {title:"Beat 03",src:SONG("lor-86.mp3"),dur:167},
+    {title:"Beat 04",src:SONG("lor-87.mp3"),dur:130},
+    {title:"Beat 05",src:SONG("lor-88.mp3"),dur:158},
+    {title:"Beat 06",src:SONG("lor-89.mp3"),dur:173},
+    {title:"Beat 07",src:SONG("lor-90.mp3"),dur:114},
+    {title:"Beat 08",src:SONG("lor-91.mp3"),dur:137},
+    {title:"Beat 09",src:SONG("lor-92.mp3"),dur:130},
+    {title:"Beat 10",src:SONG("lor-93.mp3"),dur:162},
+    {title:"Beat 11",src:SONG("lor-94.mp3"),dur:151}
   ],
   // the collection: covers live in img/books/<key>-400|800.webp
   books:[
@@ -633,7 +633,7 @@ function panelHTML(kind){
   if(kind&&kind.startsWith("book:")){const n=+kind.slice(5),b=ROOM.books[n];return `<span class="or-kick">The Hidden Library · ${b.num} of ${toRoman(ROOM.books.length)}</span><article class="or-read has-cover"><img class="or-cover" src="${bookSrc(b,800)}" srcset="${bookSrc(b,400)} 400w, ${bookSrc(b,800)} 800w" sizes="(max-width:600px) 40vw, 260px" width="800" height="1200" alt="Cover of ${esc(b.title)} by Lorcán O’Neill"><div><h3 class="or-h">${esc(b.title)}</h3>${b.sub?`<p class="or-sub">${esc(b.sub)}</p>`:""}<p class="or-p">${esc(b.about)}</p></div></article>`+(b.excerpt&&b.excerpt.length?`<div class="or-exc">${b.excerpt.map(x=>`<p>${esc(x).replace(/\*([^*]+)\*/g,"<em>$1</em>")}</p>`).join("")}</div>`:empty("Excerpt coming soon.","A short passage from the book will live here."))+`<div class="or-shelfrow" aria-label="The collection">${ROOM.books.map((x,i)=>`<button type="button" data-goto-book="${i}" class="${i===n?"on":""}" aria-label="${esc(x.title)}"><img src="${bookSrc(x,400)}" alt="" width="400" height="600" loading="lazy"></button>`).join("")}</div>`}
   if(kind&&kind.startsWith("frame:")){const i=+kind.slice(6),p=ROOM.paintings[i],n=ROOM.paintings.length;return `<span class="or-kick">Private view · ${toRoman(i+1)} of ${toRoman(n)}</span>`+(p?`<h3 class="or-h">${esc(p.title)}</h3><p class="or-p">By Lorcán O’Neill.</p><div class="pv"><button class="pv-nav" type="button" data-goto-pt="${(i+n-1)%n}" aria-label="Previous painting">‹</button><figure class="gold pv-art" style="--ar:${p.w}/${p.h}"><img src="${ptSrc(p,1000)}" srcset="${ptSrc(p,400)} 400w, ${ptSrc(p,1000)} 1000w" sizes="(max-width:600px) 80vw, 560px" width="${p.w}" height="${p.h}" alt="${esc(p.title)}, a painting by Lorcán O’Neill"></figure><button class="pv-nav" type="button" data-goto-pt="${(i+1)%n}" aria-label="Next painting">›</button></div><div class="or-shelfrow pv-row" aria-label="All paintings">${ROOM.paintings.map((x,k)=>`<button type="button" data-goto-pt="${k}" class="gold${k===i?" on":""}" aria-label="${esc(x.title)}"><img src="${ptSrc(x,400)}" alt="" loading="lazy"></button>`).join("")}</div>`:`<h3 class="or-h">An empty frame</h3>`+empty("Nothing hung here yet.","The paintings are coming soon."))}
   if(kind==="books"){return `<span class="or-kick">On the shelf</span><h3 class="or-h">Writing</h3><div class="or-booklist">${ROOM.books.map(b=>`<article class="or-book"><img class="cv" src="${bookSrc(b,400)}" alt="" width="400" height="600" loading="lazy"><div><h4>${esc(b.title)}</h4><p>${esc(b.about)}</p>${b.excerpt&&b.excerpt.length?`<p class="ex">${esc(b.excerpt[0])}</p>`:`<p class="ex">Excerpt coming soon.</p>`}</div></article>`).join("")}</div>`}
-  if(kind==="songs"){const v=ROOM.songs;return `<span class="or-kick">On the record player</span><h3 class="or-h">Songs</h3>`+(v.length?`<div class="or-tracks">${v.map((x,i)=>`<button class="or-track" data-song="${i}"><span class="pp">▶</span><span>${esc(x.title)}</span><span class="tm">${x.dur?fmt(x.dur):"–"}</span></button>`).join("")}</div><div class="or-bar"><i id="orProg"></i></div>`:empty("Still being pressed.","Songs will be playable here soon. Nothing plays until you press play."))}
+  if(kind==="songs"){const v=ROOM.songs;return `<span class="or-kick">On the record player</span><h3 class="or-h">Beats</h3>`+(v.length?`<div class="or-tracks">${v.map((x,i)=>`<button class="or-track" data-song="${i}"><span class="pp">▶</span><span>${esc(x.title)}</span><span class="tm">${x.dur?fmt(x.dur):"–"}</span></button>`).join("")}</div><div class="or-bar"><i id="orProg"></i></div>`:empty("Still being pressed.","Beats will be playable here soon. Nothing plays until you press play."))}
 }
 function openPanel(kind){
   orBody.innerHTML=panelHTML(kind);orPanel.classList.remove("clear");orPanel.hidden=false;$("#orX").focus({preventScroll:true});

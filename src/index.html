@@ -719,7 +719,7 @@ html.dim{--amb:.18}
 .or-door:hover i{animation:ajar .6s var(--e-out) both}
 @keyframes ajar{to{transform:perspective(60px) rotateY(-28deg);transform-origin:left}}
 html.room-on,html.room-on body{overflow:hidden}
-.room{position:fixed;inset:0;z-index:180;background:#060504;color:var(--ink);clip-path:inset(var(--ct,0) var(--cr,0) var(--cb,0) var(--cl,0) round var(--crr,0px));transition:clip-path .85s cubic-bezier(.7,0,.2,1)}
+.room{position:fixed;inset:0;z-index:180;overflow:hidden;background:#060504;color:var(--ink);clip-path:inset(var(--ct,0) var(--cr,0) var(--cb,0) var(--cl,0) round var(--crr,0px));transition:clip-path .85s cubic-bezier(.7,0,.2,1)}
 .room.entering .or-stage{opacity:0;transform:scale(1.06)}
 .or-stage{position:absolute;left:50%;top:50%;width:max(100vw,calc(100vh * 1.78));height:max(100vh,calc(100vw / 1.78));transform:translate(-50%,-50%);transition:opacity 1s var(--e-out) .35s,transform 1.4s var(--e-out) .35s;overflow:hidden}
 .room:not(.entering) .or-stage{transform:translate(-50%,-50%)}
@@ -804,7 +804,7 @@ html.room-on,html.room-on body{overflow:hidden}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .or-x{position:absolute;right:14px;top:14px;width:36px;height:36px;display:grid;place-items:center;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:transparent;color:var(--ink);cursor:pointer}
 .or-x svg{width:16px;height:16px}
-.or-kick{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,190,130,.75);margin-bottom:10px}
+.or-kick{display:block;padding-right:52px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,190,130,.75);margin-bottom:10px}
 .or-h{margin:0 0 8px;font-weight:600;font-size:clamp(26px,3vw,36px);letter-spacing:-.04em}
 .or-p{margin:0;color:var(--muted);max-width:40em}
 .or-empty{margin-top:22px;display:grid;place-items:center;text-align:center;gap:8px;padding:34px 18px;border-radius:14px;border:1px dashed rgba(255,140,50,.28);color:var(--muted);font-size:15px}
@@ -846,8 +846,23 @@ html.room-on,html.room-on body{overflow:hidden}
 .yt-t,.yt-s{position:relative;z-index:1}.yt-t{margin-top:10px;font-weight:600;font-size:18px}.yt-s{font-size:13px;color:rgba(255,255,255,.65)}
 .yt-cap{margin:10px 0 0;text-align:right;font-size:13px}.yt-cap a{color:var(--faint);text-decoration:none}.yt-cap a:hover{color:var(--ink)}
 
+/* ---------- Squarer landscape screens (4:3 tablets, 16:10 laptops): fit the room to the screen instead of cropping its sides ---------- */
+@media (orientation:landscape) and (max-aspect-ratio:16/10) and (min-width:768px){
+  .or-stage{width:100vw;height:100vh}
+}
+/* ---------- Short landscape phones: smaller controls so the room shows ---------- */
+@media (orientation:landscape) and (max-height:500px){
+  .or-top{padding-top:calc(8px + env(safe-area-inset-top,0px))}
+  .or-leave{height:32px;font-size:12.5px;padding:0 10px}
+  .or-dn{font-size:11px}
+  .or-title{font-size:16px}
+  .or-panel-in{max-height:92vh;padding:18px 20px}
+  .or-panel .or-read.has-cover{grid-template-columns:minmax(90px,140px) 1fr;align-items:start}
+  .or-panel .pv-art{width:min(100%,calc(62vh * var(--ar)))}
+  .or-hi{left:-46%;top:14%}
+}
 /* ---------- The room on a phone: a tall, stacked corner of the room ---------- */
-@media (max-width:767px),(orientation:portrait) and (max-width:1023px){
+@media (orientation:portrait) and (max-width:1023px),(max-width:767px) and (min-height:501px){
   .or-stage{width:100vw;height:100svh;max-height:100vh}
   .or-wall{inset:0 0 24% 0}.or-floor{inset:76% 0 0 0}
   .or-gallery{left:8%;top:11%;width:84%;height:20%}
@@ -859,7 +874,7 @@ html.room-on,html.room-on body{overflow:hidden}
   .or-deck{left:6%;bottom:9%;width:34%}
   .or-side{height:clamp(40px,7vh,70px)}
   .or-lamp{display:none}
-  .or-host{left:40%;bottom:3%;width:62%}
+  .or-host{left:37%;bottom:3%;width:62%}
   .or-tag{opacity:1;transform:translate(-50%,-100%);font-size:12px;padding:4px 9px;top:-8px}
   .or-hi{left:-8%;top:-12%}
   .or-panel-in{max-height:86vh;border-radius:18px}
@@ -921,7 +936,7 @@ html.room-on,html.room-on body{overflow:hidden}
 .room.day .or-sunbeam{opacity:1}
 .or-sunbeam{position:absolute;left:4%;top:20%;width:42%;height:70%;pointer-events:none;background:linear-gradient(120deg,rgba(255,220,160,.16),transparent 60%);clip-path:polygon(10% 0,48% 0,100% 100%,38% 100%);opacity:0;transition:opacity 1.2s}
 .or-wall,.or-floor,.or-lamp .pool{transition:filter 1.2s,opacity 1.2s}
-@media (max-width:767px),(orientation:portrait) and (max-width:1023px){
+@media (orientation:portrait) and (max-width:1023px),(max-width:767px) and (min-height:501px){
   .or-window{left:66%;top:11%;width:26%;height:15%;box-shadow:0 0 0 5px #1d1610,0 0 0 6px #2e2318}
   .or-gallery{left:6%;top:11%;width:56%;height:19%}
   .or-shelf{left:58%;top:38%;width:36%}
@@ -1681,7 +1696,7 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
     <div class="or-gallery"><span class="or-tag">Paintings</span><button class="or-fr f1" type="button" data-frame="0" aria-label="Painting I"><b><img src="img/paintings/p1-400.webp" alt="" width="400" height="444" loading="lazy"></b></button><button class="or-fr f2" type="button" data-frame="1" aria-label="Painting II"><b><img src="img/paintings/p2-400.webp" alt="" width="400" height="531" loading="lazy"></b></button><button class="or-fr f3" type="button" data-frame="6" aria-label="Painting VII"><b><img src="img/paintings/p7-400.webp" alt="" width="400" height="418" loading="lazy"></b></button></div>
     <button class="or-obj or-tv" type="button" data-open="videos"><span class="or-screen"><i class="or-play"></i></span><span class="or-console"></span><span class="or-tag">Music videos</span></button>
     <div class="or-shelf"><span class="or-tag">Writing</span><span class="or-books"><button class="bk" type="button" data-book="0" style="--h:96%;--w:11%;--sp:#0b0d0e;--sa:#B8473B" aria-label="Seers of the North"><span class="bk-n">I</span></button><button class="bk" type="button" data-book="1" style="--h:84%;--w:10%;--sp:#0c0904;--sa:#D9A441" aria-label="Honey & Flies"><span class="bk-n">II</span></button><button class="bk" type="button" data-book="2" style="--h:90%;--w:12%;--sp:#060c10;--sa:#E3D3A0" aria-label="Never Leave Neverland"><span class="bk-n">III</span></button><button class="bk" type="button" data-book="3" style="--h:78%;--w:9%;--sp:#07080a;--sa:#7FD1D8" aria-label="Through the Noise"><span class="bk-n">IV</span></button><button class="bk" type="button" data-book="4" style="--h:100%;--w:13%;--sp:#0c0605;--sa:#FF7A2A" aria-label="State"><span class="bk-n">V</span></button><button class="bk" type="button" data-book="5" style="--h:86%;--w:10%;--sp:#070910;--sa:#8DB8F0" aria-label="Children of the Glow"><span class="bk-n">VI</span></button><button class="bk" type="button" data-book="6" style="--h:92%;--w:11%;--sp:#060a07;--sa:#9DBF86" aria-label="Killing All of the Trees"><span class="bk-n">VII</span></button><button class="bk" type="button" data-book="7" style="--h:74%;--w:9%;--sp:#0b0907;--sa:#C9A27A" aria-label="What’s Mine Is Yours"><span class="bk-n">VIII</span></button></span><span class="or-plank"></span></div>
-    <button class="or-obj or-deck" type="button" data-open="songs"><span class="or-tt"><i class="or-plat"></i><i class="or-arm"></i></span><span class="or-side"></span><span class="or-tag">Songs</span></button>
+    <button class="or-obj or-deck" type="button" data-open="songs"><span class="or-tt"><i class="or-plat"></i><i class="or-arm"></i></span><span class="or-side"></span><span class="or-tag">Beats</span></button>
     <span class="or-sleeve" aria-hidden="true"></span>
     <button class="or-drawer" type="button" data-open="drawer" aria-label="A small drawer"><i></i></button>
     <div class="or-lamp" aria-hidden="true"><i class="pole"></i><i class="shade"></i><i class="pool"></i></div>
@@ -2236,17 +2251,17 @@ const ROOM={
   ],
   // songs: rename the titles here; files live in media/songs/
   songs:[
-    {title:"Untitled No. 1",src:SONG("lor-84.mp3"),dur:172},
-    {title:"Untitled No. 2",src:SONG("lor-85.mp3"),dur:182},
-    {title:"Untitled No. 3",src:SONG("lor-86.mp3"),dur:167},
-    {title:"Untitled No. 4",src:SONG("lor-87.mp3"),dur:130},
-    {title:"Untitled No. 5",src:SONG("lor-88.mp3"),dur:158},
-    {title:"Untitled No. 6",src:SONG("lor-89.mp3"),dur:173},
-    {title:"Untitled (Cover)",src:SONG("lor-90.mp3"),dur:114},
-    {title:"Studio Selection (Cover) I",src:SONG("lor-91.mp3"),dur:137},
-    {title:"Studio Selection (Cover) II",src:SONG("lor-92.mp3"),dur:130},
-    {title:"Untitled No. 7",src:SONG("lor-93.mp3"),dur:162},
-    {title:"Untitled No. 8",src:SONG("lor-94.mp3"),dur:151}
+    {title:"Beat 01",src:SONG("lor-84.mp3"),dur:172},
+    {title:"Beat 02",src:SONG("lor-85.mp3"),dur:182},
+    {title:"Beat 03",src:SONG("lor-86.mp3"),dur:167},
+    {title:"Beat 04",src:SONG("lor-87.mp3"),dur:130},
+    {title:"Beat 05",src:SONG("lor-88.mp3"),dur:158},
+    {title:"Beat 06",src:SONG("lor-89.mp3"),dur:173},
+    {title:"Beat 07",src:SONG("lor-90.mp3"),dur:114},
+    {title:"Beat 08",src:SONG("lor-91.mp3"),dur:137},
+    {title:"Beat 09",src:SONG("lor-92.mp3"),dur:130},
+    {title:"Beat 10",src:SONG("lor-93.mp3"),dur:162},
+    {title:"Beat 11",src:SONG("lor-94.mp3"),dur:151}
   ],
   // the collection: covers live in img/books/<key>-400|800.webp
   books:[
@@ -2335,7 +2350,7 @@ function panelHTML(kind){
   if(kind&&kind.startsWith("book:")){const n=+kind.slice(5),b=ROOM.books[n];return `<span class="or-kick">The Hidden Library · ${b.num} of ${toRoman(ROOM.books.length)}</span><article class="or-read has-cover"><img class="or-cover" src="${bookSrc(b,800)}" srcset="${bookSrc(b,400)} 400w, ${bookSrc(b,800)} 800w" sizes="(max-width:600px) 40vw, 260px" width="800" height="1200" alt="Cover of ${esc(b.title)} by Lorcán O’Neill"><div><h3 class="or-h">${esc(b.title)}</h3>${b.sub?`<p class="or-sub">${esc(b.sub)}</p>`:""}<p class="or-p">${esc(b.about)}</p></div></article>`+(b.excerpt&&b.excerpt.length?`<div class="or-exc">${b.excerpt.map(x=>`<p>${esc(x).replace(/\*([^*]+)\*/g,"<em>$1</em>")}</p>`).join("")}</div>`:empty("Excerpt coming soon.","A short passage from the book will live here."))+`<div class="or-shelfrow" aria-label="The collection">${ROOM.books.map((x,i)=>`<button type="button" data-goto-book="${i}" class="${i===n?"on":""}" aria-label="${esc(x.title)}"><img src="${bookSrc(x,400)}" alt="" width="400" height="600" loading="lazy"></button>`).join("")}</div>`}
   if(kind&&kind.startsWith("frame:")){const i=+kind.slice(6),p=ROOM.paintings[i],n=ROOM.paintings.length;return `<span class="or-kick">Private view · ${toRoman(i+1)} of ${toRoman(n)}</span>`+(p?`<h3 class="or-h">${esc(p.title)}</h3><p class="or-p">By Lorcán O’Neill.</p><div class="pv"><button class="pv-nav" type="button" data-goto-pt="${(i+n-1)%n}" aria-label="Previous painting">‹</button><figure class="gold pv-art" style="--ar:${p.w}/${p.h}"><img src="${ptSrc(p,1000)}" srcset="${ptSrc(p,400)} 400w, ${ptSrc(p,1000)} 1000w" sizes="(max-width:600px) 80vw, 560px" width="${p.w}" height="${p.h}" alt="${esc(p.title)}, a painting by Lorcán O’Neill"></figure><button class="pv-nav" type="button" data-goto-pt="${(i+1)%n}" aria-label="Next painting">›</button></div><div class="or-shelfrow pv-row" aria-label="All paintings">${ROOM.paintings.map((x,k)=>`<button type="button" data-goto-pt="${k}" class="gold${k===i?" on":""}" aria-label="${esc(x.title)}"><img src="${ptSrc(x,400)}" alt="" loading="lazy"></button>`).join("")}</div>`:`<h3 class="or-h">An empty frame</h3>`+empty("Nothing hung here yet.","The paintings are coming soon."))}
   if(kind==="books"){return `<span class="or-kick">On the shelf</span><h3 class="or-h">Writing</h3><div class="or-booklist">${ROOM.books.map(b=>`<article class="or-book"><img class="cv" src="${bookSrc(b,400)}" alt="" width="400" height="600" loading="lazy"><div><h4>${esc(b.title)}</h4><p>${esc(b.about)}</p>${b.excerpt&&b.excerpt.length?`<p class="ex">${esc(b.excerpt[0])}</p>`:`<p class="ex">Excerpt coming soon.</p>`}</div></article>`).join("")}</div>`}
-  if(kind==="songs"){const v=ROOM.songs;return `<span class="or-kick">On the record player</span><h3 class="or-h">Songs</h3>`+(v.length?`<div class="or-tracks">${v.map((x,i)=>`<button class="or-track" data-song="${i}"><span class="pp">▶</span><span>${esc(x.title)}</span><span class="tm">${x.dur?fmt(x.dur):"–"}</span></button>`).join("")}</div><div class="or-bar"><i id="orProg"></i></div>`:empty("Still being pressed.","Songs will be playable here soon. Nothing plays until you press play."))}
+  if(kind==="songs"){const v=ROOM.songs;return `<span class="or-kick">On the record player</span><h3 class="or-h">Beats</h3>`+(v.length?`<div class="or-tracks">${v.map((x,i)=>`<button class="or-track" data-song="${i}"><span class="pp">▶</span><span>${esc(x.title)}</span><span class="tm">${x.dur?fmt(x.dur):"–"}</span></button>`).join("")}</div><div class="or-bar"><i id="orProg"></i></div>`:empty("Still being pressed.","Beats will be playable here soon. Nothing plays until you press play."))}
 }
 function openPanel(kind){
   orBody.innerHTML=panelHTML(kind);orPanel.classList.remove("clear");orPanel.hidden=false;$("#orX").focus({preventScroll:true});
