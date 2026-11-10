@@ -144,6 +144,20 @@ function copyEmail(){
   try{navigator.clipboard.writeText(EMAIL).then(done,fallback)}catch(e){fallback()}
 }
 $("#copyBtn")&&$("#copyBtn")?.addEventListener("click",copyEmail);
+// Contact form (Web3Forms)
+(function(){const f=document.getElementById("talkForm");if(!f)return;const st=document.getElementById("tfStatus"),btn=f.querySelector(".tf-send"),lbl=btn.querySelector(".tf-l"),done=document.getElementById("tfDone");
+f.addEventListener("submit",async e=>{e.preventDefault();st.className="tf-status";st.textContent="";
+  let bad=null;f.querySelectorAll("input[required],textarea[required]").forEach(i=>{const ok=i.value.trim()&&i.checkValidity();i.setAttribute("aria-invalid",String(!ok));if(!ok&&!bad)bad=i});
+  if(bad){st.className="tf-status err";st.textContent=bad.type==="email"&&bad.value.trim()?"That email address doesn't look right.":"Please fill in your name, email and message.";bad.focus();return}
+  if(f.botcheck.checked)return;
+  btn.disabled=true;lbl.textContent="Sending…";
+  try{const r=await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(f)))});const d=await r.json().catch(()=>({}));
+    if(r.ok&&d.success!==false){f.hidden=true;done.hidden=false;done.focus();f.reset()}else throw new Error(d.message||"failed")}
+  catch(err){st.className="tf-status err";st.textContent="Something went wrong. Please try again, or email lorcancreative@gmail.com.";btn.disabled=false;lbl.textContent="Send message"}
+});
+f.addEventListener("input",e=>{if(e.target.getAttribute("aria-invalid")==="true"&&e.target.value.trim()&&e.target.checkValidity())e.target.setAttribute("aria-invalid","false")});
+})();
+
 $("#toTop")?.addEventListener("click",()=>window.scrollTo({top:0,behavior:reduced?"auto":"smooth"}));
 
 

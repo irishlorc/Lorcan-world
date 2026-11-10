@@ -1529,3 +1529,30 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
 .wk-go{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-weight:600;color:var(--ink)}.wk-go svg{width:16px;height:16px}
 @media (max-width:767px){.wk-split{grid-template-columns:minmax(0,1fr)}}
 .bc-link{display:block;border-radius:inherit;cursor:pointer}.bc-link:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+
+/* Contact form */
+.talk-grid{grid-template-areas:"head fig" "lede fig" "form fig" "mail fig"}
+.talk-form,.tf-done{grid-area:form;max-width:40rem;width:100%}
+.tf-trap{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.tf-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,28px)}
+.tf-f{display:grid;gap:8px;margin-bottom:clamp(16px,1.8vw,24px)}
+.tf-f span{font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.tf-f input,.tf-f textarea{width:100%;font:inherit;font-size:18px;color:var(--ink);background:rgba(255,255,255,.035);border:1px solid var(--line-2);border-radius:12px;padding:14px 16px;transition:border-color .25s,background .25s;resize:vertical;min-height:52px}
+.tf-f textarea{min-height:140px;line-height:1.55}
+.tf-f input:focus,.tf-f textarea:focus{outline:none;border-color:var(--accent);background:rgba(255,106,0,.05)}
+.tf-f input[aria-invalid="true"],.tf-f textarea[aria-invalid="true"]{border-color:#e5484d}
+.tf-foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px}
+.tf-send[disabled]{opacity:.6;cursor:progress}
+.tf-status{margin:0;font-size:var(--fs-small);color:var(--muted)}
+.tf-status.err{color:#ff8a7a}
+.tf-done{padding:clamp(22px,2.6vw,34px);border:1px solid var(--line-2);border-radius:var(--r-lg);background:rgba(255,106,0,.04)}
+.tf-done p{margin:0;color:var(--muted)}.tf-done .tf-done-h{font-family:var(--f-display);font-size:clamp(26px,2.6vw,36px);letter-spacing:-.03em;color:var(--ink);margin-bottom:8px}
+.talk-mail{grid-area:mail;margin-top:clamp(14px,2vw,26px);padding-top:clamp(20px,2.4vw,30px);border-top:1px solid var(--line-2);max-width:40rem}
+.tf-or{flex-basis:100%;margin:0;font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.talk-mail .talk-addr{font-size:clamp(18px,1.9vw,26px)}
+@media (max-width:767px){
+  .talk-grid{grid-template-areas:"head fig" "lede lede" "form form" "mail mail"}
+  .tf-row{grid-template-columns:1fr;gap:0}
+  .tf-f input,.tf-f textarea{font-size:16px}
+  .talk-mail .talk-addr{font-size:20px}
+}

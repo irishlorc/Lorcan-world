@@ -418,8 +418,24 @@
   <section class="sec talk">
     <div class="wrap talk-grid">
       <h1 class="display talk-h rise"><span class="ln">Let's</span> <span class="ln"><em class="acc">talk.</em></span></h1>
-      <p class="lede talk-lede">A project, a role or an idea worth discussing. Email is the best way to reach me.</p>
-      <div class="talk-mail">
+      <p class="lede talk-lede">A project, a role or an idea worth discussing. Send a message below and it comes straight to me.</p>
+      <form class="talk-form" id="talkForm" novalidate>
+        <input type="hidden" name="access_key" value="821ac375-4fac-471f-9be4-5f17db039c64">
+        <input type="hidden" name="subject" value="New message from lorcan.space">
+        <input type="hidden" name="from_name" value="lorcan.space">
+        <input type="checkbox" name="botcheck" class="tf-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="tf-row">
+          <label class="tf-f"><span>Name</span><input type="text" name="name" autocomplete="name" required maxlength="120"></label>
+          <label class="tf-f"><span>Email</span><input type="email" name="email" autocomplete="email" required maxlength="200"></label>
+        </div>
+        <label class="tf-f"><span>Message</span><textarea name="message" rows="4" required maxlength="5000"></textarea></label>
+        <div class="tf-foot">
+          <button class="btn btn-primary tf-send" type="submit"><span class="tf-l">Send message</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <p class="tf-status" id="tfStatus" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+      <div class="tf-done" id="tfDone" hidden tabindex="-1"><p class="tf-done-h">Thanks, <em class="acc">message sent.</em></p><p>I'll get back to you soon.</p></div>
+      <div class="talk-mail"><p class="tf-or">Or email directly</p>
         <a class="talk-addr" id="emailText" href="mailto:lorcancreative@gmail.com" target="_blank" rel="noopener">lorcancreative@gmail.com</a>
         <a class="talk-copy" href="mailto:lorcancreative@gmail.com?subject=Hello%20Lor" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-arrow"/></svg><span>Send an email</span></a>
         <button class="talk-copy" id="copyBtn" type="button"><svg aria-hidden="true"><use href="#i-copy"/></svg><span>Copy email</span></button>

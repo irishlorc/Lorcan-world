@@ -1545,6 +1545,33 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
 .wk-go{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font-weight:600;color:var(--ink)}.wk-go svg{width:16px;height:16px}
 @media (max-width:767px){.wk-split{grid-template-columns:minmax(0,1fr)}}
 .bc-link{display:block;border-radius:inherit;cursor:pointer}.bc-link:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+
+/* Contact form */
+.talk-grid{grid-template-areas:"head fig" "lede fig" "form fig" "mail fig"}
+.talk-form,.tf-done{grid-area:form;max-width:40rem;width:100%}
+.tf-trap{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.tf-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,28px)}
+.tf-f{display:grid;gap:8px;margin-bottom:clamp(16px,1.8vw,24px)}
+.tf-f span{font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.tf-f input,.tf-f textarea{width:100%;font:inherit;font-size:18px;color:var(--ink);background:rgba(255,255,255,.035);border:1px solid var(--line-2);border-radius:12px;padding:14px 16px;transition:border-color .25s,background .25s;resize:vertical;min-height:52px}
+.tf-f textarea{min-height:140px;line-height:1.55}
+.tf-f input:focus,.tf-f textarea:focus{outline:none;border-color:var(--accent);background:rgba(255,106,0,.05)}
+.tf-f input[aria-invalid="true"],.tf-f textarea[aria-invalid="true"]{border-color:#e5484d}
+.tf-foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px 22px}
+.tf-send[disabled]{opacity:.6;cursor:progress}
+.tf-status{margin:0;font-size:var(--fs-small);color:var(--muted)}
+.tf-status.err{color:#ff8a7a}
+.tf-done{padding:clamp(22px,2.6vw,34px);border:1px solid var(--line-2);border-radius:var(--r-lg);background:rgba(255,106,0,.04)}
+.tf-done p{margin:0;color:var(--muted)}.tf-done .tf-done-h{font-family:var(--f-display);font-size:clamp(26px,2.6vw,36px);letter-spacing:-.03em;color:var(--ink);margin-bottom:8px}
+.talk-mail{grid-area:mail;margin-top:clamp(14px,2vw,26px);padding-top:clamp(20px,2.4vw,30px);border-top:1px solid var(--line-2);max-width:40rem}
+.tf-or{flex-basis:100%;margin:0;font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.talk-mail .talk-addr{font-size:clamp(18px,1.9vw,26px)}
+@media (max-width:767px){
+  .talk-grid{grid-template-areas:"head fig" "lede lede" "form form" "mail mail"}
+  .tf-row{grid-template-columns:1fr;gap:0}
+  .tf-f input,.tf-f textarea{font-size:16px}
+  .talk-mail .talk-addr{font-size:20px}
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -2051,8 +2078,24 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
   <section class="sec talk">
     <div class="wrap talk-grid">
       <h1 class="display talk-h rise"><span class="ln">Let's</span> <span class="ln"><em class="acc">talk.</em></span></h1>
-      <p class="lede talk-lede">A project, a role or an idea worth discussing. Email is the best way to reach me.</p>
-      <div class="talk-mail">
+      <p class="lede talk-lede">A project, a role or an idea worth discussing. Send a message below and it comes straight to me.</p>
+      <form class="talk-form" id="talkForm" novalidate>
+        <input type="hidden" name="access_key" value="821ac375-4fac-471f-9be4-5f17db039c64">
+        <input type="hidden" name="subject" value="New message from lorcan.space">
+        <input type="hidden" name="from_name" value="lorcan.space">
+        <input type="checkbox" name="botcheck" class="tf-trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="tf-row">
+          <label class="tf-f"><span>Name</span><input type="text" name="name" autocomplete="name" required maxlength="120"></label>
+          <label class="tf-f"><span>Email</span><input type="email" name="email" autocomplete="email" required maxlength="200"></label>
+        </div>
+        <label class="tf-f"><span>Message</span><textarea name="message" rows="4" required maxlength="5000"></textarea></label>
+        <div class="tf-foot">
+          <button class="btn btn-primary tf-send" type="submit"><span class="tf-l">Send message</span> <svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+          <p class="tf-status" id="tfStatus" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+      <div class="tf-done" id="tfDone" hidden tabindex="-1"><p class="tf-done-h">Thanks, <em class="acc">message sent.</em></p><p>I'll get back to you soon.</p></div>
+      <div class="talk-mail"><p class="tf-or">Or email directly</p>
         <a class="talk-addr" id="emailText" href="mailto:lorcancreative@gmail.com" target="_blank" rel="noopener">lorcancreative@gmail.com</a>
         <a class="talk-copy" href="mailto:lorcancreative@gmail.com?subject=Hello%20Lor" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-arrow"/></svg><span>Send an email</span></a>
         <button class="talk-copy" id="copyBtn" type="button"><svg aria-hidden="true"><use href="#i-copy"/></svg><span>Copy email</span></button>
@@ -2273,6 +2316,20 @@ function copyEmail(){
   try{navigator.clipboard.writeText(EMAIL).then(done,fallback)}catch(e){fallback()}
 }
 $("#copyBtn")&&$("#copyBtn")?.addEventListener("click",copyEmail);
+// Contact form (Web3Forms)
+(function(){const f=document.getElementById("talkForm");if(!f)return;const st=document.getElementById("tfStatus"),btn=f.querySelector(".tf-send"),lbl=btn.querySelector(".tf-l"),done=document.getElementById("tfDone");
+f.addEventListener("submit",async e=>{e.preventDefault();st.className="tf-status";st.textContent="";
+  let bad=null;f.querySelectorAll("input[required],textarea[required]").forEach(i=>{const ok=i.value.trim()&&i.checkValidity();i.setAttribute("aria-invalid",String(!ok));if(!ok&&!bad)bad=i});
+  if(bad){st.className="tf-status err";st.textContent=bad.type==="email"&&bad.value.trim()?"That email address doesn't look right.":"Please fill in your name, email and message.";bad.focus();return}
+  if(f.botcheck.checked)return;
+  btn.disabled=true;lbl.textContent="Sending…";
+  try{const r=await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(f)))});const d=await r.json().catch(()=>({}));
+    if(r.ok&&d.success!==false){f.hidden=true;done.hidden=false;done.focus();f.reset()}else throw new Error(d.message||"failed")}
+  catch(err){st.className="tf-status err";st.textContent="Something went wrong. Please try again, or email lorcancreative@gmail.com.";btn.disabled=false;lbl.textContent="Send message"}
+});
+f.addEventListener("input",e=>{if(e.target.getAttribute("aria-invalid")==="true"&&e.target.value.trim()&&e.target.checkValidity())e.target.setAttribute("aria-invalid","false")});
+})();
+
 $("#toTop")?.addEventListener("click",()=>window.scrollTo({top:0,behavior:reduced?"auto":"smooth"}));
 
 
