@@ -2323,7 +2323,7 @@ f.addEventListener("submit",async e=>{e.preventDefault();st.className="tf-status
   if(bad){st.className="tf-status err";st.textContent=bad.type==="email"&&bad.value.trim()?"That email address doesn't look right.":"Please fill in your name, email and message.";bad.focus();return}
   if(f.botcheck.checked)return;
   btn.disabled=true;lbl.textContent="Sending…";
-  try{const r=await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(Object.fromEntries(new FormData(f)))});const d=await r.json().catch(()=>({}));
+  try{const r=await fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify((()=>{const o=Object.fromEntries(new FormData(f));const n=String(o.name||"").trim().replace(/\s+/g," ").slice(0,60);o.subject=n?`Message from ${n} · lorcan.space`:"New message · lorcan.space";o.replyto=o.email;return o})())});const d=await r.json().catch(()=>({}));
     if(r.ok&&d.success!==false){f.hidden=true;done.hidden=false;done.focus();f.reset()}else throw new Error(d.message||"failed")}
   catch(err){st.className="tf-status err";st.textContent="Something went wrong. Please try again, or email lorcancreative@gmail.com.";btn.disabled=false;lbl.textContent="Send message"}
 });
