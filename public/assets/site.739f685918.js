@@ -295,7 +295,7 @@ const NOTES={
   experience:[["#yrs","Counts up. Every time. Sorry."],[".now","Current. Not a case study."]],
   work:[["h1","No captions. The cards do the talking."],[".bc-grid","Ten cards. Identical sizes. I measured."]],
   thoughts:[["h1","Short notes. Written the way I'd say them."],[".filters","Real filters. They actually filter."]],
-  contact:[["h1","Big type, one address, zero forms."],[".talk-fig","Wave at him. He waves back."]],
+  contact:[["h1","Big type, one form, one address."],[".talk-fig","Wave at him. He waves back."]],
   lost:[["h1","You're not lost. The page is."],[".lost-door","It doesn't go anywhere. Honestly."]],
   post:[["h1","Max 700px wide. Your eyes will thank me."]]
 };
