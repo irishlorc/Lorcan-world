@@ -52,7 +52,7 @@ def project(i, p):
     <div class="wide ws-g">
       <div class="ws-copy rv">
         <p class="ws-n"><span>{n}</span>{E(p["category"])}</p>
-        <h2 class="ws-name" id="ws-h-{k}">{E(p["name"])}</h2>
+        <h2 class="ws-name{" ws-name--long" if len(p["name"])>12 else ""}" id="ws-h-{k}">{"<br>".join(E(w) for w in p["name"].split(" ")) if len(p["name"])>12 else E(p["name"])}</h2>
         <p class="ws-sum">{E(p["summary"])}</p>
         <div class="ws-act">
           <a class="btn btn-primary ws-visit" href="{E(p["url"])}" target="_blank" rel="noopener">Visit the live site <svg class="ne" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr"> (opens in a new tab)</span></a>
@@ -109,12 +109,11 @@ def tail():
   </section>
   <section class="sec wsc">
     <div class="wide">
-      <div class="wsc-card rv">
+      <div class="wsc-row rv">
         <h2 class="display wsc-h">Your website could be <em class="acc">next.</em></h2>
-        <p class="lede">Have something in mind? Let's make something worth looking at.</p>
-        <div class="wsc-act">
+        <div class="wsc-side">
+          <p class="lede">Have something in mind? Let's make something worth looking at.</p>
           <a class="btn btn-primary" href="#contact">Start a conversation {ARROW}</a>
-          <a class="wsc-mail" href="mailto:lorcancreative@gmail.com">lorcancreative@gmail.com</a>
         </div>
       </div>
     </div>
@@ -127,7 +126,7 @@ CSS = r'''
 .wsx-hero-g{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,5vw,96px);align-items:center}
 .wsx-hero .head{max-width:34rem}
 .wsx-fan{position:relative;aspect-ratio:16/12;max-width:760px;width:100%;justify-self:end}
-.wsx-fan i{position:absolute;width:72%;left:calc(var(--n) * 9.3%);top:calc(var(--n) * 11%);border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -28px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.08);transition:transform .7s var(--e-out),opacity .5s,filter .5s;animation:wsxIn 1.1s var(--e-out) both;animation-delay:calc(.15s + var(--n) * .12s);z-index:calc(var(--n) + 1)}
+.wsx-fan i{position:absolute;width:68%;left:calc(var(--n) * 8%);top:calc(var(--n) * 9.5%);border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -28px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.08);transition:transform .7s var(--e-out),opacity .5s,filter .5s;animation:wsxIn 1.1s var(--e-out) both;animation-delay:calc(.15s + var(--n) * .12s);z-index:calc(var(--n) + 1)}
 .wsx-fan i img{display:block;width:100%;height:auto}
 .wsx-fan[data-on] i{opacity:.35;filter:saturate(.6)}
 .wsx-fan[data-on] i.on{opacity:1;filter:none;transform:translateY(-14px) scale(1.03);z-index:9}
@@ -158,6 +157,7 @@ CSS = r'''
 .ws-n{display:flex;gap:14px;align-items:baseline;margin:0;font-size:var(--fs-small);color:var(--muted)}
 .ws-n span{font-family:var(--f-serif);font-style:italic;color:var(--accent);font-size:20px}
 .ws-name{margin:14px 0 0;font-family:var(--f-display);font-weight:600;font-size:clamp(52px,7vw,112px);letter-spacing:-.05em;line-height:.92;color:var(--ink)}
+.ws-name--long{font-size:clamp(42px,5.2vw,88px)}
 .ws-tag{display:inline-flex;align-items:center;gap:10px;margin:22px 0 0;padding:7px 14px;border:1px solid var(--line-2);border-radius:999px;font-size:var(--fs-label);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .ws-tag i{width:7px;height:7px;border-radius:50%;background:var(--ws-acc)}
 .ws-sum{margin:22px 0 0;font-size:clamp(19px,1.6vw,24px);line-height:1.45;color:var(--ink);max-width:30ch;text-wrap:pretty}
@@ -239,13 +239,12 @@ CSS = r'''
 .wsp-big{margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(46px,6.4vw,104px);letter-spacing:-.05em;line-height:.95;color:var(--ink);text-wrap:balance}
 .wsp-sub{margin:0;color:var(--muted);font-size:clamp(17px,1.3vw,20px);line-height:1.6;max-width:30ch}
 /* cta */
-.wsc{padding-top:var(--ws-gap);padding-bottom:clamp(40px,6vw,96px)}
-.wsc-card{position:relative;overflow:hidden;border-radius:var(--r-lg);border:1px solid var(--line-2);padding:clamp(40px,7vw,120px) clamp(24px,6vw,110px);background:radial-gradient(60% 90% at 100% 100%,rgba(255,106,0,.16),transparent 70%),radial-gradient(50% 60% at 0% 0%,rgba(255,255,255,.035),transparent 70%),var(--bg-2)}
-.wsc-h{margin:0;max-width:12ch}
-.wsc-card .lede{margin-top:22px;max-width:34ch}
-.wsc-act{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:36px}
-.wsc-mail{color:var(--ink);text-decoration:none;font-size:clamp(17px,1.4vw,20px);border-bottom:1px solid var(--accent);padding-bottom:3px}
-.wsc-mail:hover{color:var(--accent)}
+.wsc{padding-top:var(--ws-gap);padding-bottom:clamp(72px,9vw,150px)}
+.wsc-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:32px clamp(40px,6vw,110px);align-items:end;border-top:1px solid var(--line-2);padding-top:clamp(40px,5vw,72px)}
+.wsc-h{margin:0;max-width:11ch}
+.wsc-side{display:flex;flex-direction:column;align-items:flex-start;gap:24px;padding-bottom:.6em}
+.wsc-side .lede{margin:0;max-width:30ch}
+@media (max-width:820px){.wsc-row{grid-template-columns:minmax(0,1fr)}.wsc-side{padding-bottom:0}}
 @media (max-width:1100px){
   .wsp-steps{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:48px}
   .wsp-steps::before,.wsp-steps::after{display:none}

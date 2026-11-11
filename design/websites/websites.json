@@ -1,93 +1,107 @@
 {
-  "_readme": "Projects shown on lorcan.space/websites, in order. To add one: capture screenshots into img/web/ (see build_websites.py), add an entry here, then run build_websites.py and build.mjs. layout: one of split, stage, mirror, cinema.",
-  "projects": [
+ "_readme": "Projects shown on lorcan.space/websites, in order. To add one: capture screenshots into img/web/ (see build_websites.py), add an entry here, then run build_websites.py and build.mjs. layout: one of split, stage, mirror, cinema.",
+ "projects": [
+  {
+   "key": "oneill",
+   "name": "O'Neill Construction",
+   "label": "",
+   "category": "Construction · Ireland",
+   "url": "https://oneill-construction-ireland.vercel.app/",
+   "host": "oneill-construction-ireland.vercel.app",
+   "built": "Next.js, Tailwind CSS and Motion",
+   "accent": "#ff572f",
+   "layout": "mirror",
+   "summary": "A website for an Irish construction group working across commercial, residential, industrial and civil projects.",
+   "thinking": "",
+   "details": []
+  },
+  {
+   "key": "brandit",
+   "name": "Brandit",
+   "label": "Website concept",
+   "category": "Promotional merchandise · E-commerce",
+   "url": "https://brandit-lorcans-concept.vercel.app/",
+   "host": "brandit-lorcans-concept.vercel.app",
+   "built": "Hand-built HTML, CSS and JavaScript",
+   "accent": "#1a73e8",
+   "layout": "split",
+   "summary": "A campaign-style home page and an enquiry-only shop for a Dublin promotional products company.",
+   "thinking": "Built to sell without a checkout: browse the range, add items to an enquiry list and ask for a quote with a mock-up of your logo. Bright, product-first and quick to scan.",
+   "details": [
     {
-      "key": "brandit",
-      "name": "Brandit",
-      "label": "Website concept",
-      "category": "Promotional merchandise · E-commerce",
-      "url": "https://brandit-lorcans-concept.vercel.app/",
-      "host": "brandit-lorcans-concept.vercel.app",
-      "built": "Hand-built HTML, CSS and JavaScript",
-      "accent": "#1a73e8",
-      "layout": "split",
-      "summary": "A campaign-style home page and an enquiry-only shop for a Dublin promotional products company.",
-      "thinking": "Built to sell without a checkout: browse the range, add items to an enquiry list and ask for a quote with a mock-up of your logo. Bright, product-first and quick to scan.",
-      "details": [
-        {
-          "img": "brandit-cats",
-          "cap": "Range at a glance: six categories, one tap each"
-        },
-        {
-          "img": "brandit-how",
-          "cap": "The enquiry flow, explained in three steps"
-        }
-      ]
+     "img": "brandit-cats",
+     "cap": "Range at a glance: six categories, one tap each"
     },
     {
-      "key": "whitestone",
-      "name": "Whitestone",
-      "label": "Website concept",
-      "category": "Specialist fabric care · UAE",
-      "url": "https://whitestone-concept.vercel.app/",
-      "host": "whitestone-concept.vercel.app",
-      "built": "Next.js, TypeScript and Tailwind CSS",
-      "accent": "#8a9466",
-      "layout": "stage",
-      "summary": "A premium landing page for a specialist fabric-care service in the UAE.",
-      "thinking": "Editorial serif typography, arched imagery and a muted olive palette, paced like a magazine. The page had to feel as considered as the fabrics the business looks after.",
-      "details": [
-        {
-          "img": "whitestone-about",
-          "cap": "Care is in the details: the philosophy section"
-        },
-        {
-          "img": "whitestone-approach",
-          "cap": "The process, set in deep olive"
-        }
-      ]
-    },
-    {
-      "key": "hymonic",
-      "name": "Hymonic",
-      "label": "Prototype",
-      "category": "Industrial hydrogen · Deep tech",
-      "url": "https://hymonic-prototype.vercel.app/",
-      "host": "hymonic-prototype.vercel.app",
-      "built": "Hand-built HTML and CSS",
-      "accent": "#8b5cf6",
-      "layout": "mirror",
-      "summary": "A product website for modular ammonia cracking that delivers hydrogen on site.",
-      "thinking": "Dense engineering made readable. The reaction, the output range and the system profile each sit in one card, so a buyer understands the technology before reading a paragraph.",
-      "details": [
-        {
-          "img": "hymonic-tech",
-          "cap": "The containerised system, with the numbers that matter beside it"
-        }
-      ]
-    },
-    {
-      "key": "flyingfish",
-      "name": "Flying Fish",
-      "label": "Independent redesign concept",
-      "category": "Maritime technology · Netherlands",
-      "url": "https://flying-fish-pi.vercel.app/",
-      "host": "flying-fish-pi.vercel.app",
-      "built": "Hand-built HTML, CSS and JavaScript, with a Three.js 3D model",
-      "accent": "#5fd4c2",
-      "layout": "cinema",
-      "summary": "An independent take on the website of a Delft company building hydrofoil systems and water mobility software.",
-      "thinking": "Dark, cinematic and full-bleed, with an interactive 3D vessel that shows how a boat lifts onto its foils. The projects read like case studies, not a logo wall.",
-      "details": [
-        {
-          "img": "flyingfish-feat1",
-          "cap": "Hydrofoil systems, introduced with a concept render"
-        },
-        {
-          "img": "flyingfish-proven",
-          "cap": "Projects presented as stories, each with its key figure"
-        }
-      ]
+     "img": "brandit-how",
+     "cap": "The enquiry flow, explained in three steps"
     }
-  ]
+   ]
+  },
+  {
+   "key": "whitestone",
+   "name": "Whitestone",
+   "label": "Website concept",
+   "category": "Specialist fabric care · UAE",
+   "url": "https://whitestone-concept.vercel.app/",
+   "host": "whitestone-concept.vercel.app",
+   "built": "Next.js, TypeScript and Tailwind CSS",
+   "accent": "#8a9466",
+   "layout": "stage",
+   "summary": "A premium landing page for a specialist fabric-care service in the UAE.",
+   "thinking": "Editorial serif typography, arched imagery and a muted olive palette, paced like a magazine. The page had to feel as considered as the fabrics the business looks after.",
+   "details": [
+    {
+     "img": "whitestone-about",
+     "cap": "Care is in the details: the philosophy section"
+    },
+    {
+     "img": "whitestone-approach",
+     "cap": "The process, set in deep olive"
+    }
+   ]
+  },
+  {
+   "key": "hymonic",
+   "name": "Hymonic",
+   "label": "Prototype",
+   "category": "Industrial hydrogen · Deep tech",
+   "url": "https://hymonic-prototype.vercel.app/",
+   "host": "hymonic-prototype.vercel.app",
+   "built": "Hand-built HTML and CSS",
+   "accent": "#8b5cf6",
+   "layout": "mirror",
+   "summary": "A product website for modular ammonia cracking that delivers hydrogen on site.",
+   "thinking": "Dense engineering made readable. The reaction, the output range and the system profile each sit in one card, so a buyer understands the technology before reading a paragraph.",
+   "details": [
+    {
+     "img": "hymonic-tech",
+     "cap": "The containerised system, with the numbers that matter beside it"
+    }
+   ]
+  },
+  {
+   "key": "flyingfish",
+   "name": "Flying Fish",
+   "label": "Independent redesign concept",
+   "category": "Maritime technology · Netherlands",
+   "url": "https://flying-fish-pi.vercel.app/",
+   "host": "flying-fish-pi.vercel.app",
+   "built": "Hand-built HTML, CSS and JavaScript, with a Three.js 3D model",
+   "accent": "#5fd4c2",
+   "layout": "cinema",
+   "summary": "An independent take on the website of a Delft company building hydrofoil systems and water mobility software.",
+   "thinking": "Dark, cinematic and full-bleed, with an interactive 3D vessel that shows how a boat lifts onto its foils. The projects read like case studies, not a logo wall.",
+   "details": [
+    {
+     "img": "flyingfish-feat1",
+     "cap": "Hydrofoil systems, introduced with a concept render"
+    },
+    {
+     "img": "flyingfish-proven",
+     "cap": "Projects presented as stories, each with its key figure"
+    }
+   ]
+  }
+ ]
 }
