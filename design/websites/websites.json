@@ -47,7 +47,7 @@
    "host": "whitestone-concept.vercel.app",
    "built": "Next.js, TypeScript and Tailwind CSS",
    "accent": "#8a9466",
-   "layout": "stage",
+   "layout": "mirror",
    "summary": "A premium landing page for a specialist fabric-care service in the UAE.",
    "thinking": "Editorial serif typography, arched imagery and a muted olive palette, paced like a magazine. The page had to feel as considered as the fabrics the business looks after.",
    "details": [
@@ -70,7 +70,7 @@
    "host": "hymonic-prototype.vercel.app",
    "built": "Hand-built HTML and CSS",
    "accent": "#8b5cf6",
-   "layout": "mirror",
+   "layout": "split",
    "summary": "A product website for modular ammonia cracking that delivers hydrogen on site.",
    "thinking": "Dense engineering made readable. The reaction, the output range and the system profile each sit in one card, so a buyer understands the technology before reading a paragraph.",
    "details": [
@@ -89,7 +89,7 @@
    "host": "flying-fish-pi.vercel.app",
    "built": "Hand-built HTML, CSS and JavaScript, with a Three.js 3D model",
    "accent": "#5fd4c2",
-   "layout": "cinema",
+   "layout": "mirror",
    "summary": "An independent take on the website of a Delft company building hydrofoil systems and water mobility software.",
    "thinking": "Dark, cinematic and full-bleed, with an interactive 3D vessel that shows how a boat lifts onto its foils. The projects read like case studies, not a logo wall.",
    "details": [

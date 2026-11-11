@@ -1602,6 +1602,8 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
 
 
 
+
+
 /* ================= Websites page ================= */
 .page[data-page="websites"]{--ws-gap:clamp(96px,12vw,200px)}
 .wsx-hero-g{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,5vw,96px);align-items:center}
@@ -1637,8 +1639,8 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
 .ws--cinema .ws-stage{order:-1}
 .ws-n{display:flex;gap:14px;align-items:baseline;margin:0;font-size:var(--fs-small);color:var(--muted)}
 .ws-n span{font-family:var(--f-serif);font-style:italic;color:var(--accent);font-size:20px}
-.ws-name{margin:14px 0 0;font-family:var(--f-display);font-weight:600;font-size:clamp(52px,7vw,112px);letter-spacing:-.05em;line-height:.92;color:var(--ink)}
-.ws-name--long{font-size:clamp(42px,5.2vw,88px)}
+.ws-name{margin:14px 0 0;font-family:var(--f-display);font-weight:600;font-size:clamp(52px,6vw,88px);letter-spacing:-.05em;line-height:.92;color:var(--ink)}
+.ws-name--long{font-size:clamp(42px,5.2vw,74px)}
 .ws-tag{display:inline-flex;align-items:center;gap:10px;margin:22px 0 0;padding:7px 14px;border:1px solid var(--line-2);border-radius:999px;font-size:var(--fs-label);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .ws-tag i{width:7px;height:7px;border-radius:50%;background:var(--ws-acc)}
 .ws-sum{margin:22px 0 0;font-size:clamp(19px,1.6vw,24px);line-height:1.45;color:var(--ink);max-width:30ch;text-wrap:pretty}

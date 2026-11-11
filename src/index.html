@@ -1618,6 +1618,8 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
 
 
 
+
+
 /* ================= Websites page ================= */
 .page[data-page="websites"]{--ws-gap:clamp(96px,12vw,200px)}
 .wsx-hero-g{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,5vw,96px);align-items:center}
@@ -1653,8 +1655,8 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
 .ws--cinema .ws-stage{order:-1}
 .ws-n{display:flex;gap:14px;align-items:baseline;margin:0;font-size:var(--fs-small);color:var(--muted)}
 .ws-n span{font-family:var(--f-serif);font-style:italic;color:var(--accent);font-size:20px}
-.ws-name{margin:14px 0 0;font-family:var(--f-display);font-weight:600;font-size:clamp(52px,7vw,112px);letter-spacing:-.05em;line-height:.92;color:var(--ink)}
-.ws-name--long{font-size:clamp(42px,5.2vw,88px)}
+.ws-name{margin:14px 0 0;font-family:var(--f-display);font-weight:600;font-size:clamp(52px,6vw,88px);letter-spacing:-.05em;line-height:.92;color:var(--ink)}
+.ws-name--long{font-size:clamp(42px,5.2vw,74px)}
 .ws-tag{display:inline-flex;align-items:center;gap:10px;margin:22px 0 0;padding:7px 14px;border:1px solid var(--line-2);border-radius:999px;font-size:var(--fs-label);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .ws-tag i{width:7px;height:7px;border-radius:50%;background:var(--ws-acc)}
 .ws-sum{margin:22px 0 0;font-size:clamp(19px,1.6vw,24px);line-height:1.45;color:var(--ink);max-width:30ch;text-wrap:pretty}
@@ -2097,7 +2099,7 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
       </div>
     </div>
   </article>
-  <article class="ws ws--stage" id="ws-whitestone" style="--ws-acc:#8a9466" aria-labelledby="ws-h-whitestone">
+  <article class="ws ws--mirror" id="ws-whitestone" style="--ws-acc:#8a9466" aria-labelledby="ws-h-whitestone">
     <div class="wide ws-g">
       <div class="ws-copy rv">
         <p class="ws-n"><span>03</span>Specialist fabric care · UAE</p>
@@ -2120,7 +2122,7 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
       </div>
     </div>
   </article>
-  <article class="ws ws--mirror" id="ws-hymonic" style="--ws-acc:#8b5cf6" aria-labelledby="ws-h-hymonic">
+  <article class="ws ws--split" id="ws-hymonic" style="--ws-acc:#8b5cf6" aria-labelledby="ws-h-hymonic">
     <div class="wide ws-g">
       <div class="ws-copy rv">
         <p class="ws-n"><span>04</span>Industrial hydrogen · Deep tech</p>
@@ -2143,7 +2145,7 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
       </div>
     </div>
   </article>
-  <article class="ws ws--cinema" id="ws-flyingfish" style="--ws-acc:#5fd4c2" aria-labelledby="ws-h-flyingfish">
+  <article class="ws ws--mirror" id="ws-flyingfish" style="--ws-acc:#5fd4c2" aria-labelledby="ws-h-flyingfish">
     <div class="wide ws-g">
       <div class="ws-copy rv">
         <p class="ws-n"><span>05</span>Maritime technology · Netherlands</p>
@@ -3308,6 +3310,8 @@ function armReveal(){
 maskHeads();renderFilters();renderPosts();route();widont();
 (function(){const d=document.documentElement;d.classList.add('lzon');const mark=i=>i.classList.add('ld');document.addEventListener('load',e=>{const t=e.target;if(t.tagName==='IMG')mark(t)},true);document.addEventListener('error',e=>{const t=e.target;if(t.tagName==='IMG')mark(t)},true);document.querySelectorAll('img').forEach(i=>{if(i.complete)mark(i)})})();
 if(document.documentElement.classList.contains("intro-on"))runIntro();
+
+
 
 
 
