@@ -113,7 +113,7 @@ def tail():
         <h2 class="display wsc-h">Your website could be <em class="acc">next.</em></h2>
         <div class="wsc-side">
           <p class="lede">Have something in mind? Let's make something worth looking at.</p>
-          <a class="btn btn-primary" href="#contact">Start a conversation {ARROW}</a>
+          <a class="btn btn-primary" href="#contact">Let's talk {ARROW}</a>
         </div>
       </div>
     </div>

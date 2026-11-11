@@ -51,7 +51,7 @@ const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
 let activeTag="All";
 
 function postCard(p,extra=""){
-  return `<a class="post rv${extra}" href="${keyToHref("post-"+p.slug)}"><span class="tag">${p.tag}</span><h3>${esc(p.title)}</h3><p>${esc(p.dek)}</p><span class="meta"><span>${p.read} min read</span><span class="go">Read ${arrow}</span></span></a>`;
+  return `<a class="post rv${extra}" href="${keyToHref("post-"+p.slug)}"><span class="tag">${p.tag}</span><h2>${esc(p.title)}</h2><p>${esc(p.dek)}</p><span class="meta"><span>${p.read} min read</span><span class="go">Read ${arrow}</span></span></a>`;
 }
 function renderFilters(){
   if(!$("#filters"))return;
@@ -62,7 +62,7 @@ function renderPosts(){
   if(!$("#posts"))return;
   const list=POSTS.filter(p=>activeTag==="All"||p.tag===activeTag);
   $("#posts").innerHTML=list.map((p,i)=>i===0&&activeTag==="All"
-    ?`<a class="post lead" href="${keyToHref("post-"+p.slug)}"><div><span class="tag">${p.tag}</span><h3>${esc(p.title)}</h3><p>${esc(p.dek)}</p><span class="meta"><span>${p.read} min read</span><span class="go">Read ${arrow}</span></span></div><blockquote class="post-q">${esc(p.quote)}</blockquote></a>`
+    ?`<a class="post lead" href="${keyToHref("post-"+p.slug)}"><div><span class="tag">${p.tag}</span><h2>${esc(p.title)}</h2><p>${esc(p.dek)}</p><span class="meta"><span>${p.read} min read</span><span class="go">Read ${arrow}</span></span></div><blockquote class="post-q">${esc(p.quote)}</blockquote></a>`
     :postCard(p)).join("");
   [...$("#posts").children].forEach((c,i)=>{c.style.setProperty("--i",i);c.classList.remove("rv")});
 }
@@ -741,6 +741,7 @@ function armReveal(){
 maskHeads();renderFilters();renderPosts();route();widont();
 (function(){const d=document.documentElement;d.classList.add('lzon');const mark=i=>i.classList.add('ld');document.addEventListener('load',e=>{const t=e.target;if(t.tagName==='IMG')mark(t)},true);document.addEventListener('error',e=>{const t=e.target;if(t.tagName==='IMG')mark(t)},true);document.querySelectorAll('img').forEach(i=>{if(i.complete)mark(i)})})();
 if(document.documentElement.classList.contains("intro-on"))runIntro();
+
 
 
 
