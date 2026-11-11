@@ -1568,6 +1568,7 @@ html.emb .nav-shell.hide{transform:translateY(calc(var(--ey,0px) - 100% - 14px))
 
 
 
+
 /* ================= Websites page ================= */
 .page[data-page="websites"]{--ws-gap:clamp(96px,12vw,200px)}
 .wsx-hero-g{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,5vw,96px);align-items:center}

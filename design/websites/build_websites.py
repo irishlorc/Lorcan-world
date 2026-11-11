@@ -55,8 +55,6 @@ def project(i, p):
         <h2 class="ws-name" id="ws-h-{k}">{E(p["name"])}</h2>
         <p class="ws-tag"><i aria-hidden="true"></i>{E(p["label"])}</p>
         <p class="ws-sum">{E(p["summary"])}</p>
-        <p class="ws-think">{E(p["thinking"])}</p>
-        <p class="ws-built">{E(p["built"])}</p>
         <div class="ws-act">
           <a class="btn btn-primary ws-visit" href="{E(p["url"])}" target="_blank" rel="noopener">Visit the live site <svg class="ne" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr"> (opens in a new tab)</span></a>
           <div class="ws-tog" role="group" aria-label="{E(p["name"])} preview"><button type="button" data-v="d" aria-pressed="true">Desktop</button><button type="button" data-v="m" aria-pressed="false">Mobile</button></div>
@@ -73,7 +71,6 @@ def project(i, p):
         <p class="ws-hint" aria-hidden="true"><span class="h-f">Hover to scroll the page</span><span class="h-t">Tap the screen to scroll</span></p>
       </div>
     </div>
-    {f'<div class="wide ws-det ws-det-{len(dets)}">{det_html}</div>' if dets else ''}
   </article>'''
 
 OFFER = ['Creative direction', 'Website design', 'Development', 'Responsive experiences', 'Thoughtful interactions']
