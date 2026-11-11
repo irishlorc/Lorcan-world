@@ -747,6 +747,7 @@ if(document.documentElement.classList.contains("intro-on"))runIntro();
 
 
 
+
 // ---------- Websites page: hero index, scrolling previews, device toggle ----------
 (function(){
   const pg=()=>document.querySelector('[data-page="websites"]');if(!pg())return;
