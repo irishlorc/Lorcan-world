@@ -53,6 +53,14 @@ const META = {
     type: "CollectionPage",
     crumb: "Work",
   },
+  websites: {
+    path: "/websites",
+    title: "Websites | Selected Digital Work by Lorcan",
+    desc: "Websites designed and developed by Lorcan: Brandit (promotional merchandise e-commerce), Whitestone (premium fabric care, UAE), Hymonic (industrial hydrogen) and Flying Fish (maritime technology).",
+    og: "websites",
+    type: "CollectionPage",
+    crumb: "Websites",
+  },
   studio: {
     path: "/studio",
     title: "The Possibilities Studio | Lorcan",
@@ -121,7 +129,7 @@ const META = {
     noindex: true,
   },
 };
-const ORDER = ["home", "about", "experience", "work", "studio", "studio-wadden", "studio-kindling", "studio-rune", "studio-fold", "thoughts", "contact"];
+const ORDER = ["home", "about", "experience", "work", "websites", "studio", "studio-wadden", "studio-kindling", "studio-rune", "studio-fold", "thoughts", "contact"];
 
 // ---------------------------------------------------------------- source ---
 const src = fs.readFileSync("src/index.html", "utf8");
@@ -162,7 +170,7 @@ const PAGES = {};
 for (const c of chunks) PAGES[c.match(/data-page="([a-z-]+)"/)[1]] = c.trim();
 
 const hrefFor = (k) => (k === "home" ? "/" : k.startsWith("post-") ? "/thoughts/" + k.slice(5) : k.startsWith("studio-") ? "/studio/" + k.slice(7) : "/" + k);
-const linkify = (s) => s.replace(/href="#(home|about|experience|work|studio-wadden|studio-kindling|studio-rune|studio-fold|studio|thoughts|contact)"/g, (_, k) => `href="${hrefFor(k)}"`);
+const linkify = (s) => s.replace(/href="#(home|about|experience|work|websites|studio-wadden|studio-kindling|studio-rune|studio-fold|studio|thoughts|contact)"/g, (_, k) => `href="${hrefFor(k)}"`);
 const show = (s) => s.replace(/(<div class="page[^"]*" data-page="[a-z-]+"(?: style="[^"]*")?) hidden>/, "$1>");
 const hide = (s) => s.replace(/(<div class="page[^"]*" data-page="[a-z-]+"(?: style="[^"]*")?)>/, "$1 hidden>");
 const lazy = (s) => s.replace(/ fetchpriority="high"/g, "").replace(/<img (?![^>]*loading=)/g, '<img loading="lazy" ');
@@ -434,6 +442,7 @@ fs.writeFileSync(
 - [About](${SITE}/about): his background in his own words
 - [Experience](${SITE}/experience): design, communications, business and technology, and his current role at Arkintel
 - [Work](${SITE}/work): the brands and organisations above
+- [Websites](${SITE}/websites): selected websites Lorcan has designed and developed, each labelled honestly as a concept or prototype: Brandit (promotional merchandise and enquiry-based e-commerce), Whitestone (premium fabric care, UAE), Hymonic (industrial hydrogen technology) and Flying Fish (an unofficial redesign concept for a Delft maritime technology company). Includes how a website project runs, from first coffee to launch.
 - [Studio](${SITE}/studio): self-initiated work, four original fictional brands independently conceived and designed: WADDEN (maritime robotics that inspect dikes, ${SITE}/studio/wadden), Kindling (small-business admin software, ${SITE}/studio/kindling), RUNE (premium audio, ${SITE}/studio/rune) and FOLD (Dutch modular furniture, ${SITE}/studio/fold). Identity, campaigns, stationery, brochures, social, exhibition and website work.
 - [Thoughts](${SITE}/thoughts): short notes on technology, AI, creativity and business
 - [Contact](${SITE}/contact): email

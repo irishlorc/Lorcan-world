@@ -81,8 +81,8 @@ function renderArticle(slug){
   return true;
 }
 
-const PAGES=["home","about","experience","work","studio","studio-wadden","studio-kindling","studio-rune","studio-fold","thoughts","contact"];
-const TITLES={"home":"Lorcan — Creative, Business & AI","about":"About Lorcan | Dublin, the Netherlands & Arkintel","experience":"Experience: Design, Comms, Business & Tech | Lorcan","work":"Work | Organisations Lorcan Has Worked For and With","studio":"The Possibilities Studio | Lorcan","studio-wadden":"WADDEN: Maritime Robotics Brand Concept | Lorcan","studio-kindling":"Kindling: Small-Business Software Brand Concept | Lorcan","studio-rune":"RUNE: Premium Audio Brand Concept | Lorcan","studio-fold":"FOLD: Modular Furniture Brand Concept | Lorcan","thoughts":"Thoughts | Lorcan on AI, Creativity & Business","contact":"Contact Lorcan | Say Hello","lost":"Page not found | Lorcan"};
+const PAGES=["home","about","experience","work","websites","studio","studio-wadden","studio-kindling","studio-rune","studio-fold","thoughts","contact"];
+const TITLES={"home":"Lorcan — Creative, Business & AI","about":"About Lorcan | Dublin, the Netherlands & Arkintel","experience":"Experience: Design, Comms, Business & Tech | Lorcan","work":"Work | Organisations Lorcan Has Worked For and With","websites":"Websites | Selected Digital Work by Lorcan","studio":"The Possibilities Studio | Lorcan","studio-wadden":"WADDEN: Maritime Robotics Brand Concept | Lorcan","studio-kindling":"Kindling: Small-Business Software Brand Concept | Lorcan","studio-rune":"RUNE: Premium Audio Brand Concept | Lorcan","studio-fold":"FOLD: Modular Furniture Brand Concept | Lorcan","thoughts":"Thoughts | Lorcan on AI, Creativity & Business","contact":"Contact Lorcan | Say Hello","lost":"Page not found | Lorcan"};
 let swapT=null,firstRoute=true;
 function route(){
   const h=routeKey();
@@ -293,6 +293,7 @@ const NOTES={
   home:[["h1","Changes with the time of day. Try 2am."],[".xp","Five doors. Five different tricks."]],
   about:[["h1","The one word in italics is always the point."],[".photo","Coffee: canon."]],
   experience:[["#yrs","Counts up. Every time. Sorry."],[".now","Current. Not a case study."]],
+  websites:[["h1","Real screenshots. No templates."],[".wsp-steps","Six steps. One coffee."]],
   work:[["h1","No captions. The cards do the talking."],[".bc-grid","Ten cards. Identical sizes. I measured."]],
   thoughts:[["h1","Short notes. Written the way I'd say them."],[".filters","Real filters. They actually filter."]],
   contact:[["h1","Big type, one form, one address."],[".talk-fig","Wave at him. He waves back."]],
@@ -503,7 +504,7 @@ let wpT=0;addEventListener("scroll",()=>{if(wpT)return;wpT=requestAnimationFrame
   links.addEventListener("pointerleave",()=>moveTo(cur()));
   addEventListener("resize",()=>moveTo(cur()));
   // breadcrumb + indicator follow the route
-  const names={about:"About",experience:"Experience",work:"Work",studio:"Studio","studio-wadden":"WADDEN","studio-kindling":"Kindling","studio-rune":"RUNE","studio-fold":"FOLD",thoughts:"Thoughts",contact:"Contact",post:"Thoughts",lost:"Lost"};
+  const names={about:"About",experience:"Experience",work:"Work",websites:"Websites",studio:"Studio","studio-wadden":"WADDEN","studio-kindling":"Kindling","studio-rune":"RUNE","studio-fold":"FOLD",thoughts:"Thoughts",contact:"Contact",post:"Thoughts",lost:"Lost"};
   window.headerOnRoute=page=>{
     requestAnimationFrame(()=>moveTo(cur()));
     const c=$("#crumb"),t=$("#crumbT"),n=names[page];
@@ -740,3 +741,26 @@ function armReveal(){
 maskHeads();renderFilters();renderPosts();route();widont();
 (function(){const d=document.documentElement;d.classList.add('lzon');const mark=i=>i.classList.add('ld');document.addEventListener('load',e=>{const t=e.target;if(t.tagName==='IMG')mark(t)},true);document.addEventListener('error',e=>{const t=e.target;if(t.tagName==='IMG')mark(t)},true);document.querySelectorAll('img').forEach(i=>{if(i.complete)mark(i)})})();
 if(document.documentElement.classList.contains("intro-on"))runIntro();
+
+
+
+// ---------- Websites page: hero index, scrolling previews, device toggle ----------
+(function(){
+  const pg=()=>document.querySelector('[data-page="websites"]');if(!pg())return;
+  const hov=matchMedia("(hover:hover) and (pointer:fine)").matches,red=matchMedia("(prefers-reduced-motion:reduce)").matches;
+  function run(s,on){const im=s.querySelector("img");if(!im)return;const d=Math.max(0,im.getBoundingClientRect().height-s.clientHeight);
+    s.style.setProperty("--d",(-d)+"px");s.style.setProperty("--t",(on?Math.max(3,d/380):Math.min(1.6,.5+d/2400)).toFixed(2)+"s");
+    s.classList.toggle("run",on&&!red);s.setAttribute("aria-pressed",String(on&&!red))}
+  document.addEventListener("pointerenter",e=>{const s=e.target.closest&&e.target.closest(".ws-screen");if(s&&hov&&e.pointerType==="mouse")run(s,true)},true);
+  document.addEventListener("pointerleave",e=>{const s=e.target.closest&&e.target.closest(".ws-screen");if(s&&hov&&e.pointerType==="mouse"&&e.target===s)run(s,false)},true);
+  document.addEventListener("click",e=>{
+    const s=e.target.closest(".ws-screen");if(s){if(!hov||e.detail===0)run(s,!s.classList.contains("run"));return}
+    const t=e.target.closest(".ws-tog button");if(t){const g=t.closest(".ws"),st=g.querySelector(".ws-stage");st.dataset.v=t.dataset.v;
+      g.querySelectorAll(".ws-tog button").forEach(b=>b.setAttribute("aria-pressed",String(b===t)));
+      st.querySelectorAll(".ws-screen.run").forEach(x=>run(x,false));return}
+  });
+  const fan=document.getElementById("wsxFan");
+  const on=k=>{if(!fan)return;if(k){fan.dataset.on=k;fan.querySelectorAll("i").forEach(i=>i.classList.toggle("on",i.dataset.k===k))}else{delete fan.dataset.on;fan.querySelectorAll("i").forEach(i=>i.classList.remove("on"))}};
+  document.addEventListener("mouseover",e=>{const b=e.target.closest(".wsx-index button");on(b?b.dataset.k:null)});
+  document.addEventListener("focusin",e=>{const b=e.target.closest(".wsx-index button");if(b)on(b.dataset.k)});
+})();
