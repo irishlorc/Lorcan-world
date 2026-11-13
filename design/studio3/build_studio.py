@@ -165,7 +165,7 @@ overview = f'''<!-- =================== STUDIO =================== -->
       </div>
     </div>
   </section>
-  <section class="sw wide" aria-label="Projects">
+  <section class="sw-list wide" aria-label="Projects">
     <div class="sw-head rv"><span class="label">Projects</span><span class="sw-count"><i>01</i> to <i>04</i></span></div>
 {pv(W,'hero-wadden','60% 60%','80% 60%','feat','(min-width:1440px) 1360px, 100vw')}
     <div class="sw-pair">
@@ -192,7 +192,7 @@ CSS = r'''
 .st-fine{margin:26px 0 0;font-family:var(--f-serif);font-style:italic;font-size:var(--fs-small);color:var(--faint)}
 .cs-dir{margin:28px 0 0;max-width:62ch;color:var(--muted);font-size:clamp(17px,1.25vw,19px);line-height:1.7}
 .wide{max-width:calc(var(--max) + var(--gutter) + var(--gutter-r));margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
-.sw{display:grid;gap:clamp(44px,5.4vw,88px);padding-bottom:clamp(64px,8vw,128px)}
+.sw-list{display:grid;gap:clamp(44px,5.4vw,88px);padding-bottom:clamp(64px,8vw,128px)}
 .sw-head{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:22px;border-top:1px solid var(--line-2);margin-bottom:calc(clamp(44px,5.4vw,88px) * -.55)}
 .sw-count{font-size:var(--fs-label);letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
 .sw-count i{font-family:var(--f-serif);font-style:italic;font-size:17px;letter-spacing:0;text-transform:none;color:var(--accent)}
@@ -246,7 +246,7 @@ CSS = r'''
   .sw-go{width:48px;height:48px}
 }
 @media (max-width:599px){
-  .sw{gap:40px}
+  .sw-list{gap:40px}
   .sw-head{margin-bottom:-14px}
   .sw-pair{grid-template-columns:minmax(0,1fr);gap:40px}
   .sw-ph,.sw-card .sw-ph{aspect-ratio:4/5}
