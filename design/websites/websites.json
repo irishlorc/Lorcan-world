@@ -79,29 +79,6 @@
      "cap": "The containerised system, with the numbers that matter beside it"
     }
    ]
-  },
-  {
-   "key": "flyingfish",
-   "name": "Flying Fish",
-   "label": "Independent redesign concept",
-   "category": "Maritime technology · Netherlands",
-   "url": "https://flying-fish-pi.vercel.app/",
-   "host": "flying-fish-pi.vercel.app",
-   "built": "Hand-built HTML, CSS and JavaScript, with a Three.js 3D model",
-   "accent": "#5fd4c2",
-   "layout": "mirror",
-   "summary": "An independent take on the website of a Delft company building hydrofoil systems and water mobility software.",
-   "thinking": "Dark, cinematic and full-bleed, with an interactive 3D vessel that shows how a boat lifts onto its foils. The projects read like case studies, not a logo wall.",
-   "details": [
-    {
-     "img": "flyingfish-feat1",
-     "cap": "Hydrofoil systems, introduced with a concept render"
-    },
-    {
-     "img": "flyingfish-proven",
-     "cap": "Projects presented as stories, each with its key figure"
-    }
-   ]
   }
  ]
 }

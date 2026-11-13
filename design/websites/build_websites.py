@@ -126,7 +126,7 @@ CSS = r'''
 .wsx-hero-g{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,5vw,96px);align-items:center}
 .wsx-hero .head{max-width:34rem}
 .wsx-fan{position:relative;aspect-ratio:16/12;max-width:760px;width:100%;justify-self:end}
-.wsx-fan i{position:absolute;width:68%;left:calc(var(--n) * 8%);top:calc(var(--n) * 9.5%);border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -28px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.08);transition:transform .7s var(--e-out),opacity .5s,filter .5s;animation:wsxIn 1.1s var(--e-out) both;animation-delay:calc(.15s + var(--n) * .12s);z-index:calc(var(--n) + 1)}
+.wsx-fan i{position:absolute;width:72%;left:calc(var(--n) * 9.3%);top:calc(var(--n) * 11%);border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -28px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.08);transition:transform .7s var(--e-out),opacity .5s,filter .5s;animation:wsxIn 1.1s var(--e-out) both;animation-delay:calc(.15s + var(--n) * .12s);z-index:calc(var(--n) + 1)}
 .wsx-fan i img{display:block;width:100%;height:auto}
 .wsx-fan[data-on] i{opacity:.35;filter:saturate(.6)}
 .wsx-fan[data-on] i.on{opacity:1;filter:none;transform:translateY(-14px) scale(1.03);z-index:9}

@@ -56,7 +56,7 @@ const META = {
   websites: {
     path: "/websites",
     title: "Websites | Selected Digital Work by Lorcan",
-    desc: "Websites designed and developed by Lorcan: O'Neill Construction (construction, Ireland), Brandit (promotional merchandise e-commerce), Whitestone (premium fabric care, UAE), Hymonic (industrial hydrogen) and Flying Fish (maritime technology).",
+    desc: "Websites designed and developed by Lorcan: O'Neill Construction (construction, Ireland), Brandit (promotional merchandise e-commerce), Whitestone (premium fabric care, UAE) and Hymonic (industrial hydrogen).",
     og: "websites",
     type: "CollectionPage",
     crumb: "Websites",
@@ -442,7 +442,7 @@ fs.writeFileSync(
 - [About](${SITE}/about): his background in his own words
 - [Experience](${SITE}/experience): design, communications, business and technology, and his current role at Arkintel
 - [Work](${SITE}/work): the brands and organisations above
-- [Websites](${SITE}/websites): selected websites Lorcan has designed and developed: O'Neill Construction (an Irish construction group), Brandit (promotional merchandise and enquiry-based e-commerce), Whitestone (premium fabric care, UAE), Hymonic (industrial hydrogen technology) and Flying Fish (an independent take on the website of a Delft maritime technology company). Includes how a website project runs, from first coffee to launch.
+- [Websites](${SITE}/websites): selected websites Lorcan has designed and developed: O'Neill Construction (an Irish construction group), Brandit (promotional merchandise and enquiry-based e-commerce), Whitestone (premium fabric care, UAE) and Hymonic (industrial hydrogen technology). Includes how a website project runs, from first coffee to launch.
 - [Studio](${SITE}/studio): self-initiated work, four original fictional brands independently conceived and designed: WADDEN (maritime robotics that inspect dikes, ${SITE}/studio/wadden), Kindling (small-business admin software, ${SITE}/studio/kindling), RUNE (premium audio, ${SITE}/studio/rune) and FOLD (Dutch modular furniture, ${SITE}/studio/fold). Identity, campaigns, stationery, brochures, social, exhibition and website work.
 - [Thoughts](${SITE}/thoughts): short notes on technology, AI, creativity and business
 - [Contact](${SITE}/contact): email
